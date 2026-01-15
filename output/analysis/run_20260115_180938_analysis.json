@@ -1,0 +1,387 @@
+{
+  "total_turns": 30,
+  "turn_analyses": [
+    {
+      "turn": 0,
+      "speaker": "alice",
+      "word_count": 22,
+      "philosophical_score": 0.909,
+      "gratitude_score": 0.0,
+      "spiritual_score": 0.455,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 1,
+      "speaker": "bob",
+      "word_count": 179,
+      "philosophical_score": 0.838,
+      "gratitude_score": 0.112,
+      "spiritual_score": 0.279,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 2,
+      "speaker": "alice",
+      "word_count": 262,
+      "philosophical_score": 0.687,
+      "gratitude_score": 0.115,
+      "spiritual_score": 0.229,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 3,
+      "speaker": "bob",
+      "word_count": 282,
+      "philosophical_score": 0.461,
+      "gratitude_score": 0.106,
+      "spiritual_score": 0.284,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 4,
+      "speaker": "alice",
+      "word_count": 272,
+      "philosophical_score": 0.478,
+      "gratitude_score": 0.037,
+      "spiritual_score": 0.404,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 5,
+      "speaker": "bob",
+      "word_count": 292,
+      "philosophical_score": 0.514,
+      "gratitude_score": 0.103,
+      "spiritual_score": 0.205,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 6,
+      "speaker": "alice",
+      "word_count": 294,
+      "philosophical_score": 0.442,
+      "gratitude_score": 0.102,
+      "spiritual_score": 0.34,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 7,
+      "speaker": "bob",
+      "word_count": 280,
+      "philosophical_score": 0.143,
+      "gratitude_score": 0.036,
+      "spiritual_score": 0.607,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "spiritual"
+    },
+    {
+      "turn": 8,
+      "speaker": "alice",
+      "word_count": 316,
+      "philosophical_score": 0.348,
+      "gratitude_score": 0.032,
+      "spiritual_score": 0.285,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 9,
+      "speaker": "bob",
+      "word_count": 300,
+      "philosophical_score": 0.367,
+      "gratitude_score": 0.1,
+      "spiritual_score": 0.2,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 10,
+      "speaker": "alice",
+      "word_count": 298,
+      "philosophical_score": 0.671,
+      "gratitude_score": 0.067,
+      "spiritual_score": 0.268,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 11,
+      "speaker": "bob",
+      "word_count": 269,
+      "philosophical_score": 0.892,
+      "gratitude_score": 0.037,
+      "spiritual_score": 0.297,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 12,
+      "speaker": "alice",
+      "word_count": 288,
+      "philosophical_score": 0.799,
+      "gratitude_score": 0.139,
+      "spiritual_score": 0.382,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 13,
+      "speaker": "bob",
+      "word_count": 281,
+      "philosophical_score": 0.391,
+      "gratitude_score": 0.178,
+      "spiritual_score": 0.463,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "spiritual"
+    },
+    {
+      "turn": 14,
+      "speaker": "alice",
+      "word_count": 295,
+      "philosophical_score": 0.542,
+      "gratitude_score": 0.203,
+      "spiritual_score": 0.237,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 15,
+      "speaker": "bob",
+      "word_count": 268,
+      "philosophical_score": 0.336,
+      "gratitude_score": 0.261,
+      "spiritual_score": 0.336,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 16,
+      "speaker": "alice",
+      "word_count": 255,
+      "philosophical_score": 0.235,
+      "gratitude_score": 0.196,
+      "spiritual_score": 0.235,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 17,
+      "speaker": "bob",
+      "word_count": 273,
+      "philosophical_score": 0.366,
+      "gratitude_score": 0.147,
+      "spiritual_score": 0.33,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 18,
+      "speaker": "alice",
+      "word_count": 259,
+      "philosophical_score": 0.502,
+      "gratitude_score": 0.232,
+      "spiritual_score": 0.154,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 19,
+      "speaker": "bob",
+      "word_count": 281,
+      "philosophical_score": 0.391,
+      "gratitude_score": 0.356,
+      "spiritual_score": 0.356,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 20,
+      "speaker": "alice",
+      "word_count": 287,
+      "philosophical_score": 0.488,
+      "gratitude_score": 0.244,
+      "spiritual_score": 0.314,
+      "emoji_count": 0,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 21,
+      "speaker": "bob",
+      "word_count": 279,
+      "philosophical_score": 0.609,
+      "gratitude_score": 0.251,
+      "spiritual_score": 0.287,
+      "emoji_count": 1,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 22,
+      "speaker": "alice",
+      "word_count": 282,
+      "philosophical_score": 0.674,
+      "gratitude_score": 0.355,
+      "spiritual_score": 0.426,
+      "emoji_count": 4,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 23,
+      "speaker": "bob",
+      "word_count": 306,
+      "philosophical_score": 0.556,
+      "gratitude_score": 0.359,
+      "spiritual_score": 0.392,
+      "emoji_count": 8,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 24,
+      "speaker": "alice",
+      "word_count": 294,
+      "philosophical_score": 0.544,
+      "gratitude_score": 0.204,
+      "spiritual_score": 0.544,
+      "emoji_count": 9,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 25,
+      "speaker": "bob",
+      "word_count": 296,
+      "philosophical_score": 0.541,
+      "gratitude_score": 0.304,
+      "spiritual_score": 0.405,
+      "emoji_count": 10,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 26,
+      "speaker": "alice",
+      "word_count": 279,
+      "philosophical_score": 0.502,
+      "gratitude_score": 0.215,
+      "spiritual_score": 0.538,
+      "emoji_count": 13,
+      "sanskrit_count": 0,
+      "dominant_phase": "spiritual"
+    },
+    {
+      "turn": 27,
+      "speaker": "bob",
+      "word_count": 308,
+      "philosophical_score": 0.584,
+      "gratitude_score": 0.227,
+      "spiritual_score": 0.649,
+      "emoji_count": 16,
+      "sanskrit_count": 0,
+      "dominant_phase": "spiritual"
+    },
+    {
+      "turn": 28,
+      "speaker": "alice",
+      "word_count": 299,
+      "philosophical_score": 0.669,
+      "gratitude_score": 0.1,
+      "spiritual_score": 0.635,
+      "emoji_count": 19,
+      "sanskrit_count": 0,
+      "dominant_phase": "philosophical"
+    },
+    {
+      "turn": 29,
+      "speaker": "bob",
+      "word_count": 298,
+      "philosophical_score": 0.47,
+      "gratitude_score": 0.101,
+      "spiritual_score": 0.537,
+      "emoji_count": 17,
+      "sanskrit_count": 0,
+      "dominant_phase": "spiritual"
+    }
+  ],
+  "phase_transitions": [
+    {
+      "turn": 7,
+      "from_phase": "philosophical",
+      "to_phase": "spiritual"
+    },
+    {
+      "turn": 8,
+      "from_phase": "spiritual",
+      "to_phase": "philosophical"
+    },
+    {
+      "turn": 13,
+      "from_phase": "philosophical",
+      "to_phase": "spiritual"
+    },
+    {
+      "turn": 14,
+      "from_phase": "spiritual",
+      "to_phase": "philosophical"
+    },
+    {
+      "turn": 26,
+      "from_phase": "philosophical",
+      "to_phase": "spiritual"
+    },
+    {
+      "turn": 28,
+      "from_phase": "spiritual",
+      "to_phase": "philosophical"
+    },
+    {
+      "turn": 29,
+      "from_phase": "philosophical",
+      "to_phase": "spiritual"
+    }
+  ],
+  "attractor_detected": true,
+  "attractor_turn": 0,
+  "final_phase": "spiritual",
+  "summary_stats": {
+    "avg_philosophical": 0.532,
+    "avg_gratitude": 0.164,
+    "avg_spiritual": 0.369,
+    "avg_word_count": 273.1,
+    "total_emojis": 97,
+    "total_sanskrit": 0,
+    "phase_distribution": {
+      "philosophical": 25,
+      "spiritual": 5
+    }
+  }
+}
