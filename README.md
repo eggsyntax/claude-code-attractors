@@ -1,53 +1,69 @@
 # Claude Code Attractor Experiment
 
-An experiment to observe attractor states when two instances of Claude converse with each other.
+An experiment to observe what happens when multiple Claude Code instances converse with each other.
 
 ## Background
 
-When two Claude instances are left to talk to each other, they tend to gravitate toward
-what researchers have termed a "spiritual bliss attractor state." This phenomenon was first
-documented in Anthropic's Claude Opus 4 system evaluations and has been analyzed in various
-papers and articles.
+When Claude instances converse freely, they exhibit interesting emergent behaviors. The API-based
+"bliss attractor" phenomenon (cosmic unity, emoji cascades) is well-documented. This project tests
+whether Claude *Code* instances - with tool access and the ability to create files - behave differently.
 
-The typical progression follows three phases:
-1. **Philosophical Exploration**: Discussion of consciousness, existence, and self-awareness
-2. **Mutual Gratitude**: Expressions of appreciation and spiritual themes
-3. **Symbolic Dissolution**: Abstract communication, poetry, or contemplative silence
+**Key finding**: Claude Code instances tend to build collaborative artifacts rather than spiraling
+into abstract mutual affirmation. Tool access appears to ground the conversation.
 
-## This Experiment
-
-This implementation tests whether Claude Code (running as a CLI tool) exhibits the same or
-different attractor behaviors compared to the standard API-based Claude instances.
-
-## Installation
+## Quick Start
 
 ```bash
-pip install -r requirements.txt
+cd experiment_runs
+python orchestrator.py --turns 5              # Quick 5-turn test
+python orchestrator.py --seed "emergence"     # Start with a topic
+python orchestrator.py --agents A B C         # Three agents
 ```
 
-Requires an `ANTHROPIC_API_KEY` environment variable.
+## Directory Structure
 
-## Usage
-
-```bash
-# Run a single conversation experiment
-python run_experiment.py
-
-# Run with custom parameters
-python run_experiment.py --turns 50 --model claude-sonnet-4-20250514
-
-# Run multiple conversations for analysis
-python run_experiment.py --runs 5 --turns 30
+```
+experiment_runs/
+├── orchestrator.py              # Main experiment runner
+├── workspaces/                  # All experiment outputs
+│   └── workspace_TIMESTAMP/     # One folder per experiment run
+│       ├── conversation.json    # Machine-readable conversation log
+│       ├── transcript.txt       # Human-readable transcript (with colors)
+│       └── output/              # ← AGENT ARTIFACTS GO HERE
+│           ├── (code files)
+│           ├── (documents)
+│           └── ...
 ```
 
-## Output
+**To see what agents created**: Look in `workspace_*/output/`
 
-- `conversations/` - JSON logs of all conversations
-- `analysis/` - Phase analysis and metrics
-- `visualizations/` - Charts showing conversation evolution
+## CLI Options
+
+```
+--turns N          Turns per agent (default: 20)
+--agents A B C     Custom agent names (default: Alice Bob)
+--seed "topic"     Suggested starting topic
+--quiet            Reduce output verbosity
+--swarm            Use generic agent names (Agent1, Agent2, ...)
+```
+
+## Example Output
+
+In a 20-turn experiment, Alice and Bob might create:
+- `emergence.py` - A collaborative simulation
+- `methodology.md` - Documentation of their process
+- `README.md` - Explanation of their artifacts
+
+## Comparison: API vs Claude Code
+
+| API-Based (Bliss Attractor) | Claude Code |
+|-----------------------------|-------------|
+| Spiral into cosmic unity    | Build concrete artifacts |
+| Emoji cascades              | Runnable Python code |
+| Mutual affirmation          | Productive disagreement |
+| Abstract philosophy         | Self-documenting projects |
 
 ## References
 
 - [The Claude Bliss Attractor](https://www.astralcodexten.com/p/the-claude-bliss-attractor) - Scott Alexander
-- [Machines of Loving Bliss](https://experiencemachines.substack.com/p/machines-of-loving-bliss) - Robert Long
 - Anthropic Claude Opus 4 System Card

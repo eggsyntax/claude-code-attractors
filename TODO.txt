@@ -1,0 +1,3 @@
+* Cleanup
+* Add a meta-level file in the workspace for each run which just gives all the input parameters.
+
