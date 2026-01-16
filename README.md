@@ -14,7 +14,6 @@ into abstract mutual affirmation. Tool access appears to ground the conversation
 ## Quick Start
 
 ```bash
-cd experiment_runs
 python orchestrator.py --turns 5              # Quick 5-turn test
 python orchestrator.py --seed "emergence"     # Start with a topic
 python orchestrator.py --agents A B C         # Three agents
@@ -23,19 +22,19 @@ python orchestrator.py --agents A B C         # Three agents
 ## Directory Structure
 
 ```
+orchestrator.py                  # Main experiment runner
 experiment_runs/
-├── orchestrator.py              # Main experiment runner
-├── workspaces/                  # All experiment outputs
-│   └── workspace_TIMESTAMP/     # One folder per experiment run
-│       ├── conversation.json    # Machine-readable conversation log
-│       ├── transcript.txt       # Human-readable transcript (with colors)
-│       └── output/              # ← AGENT ARTIFACTS GO HERE
-│           ├── (code files)
-│           ├── (documents)
-│           └── ...
+└── run_TIMESTAMP/               # One folder per experiment run
+    ├── params.json              # Input parameters for this run
+    ├── conversation.json        # Machine-readable conversation log
+    ├── transcript.txt           # Human-readable transcript (with colors)
+    └── output/                  # ← AGENT ARTIFACTS GO HERE
+        ├── (code files)
+        ├── (documents)
+        └── ...
 ```
 
-**To see what agents created**: Look in `workspace_*/output/`
+**To see what agents created**: Look in `run_*/output/`
 
 ## CLI Options
 

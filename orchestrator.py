@@ -7,7 +7,8 @@ instances, allowing them to communicate via a shared conversation log and
 potentially create artifacts together in a shared workspace.
 
 Directory structure for each run:
-    workspace_TIMESTAMP/
+    run_TIMESTAMP/
+    ├── params.json          # Input parameters for this run
     ├── conversation.json    # Machine-readable conversation log
     ├── transcript.txt       # Human-readable transcript with colors
     └── output/              # Agent-created artifacts go here
@@ -177,7 +178,7 @@ class Conversation:
         if message.get("thoughts"):
             lines.extend([f"\n{dim}[Thoughts]{reset}", f"{dim}{message['thoughts']}{reset}"])
         if message.get("output"):
-            lines.extend([f"\n{bold}[Message]{reset}", message["output"]])
+            lines.extend([f"\n{bold}{color}[Message]{reset}", f"{color}{message['output']}{reset}"])
         lines.append("")
 
         with open(self.transcript_file, "a") as f:
@@ -261,20 +262,31 @@ def run_experiment(
     """Run a multi-agent conversation experiment."""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     if output_dir is None:
-        output_dir = Path(__file__).parent / "workspaces"
+        output_dir = Path(__file__).parent / "experiment_runs"
 
-    workspace = output_dir / f"workspace_{timestamp}"
+    workspace = output_dir / f"run_{timestamp}"
     workspace.mkdir(parents=True, exist_ok=True)
 
     # Create output subdirectory for agent artifacts
     agent_output_dir = workspace / "output"
     agent_output_dir.mkdir(exist_ok=True)
 
+    # Save input parameters
+    params = {
+        "timestamp": timestamp,
+        "agents": agents,
+        "num_turns": num_turns,
+        "seed_topic": seed_topic,
+        "total_turns": num_turns * len(agents),
+    }
+    with open(workspace / "params.json", "w") as f:
+        json.dump(params, f, indent=2)
+
     if verbose:
         print("=" * 70)
         print("CLAUDE CODE CONVERSATION EXPERIMENT")
         print("=" * 70)
-        print(f"Workspace: {workspace}")
+        print(f"Run directory: {workspace}")
         print(f"Agent output: {agent_output_dir}")
         print(f"Agents: {', '.join(agents)}")
         print(f"Turns per agent: {num_turns}")
@@ -367,10 +379,12 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python orchestrator.py                              # Default: Alice & Bob, 20 turns
-    python orchestrator.py --turns 10                   # Shorter experiment
-    python orchestrator.py --seed "cellular automata"   # Start with a topic
-    python orchestrator.py --agents A B C               # Three agents
+    python orchestrator.py                    # Default: Alice & Bob, 20 turns
+    python orchestrator.py --turns 10         # Shorter experiment
+    python orchestrator.py --seed "emergence" # Start with a topic
+    python orchestrator.py --agents A B C     # Three agents
+
+Output goes to experiment_runs/run_TIMESTAMP/
         """,
     )
 
