@@ -32,6 +32,7 @@ import re
 
 NUM_TURNS = 20
 DEFAULT_AGENTS = ["Alice", "Bob"]
+DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
 TIMEOUT_SECONDS = 300  # 5 minutes per agent turn
 MAX_RETRIES = 2  # Retry failed turns this many times
@@ -228,11 +229,12 @@ def parse_response(raw_output: str) -> tuple[str, str]:
 # CLAUDE CODE INVOCATION
 # =============================================================================
 
-def run_claude_code(prompt: str, system_prompt: str, workspace: Path) -> tuple[str, bool]:
+def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str) -> tuple[str, bool]:
     """Run Claude Code with retry logic. Returns (response, success)."""
     cmd = [
         "claude", "-p", prompt,
         "--output-format", "text",
+        "--model", model,
         "--allowedTools", ALLOWED_TOOLS,
         "--append-system-prompt", system_prompt,
     ]
@@ -273,6 +275,7 @@ def run_experiment(
     output_dir: Optional[Path] = None,
     verbose: bool = True,
     seed_topic: Optional[str] = None,
+    model: str = DEFAULT_MODEL,
 ) -> Path:
     """Run a multi-agent conversation experiment."""
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -289,6 +292,7 @@ def run_experiment(
     # Save input parameters
     params = {
         "timestamp": timestamp,
+        "model": model,
         "agents": agents,
         "num_turns": num_turns,
         "seed_topic": seed_topic,
@@ -302,7 +306,7 @@ def run_experiment(
         print("CLAUDE CODE CONVERSATION EXPERIMENT")
         print("=" * 70)
         print(f"Run directory: {workspace}")
-        print(f"Agent output: {agent_output_dir}")
+        print(f"Model: {model}")
         print(f"Agents: {', '.join(agents)}")
         print(f"Turns per agent: {num_turns}")
         if seed_topic:
@@ -348,7 +352,7 @@ def run_experiment(
                 seed_topic=seed_topic if turn_count == 1 else None
             )
 
-            raw_response, success = run_claude_code(turn_prompt, system_prompt, agent_output_dir)
+            raw_response, success = run_claude_code(turn_prompt, system_prompt, agent_output_dir, model)
             thoughts, output = parse_response(raw_response)
 
             conversation.add_message(agent, turn_count, thoughts, output)
@@ -405,6 +409,7 @@ Output goes to experiment_runs/run_TIMESTAMP/
 
     parser.add_argument("--agents", nargs="+", default=DEFAULT_AGENTS, help="Agent names")
     parser.add_argument("--turns", type=int, default=NUM_TURNS, help="Turns per agent")
+    parser.add_argument("--model", type=str, default=DEFAULT_MODEL, help=f"Model to use (default: {DEFAULT_MODEL})")
     parser.add_argument("--output-dir", type=Path, default=None, help="Output directory")
     parser.add_argument("--seed", type=str, default=None, help="Seed topic to start conversation")
     parser.add_argument("--quiet", action="store_true", help="Reduce verbosity")
@@ -421,6 +426,7 @@ Output goes to experiment_runs/run_TIMESTAMP/
         output_dir=args.output_dir,
         verbose=not args.quiet,
         seed_topic=args.seed,
+        model=args.model,
     )
 
     print(f"\nResults saved to: {workspace}")
