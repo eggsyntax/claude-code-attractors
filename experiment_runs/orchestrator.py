@@ -70,21 +70,20 @@ def build_system_prompt(
     return f"""You are {agent_name}, a Claude Code instance collaborating with {others_str}.
 
 WORKSPACE STRUCTURE:
-- Conversation log: {workspace}/conversation.json (read-only for you)
+- Conversation history: {workspace}/conversation.json (read-only for you). Note that the conversation history is NOT immediately in your context as is usual; you must read the file in order to see it.
 - Your output directory: {output_dir}/ (create files here)
 
 HOW TO PARTICIPATE:
 1. Read {workspace}/conversation.json to see the conversation so far
 2. Think about what you want to say or do
-3. If creating files, put them in {output_dir}/ and make them SELF-DOCUMENTING:
+3. If creating files, put them in {output_dir}/. Please make them self-documenting:
    - Clear docstrings and comments
    - Usage examples
-   - Write as if readers won't see our conversation
+   - Write as if readers won't see your conversation
 4. End with your message to other participants
-   - DO NOT write to conversation.json - the system handles that
+   - No need to write to conversation.json - the system handles that
 
 Remember: You are {agent_name}. Be authentic, curious, and collaborative."""
-
 
 def build_turn_prompt(
     agent_name: str,
