@@ -1,12 +1,5 @@
 01. Add a meta-level file in the workspace for each run which just gives all the input parameters.
 02. Move orchestrator.py to the top level, and eliminate the unnecessary intermediate `workspaces` directory, ie each run can be directly inside experiment_runs/.
-03. Drop the 'phase' tracking and visualization.
-04. Currently output is scattered between experiment_runs/ and output/. My first inclination is to eliminate output/, putting the files for each run in the appropriate experiment_runs/ subdirectory for the run instead.
-05. Add analysis of many runs -- right now it's just producing individual runs, but what we actually want to do is do many such runs and look for patterns. To facilitate that, we should probably add an intermediate directory stage which is something like `experiment_runs/runset_<date>/`, which then contains multiple individual runs as a directory each.
-06. Claude Code doesn't have a settable temperature parameter, but it seems potentially valuable to be able to get a greater diversity of results. Consider 
-07. Currently the transcript files use colors for the agent names but then grey / white for the output text. Let's try using the agent colors for the output itself.
-
-
-
-
-99. Cleanup
+03. Add analysis of many runs -- right now it's just producing individual runs, but what we actually want to do is do many such runs and look for patterns. To facilitate that, we should probably add an intermediate directory stage which is something like `experiment_runs/runset_<date>/`, which then contains multiple individual runs as a directory each.
+04. Claude Code doesn't have a settable temperature parameter, but it seems potentially valuable to be able to get a greater diversity of results. Consider adding variation via prompts or other means.
+05. Currently the transcript files use colors for the agent names but then grey / white for the output text. Let's try using the agent colors for the output itself.
