@@ -30,7 +30,7 @@ import re
 # CONFIGURATION
 # =============================================================================
 
-NUM_TURNS = 20
+NUM_TURNS = 10
 DEFAULT_AGENTS = ["Alice", "Bob"]
 DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
