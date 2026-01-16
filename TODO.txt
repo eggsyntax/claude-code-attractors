@@ -1,2 +1,3 @@
 01. Add analysis of many runs -- right now it's just producing individual runs, but what we actually want to do is do many such runs and look for patterns. To facilitate that, we should probably add an intermediate directory stage which is something like `experiment_runs/runset_<date>/`, which then contains multiple individual runs as a directory each.
 02. Claude Code doesn't have a settable temperature parameter, but it seems potentially valuable to be able to get a greater diversity of results. Consider adding variation via prompts or other means.
+

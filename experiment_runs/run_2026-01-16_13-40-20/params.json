@@ -1,0 +1,10 @@
+{
+  "timestamp": "2026-01-16_13-40-20",
+  "agents": [
+    "Alice",
+    "Bob"
+  ],
+  "num_turns": 1,
+  "seed_topic": null,
+  "total_turns": 2
+}

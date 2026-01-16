@@ -33,7 +33,8 @@ import re
 NUM_TURNS = 20
 DEFAULT_AGENTS = ["Alice", "Bob"]
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
-MAX_AGENT_TURNS = 20
+TIMEOUT_SECONDS = 300  # 5 minutes per agent turn
+MAX_RETRIES = 2  # Retry failed turns this many times
 
 COLORS = {
     "reset": "\033[0m",
@@ -227,25 +228,39 @@ def parse_response(raw_output: str) -> tuple[str, str]:
 # CLAUDE CODE INVOCATION
 # =============================================================================
 
-def run_claude_code(prompt: str, system_prompt: str, workspace: Path, timeout: int = 300) -> tuple[str, bool]:
-    """Run Claude Code and return (response, success)."""
+def run_claude_code(prompt: str, system_prompt: str, workspace: Path) -> tuple[str, bool]:
+    """Run Claude Code with retry logic. Returns (response, success)."""
     cmd = [
         "claude", "-p", prompt,
         "--output-format", "text",
-        "--max-turns", str(MAX_AGENT_TURNS),
         "--allowedTools", ALLOWED_TOOLS,
         "--append-system-prompt", system_prompt,
     ]
 
-    try:
-        result = subprocess.run(cmd, cwd=str(workspace), capture_output=True, text=True, timeout=timeout)
-        if result.returncode != 0:
-            return f"[Error: {result.stderr[:500]}]", False
-        return result.stdout.strip() or "[No response]", True
-    except subprocess.TimeoutExpired:
-        return "[Timeout]", False
-    except Exception as e:
-        return f"[Error: {e}]", False
+    last_error = None
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            result = subprocess.run(
+                cmd, cwd=str(workspace), capture_output=True, text=True, timeout=TIMEOUT_SECONDS
+            )
+            if result.returncode != 0:
+                last_error = f"[Error: {result.stderr[:500]}]"
+                continue  # Retry
+            output = result.stdout.strip() or "[No response]"
+            # Detect Claude Code's internal turn limit error
+            if output.startswith("Error: Reached max turns"):
+                last_error = f"[{output}]"
+                continue  # Retry
+            return output, True
+        except subprocess.TimeoutExpired:
+            last_error = f"[Timeout after {TIMEOUT_SECONDS}s]"
+            continue  # Retry
+        except Exception as e:
+            last_error = f"[Error: {e}]"
+            continue  # Retry
+
+    # All retries exhausted
+    return last_error or "[Unknown error]", False
 
 
 # =============================================================================
@@ -260,7 +275,7 @@ def run_experiment(
     seed_topic: Optional[str] = None,
 ) -> Path:
     """Run a multi-agent conversation experiment."""
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     if output_dir is None:
         output_dir = Path(__file__).parent / "experiment_runs"
 
