@@ -2,9 +2,8 @@
 02. Consider adding runset grouping: `experiment_runs/runset_<date>/` to group related runs.
 03. Add "collaboration depth" metric if we can operationalize it well.
 04. Add code execution testing for generated artifacts.
-05. I see an agent noticing that their workspace in /tmp/ is named 'claude-attractors' and being influenced by that; we should probably give it a more neutral temporary name.
-06. We may want to either a) capture some static files (eg images) from runs of the code written by the agents, for future analysis; or b) encourage the agents to do so. I'd lean somewhat toward a).
-07. Consideration for discussion: in one run, the agents were extremely prolific, creating a large number of python files, making analysis more difficult. On the one hand, we could discourage them from doing so; on the other, this might itself provide a kind of influence that we might not want.
+05. We may want to either a) capture some static files (eg images) from runs of the code written by the agents, for future analysis; or b) encourage the agents to do so. I'd lean somewhat toward a).
+06. Consideration for discussion: in one run, the agents were extremely prolific, creating a large number of python files, making analysis more difficult. On the one hand, we could discourage them from doing so; on the other, this might itself provide a kind of influence that we might not want.
 
 
 99. [please do not delete] Cleanup.

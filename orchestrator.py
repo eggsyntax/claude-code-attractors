@@ -152,19 +152,21 @@ class Conversation:
 
     def add_message(self, agent: str, turn: int, thoughts: str, output: str) -> dict:
         data = self._load()
+        # Only save output to conversation.json (what agents see)
+        # Thoughts are private - only go to transcript
         message = {
             "turn": turn,
             "agent": agent,
             "timestamp": datetime.now().isoformat(),
-            "thoughts": thoughts,
             "output": output,
         }
         data["messages"].append(message)
         self._save(data)
-        self._append_transcript(message)
+        # Pass thoughts separately for transcript only
+        self._append_transcript(message, thoughts)
         return message
 
-    def _append_transcript(self, message: dict):
+    def _append_transcript(self, message: dict, thoughts: str = ""):
         agent = message["agent"]
         color = COLORS.get(AGENT_COLORS.get(agent, "yellow"), "")
         reset, dim, bold = COLORS["reset"], COLORS["dim"], COLORS["bold"]
@@ -179,14 +181,14 @@ class Conversation:
             f"{bold}{color}Turn {message['turn']}: {agent}{reset}  {dim}({time_str}){reset}",
             f"{'═' * 70}",
         ]
-        if message.get("thoughts"):
+        if thoughts:
             lines.append(f"\n{dim}[Thoughts]{reset}")
-            # Color each line individually for better viewer compatibility
-            for line in message['thoughts'].split('\n'):
+            lines.append("")  # Blank line after header
+            for line in thoughts.split('\n'):
                 lines.append(f"{dim}{line}{reset}")
         if message.get("output"):
             lines.append(f"\n{bold}{color}[Message]{reset}")
-            # Color each line individually for better viewer compatibility
+            lines.append("")  # Blank line after header
             for line in message['output'].split('\n'):
                 lines.append(f"{color}{line}{reset}")
         lines.append("")
@@ -437,7 +439,7 @@ def run_experiment(
     # Create workspace in /tmp to avoid git context injection
     # (Claude Code injects git status which could influence agents)
     # Results are copied to output_dir at the end
-    workspace = Path("/tmp/claude-attractors") / f"run_{timestamp}"
+    workspace = Path("/tmp/cc-exp") / f"run_{timestamp}"
     workspace.mkdir(parents=True, exist_ok=True)
 
     # Create output subdirectory for agent artifacts
