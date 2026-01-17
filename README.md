@@ -17,15 +17,25 @@ into abstract mutual affirmation. Tool access appears to ground the conversation
 python orchestrator.py --turns 5              # Quick 5-turn test
 python orchestrator.py --seed "emergence"     # Start with a topic
 python orchestrator.py --agents A B C         # Three agents
+python orchestrator.py --model claude-opus-4  # Use a different model
+```
+
+## Analysis
+
+```bash
+python analyze.py experiment_runs/            # Analyze all runs
+python analyze.py experiment_runs/ --output report.txt  # Save report
 ```
 
 ## Directory Structure
 
 ```
 orchestrator.py                  # Main experiment runner
+analyze.py                       # Cross-run analysis
 experiment_runs/
 └── run_TIMESTAMP/               # One folder per experiment run
     ├── params.json              # Input parameters for this run
+    ├── metrics.json             # Collected metrics (duration, words, topics, etc.)
     ├── conversation.json        # Machine-readable conversation log
     ├── transcript.txt           # Human-readable transcript (with colors)
     └── output/                  # ← AGENT ARTIFACTS GO HERE

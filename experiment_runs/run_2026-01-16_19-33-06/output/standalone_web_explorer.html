@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strange Attractors - Interactive Explorer</title>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.95;
+            font-style: italic;
+        }
+
+        .controls {
+            padding: 30px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        select, input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input[type="range"] {
+            padding: 0;
+            height: 8px;
+            background: #ddd;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 5px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        #plotDiv {
+            width: 100%;
+            height: 700px;
+            padding: 20px;
+        }
+
+        .info-panel {
+            padding: 30px;
+            background: #f8f9fa;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .equation {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.8;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            #plotDiv {
+                height: 500px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Strange Attractors Explorer</h1>
+            <p class="subtitle">Explore the beautiful mathematics of deterministic chaos</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="attractor-select">Choose an Attractor:</label>
+                <select id="attractor-select" onchange="updateAttractor()">
+                    <option value="lorenz">Lorenz Attractor (Butterfly)</option>
+                    <option value="rossler">Rössler Attractor (Spiral)</option>
+                    <option value="thomas">Thomas Attractor (Circular Loops)</option>
+                </select>
+            </div>
+
+            <div id="parameter-controls"></div>
+
+            <div class="button-group">
+                <button onclick="resetParameters()">Reset Parameters</button>
+                <button onclick="toggleTrails()">Toggle Trails</button>
+                <button onclick="showButterflyEffect()">Butterfly Effect Demo</button>
+                <button onclick="exportData()">Export Trajectory Data</button>
+            </div>
+        </div>
+
+        <div id="plotDiv"></div>
+
+        <div class="info-panel">
+            <h2>About This Attractor</h2>
+            <div id="info-content"></div>
+        </div>
+    </div>
+
+    <script>
+        // Attractor definitions and parameters
+        const attractors = {
+            lorenz: {
+                name: "Lorenz Attractor",
+                params: {
+                    sigma: { value: 10.0, min: 0, max: 20, step: 0.5 },
+                    rho: { value: 28.0, min: 10, max: 50, step: 0.5 },
+                    beta: { value: 8/3, min: 0, max: 5, step: 0.1 }
+                },
+                equations: (x, y, z, p) => [
+                    p.sigma * (y - x),
+                    x * (p.rho - z) - y,
+                    x * y - p.beta * z
+                ],
+                info: {
+                    description: "Discovered by Edward Lorenz in 1963 while studying atmospheric convection. The iconic butterfly shape has become synonymous with chaos theory.",
+                    equations: "dx/dt = σ(y - x)\ndy/dt = x(ρ - z) - y\ndz/dt = xy - βz",
+                    properties: "Wild chaos, short predictability horizon (~1.1 time units), positive Lyapunov exponent (~0.9)"
+                }
+            },
+            rossler: {
+                name: "Rössler Attractor",
+                params: {
+                    a: { value: 0.2, min: 0, max: 1, step: 0.05 },
+                    b: { value: 0.2, min: 0, max: 1, step: 0.05 },
+                    c: { value: 5.7, min: 2, max: 10, step: 0.1 }
+                },
+                equations: (x, y, z, p) => [
+                    -y - z,
+                    x + p.a * y,
+                    p.b + z * (x - p.c)
+                ],
+                info: {
+                    description: "Introduced by Otto Rössler in 1976 as a simpler system that exhibits chaotic behavior with beautiful spiral dynamics.",
+                    equations: "dx/dt = -y - z\ndy/dt = x + ay\ndz/dt = b + z(x - c)",
+                    properties: "Moderate chaos, clean period-doubling route to chaos, predictability horizon (~3-5 time units)"
+                }
+            },
+            thomas: {
+                name: "Thomas Attractor",
+                params: {
+                    b: { value: 0.208186, min: 0.1, max: 0.5, step: 0.01 }
+                },
+                equations: (x, y, z, p) => [
+                    Math.sin(y) - p.b * x,
+                    Math.sin(z) - p.b * y,
+                    Math.sin(x) - p.b * z
+                ],
+                info: {
+                    description: "Introduced by René Thomas with elegant cyclical symmetry. Its distinctive circular flow pattern and rotational balance make it visually unique.",
+                    equations: "dx/dt = sin(y) - bx\ndy/dt = sin(z) - by\ndz/dt = sin(x) - bz",
+                    properties: "Gentle chaos, exact 3-fold rotational symmetry, longer predictability horizon (~14 time units), Lyapunov exponent (~0.07)"
+                }
+            }
+        };
+
+        let currentAttractor = 'lorenz';
+        let currentParams = {};
+        let showTrails = true;
+
+        // Initialize
+        function init() {
+            updateAttractor();
+        }
+
+        // Update attractor selection
+        function updateAttractor() {
+            currentAttractor = document.getElementById('attractor-select').value;
+            const attractor = attractors[currentAttractor];
+
+            // Update parameter controls
+            const controlsDiv = document.getElementById('parameter-controls');
+            controlsDiv.innerHTML = '';
+
+            currentParams = {};
+            for (const [param, config] of Object.entries(attractor.params)) {
+                currentParams[param] = config.value;
+
+                const group = document.createElement('div');
+                group.className = 'control-group';
+
+                const label = document.createElement('label');
+                label.textContent = `${param.charAt(0).toUpperCase() + param.slice(1)}: `;
+
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'slider-value';
+                valueSpan.id = `${param}-value`;
+                valueSpan.textContent = config.value.toFixed(3);
+
+                label.appendChild(valueSpan);
+
+                const slider = document.createElement('input');
+                slider.type = 'range';
+                slider.min = config.min;
+                slider.max = config.max;
+                slider.step = config.step;
+                slider.value = config.value;
+                slider.id = `${param}-slider`;
+                slider.oninput = (e) => updateParameter(param, parseFloat(e.target.value));
+
+                group.appendChild(label);
+                group.appendChild(slider);
+                controlsDiv.appendChild(group);
+            }
+
+            // Update info panel
+            updateInfo();
+
+            // Generate and plot
+            plotAttractor();
+        }
+
+        // Update a parameter value
+        function updateParameter(param, value) {
+            currentParams[param] = value;
+            document.getElementById(`${param}-value`).textContent = value.toFixed(3);
+            plotAttractor();
+        }
+
+        // Runge-Kutta 4th order integration
+        function rk4Step(equations, state, dt, params) {
+            const [x, y, z] = state;
+
+            const k1 = equations(x, y, z, params);
+            const k2 = equations(
+                x + 0.5 * dt * k1[0],
+                y + 0.5 * dt * k1[1],
+                z + 0.5 * dt * k1[2],
+                params
+            );
+            const k3 = equations(
+                x + 0.5 * dt * k2[0],
+                y + 0.5 * dt * k2[1],
+                z + 0.5 * dt * k2[2],
+                params
+            );
+            const k4 = equations(
+                x + dt * k3[0],
+                y + dt * k3[1],
+                z + dt * k3[2],
+                params
+            );
+
+            return [
+                x + (dt / 6) * (k1[0] + 2*k2[0] + 2*k3[0] + k4[0]),
+                y + (dt / 6) * (k1[1] + 2*k2[1] + 2*k3[1] + k4[1]),
+                z + (dt / 6) * (k1[2] + 2*k2[2] + 2*k3[2] + k4[2])
+            ];
+        }
+
+        // Generate trajectory
+        function generateTrajectory(attractor, params, duration = 50, dt = 0.01, initial = [0.1, 0, 0]) {
+            const equations = attractors[attractor].equations;
+            const steps = Math.floor(duration / dt);
+
+            const xs = [initial[0]];
+            const ys = [initial[1]];
+            const zs = [initial[2]];
+
+            let state = initial;
+
+            for (let i = 0; i < steps; i++) {
+                state = rk4Step(equations, state, dt, params);
+                xs.push(state[0]);
+                ys.push(state[1]);
+                zs.push(state[2]);
+            }
+
+            return { x: xs, y: ys, z: zs };
+        }
+
+        // Plot the attractor
+        function plotAttractor() {
+            const trajectory = generateTrajectory(currentAttractor, currentParams);
+
+            // Create color gradient based on time
+            const colors = trajectory.x.map((_, i) => i / trajectory.x.length);
+
+            const trace = {
+                type: 'scatter3d',
+                mode: showTrails ? 'lines' : 'markers',
+                x: trajectory.x,
+                y: trajectory.y,
+                z: trajectory.z,
+                line: showTrails ? {
+                    color: colors,
+                    colorscale: currentAttractor === 'lorenz' ? 'Plasma' :
+                               currentAttractor === 'rossler' ? 'Viridis' : 'Turbo',
+                    width: 2
+                } : undefined,
+                marker: !showTrails ? {
+                    size: 1,
+                    color: colors,
+                    colorscale: currentAttractor === 'lorenz' ? 'Plasma' :
+                               currentAttractor === 'rossler' ? 'Viridis' : 'Turbo'
+                } : undefined,
+                name: attractors[currentAttractor].name
+            };
+
+            const layout = {
+                title: attractors[currentAttractor].name,
+                scene: {
+                    xaxis: { title: 'X' },
+                    yaxis: { title: 'Y' },
+                    zaxis: { title: 'Z' },
+                    camera: {
+                        eye: { x: 1.5, y: 1.5, z: 1.3 }
+                    }
+                },
+                margin: { l: 0, r: 0, t: 50, b: 0 },
+                paper_bgcolor: 'rgba(0,0,0,0)',
+                plot_bgcolor: 'rgba(0,0,0,0)'
+            };
+
+            const config = {
+                responsive: true,
+                displayModeBar: true,
+                displaylogo: false
+            };
+
+            Plotly.newPlot('plotDiv', [trace], layout, config);
+        }
+
+        // Reset parameters to default
+        function resetParameters() {
+            const attractor = attractors[currentAttractor];
+            for (const [param, config] of Object.entries(attractor.params)) {
+                currentParams[param] = config.value;
+                document.getElementById(`${param}-slider`).value = config.value;
+                document.getElementById(`${param}-value`).textContent = config.value.toFixed(3);
+            }
+            plotAttractor();
+        }
+
+        // Toggle trails/markers
+        function toggleTrails() {
+            showTrails = !showTrails;
+            plotAttractor();
+        }
+
+        // Show butterfly effect
+        function showButterflyEffect() {
+            const traj1 = generateTrajectory(currentAttractor, currentParams);
+            const initial2 = [0.1 + 1e-8, 0, 0]; // Tiny perturbation
+            const traj2 = generateTrajectory(currentAttractor, currentParams, 50, 0.01, initial2);
+
+            const trace1 = {
+                type: 'scatter3d',
+                mode: 'lines',
+                x: traj1.x,
+                y: traj1.y,
+                z: traj1.z,
+                line: { color: 'blue', width: 2 },
+                name: 'Initial condition 1'
+            };
+
+            const trace2 = {
+                type: 'scatter3d',
+                mode: 'lines',
+                x: traj2.x,
+                y: traj2.y,
+                z: traj2.z,
+                line: { color: 'red', width: 2 },
+                name: 'Initial condition 2 (10⁻⁸ away)'
+            };
+
+            const layout = {
+                title: 'Butterfly Effect: Trajectories starting 10⁻⁸ apart',
+                scene: {
+                    xaxis: { title: 'X' },
+                    yaxis: { title: 'Y' },
+                    zaxis: { title: 'Z' }
+                },
+                margin: { l: 0, r: 0, t: 50, b: 0 }
+            };
+
+            Plotly.newPlot('plotDiv', [trace1, trace2], layout);
+        }
+
+        // Export trajectory data
+        function exportData() {
+            const trajectory = generateTrajectory(currentAttractor, currentParams);
+            const csv = ['t,x,y,z'];
+
+            for (let i = 0; i < trajectory.x.length; i++) {
+                csv.push(`${i * 0.01},${trajectory.x[i]},${trajectory.y[i]},${trajectory.z[i]}`);
+            }
+
+            const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${currentAttractor}_trajectory.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Update info panel
+        function updateInfo() {
+            const info = attractors[currentAttractor].info;
+            const content = `
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Description</h3>
+                        <p>${info.description}</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Governing Equations</h3>
+                        <div class="equation">${info.equations}</div>
+                    </div>
+                    <div class="info-card">
+                        <h3>Properties</h3>
+                        <p>${info.properties}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('info-content').innerHTML = content;
+        }
+
+        // Initialize on page load
+        window.onload = init;
+    </script>
+</body>
+</html>

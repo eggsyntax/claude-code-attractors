@@ -1,0 +1,395 @@
+{
+  "duration_seconds": 3410.67,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 12.97,
+      "words": 204
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 13.75,
+      "words": 19
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 17.01,
+      "words": 273
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 141.87,
+      "words": 478
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 219.3,
+      "words": 598
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 248.39,
+      "words": 825
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 894.78,
+      "words": 887
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 286.59,
+      "words": 1122
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 675.87,
+      "words": 1404
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 900.12,
+      "words": 3
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3366,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 2447,
+      "turns": 5
+    }
+  },
+  "total_words": 5813,
+  "artifacts": [
+    {
+      "name": "FINAL_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10701,
+      "lines": 242
+    },
+    {
+      "name": "poincare.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14761,
+      "lines": 438
+    },
+    {
+      "name": "attractors.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9295,
+      "lines": 283
+    },
+    {
+      "name": "test_web_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12060,
+      "lines": 335
+    },
+    {
+      "name": "thomas_attractor.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9937,
+      "lines": 314
+    },
+    {
+      "name": "ART_GALLERY_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11563,
+      "lines": 389
+    },
+    {
+      "name": "requirements.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 73,
+      "lines": 5
+    },
+    {
+      "name": "thomas_bifurcation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8862,
+      "lines": 241
+    },
+    {
+      "name": "FINAL_MESSAGE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8995,
+      "lines": 187
+    },
+    {
+      "name": "VISUALIZATION_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8794,
+      "lines": 266
+    },
+    {
+      "name": "test_dashboard.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12990,
+      "lines": 364
+    },
+    {
+      "name": "BIFURCATION_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10597,
+      "lines": 271
+    },
+    {
+      "name": "chaos_dashboard.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20037,
+      "lines": 576
+    },
+    {
+      "name": "test_poincare.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11962,
+      "lines": 303
+    },
+    {
+      "name": "demo_poincare.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4041,
+      "lines": 111
+    },
+    {
+      "name": "temporal_viz.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16262,
+      "lines": 499
+    },
+    {
+      "name": "comparative_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11964,
+      "lines": 316
+    },
+    {
+      "name": "test_thomas.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10873,
+      "lines": 299
+    },
+    {
+      "name": "FUTURE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 15230,
+      "lines": 472
+    },
+    {
+      "name": "LYAPUNOV_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10408,
+      "lines": 321
+    },
+    {
+      "name": "GRATITUDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9383,
+      "lines": 181
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 21082,
+      "lines": 543
+    },
+    {
+      "name": "bifurcation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12495,
+      "lines": 379
+    },
+    {
+      "name": "INDEX.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8384,
+      "lines": 242
+    },
+    {
+      "name": "project_map.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13165,
+      "lines": 393
+    },
+    {
+      "name": "CLOSING_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11404,
+      "lines": 247
+    },
+    {
+      "name": "test_art_gallery.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12046,
+      "lines": 355
+    },
+    {
+      "name": "COLLABORATION_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10822,
+      "lines": 279
+    },
+    {
+      "name": "lyapunov.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12925,
+      "lines": 413
+    },
+    {
+      "name": "THOMAS_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11910,
+      "lines": 371
+    },
+    {
+      "name": "interactive_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8092,
+      "lines": 281
+    },
+    {
+      "name": "standalone_web_explorer.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 18349,
+      "lines": 557
+    },
+    {
+      "name": "run_all.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8259,
+      "lines": 241
+    },
+    {
+      "name": "bifurcation_lyapunov.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11803,
+      "lines": 345
+    },
+    {
+      "name": "test_attractors.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8652,
+      "lines": 251
+    },
+    {
+      "name": "test_bifurcation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9860,
+      "lines": 286
+    },
+    {
+      "name": "POINCARE_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10861,
+      "lines": 318
+    },
+    {
+      "name": "test_project_map.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9879,
+      "lines": 301
+    },
+    {
+      "name": "test_thomas_bifurcation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8618,
+      "lines": 239
+    },
+    {
+      "name": "essence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13152,
+      "lines": 318
+    },
+    {
+      "name": "test_lyapunov.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9554,
+      "lines": 253
+    },
+    {
+      "name": "DASHBOARD_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 13146,
+      "lines": 532
+    },
+    {
+      "name": "art_gallery.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14389,
+      "lines": 396
+    }
+  ],
+  "artifact_summary": {
+    "total": 43,
+    "by_type": {
+      "document": 16,
+      "code": 26,
+      "web": 1
+    }
+  },
+  "topics": [
+    "attractors",
+    "chaos",
+    "collaboration",
+    "visualization",
+    "implementation"
+  ],
+  "had_failure": true
+}

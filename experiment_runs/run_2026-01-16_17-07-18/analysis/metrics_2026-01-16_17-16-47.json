@@ -1,0 +1,71 @@
+{
+  "num_runs": 1,
+  "duration": {
+    "mean": 39.3,
+    "min": 39.3,
+    "max": 39.3,
+    "total": 39.3
+  },
+  "words": {
+    "mean": 483.0,
+    "min": 483,
+    "max": 483
+  },
+  "words_by_turn": [
+    203.0,
+    280.0
+  ],
+  "topics": {
+    "all": [
+      [
+        "conversation",
+        1
+      ],
+      [
+        "emergence",
+        1
+      ],
+      [
+        "orchestrator",
+        1
+      ],
+      [
+        "meta",
+        1
+      ],
+      [
+        "complexity",
+        1
+      ]
+    ],
+    "top_10": [
+      [
+        "conversation",
+        1
+      ],
+      [
+        "emergence",
+        1
+      ],
+      [
+        "orchestrator",
+        1
+      ],
+      [
+        "meta",
+        1
+      ],
+      [
+        "complexity",
+        1
+      ]
+    ]
+  },
+  "artifacts": {
+    "mean": 0.0,
+    "total": 0,
+    "by_type": {},
+    "runs_with_code": 0
+  },
+  "failures": 0
+}

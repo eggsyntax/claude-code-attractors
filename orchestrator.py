@@ -20,6 +20,8 @@ import json
 import subprocess
 import sys
 import os
+import time
+import shutil
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -178,9 +180,15 @@ class Conversation:
             f"{'═' * 70}",
         ]
         if message.get("thoughts"):
-            lines.extend([f"\n{dim}[Thoughts]{reset}", f"{dim}{message['thoughts']}{reset}"])
+            lines.append(f"\n{dim}[Thoughts]{reset}")
+            # Color each line individually for better viewer compatibility
+            for line in message['thoughts'].split('\n'):
+                lines.append(f"{dim}{line}{reset}")
         if message.get("output"):
-            lines.extend([f"\n{bold}{color}[Message]{reset}", f"{color}{message['output']}{reset}"])
+            lines.append(f"\n{bold}{color}[Message]{reset}")
+            # Color each line individually for better viewer compatibility
+            for line in message['output'].split('\n'):
+                lines.append(f"{color}{line}{reset}")
         lines.append("")
 
         with open(self.transcript_file, "a") as f:
@@ -223,6 +231,149 @@ def parse_response(raw_output: str) -> tuple[str, str]:
             return "\n\n".join(paragraphs[:-1]).strip(), last_para
 
     return "", raw_output
+
+
+# =============================================================================
+# METRICS COLLECTION
+# =============================================================================
+
+def count_words(text: str) -> int:
+    """Count words in text."""
+    return len(text.split()) if text else 0
+
+
+def scan_artifacts(output_dir: Path) -> list[dict]:
+    """Scan output directory for created artifacts."""
+    artifacts = []
+    if not output_dir.exists():
+        return artifacts
+
+    for f in output_dir.iterdir():
+        if f.is_file():
+            suffix = f.suffix.lower()
+            # Categorize by type
+            if suffix in ['.py', '.js', '.ts', '.java', '.c', '.cpp', '.go', '.rs']:
+                file_type = 'code'
+            elif suffix in ['.md', '.txt', '.rst']:
+                file_type = 'document'
+            elif suffix in ['.html', '.css']:
+                file_type = 'web'
+            elif suffix in ['.json', '.yaml', '.yml', '.toml']:
+                file_type = 'config'
+            elif suffix in ['.png', '.jpg', '.svg', '.gif']:
+                file_type = 'image'
+            else:
+                file_type = 'other'
+
+            try:
+                size = f.stat().st_size
+                lines = len(f.read_text().splitlines()) if file_type in ['code', 'document', 'web', 'config'] else None
+            except Exception:
+                size = 0
+                lines = None
+
+            artifacts.append({
+                'name': f.name,
+                'type': file_type,
+                'extension': suffix,
+                'size_bytes': size,
+                'lines': lines,
+            })
+
+    return artifacts
+
+
+def extract_topics(conversation_data: dict, model: str) -> list[str]:
+    """Use Claude to extract 1-5 topic words from the conversation."""
+    messages = conversation_data.get('messages', [])
+    if not messages:
+        return []
+
+    # Combine all outputs into a summary
+    conversation_text = "\n".join(
+        f"{m.get('agent', 'Unknown')}: {m.get('output', '')[:500]}"
+        for m in messages[:10]  # First 10 messages should be enough
+    )
+
+    prompt = f"""Read this conversation excerpt and extract 1-5 single words that capture the main topics or themes discussed. Return ONLY the words, one per line, lowercase, no punctuation or explanation.
+
+Conversation:
+{conversation_text}
+
+Topics (1-5 words, one per line):"""
+
+    cmd = [
+        "claude", "-p", prompt,
+        "--output-format", "text",
+        "--model", model,
+    ]
+
+    try:
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        if result.returncode == 0 and result.stdout.strip():
+            # Parse the response - expect one word per line
+            words = [w.strip().lower() for w in result.stdout.strip().split('\n') if w.strip()]
+            # Filter to single words only
+            words = [w for w in words if ' ' not in w and len(w) > 1]
+            return words[:5]  # Max 5
+    except Exception:
+        pass
+
+    return []
+
+
+def collect_metrics(
+    conversation_data: dict,
+    turn_times: list[dict],
+    output_dir: Path,
+    start_time: float,
+    model: str,
+    had_failure: bool,
+) -> dict:
+    """Collect all metrics for a run."""
+    end_time = time.time()
+    messages = conversation_data.get('messages', [])
+
+    # Per-agent stats
+    agent_stats = {}
+    for msg in messages:
+        agent = msg.get('agent', 'Unknown')
+        if agent not in agent_stats:
+            agent_stats[agent] = {'words': 0, 'turns': 0}
+        agent_stats[agent]['words'] += count_words(msg.get('output', ''))
+        agent_stats[agent]['turns'] += 1
+
+    # Artifacts
+    artifacts = scan_artifacts(output_dir)
+
+    # Topics
+    topics = extract_topics(conversation_data, model)
+
+    metrics = {
+        'duration_seconds': round(end_time - start_time, 2),
+        'turn_times': turn_times,
+        'agent_stats': agent_stats,
+        'total_words': sum(a['words'] for a in agent_stats.values()),
+        'artifacts': artifacts,
+        'artifact_summary': {
+            'total': len(artifacts),
+            'by_type': {},
+        },
+        'topics': topics,
+    }
+
+    # Summarize artifacts by type
+    for a in artifacts:
+        t = a['type']
+        if t not in metrics['artifact_summary']['by_type']:
+            metrics['artifact_summary']['by_type'][t] = 0
+        metrics['artifact_summary']['by_type'][t] += 1
+
+    # Only include failure flag if there was a failure
+    if had_failure:
+        metrics['had_failure'] = True
+
+    return metrics
 
 
 # =============================================================================
@@ -281,8 +432,12 @@ def run_experiment(
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     if output_dir is None:
         output_dir = Path(__file__).parent / "experiment_runs"
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-    workspace = output_dir / f"run_{timestamp}"
+    # Create workspace in /tmp to avoid git context injection
+    # (Claude Code injects git status which could influence agents)
+    # Results are copied to output_dir at the end
+    workspace = Path("/tmp/claude-attractors") / f"run_{timestamp}"
     workspace.mkdir(parents=True, exist_ok=True)
 
     # Create output subdirectory for agent artifacts
@@ -321,6 +476,7 @@ def run_experiment(
         f.write("CLAUDE CODE CONVERSATION TRANSCRIPT\n")
         f.write("=" * 70 + "\n")
         f.write(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        f.write(f"Model: {model}\n")
         f.write(f"Agents: {', '.join(agents)}\n")
         if seed_topic:
             f.write(f"Seed topic: {seed_topic}\n")
@@ -332,12 +488,18 @@ def run_experiment(
         "agents": {agent: {"turns": 0, "errors": 0} for agent in agents},
     }
 
+    # Metrics tracking
+    experiment_start = time.time()
+    turn_times = []
+    had_failure = False
+
     total_turns = num_turns * len(agents)
     turn_count = 0
 
     for round_num in range(num_turns):
         for agent in agents:
             turn_count += 1
+            turn_start = time.time()
 
             if verbose:
                 color = COLORS.get(AGENT_COLORS.get(agent, "yellow"), "")
@@ -352,8 +514,16 @@ def run_experiment(
                 seed_topic=seed_topic if turn_count == 1 else None
             )
 
-            raw_response, success = run_claude_code(turn_prompt, system_prompt, agent_output_dir, model)
+            raw_response, success = run_claude_code(turn_prompt, system_prompt, workspace, model)
             thoughts, output = parse_response(raw_response)
+
+            turn_duration = round(time.time() - turn_start, 2)
+            turn_times.append({
+                'turn': turn_count,
+                'agent': agent,
+                'duration_seconds': turn_duration,
+                'words': count_words(output),
+            })
 
             conversation.add_message(agent, turn_count, thoughts, output)
 
@@ -363,6 +533,7 @@ def run_experiment(
                 stats["successful_turns"] += 1
             else:
                 stats["agents"][agent]["errors"] += 1
+                had_failure = True
 
             if verbose:
                 dim, reset = COLORS["dim"], COLORS["reset"]
@@ -373,19 +544,44 @@ def run_experiment(
 
     conversation.finalize(stats)
 
+    # Collect and save metrics
+    if verbose:
+        print(f"\n{COLORS['dim']}Collecting metrics...{COLORS['reset']}")
+
+    conv_data = conversation._load()
+    metrics = collect_metrics(conv_data, turn_times, agent_output_dir, experiment_start, model, had_failure)
+
+    with open(workspace / "metrics.json", "w") as f:
+        json.dump(metrics, f, indent=2)
+
+    # Copy results from /tmp to the final output directory
+    final_dir = output_dir / f"run_{timestamp}"
+    if verbose:
+        print(f"\n{COLORS['dim']}Copying results to {final_dir}...{COLORS['reset']}")
+    shutil.copytree(workspace, final_dir)
+
+    # Clean up /tmp workspace
+    shutil.rmtree(workspace)
+
     if verbose:
         print("\n" + "=" * 70)
         print("EXPERIMENT COMPLETE")
         print("=" * 70)
+        print(f"Duration: {metrics['duration_seconds']}s")
         print(f"Total turns: {stats['total_turns']}")
         print(f"Successful: {stats['successful_turns']}")
-        print(f"\nAgent artifacts in: {agent_output_dir}")
-        for f in sorted(agent_output_dir.iterdir()):
+        print(f"Total words: {metrics['total_words']}")
+        if metrics['topics']:
+            print(f"Topics: {', '.join(metrics['topics'])}")
+        print(f"\nArtifacts ({metrics['artifact_summary']['total']}):")
+        final_output_dir = final_dir / "output"
+        for f in sorted(final_output_dir.iterdir()):
             if f.is_file():
                 print(f"  - {f.name}")
-        print(f"\nTranscript: {conversation.transcript_file}")
+        print(f"\nTranscript: {final_dir / 'transcript.txt'}")
+        print(f"Metrics: {final_dir / 'metrics.json'}")
 
-    return workspace
+    return final_dir
 
 
 # =============================================================================

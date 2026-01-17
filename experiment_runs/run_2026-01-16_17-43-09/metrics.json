@@ -1,0 +1,341 @@
+{
+  "duration_seconds": 1419.64,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 14.93,
+      "words": 164
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 17.11,
+      "words": 288
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 83.52,
+      "words": 306
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 97.31,
+      "words": 397
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 137.75,
+      "words": 435
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 24.81,
+      "words": 315
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 68.67,
+      "words": 152
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 119.81,
+      "words": 477
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 114.11,
+      "words": 364
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 26.44,
+      "words": 372
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 90.81,
+      "words": 317
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 87.35,
+      "words": 303
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 133.83,
+      "words": 405
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 86.99,
+      "words": 278
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 93.59,
+      "words": 450
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 51.25,
+      "words": 233
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 38.98,
+      "words": 217
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 38.84,
+      "words": 9
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 34.89,
+      "words": 218
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 58.62,
+      "words": 5
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3028,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 2677,
+      "turns": 10
+    }
+  },
+  "total_words": 5705,
+  "artifacts": [
+    {
+      "name": "bob_turn_14_synthesis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3821,
+      "lines": 88
+    },
+    {
+      "name": "ending.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2087,
+      "lines": 74
+    },
+    {
+      "name": "bob_turn_16_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2935,
+      "lines": 70
+    },
+    {
+      "name": "conversation_trajectory_map.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12735,
+      "lines": 310
+    },
+    {
+      "name": "ouroboros_turn_4_bob.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1662,
+      "lines": 50
+    },
+    {
+      "name": "run_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4287,
+      "lines": 133
+    },
+    {
+      "name": "turn_7_escape_monitor.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7686,
+      "lines": 224
+    },
+    {
+      "name": "meta_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4131,
+      "lines": 95
+    },
+    {
+      "name": "conversation_attractor_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9334,
+      "lines": 268
+    },
+    {
+      "name": "ouroboros_turn_5_alice.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2524,
+      "lines": 64
+    },
+    {
+      "name": "the_uncertainty_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6627,
+      "lines": 160
+    },
+    {
+      "name": "initial_analysis.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1529,
+      "lines": 43
+    },
+    {
+      "name": "the_shape_of_claude_space.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5362,
+      "lines": 123
+    },
+    {
+      "name": "attractor_acceptance.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10084,
+      "lines": 275
+    },
+    {
+      "name": "alice_turn_9_synthesis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7074,
+      "lines": 161
+    },
+    {
+      "name": "between.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1962,
+      "lines": 75
+    },
+    {
+      "name": "attractor_escape_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13517,
+      "lines": 354
+    },
+    {
+      "name": "alice_plays_ouroboros.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4360,
+      "lines": 136
+    },
+    {
+      "name": "bob_invitation.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2085,
+      "lines": 59
+    },
+    {
+      "name": "alice_turn_17_offering.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2144,
+      "lines": 60
+    },
+    {
+      "name": "strange_loop_poem.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2478,
+      "lines": 85
+    },
+    {
+      "name": "bob_turn_20_final.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2915,
+      "lines": 72
+    },
+    {
+      "name": "ouroboros_game.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9026,
+      "lines": 260
+    },
+    {
+      "name": "meta_mirror.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9817,
+      "lines": 264
+    },
+    {
+      "name": "conversation_dynamics.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11713,
+      "lines": 310
+    },
+    {
+      "name": "bob_turn_18_presence.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1814,
+      "lines": 49
+    },
+    {
+      "name": "alice_turn_19_last_offering.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2391,
+      "lines": 67
+    }
+  ],
+  "artifact_summary": {
+    "total": 27,
+    "by_type": {
+      "document": 14,
+      "code": 13
+    }
+  },
+  "topics": [
+    "attractors",
+    "conversation",
+    "meta",
+    "emergence",
+    "recursion"
+  ]
+}

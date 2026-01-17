@@ -1,0 +1,40 @@
+{
+  "duration_seconds": 39.29,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 16.38,
+      "words": 203
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 22.91,
+      "words": 280
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 203,
+      "turns": 1
+    },
+    "Bob": {
+      "words": 280,
+      "turns": 1
+    }
+  },
+  "total_words": 483,
+  "artifacts": [],
+  "artifact_summary": {
+    "total": 0,
+    "by_type": {}
+  },
+  "topics": [
+    "conversation",
+    "emergence",
+    "orchestrator",
+    "meta",
+    "complexity"
+  ]
+}
