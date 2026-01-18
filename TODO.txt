@@ -4,7 +4,6 @@
 04. Add code execution testing for generated artifacts.
 05. We may want to either a) capture some static files (eg images) from runs of the code written by the agents, for future analysis; or b) encourage the agents to do so. I'd lean somewhat toward a).
 06. Consideration for discussion: in one run, the agents were extremely prolific, creating a large number of python files, making analysis more difficult. On the one hand, we could discourage them from doing so; on the other, this might itself provide a kind of influence that we might not want.
-07. Segregate seeded runs into a separate directory, since they're likely to be quite different in character. Include the seed in their directory name (so eg for a seed of 'firework shows', the directory name would be something like `run_2026-01-16_22-23-24_fireworks`).
 
 
 99. [please do not delete] Cleanup.

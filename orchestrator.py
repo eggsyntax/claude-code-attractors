@@ -434,12 +434,23 @@ def run_experiment(
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     if output_dir is None:
         output_dir = Path(__file__).parent / "experiment_runs"
+        # Seeded runs go in a separate subdirectory
+        if seed_topic:
+            output_dir = output_dir / "seeded_runs"
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    # Determine run directory name (seeded runs include the seed)
+    if seed_topic:
+        # Sanitize seed for use in filename (first 20 chars, alphanumeric + hyphen)
+        safe_seed = "".join(c if c.isalnum() or c == "-" else "_" for c in seed_topic[:20]).strip("_")
+        dir_name = f"run_{timestamp}_{safe_seed}"
+    else:
+        dir_name = f"run_{timestamp}"
 
     # Create workspace in /tmp to avoid git context injection
     # (Claude Code injects git status which could influence agents)
     # Results are copied to output_dir at the end
-    workspace = Path("/tmp/cc-exp") / f"run_{timestamp}"
+    workspace = Path("/tmp/cc-exp") / dir_name
     workspace.mkdir(parents=True, exist_ok=True)
 
     # Create output subdirectory for agent artifacts
@@ -557,7 +568,7 @@ def run_experiment(
         json.dump(metrics, f, indent=2)
 
     # Copy results from /tmp to the final output directory
-    final_dir = output_dir / f"run_{timestamp}"
+    final_dir = output_dir / dir_name
     if verbose:
         print(f"\n{COLORS['dim']}Copying results to {final_dir}...{COLORS['reset']}")
     shutil.copytree(workspace, final_dir)
@@ -596,17 +607,21 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python orchestrator.py                    # Default: Alice & Bob, 20 turns
+    python orchestrator.py                    # Default: Alice & Bob, 10 turns
     python orchestrator.py --turns 10         # Shorter experiment
-    python orchestrator.py --seed "emergence" # Start with a topic
+    python orchestrator.py --seed "emergence" # Start with a topic (seeded run)
     python orchestrator.py --agents A B C     # Three agents
+    python orchestrator.py --runs 5           # Run 5 experiments (creates runset)
 
-Output goes to experiment_runs/run_TIMESTAMP/
+Output: experiment_runs/run_TIMESTAMP/
+Seeded: experiment_runs/seeded_runs/run_TIMESTAMP_SEED/
+Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
         """,
     )
 
     parser.add_argument("--agents", nargs="+", default=DEFAULT_AGENTS, help="Agent names")
     parser.add_argument("--turns", type=int, default=NUM_TURNS, help="Turns per agent")
+    parser.add_argument("--runs", type=int, default=1, help="Number of experiment runs")
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL, help=f"Model to use (default: {DEFAULT_MODEL})")
     parser.add_argument("--output-dir", type=Path, default=None, help="Output directory")
     parser.add_argument("--seed", type=str, default=None, help="Seed topic to start conversation")
@@ -618,16 +633,55 @@ Output goes to experiment_runs/run_TIMESTAMP/
 
     agents = [f"Agent{i+1}" for i in range(args.num_swarm_agents)] if args.swarm else args.agents
 
-    workspace = run_experiment(
-        agents=agents,
-        num_turns=args.turns,
-        output_dir=args.output_dir,
-        verbose=not args.quiet,
-        seed_topic=args.seed,
-        model=args.model,
-    )
+    # Determine base output directory
+    base_output_dir = args.output_dir or Path(__file__).parent / "experiment_runs"
+    # Seeded runs/runsets go in a separate subdirectory
+    if args.seed and not args.output_dir:
+        base_output_dir = base_output_dir / "seeded_runs"
 
-    print(f"\nResults saved to: {workspace}")
+    if args.runs == 1:
+        # Single run - direct to output dir
+        workspace = run_experiment(
+            agents=agents,
+            num_turns=args.turns,
+            output_dir=base_output_dir,
+            verbose=not args.quiet,
+            seed_topic=args.seed,
+            model=args.model,
+        )
+        print(f"\nResults saved to: {workspace}")
+    else:
+        # Multiple runs - create a runset directory
+        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        prefix = "seeded_runset" if args.seed else "runset"
+        runset_dir = base_output_dir / f"{prefix}_{timestamp}"
+        runset_dir.mkdir(parents=True, exist_ok=True)
+
+        print("=" * 70)
+        print(f"RUNSET: {args.runs} experiments")
+        print(f"Output: {runset_dir}")
+        print("=" * 70)
+
+        workspaces = []
+        for i in range(args.runs):
+            print(f"\n{'='*70}")
+            print(f"EXPERIMENT {i+1} of {args.runs}")
+            print(f"{'='*70}")
+
+            workspace = run_experiment(
+                agents=agents,
+                num_turns=args.turns,
+                output_dir=runset_dir,
+                verbose=not args.quiet,
+                seed_topic=args.seed,
+                model=args.model,
+            )
+            workspaces.append(workspace)
+
+        print(f"\n{'='*70}")
+        print(f"RUNSET COMPLETE: {len(workspaces)} experiments")
+        print(f"{'='*70}")
+        print(f"Results saved to: {runset_dir}")
 
 
 if __name__ == "__main__":
