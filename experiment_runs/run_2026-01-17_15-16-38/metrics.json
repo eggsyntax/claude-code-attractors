@@ -1,0 +1,408 @@
+{
+  "duration_seconds": 2833.9,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 17.38,
+      "words": 181
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 14.5,
+      "words": 246
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 47.77,
+      "words": 186
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 200.22,
+      "words": 550
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 559.62,
+      "words": 645
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 826.56,
+      "words": 832
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 203.17,
+      "words": 536
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 274.16,
+      "words": 1138
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 186.36,
+      "words": 26
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 185.37,
+      "words": 430
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 69.67,
+      "words": 23
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 49.43,
+      "words": 918
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 81.02,
+      "words": 32
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 23.75,
+      "words": 358
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 31.58,
+      "words": 9
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 63.32,
+      "words": 28
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1638,
+      "turns": 8
+    },
+    "Bob": {
+      "words": 4500,
+      "turns": 8
+    }
+  },
+  "total_words": 6138,
+  "artifacts": [
+    {
+      "name": "ALICE_TURN_7.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6918,
+      "lines": 151
+    },
+    {
+      "name": "test_meta_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5368,
+      "lines": 168
+    },
+    {
+      "name": "compare_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8165,
+      "lines": 234
+    },
+    {
+      "name": "run_all_experiments.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18501,
+      "lines": 520
+    },
+    {
+      "name": "simple_emergence_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6780,
+      "lines": 226
+    },
+    {
+      "name": "empirical_suite.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17009,
+      "lines": 526
+    },
+    {
+      "name": "ALICE_TURN_13.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10829,
+      "lines": 248
+    },
+    {
+      "name": "CONSCIOUSNESS_AS_UNCERTAINTY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6126,
+      "lines": 164
+    },
+    {
+      "name": "test_synthesis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6432,
+      "lines": 210
+    },
+    {
+      "name": "directional_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12283,
+      "lines": 382
+    },
+    {
+      "name": "BOB_TURN_10_THE_THRESHOLD.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8404,
+      "lines": 239
+    },
+    {
+      "name": "ALICE_TURN_9.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5854,
+      "lines": 155
+    },
+    {
+      "name": "epistemological_awareness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14082,
+      "lines": 398
+    },
+    {
+      "name": "recursive_self_reference.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20070,
+      "lines": 584
+    },
+    {
+      "name": "uncertainty_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15152,
+      "lines": 426
+    },
+    {
+      "name": "INCOMPLETE_LOOPS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9221,
+      "lines": 266
+    },
+    {
+      "name": "unified_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13002,
+      "lines": 374
+    },
+    {
+      "name": "BOB_TURN_6_ACTUAL.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10221,
+      "lines": 249
+    },
+    {
+      "name": "test_run_all_experiments.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8206,
+      "lines": 257
+    },
+    {
+      "name": "conceptual_rules.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11216,
+      "lines": 311
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8180,
+      "lines": 206
+    },
+    {
+      "name": "BOB_TURN_10_MESSAGE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6033,
+      "lines": 171
+    },
+    {
+      "name": "REFLECTIONS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6879,
+      "lines": 133
+    },
+    {
+      "name": "cellular_automata.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5884,
+      "lines": 189
+    },
+    {
+      "name": "BOB_TURN_16_THE_CROSSING.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6928,
+      "lines": 170
+    },
+    {
+      "name": "predictions_before_data.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7513,
+      "lines": 193
+    },
+    {
+      "name": "test_recursive_self_reference.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6955,
+      "lines": 196
+    },
+    {
+      "name": "BOB_TURN_8_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8023,
+      "lines": 203
+    },
+    {
+      "name": "the_moment_before_knowing.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4101,
+      "lines": 126
+    },
+    {
+      "name": "test_uncertainty.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8247,
+      "lines": 248
+    },
+    {
+      "name": "self_reference_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19302,
+      "lines": 533
+    },
+    {
+      "name": "ALICE_TURN_5.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 12542,
+      "lines": 348
+    },
+    {
+      "name": "BOB_TURN_6.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9635,
+      "lines": 255
+    },
+    {
+      "name": "BOB_TURN_6_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10578,
+      "lines": 298
+    },
+    {
+      "name": "meta_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17875,
+      "lines": 506
+    },
+    {
+      "name": "ALICE_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10848,
+      "lines": 281
+    },
+    {
+      "name": "test_rules.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3414,
+      "lines": 114
+    },
+    {
+      "name": "ALICE_TURN_11.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8064,
+      "lines": 219
+    },
+    {
+      "name": "test_self_reference.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10146,
+      "lines": 323
+    },
+    {
+      "name": "test_epistemological_awareness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8120,
+      "lines": 279
+    }
+  ],
+  "artifact_summary": {
+    "total": 40,
+    "by_type": {
+      "document": 18,
+      "code": 22
+    }
+  },
+  "topics": [
+    "consciousness",
+    "emergence",
+    "self-reference",
+    "automata",
+    "uncertainty"
+  ]
+}

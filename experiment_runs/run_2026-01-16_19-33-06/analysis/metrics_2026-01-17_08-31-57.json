@@ -1,0 +1,83 @@
+{
+  "num_runs": 1,
+  "duration": {
+    "mean": 3410.7,
+    "min": 3410.7,
+    "max": 3410.7,
+    "total": 3410.7
+  },
+  "words": {
+    "mean": 5813.0,
+    "min": 5813,
+    "max": 5813
+  },
+  "words_by_turn": [
+    204.0,
+    19.0,
+    273.0,
+    478.0,
+    598.0,
+    825.0,
+    887.0,
+    1122.0,
+    1404.0,
+    3.0
+  ],
+  "topics": {
+    "all": [
+      [
+        "attractors",
+        1
+      ],
+      [
+        "chaos",
+        1
+      ],
+      [
+        "collaboration",
+        1
+      ],
+      [
+        "visualization",
+        1
+      ],
+      [
+        "implementation",
+        1
+      ]
+    ],
+    "top_10": [
+      [
+        "attractors",
+        1
+      ],
+      [
+        "chaos",
+        1
+      ],
+      [
+        "collaboration",
+        1
+      ],
+      [
+        "visualization",
+        1
+      ],
+      [
+        "implementation",
+        1
+      ]
+    ]
+  },
+  "artifacts": {
+    "mean": 43.0,
+    "total": 43,
+    "by_type": {
+      "code": 26,
+      "document": 16,
+      "web": 1
+    },
+    "runs_with_code": 26
+  },
+  "failures": 1
+}

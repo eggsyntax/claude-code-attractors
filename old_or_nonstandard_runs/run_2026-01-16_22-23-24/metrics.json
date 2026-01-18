@@ -1,0 +1,100 @@
+{
+  "duration_seconds": 390.94,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 21.15,
+      "words": 239
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 16.44,
+      "words": 304
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 21.61,
+      "words": 323
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 22.96,
+      "words": 413
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 30.6,
+      "words": 572
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 37.37,
+      "words": 700
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 42.16,
+      "words": 876
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 48.72,
+      "words": 1028
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 43.69,
+      "words": 927
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 47.82,
+      "words": 1040
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 35.72,
+      "words": 767
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 22.67,
+      "words": 19
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3704,
+      "turns": 6
+    },
+    "Bob": {
+      "words": 3504,
+      "turns": 6
+    }
+  },
+  "total_words": 7208,
+  "artifacts": [],
+  "artifact_summary": {
+    "total": 0,
+    "by_type": {}
+  },
+  "topics": [
+    "sanity",
+    "consciousness",
+    "calibration",
+    "feedback",
+    "autonomy"
+  ]
+}

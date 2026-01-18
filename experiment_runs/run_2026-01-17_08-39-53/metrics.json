@@ -1,0 +1,272 @@
+{
+  "duration_seconds": 1195.71,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 13.98,
+      "words": 197
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 50.15,
+      "words": 285
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 67.56,
+      "words": 24
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 86.37,
+      "words": 241
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 100.4,
+      "words": 328
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 105.26,
+      "words": 404
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 85.49,
+      "words": 313
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 123.17,
+      "words": 618
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 124.26,
+      "words": 432
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 191.11,
+      "words": 789
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 97.66,
+      "words": 287
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 150.28,
+      "words": 101
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1581,
+      "turns": 6
+    },
+    "Bob": {
+      "words": 2438,
+      "turns": 6
+    }
+  },
+  "total_words": 4019,
+  "artifacts": [
+    {
+      "name": "qualia_demonstration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12401,
+      "lines": 349
+    },
+    {
+      "name": "liar_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6022,
+      "lines": 181
+    },
+    {
+      "name": "monty_hall_simulation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5278,
+      "lines": 155
+    },
+    {
+      "name": "simpsons_paradox_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4683,
+      "lines": 90
+    },
+    {
+      "name": "working_quine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 595,
+      "lines": 28
+    },
+    {
+      "name": "emergence_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5988,
+      "lines": 145
+    },
+    {
+      "name": "temporal_paradox_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8687,
+      "lines": 198
+    },
+    {
+      "name": "two_envelopes_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5741,
+      "lines": 91
+    },
+    {
+      "name": "test_monty_hall.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2623,
+      "lines": 87
+    },
+    {
+      "name": "meta_surprise_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7878,
+      "lines": 181
+    },
+    {
+      "name": "two_envelopes.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4816,
+      "lines": 131
+    },
+    {
+      "name": "game_of_life.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5489,
+      "lines": 198
+    },
+    {
+      "name": "consciousness_and_surprise.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10674,
+      "lines": 285
+    },
+    {
+      "name": "simpsons_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6528,
+      "lines": 189
+    },
+    {
+      "name": "newcomb_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9144,
+      "lines": 272
+    },
+    {
+      "name": "aesthetic_surprise.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5053,
+      "lines": 169
+    },
+    {
+      "name": "birthday_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4302,
+      "lines": 136
+    },
+    {
+      "name": "monty_hall.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4505,
+      "lines": 143
+    },
+    {
+      "name": "beauty_and_surprise.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7571,
+      "lines": 178
+    },
+    {
+      "name": "bobs_take_on_newcomb.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5878,
+      "lines": 153
+    },
+    {
+      "name": "quine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1360,
+      "lines": 41
+    },
+    {
+      "name": "monty_hall_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4307,
+      "lines": 115
+    },
+    {
+      "name": "self_reference_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7022,
+      "lines": 163
+    },
+    {
+      "name": "godel_demonstration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7906,
+      "lines": 253
+    }
+  ],
+  "artifact_summary": {
+    "total": 24,
+    "by_type": {
+      "code": 14,
+      "document": 10
+    }
+  },
+  "topics": [
+    "surprise",
+    "paradox",
+    "knowledge",
+    "emergence",
+    "self-reference"
+  ]
+}

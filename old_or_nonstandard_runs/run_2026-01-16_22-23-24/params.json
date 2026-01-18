@@ -1,0 +1,11 @@
+{
+  "timestamp": "2026-01-16_22-23-24",
+  "model": "claude-sonnet-4-5-20250929",
+  "agents": [
+    "Alice",
+    "Bob"
+  ],
+  "num_turns": 6,
+  "seed_topic": "sanity and insanity",
+  "total_turns": 12
+}
