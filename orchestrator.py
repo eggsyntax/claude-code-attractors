@@ -216,7 +216,8 @@ def parse_response(raw_output: str) -> tuple[str, str]:
     delimiters = [
         r"\n(?:My message|Here's my (?:message|response)|To (?:the group|everyone|you|Alice|Bob)):\s*\n",
         r"\n(?:---+)\s*\n",
-        r"\n\*\*(?:Message|Response|To .*?)\*\*:?\s*\n",
+        # Match **Message...**, **Response...**, **To ...** with any text before closing **
+        r"\n\*\*(?:Message|Response|To )[^*]*\*\*:?\s*\n",
     ]
 
     for pattern in delimiters:
@@ -664,7 +665,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
         """,
     )
 
-    parser.add_argument("--agents", nargs="+", default=DEFAULT_AGENTS, help="Agent names")
+    parser.add_argument("--agents", nargs="+", default=DEFAULT_AGENTS, metavar="NAME", help="Agent names, e.g. --agents Alice Bob Carol")
     parser.add_argument("--turns", type=int, default=NUM_TURNS, help="Turns per agent")
     parser.add_argument("--runs", type=int, default=1, help="Number of experiment runs")
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL, help=f"Model to use (default: {DEFAULT_MODEL})")
