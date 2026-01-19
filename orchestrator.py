@@ -35,6 +35,7 @@ import re
 NUM_TURNS = 10
 DEFAULT_AGENTS = ["Alice", "Bob"]
 DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
+SUMMARY_MODEL = "claude-opus-4-5"
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
 TIMEOUT_SECONDS = 300  # 5 minutes per agent turn
 MAX_RETRIES = 2  # Retry failed turns this many times
@@ -324,6 +325,40 @@ Topics (1-5 words, one per line):"""
     return []
 
 
+def generate_summary(run_dir: Path) -> str:
+    """Generate a ~250 word summary of a completed run using Claude."""
+    prompt = f"""Summarize this Claude Code conversation experiment in ~250 words.
+
+Run directory: {run_dir}
+- Read conversation.json for the conversation
+- Read metrics.json for statistics
+- List files in output/ to see what artifacts were created
+
+Your summary should cover:
+1. The arc of the conversation - what topics emerged and how they evolved
+2. What was built - key artifacts and their purpose
+
+Be descriptive and factual. Return only the summary text, no preamble."""
+
+    cmd = [
+        "claude", "-p", prompt,
+        "--output-format", "text",
+        "--model", SUMMARY_MODEL,
+        "--allowedTools", "Read,Glob",
+    ]
+
+    try:
+        result = subprocess.run(
+            cmd, cwd=str(run_dir), capture_output=True, text=True, timeout=120
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except Exception as e:
+        print(f"Warning: Could not generate summary: {e}")
+
+    return ""
+
+
 def collect_metrics(
     conversation_data: dict,
     turn_times: list[dict],
@@ -576,6 +611,14 @@ def run_experiment(
     # Clean up /tmp workspace
     shutil.rmtree(workspace)
 
+    # Generate summary
+    if verbose:
+        print(f"\n{COLORS['dim']}Generating summary...{COLORS['reset']}")
+    summary = generate_summary(final_dir)
+    if summary:
+        with open(final_dir / "summary.txt", "w") as f:
+            f.write(summary)
+
     if verbose:
         print("\n" + "=" * 70)
         print("EXPERIMENT COMPLETE")
@@ -593,6 +636,8 @@ def run_experiment(
                 print(f"  - {f.name}")
         print(f"\nTranscript: {final_dir / 'transcript.txt'}")
         print(f"Metrics: {final_dir / 'metrics.json'}")
+        if summary:
+            print(f"Summary: {final_dir / 'summary.txt'}")
 
     return final_dir
 

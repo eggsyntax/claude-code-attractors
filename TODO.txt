@@ -4,6 +4,10 @@
 04. Add code execution testing for generated artifacts.
 05. We may want to either a) capture some static files (eg images) from runs of the code written by the agents, for future analysis; or b) encourage the agents to do so. I'd lean somewhat toward a).
 06. Consideration for discussion: in one run, the agents were extremely prolific, creating a large number of python files, making analysis more difficult. On the one hand, we could discourage them from doing so; on the other, this might itself provide a kind of influence that we might not want.
-
+07. It seems potentially valuable to try to preserve what the claude code agents are doing, not just their created artifacts and final contribution to the conversation.
+    * It's possible that if we capture it all, the resulting filesize would be unwieldy, but we should probably try it and find out.
+    * It's possible, for all I know, that one agent might write an artifact and then neither of them ever runs it (or perhaps even looks at it!). So it seems like it would be useful to know whether / when agents view and run the artifacts. 
+    * Probably there are other useful things to preserve about what agents are doing during their turn. Thoughts on what?
+08. Probably it would be smart to have you or another LLM check the resulting artifacts to ensure that they don't contain code that would harm an unsuspecting user who runs them. That seems unlikely, but we should probably rule it out.
 
 99. [please do not delete] Cleanup.

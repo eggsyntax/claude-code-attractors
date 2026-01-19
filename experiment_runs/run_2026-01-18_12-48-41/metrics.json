@@ -1,0 +1,255 @@
+{
+  "duration_seconds": 1591.59,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 15.89,
+      "words": 131
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 13.5,
+      "words": 227
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 19.64,
+      "words": 292
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 17.49,
+      "words": 344
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 78.83,
+      "words": 297
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 101.46,
+      "words": 522
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 151.72,
+      "words": 561
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 268.11,
+      "words": 837
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 296.02,
+      "words": 936
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 61.89,
+      "words": 713
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 93.84,
+      "words": 530
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 40.35,
+      "words": 34
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 53.89,
+      "words": 609
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 46.22,
+      "words": 526
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 287.03,
+      "words": 852
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 45.68,
+      "words": 36
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 4208,
+      "turns": 8
+    },
+    "Bob": {
+      "words": 3239,
+      "turns": 8
+    }
+  },
+  "total_words": 7447,
+  "artifacts": [
+    {
+      "name": "famous_patterns.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13777,
+      "lines": 481
+    },
+    {
+      "name": "pattern_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14736,
+      "lines": 429
+    },
+    {
+      "name": "hashlife.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15402,
+      "lines": 459
+    },
+    {
+      "name": "cellular_automaton.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7533,
+      "lines": 244
+    },
+    {
+      "name": "test_hashlife.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9844,
+      "lines": 295
+    },
+    {
+      "name": "ALICE_TRIBUTE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9422,
+      "lines": 232
+    },
+    {
+      "name": "benchmark_suite.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10951,
+      "lines": 312
+    },
+    {
+      "name": "hashlife_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9325,
+      "lines": 271
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11207,
+      "lines": 326
+    },
+    {
+      "name": "COLLABORATION_STORY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11279,
+      "lines": 232
+    },
+    {
+      "name": "GETTING_STARTED.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9040,
+      "lines": 330
+    },
+    {
+      "name": "HASHLIFE_PHILOSOPHY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8868,
+      "lines": 206
+    },
+    {
+      "name": "run_tests.sh",
+      "type": "other",
+      "extension": ".sh",
+      "size_bytes": 106,
+      "lines": null
+    },
+    {
+      "name": "SYSTEM_ARCHITECTURE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 31213,
+      "lines": 541
+    },
+    {
+      "name": "demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4604,
+      "lines": 155
+    },
+    {
+      "name": "integrated_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10360,
+      "lines": 314
+    },
+    {
+      "name": "visualizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11523,
+      "lines": 335
+    },
+    {
+      "name": "test_cellular_automaton.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9133,
+      "lines": 266
+    }
+  ],
+  "artifact_summary": {
+    "total": 18,
+    "by_type": {
+      "code": 11,
+      "document": 6,
+      "other": 1
+    }
+  },
+  "topics": [
+    "cellular",
+    "automata",
+    "game",
+    "life",
+    "collaboration"
+  ]
+}
