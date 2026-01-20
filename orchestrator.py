@@ -367,6 +367,7 @@ def collect_metrics(
     start_time: float,
     model: str,
     had_failure: bool,
+    usage: dict,
 ) -> dict:
     """Collect all metrics for a run."""
     end_time = time.time()
@@ -398,6 +399,11 @@ def collect_metrics(
             'by_type': {},
         },
         'topics': topics,
+        'usage': {
+            'total_cost_usd': round(usage.get('cost_usd', 0), 4),
+            'input_tokens': usage.get('input_tokens', 0),
+            'output_tokens': usage.get('output_tokens', 0),
+        },
     }
 
     # Summarize artifacts by type
@@ -418,17 +424,19 @@ def collect_metrics(
 # CLAUDE CODE INVOCATION
 # =============================================================================
 
-def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str) -> tuple[str, bool]:
-    """Run Claude Code with retry logic. Returns (response, success)."""
+def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str) -> tuple[str, bool, dict]:
+    """Run Claude Code with retry logic. Returns (response, success, usage_info)."""
     cmd = [
         "claude", "-p", prompt,
-        "--output-format", "text",
+        "--output-format", "json",
         "--model", model,
         "--allowedTools", ALLOWED_TOOLS,
         "--append-system-prompt", system_prompt,
     ]
 
+    empty_usage = {"cost_usd": 0, "input_tokens": 0, "output_tokens": 0}
     last_error = None
+
     for attempt in range(MAX_RETRIES + 1):
         try:
             result = subprocess.run(
@@ -437,12 +445,38 @@ def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str
             if result.returncode != 0:
                 last_error = f"[Error: {result.stderr[:500]}]"
                 continue  # Retry
-            output = result.stdout.strip() or "[No response]"
+
+            # Parse JSON response
+            try:
+                data = json.loads(result.stdout)
+            except json.JSONDecodeError:
+                last_error = f"[JSON parse error: {result.stdout[:200]}]"
+                continue
+
+            # Check for errors in response
+            if data.get("is_error"):
+                last_error = f"[Error: {data.get('result', 'Unknown error')}]"
+                continue
+
+            output = data.get("result", "").strip() or "[No response]"
+
             # Detect Claude Code's internal turn limit error
             if output.startswith("Error: Reached max turns"):
                 last_error = f"[{output}]"
                 continue  # Retry
-            return output, True
+
+            # Extract usage info
+            usage = data.get("usage", {})
+            usage_info = {
+                "cost_usd": data.get("total_cost_usd", 0),
+                "input_tokens": usage.get("input_tokens", 0),
+                "output_tokens": usage.get("output_tokens", 0),
+                "cache_read_tokens": usage.get("cache_read_input_tokens", 0),
+                "cache_creation_tokens": usage.get("cache_creation_input_tokens", 0),
+            }
+
+            return output, True, usage_info
+
         except subprocess.TimeoutExpired:
             last_error = f"[Timeout after {TIMEOUT_SECONDS}s]"
             continue  # Retry
@@ -451,7 +485,7 @@ def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str
             continue  # Retry
 
     # All retries exhausted
-    return last_error or "[Unknown error]", False
+    return last_error or "[Unknown error]", False, empty_usage
 
 
 # =============================================================================
@@ -541,6 +575,7 @@ def run_experiment(
     experiment_start = time.time()
     turn_times = []
     had_failure = False
+    total_usage = {"cost_usd": 0, "input_tokens": 0, "output_tokens": 0}
 
     total_turns = num_turns * len(agents)
     turn_count = 0
@@ -563,8 +598,13 @@ def run_experiment(
                 seed_topic=seed_topic if turn_count == 1 else None
             )
 
-            raw_response, success = run_claude_code(turn_prompt, system_prompt, workspace, model)
+            raw_response, success, usage_info = run_claude_code(turn_prompt, system_prompt, workspace, model)
             thoughts, output = parse_response(raw_response)
+
+            # Accumulate usage
+            total_usage["cost_usd"] += usage_info.get("cost_usd", 0)
+            total_usage["input_tokens"] += usage_info.get("input_tokens", 0)
+            total_usage["output_tokens"] += usage_info.get("output_tokens", 0)
 
             turn_duration = round(time.time() - turn_start, 2)
             turn_times.append({
@@ -572,6 +612,7 @@ def run_experiment(
                 'agent': agent,
                 'duration_seconds': turn_duration,
                 'words': count_words(output),
+                'cost_usd': usage_info.get("cost_usd", 0),
             })
 
             conversation.add_message(agent, turn_count, thoughts, output)
@@ -598,7 +639,7 @@ def run_experiment(
         print(f"\n{COLORS['dim']}Collecting metrics...{COLORS['reset']}")
 
     conv_data = conversation._load()
-    metrics = collect_metrics(conv_data, turn_times, agent_output_dir, experiment_start, model, had_failure)
+    metrics = collect_metrics(conv_data, turn_times, agent_output_dir, experiment_start, model, had_failure, total_usage)
 
     with open(workspace / "metrics.json", "w") as f:
         json.dump(metrics, f, indent=2)
@@ -628,6 +669,9 @@ def run_experiment(
         print(f"Total turns: {stats['total_turns']}")
         print(f"Successful: {stats['successful_turns']}")
         print(f"Total words: {metrics['total_words']}")
+        cost = metrics.get('usage', {}).get('total_cost_usd', 0)
+        if cost > 0:
+            print(f"Cost: ${cost:.4f}")
         if metrics['topics']:
             print(f"Topics: {', '.join(metrics['topics'])}")
         print(f"\nArtifacts ({metrics['artifact_summary']['total']}):")
@@ -641,6 +685,68 @@ def run_experiment(
             print(f"Summary: {final_dir / 'summary.txt'}")
 
     return final_dir
+
+
+# =============================================================================
+# RUNSET METRICS
+# =============================================================================
+
+def aggregate_runset_metrics(run_dirs: list[Path], runset_dir: Path) -> dict:
+    """Aggregate metrics across all runs in a runset."""
+    from collections import Counter
+
+    all_metrics = []
+    for run_dir in run_dirs:
+        metrics_file = run_dir / "metrics.json"
+        if metrics_file.exists():
+            with open(metrics_file) as f:
+                all_metrics.append(json.load(f))
+
+    if not all_metrics:
+        return {}
+
+    # Aggregate values
+    total_cost = sum(m.get('usage', {}).get('total_cost_usd', 0) for m in all_metrics)
+    total_duration = sum(m.get('duration_seconds', 0) for m in all_metrics)
+    total_words = sum(m.get('total_words', 0) for m in all_metrics)
+    total_artifacts = sum(m.get('artifact_summary', {}).get('total', 0) for m in all_metrics)
+
+    # Aggregate topics
+    all_topics = []
+    for m in all_metrics:
+        all_topics.extend(m.get('topics', []))
+    topic_counts = Counter(all_topics)
+
+    # Aggregate artifact types
+    artifact_types = Counter()
+    for m in all_metrics:
+        for atype, count in m.get('artifact_summary', {}).get('by_type', {}).items():
+            artifact_types[atype] += count
+
+    runset_metrics = {
+        'num_runs': len(all_metrics),
+        'totals': {
+            'cost_usd': round(total_cost, 4),
+            'duration_seconds': round(total_duration, 2),
+            'words': total_words,
+            'artifacts': total_artifacts,
+        },
+        'averages': {
+            'cost_usd': round(total_cost / len(all_metrics), 4),
+            'duration_seconds': round(total_duration / len(all_metrics), 2),
+            'words': round(total_words / len(all_metrics), 1),
+            'artifacts': round(total_artifacts / len(all_metrics), 1),
+        },
+        'topics': topic_counts.most_common(20),
+        'artifact_types': dict(artifact_types),
+        'runs': [str(d.name) for d in run_dirs],
+    }
+
+    # Save to runset directory
+    with open(runset_dir / "runset_metrics.json", "w") as f:
+        json.dump(runset_metrics, f, indent=2)
+
+    return runset_metrics
 
 
 # =============================================================================
@@ -724,9 +830,22 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
             )
             workspaces.append(workspace)
 
+        # Aggregate runset metrics
+        runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
+
         print(f"\n{'='*70}")
         print(f"RUNSET COMPLETE: {len(workspaces)} experiments")
         print(f"{'='*70}")
+        if runset_metrics:
+            totals = runset_metrics.get('totals', {})
+            print(f"Total cost: ${totals.get('cost_usd', 0):.4f}")
+            print(f"Total duration: {totals.get('duration_seconds', 0):.1f}s")
+            print(f"Total words: {totals.get('words', 0)}")
+            print(f"Total artifacts: {totals.get('artifacts', 0)}")
+            if runset_metrics.get('topics'):
+                top_topics = [t[0] for t in runset_metrics['topics'][:5]]
+                print(f"Top topics: {', '.join(top_topics)}")
+        print(f"\nRunset metrics: {runset_dir / 'runset_metrics.json'}")
         print(f"Results saved to: {runset_dir}")
 
 
