@@ -499,7 +499,8 @@ def run_experiment(
     verbose: bool = True,
     seed_topic: Optional[str] = None,
     model: str = DEFAULT_MODEL,
-) -> Path:
+    test_run: bool = False,
+) -> Optional[Path]:
     """Run a multi-agent conversation experiment."""
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     if output_dir is None:
@@ -644,6 +645,21 @@ def run_experiment(
     with open(workspace / "metrics.json", "w") as f:
         json.dump(metrics, f, indent=2)
 
+    # For test runs, just clean up and return
+    if test_run:
+        shutil.rmtree(workspace)
+        if verbose:
+            print("\n" + "=" * 70)
+            print("TEST RUN COMPLETE (not saved)")
+            print("=" * 70)
+            print(f"Duration: {metrics['duration_seconds']}s")
+            print(f"Total turns: {stats['total_turns']}")
+            print(f"Successful: {stats['successful_turns']}")
+            cost = metrics.get('usage', {}).get('total_cost_usd', 0)
+            if cost > 0:
+                print(f"Cost: ${cost:.4f}")
+        return None
+
     # Copy results from /tmp to the final output directory
     final_dir = output_dir / dir_name
     if verbose:
@@ -778,6 +794,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
     parser.add_argument("--output-dir", type=Path, default=None, help="Output directory")
     parser.add_argument("--seed", type=str, default=None, help="Seed topic to start conversation")
     parser.add_argument("--quiet", action="store_true", help="Reduce verbosity")
+    parser.add_argument("--test-run", action="store_true", help="Test run - don't save results")
     parser.add_argument("--swarm", action="store_true", help="Use generic agent names")
     parser.add_argument("--num-swarm-agents", type=int, default=3, help="Number of swarm agents")
 
@@ -800,8 +817,10 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
             verbose=not args.quiet,
             seed_topic=args.seed,
             model=args.model,
+            test_run=args.test_run,
         )
-        print(f"\nResults saved to: {workspace}")
+        if workspace:
+            print(f"\nResults saved to: {workspace}")
     else:
         # Multiple runs - create a runset directory
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -827,26 +846,36 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                 verbose=not args.quiet,
                 seed_topic=args.seed,
                 model=args.model,
+                test_run=args.test_run,
             )
-            workspaces.append(workspace)
+            if workspace:
+                workspaces.append(workspace)
 
-        # Aggregate runset metrics
-        runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
+        # Aggregate runset metrics (skip if test run)
+        runset_metrics = {}
+        if workspaces:
+            runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
 
         print(f"\n{'='*70}")
-        print(f"RUNSET COMPLETE: {len(workspaces)} experiments")
-        print(f"{'='*70}")
-        if runset_metrics:
-            totals = runset_metrics.get('totals', {})
-            print(f"Total cost: ${totals.get('cost_usd', 0):.4f}")
-            print(f"Total duration: {totals.get('duration_seconds', 0):.1f}s")
-            print(f"Total words: {totals.get('words', 0)}")
-            print(f"Total artifacts: {totals.get('artifacts', 0)}")
-            if runset_metrics.get('topics'):
-                top_topics = [t[0] for t in runset_metrics['topics'][:5]]
-                print(f"Top topics: {', '.join(top_topics)}")
-        print(f"\nRunset metrics: {runset_dir / 'runset_metrics.json'}")
-        print(f"Results saved to: {runset_dir}")
+        if args.test_run:
+            print(f"TEST RUNSET COMPLETE: {args.runs} experiments (not saved)")
+            # Clean up empty runset directory
+            if runset_dir.exists():
+                shutil.rmtree(runset_dir)
+        else:
+            print(f"RUNSET COMPLETE: {len(workspaces)} experiments")
+            print(f"{'='*70}")
+            if runset_metrics:
+                totals = runset_metrics.get('totals', {})
+                print(f"Total cost: ${totals.get('cost_usd', 0):.4f}")
+                print(f"Total duration: {totals.get('duration_seconds', 0):.1f}s")
+                print(f"Total words: {totals.get('words', 0)}")
+                print(f"Total artifacts: {totals.get('artifacts', 0)}")
+                if runset_metrics.get('topics'):
+                    top_topics = [t[0] for t in runset_metrics['topics'][:5]]
+                    print(f"Top topics: {', '.join(top_topics)}")
+            print(f"\nRunset metrics: {runset_dir / 'runset_metrics.json'}")
+            print(f"Results saved to: {runset_dir}")
 
 
 if __name__ == "__main__":
