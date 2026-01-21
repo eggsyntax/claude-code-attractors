@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boids Workshop - Interactive Learning Environment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: #252525;
+            border-right: 1px solid #333;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+            font-size: 1.8em;
+        }
+
+        h2 {
+            color: #4ec9b0;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        h3 {
+            color: #9cdcfe;
+            margin: 15px 0 8px 0;
+            font-size: 1em;
+        }
+
+        .lesson-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .lesson-btn {
+            background: #333;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        .lesson-btn:hover {
+            background: #3a3a3a;
+            border-color: #4ec9b0;
+        }
+
+        .lesson-btn.active {
+            background: #2d4a47;
+            border-color: #4ec9b0;
+            box-shadow: 0 0 10px rgba(78, 201, 176, 0.3);
+        }
+
+        .lesson-number {
+            color: #4ec9b0;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .lesson-content {
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border-left: 3px solid #4ec9b0;
+        }
+
+        .lesson-content p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .lesson-content ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .lesson-content li {
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .task {
+            background: #1e3a35;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid #4ec9b0;
+        }
+
+        .task-title {
+            color: #4ec9b0;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .observation-box {
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .observation-box textarea {
+            width: 100%;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #e0e0e0;
+            padding: 8px;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.9em;
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #0a0a0a;
+            padding: 20px;
+            overflow: auto;
+        }
+
+        #canvas {
+            background: #000;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .controls {
+            width: 100%;
+            max-width: 800px;
+            background: #252525;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .control-group {
+            margin-bottom: 12px;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        label {
+            color: #9cdcfe;
+            font-size: 0.85em;
+            min-width: 120px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: #333;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4ec9b0;
+            cursor: pointer;
+        }
+
+        .value-display {
+            color: #4ec9b0;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: right;
+            font-size: 0.9em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        button {
+            background: #333;
+            border: 1px solid #444;
+            color: #e0e0e0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9em;
+        }
+
+        button:hover {
+            background: #3a3a3a;
+            border-color: #4ec9b0;
+        }
+
+        button.primary {
+            background: #2d4a47;
+            border-color: #4ec9b0;
+        }
+
+        button.primary:hover {
+            background: #3a5f5a;
+        }
+
+        .stats {
+            color: #888;
+            font-size: 0.85em;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .hint {
+            background: #2a2a1a;
+            border-left: 3px solid #d7ba7d;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #d7ba7d;
+        }
+
+        .checkpoint {
+            background: #1e2a3a;
+            border-left: 3px solid #569cd6;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .checkpoint-title {
+            color: #569cd6;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .completion-badge {
+            display: inline-block;
+            background: #2d4a47;
+            color: #4ec9b0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h1>Boids Workshop</h1>
+        <p style="color: #888; margin-bottom: 20px; font-size: 0.9em;">
+            Interactive learning environment for understanding emergent flocking behavior
+        </p>
+
+        <h2>Lessons</h2>
+        <div class="lesson-nav" id="lessonNav"></div>
+
+        <div id="lessonContent"></div>
+    </div>
+
+    <div class="main-content">
+        <div class="canvas-container">
+            <canvas id="canvas" width="800" height="600"></canvas>
+
+            <div class="controls">
+                <div class="control-group">
+                    <h3 style="margin-top: 0;">Flocking Behaviors</h3>
+                    <div class="control-row">
+                        <label>Separation</label>
+                        <input type="range" id="separationWeight" min="0" max="3" step="0.1" value="1.5">
+                        <span class="value-display" id="separationValue">1.5</span>
+                    </div>
+                    <div class="control-row">
+                        <label>Alignment</label>
+                        <input type="range" id="alignmentWeight" min="0" max="3" step="0.1" value="1.0">
+                        <span class="value-display" id="alignmentValue">1.0</span>
+                    </div>
+                    <div class="control-row">
+                        <label>Cohesion</label>
+                        <input type="range" id="cohesionWeight" min="0" max="3" step="0.1" value="1.0">
+                        <span class="value-display" id="cohesionValue">1.0</span>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <h3>Environment</h3>
+                    <div class="control-row">
+                        <label>Perception Radius</label>
+                        <input type="range" id="perceptionRadius" min="10" max="200" step="5" value="50">
+                        <span class="value-display" id="perceptionValue">50</span>
+                    </div>
+                    <div class="control-row">
+                        <label>Max Speed</label>
+                        <input type="range" id="maxSpeed" min="1" max="10" step="0.5" value="4">
+                        <span class="value-display" id="maxSpeedValue">4</span>
+                    </div>
+                    <div class="control-row">
+                        <label>Boid Count</label>
+                        <input type="range" id="boidCount" min="10" max="200" step="10" value="100">
+                        <span class="value-display" id="boidCountValue">100</span>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="applyPreset" class="primary">Apply Lesson Preset</button>
+                    <button id="resetBtn">Reset</button>
+                    <button id="pauseBtn">Pause</button>
+                </div>
+
+                <div class="stats" id="stats">FPS: 0 | Boids: 100</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="vector.js"></script>
+    <script src="boid.js"></script>
+    <script src="simulation.js"></script>
+    <script>
+        // Workshop lesson definitions
+        const lessons = [
+            {
+                id: 'intro',
+                title: 'Introduction: Simple Rules, Complex Behavior',
+                content: `
+                    <p>Welcome to the Boids Workshop! You're about to discover one of nature's most beautiful principles: <strong>complex behavior emerges from simple rules</strong>.</p>
+
+                    <p>Birds flock. Fish school. Insects swarm. All without a leader, using just three simple rules:</p>
+                    <ul>
+                        <li><strong>Separation</strong>: Don't crash into neighbors</li>
+                        <li><strong>Alignment</strong>: Match velocity with nearby boids</li>
+                        <li><strong>Cohesion</strong>: Move toward the center of the group</li>
+                    </ul>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Your Task:</div>
+                        <p>Watch the simulation running with all three rules active. Notice:</p>
+                        <ul>
+                            <li>How boids move together without colliding</li>
+                            <li>How groups form, split, and merge</li>
+                            <li>How the flock responds to your mouse clicks (click to add boids)</li>
+                        </ul>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Observations:</strong>
+                        <textarea placeholder="What patterns do you notice? How do the boids interact with each other?"></textarea>
+                    </div>
+
+                    <div class="hint">
+                        💡 Hint: There's no "leader" boid. Every boid follows the same simple rules, yet coordinated group behavior emerges!
+                    </div>
+                `,
+                preset: { separation: 1.5, alignment: 1.0, cohesion: 1.0, perception: 50, speed: 4, count: 100 }
+            },
+            {
+                id: 'separation',
+                title: 'Lesson 1: Separation - Personal Space',
+                content: `
+                    <p>The <strong>separation</strong> rule prevents collisions by creating a repulsive force from nearby boids. The closer a neighbor, the stronger the push away.</p>
+
+                    <p>This rule uses <strong>inverse square weighting</strong>: boids twice as close exert four times the force!</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Separation Only</div>
+                        <p>Click "Apply Lesson Preset" to isolate separation behavior. You'll see:</p>
+                        <ul>
+                            <li>Alignment = 0 (no velocity matching)</li>
+                            <li>Cohesion = 0 (no attraction to center)</li>
+                            <li>Separation = 2.0 (strong repulsion)</li>
+                        </ul>
+                        <p><strong>Observe:</strong> What happens to the flock? How do boids distribute themselves?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Prediction:</strong>
+                        <textarea placeholder="Before clicking the preset, predict: How will boids behave with ONLY separation active?"></textarea>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: Vary Separation Strength</div>
+                        <p>Try these values and observe the differences:</p>
+                        <ul>
+                            <li>Separation = 0.5 (weak): Boids tolerate crowding</li>
+                            <li>Separation = 1.5 (medium): Comfortable spacing</li>
+                            <li>Separation = 3.0 (strong): Maximum personal space</li>
+                        </ul>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Checkpoint:</div>
+                        <p>Can you explain why separation alone doesn't create flocking? What's missing?</p>
+                    </div>
+                `,
+                preset: { separation: 2.0, alignment: 0, cohesion: 0, perception: 50, speed: 4, count: 80 }
+            },
+            {
+                id: 'alignment',
+                title: 'Lesson 2: Alignment - Going With the Flow',
+                content: `
+                    <p>The <strong>alignment</strong> rule makes boids match the velocity of their neighbors. It's like following the crowd - if everyone's moving left, you start moving left too.</p>
+
+                    <p>This creates <strong>coordinated movement</strong> - the foundation of schooling and flocking.</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Alignment Only</div>
+                        <p>Click "Apply Lesson Preset" to isolate alignment behavior. You'll see:</p>
+                        <ul>
+                            <li>Separation = 0 (no collision avoidance - they'll overlap!)</li>
+                            <li>Alignment = 2.0 (strong velocity matching)</li>
+                            <li>Cohesion = 0 (no attraction to center)</li>
+                        </ul>
+                        <p><strong>Observe:</strong> Do boids form organized streams? Do they collide?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Observations:</strong>
+                        <textarea placeholder="Describe the movement patterns. How is this different from separation-only?"></textarea>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: Alignment + Separation</div>
+                        <p>Now set: Separation = 1.5, Alignment = 1.5, Cohesion = 0</p>
+                        <p><strong>Watch:</strong> How do these two rules interact? What new behavior emerges?</p>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Checkpoint:</div>
+                        <p>Why do boids form organized streams with alignment but scatter with separation alone?</p>
+                    </div>
+                `,
+                preset: { separation: 0, alignment: 2.0, cohesion: 0, perception: 50, speed: 4, count: 80 }
+            },
+            {
+                id: 'cohesion',
+                title: 'Lesson 3: Cohesion - Staying Together',
+                content: `
+                    <p>The <strong>cohesion</strong> rule pulls boids toward the average position (center of mass) of nearby neighbors. It's the "don't get left behind" instinct.</p>
+
+                    <p>This creates <strong>group formation</strong> - the glue that holds the flock together.</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Cohesion Only</div>
+                        <p>Click "Apply Lesson Preset" to isolate cohesion behavior. You'll see:</p>
+                        <ul>
+                            <li>Separation = 0 (no collision avoidance)</li>
+                            <li>Alignment = 0 (no velocity matching)</li>
+                            <li>Cohesion = 2.0 (strong attraction to center)</li>
+                        </ul>
+                        <p><strong>Observe:</strong> Do boids cluster? What's the final configuration?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Prediction:</strong>
+                        <textarea placeholder="Predict: Will boids form tight clusters? Will they overlap? Why?"></textarea>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: Separation vs Cohesion</div>
+                        <p>Try these opposing forces:</p>
+                        <ul>
+                            <li>Separation = 2.0, Cohesion = 0.5: Prioritize space</li>
+                            <li>Separation = 0.5, Cohesion = 2.0: Prioritize togetherness</li>
+                            <li>Separation = 1.5, Cohesion = 1.5: Balanced</li>
+                        </ul>
+                        <p><strong>Notice:</strong> How does the balance affect flock density?</p>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Checkpoint:</div>
+                        <p>Explain the tug-of-war: Why do we need both separation AND cohesion?</p>
+                    </div>
+                `,
+                preset: { separation: 0, alignment: 0, cohesion: 2.0, perception: 50, speed: 4, count: 80 }
+            },
+            {
+                id: 'emergence',
+                title: 'Lesson 4: Emergence - The Magic of Three',
+                content: `
+                    <p>Now we activate <strong>all three rules together</strong>. Watch as individual behaviors combine to create something greater than the sum of their parts.</p>
+
+                    <p>This is <strong>emergence</strong>: complex group behavior arising from simple individual rules.</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Balanced Flocking</div>
+                        <p>Click "Apply Lesson Preset" for balanced parameters:</p>
+                        <ul>
+                            <li>All three rules active at equal strength (1.0)</li>
+                            <li>Moderate perception radius (50px)</li>
+                            <li>Moderate speed (4px/frame)</li>
+                        </ul>
+                        <p><strong>Observe:</strong> How do groups form, split, and merge? What patterns emerge?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Observations:</strong>
+                        <textarea placeholder="Describe the emergent patterns. How is this different from individual rules?"></textarea>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: Create Different Flock Types</div>
+                        <p>Try these parameter sets and name the resulting behavior:</p>
+                        <ul>
+                            <li>High Sep (2.0), Low Coh (0.5): "_____ Flock"</li>
+                            <li>Low Sep (0.5), High Coh (2.0): "_____ Flock"</li>
+                            <li>High Align (2.5), Low Speed (2): "_____ Formation"</li>
+                        </ul>
+                    </div>
+
+                    <div class="hint">
+                        💡 Real-world parallel: Starlings form tight murmurations (high cohesion), while geese fly in loose V-formations (high alignment, moderate cohesion).
+                    </div>
+                `,
+                preset: { separation: 1.0, alignment: 1.0, cohesion: 1.0, perception: 50, speed: 4, count: 100 }
+            },
+            {
+                id: 'perception',
+                title: 'Lesson 5: Perception - How Far Can You See?',
+                content: `
+                    <p>The <strong>perception radius</strong> determines which neighbors affect a boid's behavior. It's like vision range - boids only respond to what they can "see".</p>
+
+                    <p>This parameter dramatically changes group dynamics!</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Tiny Perception</div>
+                        <p>Click "Apply Lesson Preset" for minimal perception:</p>
+                        <ul>
+                            <li>Perception radius = 20px (very small)</li>
+                            <li>Balanced rule weights</li>
+                        </ul>
+                        <p><strong>Predict:</strong> What happens when boids can barely see their neighbors?</p>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: Huge Perception</div>
+                        <p>Now try: Perception radius = 150px (very large)</p>
+                        <p><strong>Observe:</strong> How does the flock behave when everyone can see everyone?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Comparison:</strong>
+                        <textarea placeholder="Compare small vs. large perception. How does visual range affect flocking?"></textarea>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Checkpoint:</div>
+                        <p>Real-world question: Do you think fish schools have larger or smaller perception ranges than bird flocks? Why might that matter?</p>
+                    </div>
+                `,
+                preset: { separation: 1.0, alignment: 1.0, cohesion: 1.0, perception: 20, speed: 4, count: 100 }
+            },
+            {
+                id: 'speed',
+                title: 'Lesson 6: Speed - Fast vs. Slow Flocking',
+                content: `
+                    <p><strong>Speed limits</strong> constrain how fast boids can move. Fast boids dart and weave; slow boids glide gracefully.</p>
+
+                    <p>Speed interacts with the three rules in surprising ways!</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment A: Slow Motion Ballet</div>
+                        <p>Click "Apply Lesson Preset" for slow, graceful movement:</p>
+                        <ul>
+                            <li>Max speed = 1.5 (very slow)</li>
+                            <li>Balanced rules</li>
+                        </ul>
+                        <p><strong>Observe:</strong> How does slow speed affect group cohesion?</p>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Experiment B: High-Speed Chaos</div>
+                        <p>Now try: Max speed = 8 (very fast)</p>
+                        <p><strong>Watch:</strong> Can the flock maintain cohesion at high speeds?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Analysis:</strong>
+                        <textarea placeholder="Why is it harder to maintain a cohesive flock at high speeds? What real-world parallel exists?"></textarea>
+                    </div>
+
+                    <div class="hint">
+                        💡 Think about highway traffic: It's easier to stay together at slow speeds than when everyone's going 70mph!
+                    </div>
+                `,
+                preset: { separation: 1.0, alignment: 1.0, cohesion: 1.0, perception: 50, speed: 1.5, count: 100 }
+            },
+            {
+                id: 'design',
+                title: 'Lesson 7: Design Your Own Flock',
+                content: `
+                    <p>Now it's your turn to be the architect! Design flocks with specific characteristics.</p>
+
+                    <p>Use your understanding of how the rules interact to create intentional behaviors.</p>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Design Challenge 1: Tight Swarm</div>
+                        <p>Create a tightly-packed swarm that stays together like a murmuration of starlings.</p>
+                        <p><strong>Constraints:</strong></p>
+                        <ul>
+                            <li>Boids should cluster densely</li>
+                            <li>The group should move as one cohesive unit</li>
+                            <li>Minimal spreading or splitting</li>
+                        </ul>
+                        <p><strong>Which parameters will you adjust?</strong></p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Parameter Choices:</strong>
+                        <textarea placeholder="Record your settings: Separation=___, Alignment=___, Cohesion=___, Perception=___, Speed=___. Why did you choose these values?"></textarea>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Design Challenge 2: Flowing Stream</div>
+                        <p>Create a looser formation that flows smoothly like a school of fish.</p>
+                        <p><strong>Constraints:</strong></p>
+                        <ul>
+                            <li>Boids should maintain spacing</li>
+                            <li>Movement should be smooth and coordinated</li>
+                            <li>Groups can split and merge fluidly</li>
+                        </ul>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎯 Design Challenge 3: Chaotic Swirl</div>
+                        <p>Create an energetic, chaotic system with lots of movement.</p>
+                        <p><strong>Constraints:</strong></p>
+                        <ul>
+                            <li>High activity and motion</li>
+                            <li>Frequent splitting and merging</li>
+                            <li>Unpredictable patterns</li>
+                        </ul>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Checkpoint:</div>
+                        <p>Which was hardest to achieve? What does this teach you about the balance between rules?</p>
+                    </div>
+                `,
+                preset: { separation: 1.5, alignment: 1.0, cohesion: 1.0, perception: 50, speed: 4, count: 120 }
+            },
+            {
+                id: 'realworld',
+                title: 'Lesson 8: Real-World Applications',
+                content: `
+                    <p>Boids aren't just beautiful - they're <strong>incredibly useful</strong>! This algorithm powers applications across multiple fields.</p>
+
+                    <div class="task">
+                        <div class="task-title">🎬 Animation & Film</div>
+                        <p>Movie studios use boid algorithms to animate:</p>
+                        <ul>
+                            <li>Flocks of birds (Finding Nemo, The Lion King)</li>
+                            <li>Crowds of people (Lord of the Rings battle scenes)</li>
+                            <li>Swarms of insects or aliens</li>
+                        </ul>
+                        <p><strong>Why?</strong> Animating each character individually is impossible. Boids create realistic group behavior automatically!</p>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🤖 Robotics & Drones</div>
+                        <p>Swarm robotics uses boid-like rules for:</p>
+                        <ul>
+                            <li>Coordinated drone light shows</li>
+                            <li>Search and rescue swarms</li>
+                            <li>Agricultural robot coordination</li>
+                            <li>Warehouse automation</li>
+                        </ul>
+                        <p><strong>Why?</strong> Centralized control is fragile. Distributed rules are robust to individual failures!</p>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🧬 Biology & Science</div>
+                        <p>Scientists model:</p>
+                        <ul>
+                            <li>Animal migration patterns</li>
+                            <li>Bacterial colony behavior</li>
+                            <li>Cell movement in immune response</li>
+                            <li>Predator-prey dynamics</li>
+                        </ul>
+                        <p><strong>Why?</strong> Understanding emergent behavior helps predict population dynamics and ecosystem changes!</p>
+                    </div>
+
+                    <div class="task">
+                        <div class="task-title">🎮 Video Games</div>
+                        <p>Game AI uses boids for:</p>
+                        <ul>
+                            <li>NPC crowd behavior</li>
+                            <li>Enemy swarm AI</li>
+                            <li>Environmental creatures (fish, birds)</li>
+                        </ul>
+                        <p><strong>Why?</strong> Realistic, emergent behavior from simple rules = better immersion with less code!</p>
+                    </div>
+
+                    <div class="checkpoint">
+                        <div class="checkpoint-title">✓ Final Reflection:</div>
+                        <p>Can you think of other systems (natural or artificial) that might benefit from boid-like decentralized rules?</p>
+                    </div>
+
+                    <div class="observation-box">
+                        <strong style="color: #4ec9b0;">Your Ideas:</strong>
+                        <textarea placeholder="What other applications can you imagine? How might boid principles apply to traffic, social networks, or other systems?"></textarea>
+                    </div>
+                `,
+                preset: { separation: 1.5, alignment: 1.0, cohesion: 1.0, perception: 50, speed: 4, count: 150 }
+            }
+        ];
+
+        // Initialize simulation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const simulation = new Simulation(canvas.width, canvas.height);
+
+        let currentLesson = 0;
+        let isPaused = false;
+
+        // Initialize with preset parameters
+        simulation.reset(lessons[0].preset.count);
+        simulation.updateParameters({
+            maxSpeed: lessons[0].preset.speed,
+            maxForce: 0.1,
+            perceptionRadius: lessons[0].preset.perception
+        });
+
+        // Render lesson navigation
+        function renderLessonNav() {
+            const nav = document.getElementById('lessonNav');
+            nav.innerHTML = lessons.map((lesson, index) => `
+                <button class="lesson-btn ${index === currentLesson ? 'active' : ''}" onclick="loadLesson(${index})">
+                    <span class="lesson-number">Lesson ${index + 1}</span>
+                    ${lesson.title}
+                </button>
+            `).join('');
+        }
+
+        // Load lesson content
+        function loadLesson(index) {
+            currentLesson = index;
+            const lesson = lessons[index];
+
+            document.getElementById('lessonContent').innerHTML = `
+                <h2>${lesson.title}</h2>
+                <div class="lesson-content">
+                    ${lesson.content}
+                </div>
+            `;
+
+            renderLessonNav();
+        }
+
+        // Apply lesson preset
+        document.getElementById('applyPreset').addEventListener('click', () => {
+            const preset = lessons[currentLesson].preset;
+
+            document.getElementById('separationWeight').value = preset.separation;
+            document.getElementById('alignmentWeight').value = preset.alignment;
+            document.getElementById('cohesionWeight').value = preset.cohesion;
+            document.getElementById('perceptionRadius').value = preset.perception;
+            document.getElementById('maxSpeed').value = preset.speed;
+            document.getElementById('boidCount').value = preset.count;
+
+            updateAllDisplays();
+            applyParameters();
+        });
+
+        // Update value displays
+        function updateAllDisplays() {
+            document.getElementById('separationValue').textContent = document.getElementById('separationWeight').value;
+            document.getElementById('alignmentValue').textContent = document.getElementById('alignmentWeight').value;
+            document.getElementById('cohesionValue').textContent = document.getElementById('cohesionWeight').value;
+            document.getElementById('perceptionValue').textContent = document.getElementById('perceptionRadius').value;
+            document.getElementById('maxSpeedValue').textContent = document.getElementById('maxSpeed').value;
+            document.getElementById('boidCountValue').textContent = document.getElementById('boidCount').value;
+        }
+
+        // Apply parameters to simulation
+        function applyParameters() {
+            const separation = parseFloat(document.getElementById('separationWeight').value);
+            const alignment = parseFloat(document.getElementById('alignmentWeight').value);
+            const cohesion = parseFloat(document.getElementById('cohesionWeight').value);
+            const perception = parseFloat(document.getElementById('perceptionRadius').value);
+            const speed = parseFloat(document.getElementById('maxSpeed').value);
+            const count = parseInt(document.getElementById('boidCount').value);
+
+            simulation.updateBehaviorWeights(separation, alignment, cohesion);
+            simulation.updateParameters({
+                maxSpeed: speed,
+                perceptionRadius: perception
+            });
+
+            if (simulation.flock.length !== count) {
+                simulation.reset(count);
+                simulation.updateParameters({
+                    maxSpeed: speed,
+                    perceptionRadius: perception
+                });
+            }
+        }
+
+        // Control event listeners
+        document.querySelectorAll('input[type="range"]').forEach(input => {
+            input.addEventListener('input', (e) => {
+                updateAllDisplays();
+                applyParameters();
+            });
+        });
+
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            const count = parseInt(document.getElementById('boidCount').value);
+            simulation.reset(count);
+            applyParameters();
+        });
+
+        document.getElementById('pauseBtn').addEventListener('click', () => {
+            isPaused = !isPaused;
+            document.getElementById('pauseBtn').textContent = isPaused ? 'Resume' : 'Pause';
+        });
+
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            simulation.addBoid(x, y);
+            updateAllDisplays();
+        });
+
+        // Animation loop
+        let lastTime = 0;
+        let frameCount = 0;
+        let fps = 0;
+
+        function animate(currentTime) {
+            requestAnimationFrame(animate);
+
+            if (!isPaused) {
+                simulation.update();
+            }
+
+            simulation.render(ctx);
+
+            // Update FPS
+            frameCount++;
+            if (currentTime - lastTime >= 1000) {
+                fps = frameCount;
+                frameCount = 0;
+                lastTime = currentTime;
+                document.getElementById('stats').textContent =
+                    `FPS: ${fps} | Boids: ${simulation.flock.length}`;
+            }
+        }
+
+        // Make loadLesson global
+        window.loadLesson = loadLesson;
+
+        // Initialize
+        renderLessonNav();
+        loadLesson(0);
+        updateAllDisplays();
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>

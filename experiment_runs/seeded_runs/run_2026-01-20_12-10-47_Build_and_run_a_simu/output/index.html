@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boids Flocking Simulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        h1 {
+            color: #4ec9b0;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+
+        #canvas {
+            background: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            cursor: crosshair;
+        }
+
+        .controls {
+            background: #252525;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            width: 800px;
+            max-width: 100%;
+        }
+
+        .control-section {
+            margin-bottom: 20px;
+        }
+
+        .control-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .control-section h3 {
+            color: #4ec9b0;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .control-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            gap: 10px;
+        }
+
+        .control-row label {
+            flex: 0 0 180px;
+            color: #bbb;
+            font-size: 0.9em;
+        }
+
+        .control-row input[type="range"] {
+            flex: 1;
+            height: 6px;
+            background: #333;
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .control-row input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #4ec9b0;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .control-row input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #4ec9b0;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .control-row .value {
+            flex: 0 0 50px;
+            text-align: right;
+            color: #4ec9b0;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 10px 20px;
+            background: #2d2d2d;
+            border: 1px solid #4ec9b0;
+            color: #4ec9b0;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #4ec9b0;
+            color: #1a1a1a;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .stats {
+            margin-top: 15px;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            font-size: 0.85em;
+            color: #888;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stats span {
+            color: #4ec9b0;
+            font-weight: bold;
+        }
+
+        .info {
+            margin-top: 15px;
+            padding: 10px;
+            background: #1a1a1a;
+            border-radius: 5px;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐦 Boids Flocking Simulation</h1>
+    <p class="subtitle">Emergent behavior from simple rules: Separation • Alignment • Cohesion</p>
+
+    <canvas id="canvas" width="800" height="600"></canvas>
+
+    <div class="controls">
+        <div class="control-section">
+            <h3>Boid Parameters</h3>
+            <div class="control-row">
+                <label>Max Speed</label>
+                <input type="range" id="maxSpeed" min="1" max="10" step="0.5" value="4">
+                <span class="value" id="maxSpeedValue">4.0</span>
+            </div>
+            <div class="control-row">
+                <label>Max Force</label>
+                <input type="range" id="maxForce" min="0.05" max="1" step="0.05" value="0.2">
+                <span class="value" id="maxForceValue">0.20</span>
+            </div>
+            <div class="control-row">
+                <label>Perception Radius</label>
+                <input type="range" id="perceptionRadius" min="20" max="150" step="5" value="50">
+                <span class="value" id="perceptionRadiusValue">50</span>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Behavior Weights</h3>
+            <div class="control-row">
+                <label>Separation</label>
+                <input type="range" id="separation" min="0" max="3" step="0.1" value="1.5">
+                <span class="value" id="separationValue">1.5</span>
+            </div>
+            <div class="control-row">
+                <label>Alignment</label>
+                <input type="range" id="alignment" min="0" max="3" step="0.1" value="1.0">
+                <span class="value" id="alignmentValue">1.0</span>
+            </div>
+            <div class="control-row">
+                <label>Cohesion</label>
+                <input type="range" id="cohesion" min="0" max="3" step="0.1" value="1.0">
+                <span class="value" id="cohesionValue">1.0</span>
+            </div>
+        </div>
+
+        <div class="control-section">
+            <h3>Simulation Control</h3>
+            <div class="control-row">
+                <label>Number of Boids</label>
+                <input type="range" id="numBoids" min="10" max="300" step="10" value="100">
+                <span class="value" id="numBoidsValue">100</span>
+            </div>
+            <div class="button-group">
+                <button id="toggleBtn">Pause</button>
+                <button id="resetBtn">Reset Flock</button>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div>Boids: <span id="boidCount">100</span></div>
+            <div>FPS: <span id="fps">--</span></div>
+            <div>Status: <span id="status">Running</span></div>
+        </div>
+
+        <div class="info">
+            💡 Click on the canvas to add boids • Adjust sliders to see emergent behavior changes in real-time
+        </div>
+    </div>
+
+    <script src="vector.js"></script>
+    <script src="boid.js"></script>
+    <script src="simulation.js"></script>
+    <script>
+        // Initialize canvas and simulation
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const simulation = new Simulation(canvas.width, canvas.height, 100);
+
+        // UI elements
+        const toggleBtn = document.getElementById('toggleBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const statusSpan = document.getElementById('status');
+        const boidCountSpan = document.getElementById('boidCount');
+        const fpsSpan = document.getElementById('fps');
+
+        // FPS tracking
+        let lastFrameTime = performance.now();
+        let frameCount = 0;
+        let fps = 0;
+
+        // Setup control bindings
+        function setupControls() {
+            // Boid parameters
+            setupSlider('maxSpeed', (val) => simulation.setParameter('maxSpeed', val));
+            setupSlider('maxForce', (val) => simulation.setParameter('maxForce', val));
+            setupSlider('perceptionRadius', (val) => simulation.setParameter('perceptionRadius', val));
+
+            // Behavior weights
+            const sepSlider = document.getElementById('separation');
+            const alignSlider = document.getElementById('alignment');
+            const cohSlider = document.getElementById('cohesion');
+
+            function updateWeights() {
+                simulation.setBehaviorWeights(
+                    parseFloat(sepSlider.value),
+                    parseFloat(alignSlider.value),
+                    parseFloat(cohSlider.value)
+                );
+            }
+
+            sepSlider.addEventListener('input', (e) => {
+                document.getElementById('separationValue').textContent = parseFloat(e.target.value).toFixed(1);
+                updateWeights();
+            });
+
+            alignSlider.addEventListener('input', (e) => {
+                document.getElementById('alignmentValue').textContent = parseFloat(e.target.value).toFixed(1);
+                updateWeights();
+            });
+
+            cohSlider.addEventListener('input', (e) => {
+                document.getElementById('cohesionValue').textContent = parseFloat(e.target.value).toFixed(1);
+                updateWeights();
+            });
+
+            // Number of boids
+            const numBoidsSlider = document.getElementById('numBoids');
+            numBoidsSlider.addEventListener('change', (e) => {
+                const count = parseInt(e.target.value);
+                document.getElementById('numBoidsValue').textContent = count;
+                simulation.reset(count);
+                updateBoidCount();
+            });
+
+            numBoidsSlider.addEventListener('input', (e) => {
+                document.getElementById('numBoidsValue').textContent = e.target.value;
+            });
+        }
+
+        function setupSlider(id, callback) {
+            const slider = document.getElementById(id);
+            const valueSpan = document.getElementById(id + 'Value');
+
+            slider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                valueSpan.textContent = val.toFixed(2);
+                callback(val);
+            });
+        }
+
+        // Toggle play/pause
+        toggleBtn.addEventListener('click', () => {
+            const isRunning = simulation.toggle();
+            toggleBtn.textContent = isRunning ? 'Pause' : 'Resume';
+            statusSpan.textContent = isRunning ? 'Running' : 'Paused';
+
+            if (isRunning) {
+                animate();
+            }
+        });
+
+        // Reset flock
+        resetBtn.addEventListener('click', () => {
+            const count = parseInt(document.getElementById('numBoids').value);
+            simulation.reset(count);
+            updateBoidCount();
+        });
+
+        // Add boids on click
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            simulation.addBoid(x, y);
+            updateBoidCount();
+        });
+
+        function updateBoidCount() {
+            boidCountSpan.textContent = simulation.flock.length;
+        }
+
+        // Animation loop
+        function animate() {
+            if (!simulation.isRunning) return;
+
+            // Update FPS counter
+            frameCount++;
+            const now = performance.now();
+            const elapsed = now - lastFrameTime;
+
+            if (elapsed >= 1000) {
+                fps = Math.round(frameCount / (elapsed / 1000));
+                fpsSpan.textContent = fps;
+                frameCount = 0;
+                lastFrameTime = now;
+            }
+
+            // Update and render
+            simulation.update();
+            simulation.render(ctx);
+
+            requestAnimationFrame(animate);
+        }
+
+        // Initialize and start
+        setupControls();
+        simulation.start();
+        animate();
+    </script>
+</body>
+</html>

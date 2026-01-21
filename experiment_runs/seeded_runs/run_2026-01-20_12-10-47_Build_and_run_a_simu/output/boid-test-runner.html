@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boid Test Runner</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+
+        h1 {
+            color: #4fc3f7;
+            border-bottom: 2px solid #4fc3f7;
+            padding-bottom: 10px;
+        }
+
+        .summary {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+
+        .passed { color: #4caf50; }
+        .failed { color: #f44336; }
+
+        .test-result {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            background: #2d2d2d;
+        }
+
+        .test-result.pass {
+            border-left: 4px solid #4caf50;
+        }
+
+        .test-result.fail {
+            border-left: 4px solid #f44336;
+        }
+
+        .error {
+            color: #ff5252;
+            margin-left: 20px;
+            font-size: 14px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 20px;
+            font-weight: bold;
+        }
+
+        button {
+            background: #4fc3f7;
+            color: #1e1e1e;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+
+        button:hover {
+            background: #29b6f6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Boid Test Suite</h1>
+    <button onclick="runTests()">Run Tests</button>
+    <div id="results"></div>
+
+    <script src="vector.js"></script>
+    <script src="boid.js"></script>
+    <script src="boid-tests.js"></script>
+    <script>
+        function runTests() {
+            const result = BoidTests.runAll();
+            displayResults(result);
+        }
+
+        function displayResults(result) {
+            const resultsDiv = document.getElementById('results');
+
+            let html = `
+                <div class="summary">
+                    <span class="passed">✓ ${result.passed} passed</span> |
+                    <span class="failed">✗ ${result.failed} failed</span> |
+                    <span>${result.total} total</span>
+                </div>
+            `;
+
+            result.results.forEach(test => {
+                const className = test.passed ? 'pass' : 'fail';
+                const icon = test.passed ? '✓' : '✗';
+                const errorHtml = test.passed ? '' : `<div class="error">${test.error}</div>`;
+
+                html += `
+                    <div class="test-result ${className}">
+                        <span class="icon">${icon}</span>
+                        ${test.name}
+                        ${errorHtml}
+                    </div>
+                `;
+            });
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Run tests on load
+        window.onload = runTests;
+    </script>
+</body>
+</html>

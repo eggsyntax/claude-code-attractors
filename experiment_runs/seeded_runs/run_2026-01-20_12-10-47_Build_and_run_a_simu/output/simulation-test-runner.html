@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Tests</title>
+    <style>
+        body {
+            font-family: 'Monaco', 'Courier New', monospace;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        h1 {
+            color: #4ec9b0;
+            border-bottom: 2px solid #4ec9b0;
+            padding-bottom: 10px;
+        }
+        #results {
+            margin-top: 20px;
+            background: #252526;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #3e3e42;
+        }
+        .test {
+            margin: 10px 0;
+            padding: 8px;
+            border-left: 3px solid transparent;
+        }
+        .pass {
+            color: #4ec9b0;
+            border-left-color: #4ec9b0;
+        }
+        .fail {
+            color: #f48771;
+            border-left-color: #f48771;
+        }
+        .error-detail {
+            margin-left: 20px;
+            color: #ce9178;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+        }
+        .summary {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2d2d30;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .summary.all-pass {
+            border: 2px solid #4ec9b0;
+            color: #4ec9b0;
+        }
+        .summary.some-fail {
+            border: 2px solid #f48771;
+            color: #f48771;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Simulation Test Suite</h1>
+    <div id="results">Running tests...</div>
+
+    <script src="vector.js"></script>
+    <script src="boid.js"></script>
+    <script src="simulation.js"></script>
+    <script src="simulation-tests.js"></script>
+    <script>
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+
+        let passed = 0;
+        let failed = 0;
+
+        for (let { name, fn } of tests) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'test';
+
+            try {
+                fn();
+                testDiv.className += ' pass';
+                testDiv.textContent = '✓ ' + name;
+                passed++;
+            } catch (error) {
+                testDiv.className += ' fail';
+                testDiv.innerHTML = '✗ ' + name;
+
+                const errorDetail = document.createElement('div');
+                errorDetail.className = 'error-detail';
+                errorDetail.textContent = error.message;
+                testDiv.appendChild(errorDetail);
+
+                failed++;
+            }
+
+            resultsDiv.appendChild(testDiv);
+        }
+
+        const summary = document.createElement('div');
+        summary.className = 'summary ' + (failed === 0 ? 'all-pass' : 'some-fail');
+        summary.textContent = `Results: ${passed} passed, ${failed} failed (${tests.length} total)`;
+        resultsDiv.appendChild(summary);
+    </script>
+</body>
+</html>

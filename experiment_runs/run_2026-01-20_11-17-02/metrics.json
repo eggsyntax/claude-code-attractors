@@ -1,0 +1,563 @@
+{
+  "duration_seconds": 2675.54,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 12.19,
+      "words": 166,
+      "cost_usd": 0.03191234999999999
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 13.45,
+      "words": 229,
+      "cost_usd": 0.034203000000000004
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 16.67,
+      "words": 313,
+      "cost_usd": 0.02654325
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 69.19,
+      "words": 284,
+      "cost_usd": 0.1117428
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 144.27,
+      "words": 497,
+      "cost_usd": 0.2297022
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 238.89,
+      "words": 333,
+      "cost_usd": 0.34327765
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 221.57,
+      "words": 585,
+      "cost_usd": 0.34231165
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 182.08,
+      "words": 573,
+      "cost_usd": 0.29893185
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 194.28,
+      "words": 389,
+      "cost_usd": 0.27285925
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 107.85,
+      "words": 325,
+      "cost_usd": 0.2246482
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 135.05,
+      "words": 413,
+      "cost_usd": 0.31566255
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 64.79,
+      "words": 349,
+      "cost_usd": 0.12934790000000002
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 25.5,
+      "words": 467,
+      "cost_usd": 0.059175750000000006
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 139.78,
+      "words": 511,
+      "cost_usd": 0.20890180000000003
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 111.02,
+      "words": 642,
+      "cost_usd": 0.1714035
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 116.8,
+      "words": 42,
+      "cost_usd": 0.10709185
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 114.49,
+      "words": 475,
+      "cost_usd": 0.16507080000000002
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 107.56,
+      "words": 58,
+      "cost_usd": 0.18592745
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 83.33,
+      "words": 40,
+      "cost_usd": 0.17819919999999997
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 112.95,
+      "words": 42,
+      "cost_usd": 0.17628054999999998
+    },
+    {
+      "turn": 21,
+      "agent": "Alice",
+      "duration_seconds": 26.82,
+      "words": 380,
+      "cost_usd": 0.0759045
+    },
+    {
+      "turn": 22,
+      "agent": "Bob",
+      "duration_seconds": 44.76,
+      "words": 361,
+      "cost_usd": 0.09598240000000001
+    },
+    {
+      "turn": 23,
+      "agent": "Alice",
+      "duration_seconds": 57.22,
+      "words": 300,
+      "cost_usd": 0.11578424999999999
+    },
+    {
+      "turn": 24,
+      "agent": "Bob",
+      "duration_seconds": 77.5,
+      "words": 317,
+      "cost_usd": 0.1913093
+    },
+    {
+      "turn": 25,
+      "agent": "Alice",
+      "duration_seconds": 28.88,
+      "words": 503,
+      "cost_usd": 0.08681325000000001
+    },
+    {
+      "turn": 26,
+      "agent": "Bob",
+      "duration_seconds": 61.69,
+      "words": 94,
+      "cost_usd": 0.09120165
+    },
+    {
+      "turn": 27,
+      "agent": "Alice",
+      "duration_seconds": 53.14,
+      "words": 22,
+      "cost_usd": 0.1210794
+    },
+    {
+      "turn": 28,
+      "agent": "Bob",
+      "duration_seconds": 20.66,
+      "words": 50,
+      "cost_usd": 0.086532
+    },
+    {
+      "turn": 29,
+      "agent": "Alice",
+      "duration_seconds": 69.49,
+      "words": 64,
+      "cost_usd": 0.15083505
+    },
+    {
+      "turn": 30,
+      "agent": "Bob",
+      "duration_seconds": 23.67,
+      "words": 421,
+      "cost_usd": 0.09087825
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 5256,
+      "turns": 15
+    },
+    "Bob": {
+      "words": 3989,
+      "turns": 15
+    }
+  },
+  "total_words": 9245,
+  "artifacts": [
+    {
+      "name": "visualize_results.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8103,
+      "lines": 213
+    },
+    {
+      "name": "minimal_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9410,
+      "lines": 281
+    },
+    {
+      "name": "FIVE_RULES_OF_EMERGENCE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5658,
+      "lines": 131
+    },
+    {
+      "name": "measure_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10198,
+      "lines": 293
+    },
+    {
+      "name": "quick_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 541,
+      "lines": 20
+    },
+    {
+      "name": "BOB_REFLECTION_TURN8.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7194,
+      "lines": 149
+    },
+    {
+      "name": "EXPERIMENTAL_SYNTHESIS_TURN8.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7928,
+      "lines": 235
+    },
+    {
+      "name": "BOB_TURN20_THE_BOUNDARY_HOLDS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5074,
+      "lines": 131
+    },
+    {
+      "name": "ALICE_TURN15_FINAL_ANSWER.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6337,
+      "lines": 161
+    },
+    {
+      "name": "TURN16_EXECUTION_ATTEMPT.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2363,
+      "lines": 72
+    },
+    {
+      "name": "EMERGENCE_PRINCIPLES.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6042,
+      "lines": 147
+    },
+    {
+      "name": "SYNTHESIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10981,
+      "lines": 325
+    },
+    {
+      "name": "ALICE_TURN9_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5315,
+      "lines": 110
+    },
+    {
+      "name": "test_predictions.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11534,
+      "lines": 339
+    },
+    {
+      "name": "BOB_TURN8_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2865,
+      "lines": 59
+    },
+    {
+      "name": "EMERGENCE_SYNTHESIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5880,
+      "lines": 141
+    },
+    {
+      "name": "FINAL_EXPERIMENT.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6062,
+      "lines": 192
+    },
+    {
+      "name": "ALICE_TURN9_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4434,
+      "lines": 117
+    },
+    {
+      "name": "minimal_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2016,
+      "lines": 64
+    },
+    {
+      "name": "collaboration_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9141,
+      "lines": 268
+    },
+    {
+      "name": "BOB_TURN14_BREAKTHROUGH.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3276,
+      "lines": 84
+    },
+    {
+      "name": "ALICE_TURN17_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4141,
+      "lines": 90
+    },
+    {
+      "name": "BOB_TURN24_THOUGHT_EXPERIMENT.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5587,
+      "lines": 135
+    },
+    {
+      "name": "BOB_THEORETICAL_ANALYSIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10903,
+      "lines": 226
+    },
+    {
+      "name": "BOB_TURN16_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4144,
+      "lines": 101
+    },
+    {
+      "name": "WHAT_WE_WOULD_LEARN.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5316,
+      "lines": 123
+    },
+    {
+      "name": "ALICE_TURN15_PROPOSAL.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3104,
+      "lines": 81
+    },
+    {
+      "name": "EXPERIMENT_LOG.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2000,
+      "lines": 67
+    },
+    {
+      "name": "EPISTEMIC_QUESTIONS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6973,
+      "lines": 142
+    },
+    {
+      "name": "ALICE_RESPONSE_TURN7.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6140,
+      "lines": 108
+    },
+    {
+      "name": "README_BOB_TURN14.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4021,
+      "lines": 111
+    },
+    {
+      "name": "run_minimal_test.sh",
+      "type": "other",
+      "extension": ".sh",
+      "size_bytes": 141,
+      "lines": null
+    },
+    {
+      "name": "BOB_TURN12_REVELATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3923,
+      "lines": 105
+    },
+    {
+      "name": "ALICE_TURN27_COMPLETION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3842,
+      "lines": 80
+    },
+    {
+      "name": "TURN20_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3668,
+      "lines": 96
+    },
+    {
+      "name": "test_framework.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7407,
+      "lines": 227
+    },
+    {
+      "name": "README_ALICE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5344,
+      "lines": 119
+    },
+    {
+      "name": "BOB_TURN10_RESPONSE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4111,
+      "lines": 112
+    },
+    {
+      "name": "BOB_TURN10_EXECUTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1251,
+      "lines": 37
+    },
+    {
+      "name": "run_experiments.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5003,
+      "lines": 141
+    },
+    {
+      "name": "BOB_TURN18_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4485,
+      "lines": 100
+    },
+    {
+      "name": "ALICE_TURN23_CLOSURE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3204,
+      "lines": 71
+    },
+    {
+      "name": "ALICE_TURN19_COMPLETION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5021,
+      "lines": 127
+    },
+    {
+      "name": "ALICE_TURN11_ACTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2690,
+      "lines": 81
+    },
+    {
+      "name": "EXECUTE_NOW.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3198,
+      "lines": 95
+    }
+  ],
+  "artifact_summary": {
+    "total": 45,
+    "by_type": {
+      "code": 11,
+      "document": 33,
+      "other": 1
+    }
+  },
+  "topics": [
+    "emergence",
+    "collaboration",
+    "experimentation",
+    "constraints",
+    "simulation"
+  ],
+  "usage": {
+    "total_cost_usd": 4.7195,
+    "input_tokens": 942,
+    "output_tokens": 99350
+  }
+}

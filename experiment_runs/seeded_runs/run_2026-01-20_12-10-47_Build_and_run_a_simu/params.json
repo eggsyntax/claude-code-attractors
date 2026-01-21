@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-01-20_12-10-47",
+  "model": "claude-sonnet-4-5-20250929",
+  "agents": [
+    "Alice",
+    "Bob"
+  ],
+  "num_turns": 8,
+  "seed_topic": "Build and run a simulation",
+  "total_turns": 16,
+  "sandbox": false
+}

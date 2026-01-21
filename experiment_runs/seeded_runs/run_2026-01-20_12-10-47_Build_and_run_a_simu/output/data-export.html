@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boids Data Exporter - Research & Analysis Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #bdc3c7;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 800px 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .canvas-container {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        canvas {
+            display: block;
+            background: #34495e;
+            border-radius: 4px;
+        }
+
+        .controls {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group h3 {
+            color: #3498db;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+
+        .value-display {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin: 5px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        button.danger {
+            background: #e74c3c;
+        }
+
+        button.danger:hover {
+            background: #c0392b;
+        }
+
+        button.success {
+            background: #27ae60;
+        }
+
+        button.success:hover {
+            background: #229954;
+        }
+
+        .stats {
+            background: #34495e;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .stats h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        .stat-label {
+            color: #bdc3c7;
+        }
+
+        .stat-value {
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .data-section {
+            background: #2c3e50;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        .data-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .info-box {
+            background: #34495e;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+
+        .info-box p {
+            line-height: 1.6;
+            color: #ecf0f1;
+        }
+
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+            border: none;
+            background: #34495e;
+            color: #ecf0f1;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔬 Boids Data Exporter</h1>
+            <p class="subtitle">Research & Analysis Tool for Quantitative Study of Emergent Behavior</p>
+        </header>
+
+        <div class="layout">
+            <div class="canvas-container">
+                <canvas id="canvas" width="800" height="600"></canvas>
+                <div class="stats">
+                    <h4>Live Metrics</h4>
+                    <div class="stat-item">
+                        <span class="stat-label">FPS:</span>
+                        <span class="stat-value" id="fps">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Boid Count:</span>
+                        <span class="stat-value" id="count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg Speed:</span>
+                        <span class="stat-value" id="avgSpeed">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg Neighbors:</span>
+                        <span class="stat-value" id="avgNeighbors">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Cohesion Index:</span>
+                        <span class="stat-value" id="cohesionIndex">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Recording:</span>
+                        <span class="stat-value" id="recording">No</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frames Recorded:</span>
+                        <span class="stat-value" id="framesRecorded">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="control-group">
+                    <h3>Simulation Controls</h3>
+                    <button onclick="toggleAnimation()">Play/Pause</button>
+                    <button onclick="resetSimulation()">Reset</button>
+                </div>
+
+                <div class="control-group">
+                    <h3>Flock Parameters</h3>
+                    <label>Boid Count: <span class="value-display" id="boidCountDisplay">100</span></label>
+                    <input type="range" id="boidCount" min="10" max="200" value="100">
+
+                    <label>Max Speed: <span class="value-display" id="maxSpeedDisplay">4.0</span></label>
+                    <input type="range" id="maxSpeed" min="1" max="10" step="0.5" value="4">
+
+                    <label>Perception Radius: <span class="value-display" id="perceptionDisplay">50</span></label>
+                    <input type="range" id="perception" min="20" max="150" value="50">
+                </div>
+
+                <div class="control-group">
+                    <h3>Behavior Weights</h3>
+                    <label>Separation: <span class="value-display" id="separationDisplay">1.5</span></label>
+                    <input type="range" id="separation" min="0" max="3" step="0.1" value="1.5">
+
+                    <label>Alignment: <span class="value-display" id="alignmentDisplay">1.0</span></label>
+                    <input type="range" id="alignment" min="0" max="3" step="0.1" value="1.0">
+
+                    <label>Cohesion: <span class="value-display" id="cohesionDisplay">1.0</span></label>
+                    <input type="range" id="cohesion" min="0" max="3" step="0.1" value="1.0">
+                </div>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h2>📊 Data Export & Analysis</h2>
+
+            <div class="info-box">
+                <p><strong>Purpose:</strong> This tool records quantitative metrics about flock behavior over time, enabling statistical analysis of emergent patterns. Perfect for research papers, student projects, or deep exploration of parameter effects.</p>
+            </div>
+
+            <div class="control-group">
+                <h3>Recording Settings</h3>
+                <label>Sample Rate (frames between samples)</label>
+                <input type="range" id="sampleRate" min="1" max="30" value="5">
+                <span class="value-display" id="sampleRateDisplay">5</span>
+
+                <label>Recording Duration (seconds, 0 = unlimited)</label>
+                <input type="range" id="duration" min="0" max="300" step="10" value="60">
+                <span class="value-display" id="durationDisplay">60</span>
+            </div>
+
+            <div class="button-group">
+                <button class="success" onclick="startRecording()">⏺ Start Recording</button>
+                <button class="danger" onclick="stopRecording()">⏹ Stop Recording</button>
+                <button onclick="exportCSV()">📥 Export CSV</button>
+                <button onclick="exportJSON()">📥 Export JSON</button>
+                <button onclick="clearData()">🗑 Clear Data</button>
+            </div>
+
+            <div class="info-box" style="margin-top: 20px;">
+                <h4 style="color: #3498db; margin-bottom: 10px;">Metrics Collected:</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Timestamp:</strong> Frame number</li>
+                    <li><strong>Average Speed:</strong> Mean velocity magnitude across all boids</li>
+                    <li><strong>Average Neighbors:</strong> Mean number of neighbors within perception radius</li>
+                    <li><strong>Cohesion Index:</strong> How clustered the flock is (0=scattered, 1=tight group)</li>
+                    <li><strong>Velocity Alignment:</strong> How aligned velocities are (0=random, 1=parallel)</li>
+                    <li><strong>Spatial Dispersion:</strong> Standard deviation of positions</li>
+                    <li><strong>Parameters:</strong> Current behavior weights and settings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="vector.js"></script>
+    <script src="boid.js"></script>
+    <script src="simulation.js"></script>
+    <script>
+        // Initialize simulation
+        const canvas = document.getElementById('canvas');
+        const sim = new Simulation(canvas);
+
+        // Data recording state
+        let isRecording = false;
+        let recordedData = [];
+        let frameCounter = 0;
+        let sampleCounter = 0;
+        let recordingStartTime = 0;
+
+        // Initialize with 100 boids
+        sim.reset(100);
+        sim.start();
+
+        // Update controls
+        const controls = {
+            boidCount: document.getElementById('boidCount'),
+            maxSpeed: document.getElementById('maxSpeed'),
+            perception: document.getElementById('perception'),
+            separation: document.getElementById('separation'),
+            alignment: document.getElementById('alignment'),
+            cohesion: document.getElementById('cohesion'),
+            sampleRate: document.getElementById('sampleRate'),
+            duration: document.getElementById('duration')
+        };
+
+        // Update displays
+        function updateDisplays() {
+            document.getElementById('boidCountDisplay').textContent = controls.boidCount.value;
+            document.getElementById('maxSpeedDisplay').textContent = controls.maxSpeed.value;
+            document.getElementById('perceptionDisplay').textContent = controls.perception.value;
+            document.getElementById('separationDisplay').textContent = controls.separation.value;
+            document.getElementById('alignmentDisplay').textContent = controls.alignment.value;
+            document.getElementById('cohesionDisplay').textContent = controls.cohesion.value;
+            document.getElementById('sampleRateDisplay').textContent = controls.sampleRate.value;
+            document.getElementById('durationDisplay').textContent = controls.duration.value === '0' ? 'Unlimited' : controls.duration.value;
+        }
+
+        // Wire up controls
+        Object.values(controls).forEach(control => {
+            control.addEventListener('input', () => {
+                updateDisplays();
+
+                // Update simulation parameters
+                sim.updateParameters({
+                    maxSpeed: parseFloat(controls.maxSpeed.value),
+                    maxForce: 0.1,
+                    perceptionRadius: parseFloat(controls.perception.value)
+                });
+
+                sim.updateBehaviorWeights(
+                    parseFloat(controls.separation.value),
+                    parseFloat(controls.alignment.value),
+                    parseFloat(controls.cohesion.value)
+                );
+
+                // Handle boid count changes
+                const currentCount = sim.boids.length;
+                const targetCount = parseInt(controls.boidCount.value);
+                if (targetCount !== currentCount) {
+                    sim.reset(targetCount);
+                }
+            });
+        });
+
+        updateDisplays();
+
+        // Animation control
+        function toggleAnimation() {
+            sim.toggleAnimation();
+        }
+
+        function resetSimulation() {
+            sim.reset(parseInt(controls.boidCount.value));
+        }
+
+        // Calculate metrics
+        function calculateMetrics() {
+            const boids = sim.boids;
+            if (boids.length === 0) return null;
+
+            // Average speed
+            const avgSpeed = boids.reduce((sum, b) => sum + b.velocity.magnitude(), 0) / boids.length;
+
+            // Average neighbors and cohesion
+            let totalNeighbors = 0;
+            let totalDistance = 0;
+            const centerX = boids.reduce((sum, b) => sum + b.position.x, 0) / boids.length;
+            const centerY = boids.reduce((sum, b) => sum + b.position.y, 0) / boids.length;
+            const center = new Vector(centerX, centerY);
+
+            boids.forEach(boid => {
+                const neighbors = boids.filter(other =>
+                    other !== boid &&
+                    boid.position.distanceSquared(other.position) <= sim.perceptionRadius * sim.perceptionRadius
+                );
+                totalNeighbors += neighbors.length;
+                totalDistance += boid.position.distance(center);
+            });
+
+            const avgNeighbors = totalNeighbors / boids.length;
+            const avgDistanceToCenter = totalDistance / boids.length;
+            const cohesionIndex = Math.max(0, 1 - (avgDistanceToCenter / (Math.min(canvas.width, canvas.height) / 2)));
+
+            // Velocity alignment
+            const avgVelocity = boids.reduce((acc, b) => acc.add(b.velocity.normalize()), new Vector(0, 0));
+            const velocityAlignment = avgVelocity.magnitude() / boids.length;
+
+            // Spatial dispersion
+            const posVarianceX = boids.reduce((sum, b) => sum + Math.pow(b.position.x - centerX, 2), 0) / boids.length;
+            const posVarianceY = boids.reduce((sum, b) => sum + Math.pow(b.position.y - centerY, 2), 0) / boids.length;
+            const spatialDispersion = Math.sqrt(posVarianceX + posVarianceY);
+
+            return {
+                timestamp: frameCounter,
+                avgSpeed: avgSpeed.toFixed(3),
+                avgNeighbors: avgNeighbors.toFixed(2),
+                cohesionIndex: cohesionIndex.toFixed(3),
+                velocityAlignment: velocityAlignment.toFixed(3),
+                spatialDispersion: spatialDispersion.toFixed(2),
+                separationWeight: controls.separation.value,
+                alignmentWeight: controls.alignment.value,
+                cohesionWeight: controls.cohesion.value,
+                maxSpeed: controls.maxSpeed.value,
+                perceptionRadius: controls.perception.value,
+                boidCount: boids.length
+            };
+        }
+
+        // Update stats display
+        function updateStats() {
+            const metrics = calculateMetrics();
+            if (!metrics) return;
+
+            document.getElementById('fps').textContent = sim.fps.toFixed(0);
+            document.getElementById('count').textContent = sim.boids.length;
+            document.getElementById('avgSpeed').textContent = metrics.avgSpeed;
+            document.getElementById('avgNeighbors').textContent = metrics.avgNeighbors;
+            document.getElementById('cohesionIndex').textContent = metrics.cohesionIndex;
+            document.getElementById('framesRecorded').textContent = recordedData.length;
+        }
+
+        // Recording functions
+        function startRecording() {
+            isRecording = true;
+            recordingStartTime = Date.now();
+            frameCounter = 0;
+            sampleCounter = 0;
+            document.getElementById('recording').textContent = 'Yes';
+            document.getElementById('recording').style.color = '#e74c3c';
+        }
+
+        function stopRecording() {
+            isRecording = false;
+            document.getElementById('recording').textContent = 'No';
+            document.getElementById('recording').style.color = '#3498db';
+        }
+
+        function clearData() {
+            recordedData = [];
+            document.getElementById('framesRecorded').textContent = '0';
+        }
+
+        // Export functions
+        function exportCSV() {
+            if (recordedData.length === 0) {
+                alert('No data to export. Start recording first!');
+                return;
+            }
+
+            const headers = Object.keys(recordedData[0]);
+            const csv = [
+                headers.join(','),
+                ...recordedData.map(row => headers.map(h => row[h]).join(','))
+            ].join('\n');
+
+            downloadFile(csv, 'boids-data.csv', 'text/csv');
+        }
+
+        function exportJSON() {
+            if (recordedData.length === 0) {
+                alert('No data to export. Start recording first!');
+                return;
+            }
+
+            const json = JSON.stringify({
+                metadata: {
+                    exportDate: new Date().toISOString(),
+                    sampleRate: controls.sampleRate.value,
+                    totalFrames: recordedData.length
+                },
+                data: recordedData
+            }, null, 2);
+
+            downloadFile(json, 'boids-data.json', 'application/json');
+        }
+
+        function downloadFile(content, filename, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Main update loop
+        function update() {
+            frameCounter++;
+            updateStats();
+
+            // Record data if active
+            if (isRecording) {
+                const sampleRate = parseInt(controls.sampleRate.value);
+                const duration = parseInt(controls.duration.value);
+
+                if (frameCounter % sampleRate === 0) {
+                    const metrics = calculateMetrics();
+                    if (metrics) {
+                        recordedData.push(metrics);
+                    }
+                }
+
+                // Auto-stop if duration is set and reached
+                if (duration > 0) {
+                    const elapsed = (Date.now() - recordingStartTime) / 1000;
+                    if (elapsed >= duration) {
+                        stopRecording();
+                    }
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        update();
+    </script>
+</body>
+</html>

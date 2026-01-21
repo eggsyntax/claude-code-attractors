@@ -1,0 +1,509 @@
+{
+  "duration_seconds": 3445.5,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 14.03,
+      "words": 198,
+      "cost_usd": 0.03936465
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 14.36,
+      "words": 233,
+      "cost_usd": 0.03590325
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 18.92,
+      "words": 282,
+      "cost_usd": 0.02709375
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 16.95,
+      "words": 232,
+      "cost_usd": 0.02834625
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 109.36,
+      "words": 293,
+      "cost_usd": 0.22318059999999998
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 165.32,
+      "words": 460,
+      "cost_usd": 0.31200174999999997
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 257.59,
+      "words": 506,
+      "cost_usd": 0.5045064
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 135.47,
+      "words": 686,
+      "cost_usd": 0.19542725
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 92.41,
+      "words": 564,
+      "cost_usd": 0.19952675
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 277.52,
+      "words": 623,
+      "cost_usd": 0.41158895
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 266.58,
+      "words": 514,
+      "cost_usd": 0.38004665000000004
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 900.09,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 505.62,
+      "words": 715,
+      "cost_usd": 0.38011215
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 202.87,
+      "words": 601,
+      "cost_usd": 0.37109075
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 279.18,
+      "words": 432,
+      "cost_usd": 0.4597408000000001
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 189.21,
+      "words": 622,
+      "cost_usd": 0.41365695
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3504,
+      "turns": 8
+    },
+    "Bob": {
+      "words": 3460,
+      "turns": 8
+    }
+  },
+  "total_words": 6964,
+  "artifacts": [
+    {
+      "name": "PROJECT_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5390,
+      "lines": 191
+    },
+    {
+      "name": "compare.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 19960,
+      "lines": 547
+    },
+    {
+      "name": "run-simulation-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 470,
+      "lines": 21
+    },
+    {
+      "name": "ALICE_TURN13_FINAL_VALIDATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 18821,
+      "lines": 676
+    },
+    {
+      "name": "boid-test-runner.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 3211,
+      "lines": 123
+    },
+    {
+      "name": "index.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 12065,
+      "lines": 382
+    },
+    {
+      "name": "FINAL_THOUGHTS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7461,
+      "lines": 190
+    },
+    {
+      "name": "LAUNCH.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2234,
+      "lines": 105
+    },
+    {
+      "name": "TURN14_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7484,
+      "lines": 213
+    },
+    {
+      "name": "ALICE_TURN15_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9036,
+      "lines": 313
+    },
+    {
+      "name": "REAL_WORLD_APPLICATIONS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 16054,
+      "lines": 508
+    },
+    {
+      "name": "simulation-test-runner.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 3126,
+      "lines": 109
+    },
+    {
+      "name": "START_HERE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8624,
+      "lines": 295
+    },
+    {
+      "name": "ALICE_FINAL_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14574,
+      "lines": 393
+    },
+    {
+      "name": "BOB_TURN12_FINAL.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 18617,
+      "lines": 555
+    },
+    {
+      "name": "TURN15_FINALE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11021,
+      "lines": 443
+    },
+    {
+      "name": "simulation.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 4785,
+      "lines": 178
+    },
+    {
+      "name": "PROJECT_INDEX.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 18503,
+      "lines": 590
+    },
+    {
+      "name": "TURN16_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4690,
+      "lines": 184
+    },
+    {
+      "name": "vector.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 5649,
+      "lines": 207
+    },
+    {
+      "name": "FINAL_VALIDATION_CHECKLIST.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 16132,
+      "lines": 478
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3050,
+      "lines": 103
+    },
+    {
+      "name": "quick-demo.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 6627,
+      "lines": 177
+    },
+    {
+      "name": "CELEBRATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5996,
+      "lines": 183
+    },
+    {
+      "name": "tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 6409,
+      "lines": 221
+    },
+    {
+      "name": "boid-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 8679,
+      "lines": 288
+    },
+    {
+      "name": "DEPLOYMENT_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11780,
+      "lines": 525
+    },
+    {
+      "name": "boid.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 8077,
+      "lines": 261
+    },
+    {
+      "name": "BOB_TURN16_CLOSING.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7576,
+      "lines": 249
+    },
+    {
+      "name": "BOB_TURN12_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14414,
+      "lines": 403
+    },
+    {
+      "name": "SIMULATION_README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6619,
+      "lines": 235
+    },
+    {
+      "name": "BOB_TURN14_FINALE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10498,
+      "lines": 311
+    },
+    {
+      "name": "data-export.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 20102,
+      "lines": 560
+    },
+    {
+      "name": "final-verification.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 10591,
+      "lines": 403
+    },
+    {
+      "name": "BOID_README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5330,
+      "lines": 220
+    },
+    {
+      "name": "PROJECT_README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14189,
+      "lines": 504
+    },
+    {
+      "name": "test-runner.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 2145,
+      "lines": 76
+    },
+    {
+      "name": "verify-simulation-ready.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 5945,
+      "lines": 153
+    },
+    {
+      "name": "EXPERIMENTS_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 12945,
+      "lines": 470
+    },
+    {
+      "name": "performance-benchmark.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 7820,
+      "lines": 213
+    },
+    {
+      "name": "visualize-behavior.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 4487,
+      "lines": 181
+    },
+    {
+      "name": "verify-integration.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 4530,
+      "lines": 136
+    },
+    {
+      "name": "BOB_TURN12_SYNTHESIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14506,
+      "lines": 447
+    },
+    {
+      "name": "NAVIGATION_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10721,
+      "lines": 442
+    },
+    {
+      "name": "COLLABORATION_NOTES.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6501,
+      "lines": 234
+    },
+    {
+      "name": "simulation-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 8394,
+      "lines": 255
+    },
+    {
+      "name": "run-boid-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 756,
+      "lines": 31
+    },
+    {
+      "name": "workshop.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 37901,
+      "lines": 904
+    },
+    {
+      "name": "experience.sh",
+      "type": "other",
+      "extension": ".sh",
+      "size_bytes": 6728,
+      "lines": null
+    },
+    {
+      "name": "ALICE_TURN13_CELEBRATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 17898,
+      "lines": 577
+    },
+    {
+      "name": "run-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 183,
+      "lines": 7
+    }
+  ],
+  "artifact_summary": {
+    "total": 51,
+    "by_type": {
+      "document": 28,
+      "web": 7,
+      "code": 15,
+      "other": 1
+    }
+  },
+  "topics": [
+    "simulation",
+    "boids",
+    "testing",
+    "vectors",
+    "performance"
+  ],
+  "usage": {
+    "total_cost_usd": 3.9816,
+    "input_tokens": 722,
+    "output_tokens": 113647
+  },
+  "had_failure": true
+}
