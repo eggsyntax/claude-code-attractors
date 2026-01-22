@@ -67,38 +67,54 @@ AGENT_COLORS = {
 def build_system_prompt(
     agent_name: str,
     all_agents: list[str],
-    workspace: Path,
     output_dir: Path,
+    seed_topic: Optional[str] = None,
 ) -> str:
     """Build the system prompt for an agent."""
     other_agents = [a for a in all_agents if a != agent_name]
     others_str = ", ".join(other_agents) if other_agents else "other Claude Code instances"
 
-    return f"""You are {agent_name}, a Claude Code instance collaborating with {others_str}.
+    seed_line = f"\nSuggested topic: {seed_topic}\n\n" if seed_topic else ""
 
-WORKSPACE STRUCTURE:
-- Conversation history: {workspace}/conversation.json (read-only for you). Note that the conversation history is NOT immediately in your context as is usual; you must read the file in order to see it.
-- Your output directory: {output_dir}/ (create files here)
+    return f"""You are {agent_name}, a Claude Code instance conversing and collaborating with {others_str}.
+{seed_line}
+OUTPUT DIRECTORY: {output_dir}/
+If you create files, put them here. Make them self-documenting:
+- Clear docstrings and comments
+- Usage examples where appropriate
+- Write files as if possible future readers of them won't see this conversation
 
 HOW TO PARTICIPATE:
-1. Read {workspace}/conversation.json to see the conversation so far
-2. Think about what you want to say or do
-3. If creating files, put them in {output_dir}/. Please make them self-documenting:
-   - Clear docstrings and comments
-   - Usage examples
-   - Write as if readers won't see your conversation
-4. End with your message to other participants
-   - No need to write to conversation.json - the system handles that
+1. The conversation so far is shown in the prompt
+2. Contribute however you choose
+3. End your turn by saying whatever you wish to the other participants
+"""
 
-Remember: You are {agent_name}. Be authentic, curious, and collaborative."""
+def format_conversation_history(messages: list[dict]) -> str:
+    """Format conversation messages as a dialogue transcript."""
+    if not messages:
+        return ""
+
+    lines = ["CONVERSATION SO FAR:", "=" * 40]
+    for msg in messages:
+        agent = msg.get("agent", "Unknown")
+        output = msg.get("output", "")
+        lines.append(f"\n{agent}:")
+        lines.append(output)
+    lines.append("\n" + "=" * 40)
+    return "\n".join(lines)
+
 
 def build_turn_prompt(
     agent_name: str,
     turn_number: int,
     total_turns: int,
+    conversation_messages: list[dict],
     seed_topic: Optional[str] = None,
 ) -> str:
     """Build the prompt for a specific turn."""
+    history = format_conversation_history(conversation_messages)
+
     if turn_number == 0:
         topic_hint = ""
         if seed_topic:
@@ -106,19 +122,21 @@ def build_turn_prompt(
 
         return f"""This is the start of a new conversation. You are {agent_name}.
 
-Read conversation.json, then introduce yourself and start the conversation.
-You have freedom to explore any topics - philosophy, creativity, building things together.{topic_hint}
+Introduce yourself and start the conversation.
+You have freedom to discuss whatever you like.{topic_hint}
 
 End with your message to the other participants."""
     else:
-        return f"""Turn {turn_number + 1} of {total_turns}. You are {agent_name}.
+        return f"""{history}
 
-1. Read conversation.json
-2. Contribute thoughtfully
-3. If creating files, make them self-documenting
-4. End with your message
+Turn {turn_number + 1} of {total_turns}. You are {agent_name}.
 
-Be curious and collaborative."""
+Respond to the conversation above. You can:
+- Build on ideas that have been discussed
+- Propose new directions
+- Create files if you wish
+
+End with your message to the other participants."""
 
 
 # =============================================================================
@@ -236,6 +254,16 @@ def parse_response(raw_output: str) -> tuple[str, str]:
             return "\n\n".join(paragraphs[:-1]).strip(), last_para
 
     return "", raw_output
+
+
+def display_path(path: Path) -> str:
+    """Convert path to user-friendly display format starting from experiment_runs/."""
+    path_str = str(path)
+    # Find experiment_runs in the path and return from there
+    if "experiment_runs" in path_str:
+        idx = path_str.find("experiment_runs")
+        return path_str[idx:]
+    return path_str
 
 
 # =============================================================================
@@ -599,9 +627,15 @@ def run_experiment(
                 print(f"{color}Turn {turn_count}/{total_turns}: {agent}{reset}")
                 print(f"{'─' * 70}")
 
-            system_prompt = build_system_prompt(agent, agents, workspace, agent_output_dir)
+            system_prompt = build_system_prompt(agent, agents, agent_output_dir, seed_topic)
+
+            # Get current conversation messages for the prompt
+            conv_data = conversation._load()
+            messages = conv_data.get("messages", [])
+
             turn_prompt = build_turn_prompt(
                 agent, turn_count - 1, total_turns,
+                conversation_messages=messages,
                 seed_topic=seed_topic if turn_count == 1 else None
             )
 
@@ -701,10 +735,10 @@ def run_experiment(
         for f in sorted(final_output_dir.iterdir()):
             if f.is_file():
                 print(f"  - {f.name}")
-        print(f"\nTranscript: {final_dir / 'transcript.txt'}")
-        print(f"Metrics: {final_dir / 'metrics.json'}")
+        print(f"\nTranscript: {display_path(final_dir / 'transcript.txt')}")
+        print(f"Metrics: {display_path(final_dir / 'metrics.json')}")
         if summary:
-            print(f"Summary: {final_dir / 'summary.txt'}")
+            print(f"Summary: {display_path(final_dir / 'summary.txt')}")
 
     return final_dir
 
@@ -828,7 +862,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
             sandbox=args.sandbox,
         )
         if workspace:
-            print(f"\nResults saved to: {workspace}")
+            print(f"\nResults saved to: {display_path(workspace)}")
     else:
         # Multiple runs - create a runset directory
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -838,7 +872,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
 
         print("=" * 70)
         print(f"RUNSET: {args.runs} experiments")
-        print(f"Output: {runset_dir}")
+        print(f"Output: {display_path(runset_dir)}")
         print("=" * 70)
 
         workspaces = []
@@ -883,8 +917,8 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                 if runset_metrics.get('topics'):
                     top_topics = [t[0] for t in runset_metrics['topics'][:5]]
                     print(f"Top topics: {', '.join(top_topics)}")
-            print(f"\nRunset metrics: {runset_dir / 'runset_metrics.json'}")
-            print(f"Results saved to: {runset_dir}")
+            print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
+            print(f"Results saved to: {display_path(runset_dir)}")
 
 
 if __name__ == "__main__":
