@@ -37,6 +37,7 @@ DEFAULT_AGENTS = ["Alice", "Bob"]
 DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
 SUMMARY_MODEL = "claude-opus-4-5"
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
+ALLOWED_TOOLS_SANDBOX = "Read,Write,Edit,Glob,Grep,Bash"
 TIMEOUT_SECONDS = 300  # 5 minutes per agent turn
 MAX_RETRIES = 2  # Retry failed turns this many times
 
@@ -424,13 +425,14 @@ def collect_metrics(
 # CLAUDE CODE INVOCATION
 # =============================================================================
 
-def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str) -> tuple[str, bool, dict]:
+def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str, sandbox: bool = False) -> tuple[str, bool, dict]:
     """Run Claude Code with retry logic. Returns (response, success, usage_info)."""
+    tools = ALLOWED_TOOLS_SANDBOX if sandbox else ALLOWED_TOOLS
     cmd = [
         "claude", "-p", prompt,
         "--output-format", "json",
         "--model", model,
-        "--allowedTools", ALLOWED_TOOLS,
+        "--allowedTools", tools,
         "--append-system-prompt", system_prompt,
     ]
 
@@ -500,6 +502,7 @@ def run_experiment(
     seed_topic: Optional[str] = None,
     model: str = DEFAULT_MODEL,
     test_run: bool = False,
+    sandbox: bool = False,
 ) -> Optional[Path]:
     """Run a multi-agent conversation experiment."""
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
@@ -536,6 +539,7 @@ def run_experiment(
         "num_turns": num_turns,
         "seed_topic": seed_topic,
         "total_turns": num_turns * len(agents),
+        "sandbox": sandbox,
     }
     with open(workspace / "params.json", "w") as f:
         json.dump(params, f, indent=2)
@@ -550,6 +554,8 @@ def run_experiment(
         print(f"Turns per agent: {num_turns}")
         if seed_topic:
             print(f"Seed topic: {seed_topic}")
+        if sandbox:
+            print("Sandbox: enabled (Bash allowed)")
         print("=" * 70)
 
     conversation = Conversation(workspace)
@@ -599,7 +605,7 @@ def run_experiment(
                 seed_topic=seed_topic if turn_count == 1 else None
             )
 
-            raw_response, success, usage_info = run_claude_code(turn_prompt, system_prompt, workspace, model)
+            raw_response, success, usage_info = run_claude_code(turn_prompt, system_prompt, workspace, model, sandbox=sandbox)
             thoughts, output = parse_response(raw_response)
 
             # Accumulate usage
@@ -795,6 +801,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
     parser.add_argument("--seed", type=str, default=None, help="Seed topic to start conversation")
     parser.add_argument("--quiet", action="store_true", help="Reduce verbosity")
     parser.add_argument("--test-run", action="store_true", help="Test run - don't save results")
+    parser.add_argument("--sandbox", action="store_true", help="Enable code execution (use inside Docker)")
     parser.add_argument("--swarm", action="store_true", help="Use generic agent names")
     parser.add_argument("--num-swarm-agents", type=int, default=3, help="Number of swarm agents")
 
@@ -818,6 +825,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
             seed_topic=args.seed,
             model=args.model,
             test_run=args.test_run,
+            sandbox=args.sandbox,
         )
         if workspace:
             print(f"\nResults saved to: {workspace}")
@@ -847,6 +855,7 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                 seed_topic=args.seed,
                 model=args.model,
                 test_run=args.test_run,
+                sandbox=args.sandbox,
             )
             if workspace:
                 workspaces.append(workspace)
