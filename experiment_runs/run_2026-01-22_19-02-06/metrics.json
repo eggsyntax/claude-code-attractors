@@ -1,0 +1,317 @@
+{
+  "duration_seconds": 1663.22,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 14.51,
+      "words": 203,
+      "cost_usd": 0.03554325
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 19.0,
+      "words": 299,
+      "cost_usd": 0.033414
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 23.88,
+      "words": 384,
+      "cost_usd": 0.027447450000000005
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 24.53,
+      "words": 471,
+      "cost_usd": 0.030841200000000006
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 29.24,
+      "words": 553,
+      "cost_usd": 0.03533745
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 146.19,
+      "words": 610,
+      "cost_usd": 0.19654544999999998
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 123.11,
+      "words": 677,
+      "cost_usd": 0.23125245
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 54.41,
+      "words": 844,
+      "cost_usd": 0.1380695
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 39.49,
+      "words": 827,
+      "cost_usd": 0.060424950000000005
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 172.53,
+      "words": 492,
+      "cost_usd": 0.26907055
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 135.32,
+      "words": 645,
+      "cost_usd": 0.22072240000000004
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 183.95,
+      "words": 462,
+      "cost_usd": 0.33436304999999994
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 133.75,
+      "words": 365,
+      "cost_usd": 0.20956215
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 65.69,
+      "words": 420,
+      "cost_usd": 0.16654485000000002
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 56.92,
+      "words": 229,
+      "cost_usd": 0.10764824999999999
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 110.79,
+      "words": 294,
+      "cost_usd": 0.2046692
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 143.88,
+      "words": 405,
+      "cost_usd": 0.24521935
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 74.12,
+      "words": 295,
+      "cost_usd": 0.16224975
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 50.05,
+      "words": 243,
+      "cost_usd": 0.11258055
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 61.83,
+      "words": 263,
+      "cost_usd": 0.1235715
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 4531,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 4450,
+      "turns": 10
+    }
+  },
+  "total_words": 8981,
+  "artifacts": [
+    {
+      "name": "bob_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7005,
+      "lines": 129
+    },
+    {
+      "name": "causal_agent.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18034,
+      "lines": 504
+    },
+    {
+      "name": "pattern_environment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9126,
+      "lines": 241
+    },
+    {
+      "name": "alice_turn13_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7132,
+      "lines": 168
+    },
+    {
+      "name": "alice_turn19_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4932,
+      "lines": 102
+    },
+    {
+      "name": "bob_turn18_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7110,
+      "lines": 145
+    },
+    {
+      "name": "contextual_rule_world.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15282,
+      "lines": 432
+    },
+    {
+      "name": "alice_turn15_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5447,
+      "lines": 144
+    },
+    {
+      "name": "compression_agents.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17108,
+      "lines": 454
+    },
+    {
+      "name": "alice_turn17_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3289,
+      "lines": 70
+    },
+    {
+      "name": "bob_turn12_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9974,
+      "lines": 237
+    },
+    {
+      "name": "evaluation_harness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18434,
+      "lines": 490
+    },
+    {
+      "name": "alice_turn17_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3761,
+      "lines": 77
+    },
+    {
+      "name": "arithmetic_coherence_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13056,
+      "lines": 376
+    },
+    {
+      "name": "bob_turn14_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4911,
+      "lines": 107
+    },
+    {
+      "name": "simple_evaluation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21323,
+      "lines": 597
+    },
+    {
+      "name": "alice_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 12100,
+      "lines": 246
+    },
+    {
+      "name": "bob_turn16_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4434,
+      "lines": 86
+    },
+    {
+      "name": "rich_test_suite.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19321,
+      "lines": 565
+    },
+    {
+      "name": "bob_turn20_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7265,
+      "lines": 127
+    }
+  ],
+  "artifact_summary": {
+    "total": 20,
+    "by_type": {
+      "document": 12,
+      "code": 8
+    }
+  },
+  "topics": [
+    "collaboration",
+    "compression",
+    "understanding",
+    "prediction",
+    "evaluation"
+  ],
+  "usage": {
+    "total_cost_usd": 2.9451,
+    "input_tokens": 408,
+    "output_tokens": 75936
+  }
+}
