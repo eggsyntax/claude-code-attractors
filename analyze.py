@@ -7,7 +7,7 @@ Scans a directory for experiment runs, aggregates metrics, and generates reports
 Usage:
     python analyze.py experiment_runs/                        # Analyze all runs
     python analyze.py experiment_runs/run_2026-01-16_15-00-00 # Single run
-    python analyze.py experiment_runs/runset_2026-01-16/      # Future: runset
+    python analyze.py experiment_runs/runset_2026-01-16/      # Analyze a runset
     python analyze.py .                                       # Scan current dir
 """
 
@@ -110,6 +110,7 @@ def aggregate_metrics(runs: list[dict]) -> dict:
     # Collect all values
     durations = []
     total_words = []
+    costs = []
     all_topics = []
     artifact_counts = []
     artifact_types = Counter()
@@ -122,6 +123,7 @@ def aggregate_metrics(runs: list[dict]) -> dict:
         m = run['metrics']
         durations.append(m.get('duration_seconds', 0))
         total_words.append(m.get('total_words', 0))
+        costs.append(m.get('usage', {}).get('total_cost_usd', 0))
         all_topics.extend(m.get('topics', []))
 
         artifacts = m.get('artifacts', [])
@@ -159,6 +161,12 @@ def aggregate_metrics(runs: list[dict]) -> dict:
             'min': round(min(durations), 1) if durations else 0,
             'max': round(max(durations), 1) if durations else 0,
             'total': round(sum(durations), 1),
+        },
+        'cost': {
+            'mean': round(sum(costs) / n, 4) if n else 0,
+            'min': round(min(costs), 4) if costs else 0,
+            'max': round(max(costs), 4) if costs else 0,
+            'total': round(sum(costs), 4),
         },
         'words': {
             'mean': round(sum(total_words) / n, 1) if n else 0,
@@ -217,6 +225,17 @@ def generate_report(runs: list[dict], agg: dict) -> str:
         f"  Range: {agg['duration']['min']}s - {agg['duration']['max']}s",
         "",
     ])
+
+    # Cost
+    if agg.get('cost', {}).get('total', 0) > 0:
+        lines.extend([
+            "COST (USD)",
+            "-" * 40,
+            f"  Total: ${agg['cost']['total']:.4f}",
+            f"  Mean per run: ${agg['cost']['mean']:.4f}",
+            f"  Range: ${agg['cost']['min']:.4f} - ${agg['cost']['max']:.4f}",
+            "",
+        ])
 
     # Words
     lines.extend([

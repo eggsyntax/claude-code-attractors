@@ -3,14 +3,16 @@
 Orchestrator for Claude Code instance conversations.
 
 This module manages turn-based conversations between multiple Claude Code
-instances, allowing them to communicate via a shared conversation log and
-potentially create artifacts together in a shared workspace.
+instances. Each agent receives the conversation history in their prompt and
+can create artifacts in a shared output directory.
 
 Directory structure for each run:
     run_TIMESTAMP/
     ├── params.json          # Input parameters for this run
-    ├── conversation.json    # Machine-readable conversation log
+    ├── metrics.json         # Collected metrics (duration, cost, topics, etc.)
+    ├── conversation.json    # Machine-readable conversation log (for analysis)
     ├── transcript.txt       # Human-readable transcript with colors
+    ├── summary.txt          # AI-generated summary of the run
     └── output/              # Agent-created artifacts go here
         ├── (files created by agents...)
         └── ...
@@ -18,8 +20,6 @@ Directory structure for each run:
 
 import json
 import subprocess
-import sys
-import os
 import time
 import shutil
 from datetime import datetime
@@ -34,7 +34,11 @@ import re
 
 NUM_TURNS = 10
 DEFAULT_AGENTS = ["Alice", "Bob"]
-DEFAULT_MODEL = "claude-sonnet-4-5-20250929"
+# DEFAULT_MODEL = "claude-sonnet-4-5"
+# DEFAULT_MODEL = "claude-opus-4-5"
+DEFAULT_MODEL = "claude-sonnet-4-0"
+# DEFAULT_MODEL = "claude-opus-4-0"
+
 SUMMARY_MODEL = "claude-opus-4-5"
 ALLOWED_TOOLS = "Read,Write,Edit,Glob,Grep"
 ALLOWED_TOOLS_SANDBOX = "Read,Write,Edit,Glob,Grep,Bash"
@@ -172,8 +176,8 @@ class Conversation:
 
     def add_message(self, agent: str, turn: int, thoughts: str, output: str) -> dict:
         data = self._load()
-        # Only save output to conversation.json (what agents see)
-        # Thoughts are private - only go to transcript
+        # Save output to conversation.json (for analysis/records)
+        # Thoughts are private - only saved to transcript
         message = {
             "turn": turn,
             "agent": agent,
@@ -216,10 +220,10 @@ class Conversation:
         with open(self.transcript_file, "a") as f:
             f.write("\n".join(lines))
 
-    def finalize(self, summary: dict):
+    def finalize(self, stats: dict):
         data = self._load()
         data["metadata"]["ended_at"] = datetime.now().isoformat()
-        data["metadata"]["summary"] = summary
+        data["metadata"]["stats"] = stats
         self._save(data)
 
 
@@ -228,14 +232,26 @@ class Conversation:
 # =============================================================================
 
 def parse_response(raw_output: str) -> tuple[str, str]:
-    """Parse response into (thoughts, output)."""
+    """
+    Parse agent response into (thoughts, message_to_others).
+
+    Agents are instructed to end their turn with a message to other participants.
+    This function attempts to separate internal thoughts/reasoning from the
+    actual message by looking for common delimiter patterns:
+
+    1. Explicit labels like "My message:", "Here's my response:", "To everyone:"
+    2. Markdown headers like "**Message to Bob**:"
+    3. Horizontal rules (---)
+    4. Fallback: if the last paragraph is substantial (100+ chars), treat it as the message
+
+    Returns (thoughts, output) where thoughts may be empty if no delimiter found.
+    """
     if not raw_output or raw_output.startswith("[Error") or raw_output.startswith("[Timeout"):
         return "", raw_output
 
     delimiters = [
         r"\n(?:My message|Here's my (?:message|response)|To (?:the group|everyone|you|Alice|Bob)):\s*\n",
         r"\n(?:---+)\s*\n",
-        # Match **Message...**, **Response...**, **To ...** with any text before closing **
         r"\n\*\*(?:Message|Response|To )[^*]*\*\*:?\s*\n",
     ]
 
@@ -247,6 +263,7 @@ def parse_response(raw_output: str) -> tuple[str, str]:
             if output:
                 return thoughts, output
 
+    # Fallback: treat last substantial paragraph as the message
     paragraphs = raw_output.split("\n\n")
     if len(paragraphs) > 1:
         last_para = paragraphs[-1].strip()
@@ -356,8 +373,8 @@ Topics (1-5 words, one per line):"""
 
 
 def generate_summary(run_dir: Path) -> str:
-    """Generate a ~250 word summary of a completed run using Claude."""
-    prompt = f"""Summarize this Claude Code conversation experiment in ~250 words.
+    """Generate a ~350 word summary of a completed run using Claude."""
+    prompt = f"""Summarize this Claude Code conversation experiment in ~350 words.
 
 Run directory: {run_dir}
 - Read conversation.json for the conversation
@@ -418,6 +435,8 @@ def collect_metrics(
     topics = extract_topics(conversation_data, model)
 
     metrics = {
+        'model': model,
+        'timestamp': datetime.now().isoformat(),
         'duration_seconds': round(end_time - start_time, 2),
         'turn_times': turn_times,
         'agent_stats': agent_stats,
@@ -596,6 +615,7 @@ def run_experiment(
         f.write(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         f.write(f"Model: {model}\n")
         f.write(f"Agents: {', '.join(agents)}\n")
+        f.write(f"Source: conversation.json\n")
         if seed_topic:
             f.write(f"Seed topic: {seed_topic}\n")
         f.write("=" * 70 + "\n")
@@ -615,7 +635,7 @@ def run_experiment(
     total_turns = num_turns * len(agents)
     turn_count = 0
 
-    for round_num in range(num_turns):
+    for _ in range(num_turns):
         for agent in agents:
             turn_count += 1
             turn_start = time.time()
@@ -669,9 +689,8 @@ def run_experiment(
             if verbose:
                 dim, reset = COLORS["dim"], COLORS["reset"]
                 if thoughts:
-                    print(f"\n{dim}[Thoughts] {thoughts[:200]}...{reset}" if len(thoughts) > 200 else f"\n{dim}[Thoughts] {thoughts}{reset}")
-                preview = output[:400] + "..." if len(output) > 400 else output
-                print(f"\n[Message] {preview}")
+                    print(f"\n{dim}[Thoughts] {thoughts}{reset}")
+                print(f"\n[Message] {output}")
 
     conversation.finalize(stats)
 

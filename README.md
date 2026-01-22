@@ -53,6 +53,7 @@ docker build -t claude-orchestrator .
 --test-run         Run without saving results (for testing)
 --quiet            Reduce output verbosity
 --swarm            Use generic agent names (Agent1, Agent2, ...)
+--num-swarm-agents Number of agents when using --swarm (default: 3)
 ```
 
 ## Directory Structure
@@ -68,8 +69,8 @@ experiment_runs/
 │   ├── params.json              # Input parameters
 │   ├── metrics.json             # Metrics (duration, cost, words, topics)
 │   ├── conversation.json        # Machine-readable conversation
-│   ├── transcript.txt           # Human-readable transcript (with colors)
-│   ├── summary.txt              # AI-generated ~250 word summary
+│   ├── transcript.txt           # Human-readable transcript (auto-generated from conversation.json)
+│   ├── summary.txt              # AI-generated ~350 word summary
 │   └── output/                  # Agent-created artifacts
 │       ├── (code files)
 │       └── (documents)
