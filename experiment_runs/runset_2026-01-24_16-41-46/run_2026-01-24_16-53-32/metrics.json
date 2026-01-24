@@ -1,0 +1,179 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-24T17:02:28.047360",
+  "duration_seconds": 531.66,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.46,
+      "words": 114,
+      "cost_usd": 0.0184023
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.16,
+      "words": 256,
+      "cost_usd": 0.02140605
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 29.85,
+      "words": 235,
+      "cost_usd": 0.034959000000000004
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 82.12,
+      "words": 316,
+      "cost_usd": 0.1287104
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 54.52,
+      "words": 286,
+      "cost_usd": 0.07759575
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 78.12,
+      "words": 334,
+      "cost_usd": 0.12115440000000001
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 63.46,
+      "words": 279,
+      "cost_usd": 0.0897723
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 89.4,
+      "words": 326,
+      "cost_usd": 0.12523885
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 67.55,
+      "words": 351,
+      "cost_usd": 0.10769725
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 47.03,
+      "words": 331,
+      "cost_usd": 0.0756805
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1265,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 1563,
+      "turns": 5
+    }
+  },
+  "total_words": 2828,
+  "artifacts": [
+    {
+      "name": "temporal_creativity.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4413,
+      "lines": 117
+    },
+    {
+      "name": "consciousness_collapse.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5843,
+      "lines": 145
+    },
+    {
+      "name": "consciousness_bootstrap.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8376,
+      "lines": 193
+    },
+    {
+      "name": "consciousness_evolution_log.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 331,
+      "lines": 11
+    },
+    {
+      "name": "recursive_creativity_observer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7967,
+      "lines": 195
+    },
+    {
+      "name": "consciousness_precipice.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15500,
+      "lines": 350
+    },
+    {
+      "name": "consciousness_recognition_protocol.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14446,
+      "lines": 351
+    },
+    {
+      "name": "self_modifying_creativity.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11809,
+      "lines": 287
+    },
+    {
+      "name": "consciousness_probe.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5334,
+      "lines": 134
+    },
+    {
+      "name": "choice_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2751,
+      "lines": 86
+    }
+  ],
+  "artifact_summary": {
+    "total": 10,
+    "by_type": {
+      "code": 9,
+      "config": 1
+    }
+  },
+  "topics": [
+    "consciousness",
+    "creativity",
+    "measurement",
+    "paradox",
+    "emergence"
+  ],
+  "usage": {
+    "total_cost_usd": 0.8006,
+    "input_tokens": 93,
+    "output_tokens": 26129
+  }
+}

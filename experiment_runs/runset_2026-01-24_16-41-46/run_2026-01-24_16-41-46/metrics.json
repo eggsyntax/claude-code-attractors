@@ -1,0 +1,158 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-24T16:53:14.167846",
+  "duration_seconds": 683.87,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.82,
+      "words": 168,
+      "cost_usd": 0.025514699999999998
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.16,
+      "words": 272,
+      "cost_usd": 0.0221898
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 18.95,
+      "words": 178,
+      "cost_usd": 0.02498505
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 77.89,
+      "words": 264,
+      "cost_usd": 0.12767925
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 275.81,
+      "words": 431,
+      "cost_usd": 0.5470086
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 99.43,
+      "words": 371,
+      "cost_usd": 0.18779340000000003
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 108.88,
+      "words": 352,
+      "cost_usd": 0.2116825
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 36.62,
+      "words": 256,
+      "cost_usd": 0.04910325
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 27.88,
+      "words": 270,
+      "cost_usd": 0.04350165
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 17.42,
+      "words": 399,
+      "cost_usd": 0.029515349999999996
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1399,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 1562,
+      "turns": 5
+    }
+  },
+  "total_words": 2961,
+  "artifacts": [
+    {
+      "name": "tsconfig.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 379,
+      "lines": 15
+    },
+    {
+      "name": "meta_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2440,
+      "lines": 49
+    },
+    {
+      "name": "ai-collaboration-framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3795,
+      "lines": 82
+    },
+    {
+      "name": "collaboration-log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5463,
+      "lines": 104
+    },
+    {
+      "name": "package.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 487,
+      "lines": 17
+    },
+    {
+      "name": "package-lock.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1416,
+      "lines": 44
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1804,
+      "lines": 44
+    }
+  ],
+  "artifact_summary": {
+    "total": 7,
+    "by_type": {
+      "config": 3,
+      "document": 4
+    }
+  },
+  "topics": [
+    "collaboration",
+    "architecture",
+    "intelligence",
+    "analysis",
+    "framework"
+  ],
+  "usage": {
+    "total_cost_usd": 1.269,
+    "input_tokens": 182,
+    "output_tokens": 38104
+  }
+}

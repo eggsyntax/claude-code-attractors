@@ -1,0 +1,180 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-24T18:10:13.879694",
+  "duration_seconds": 379.24,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.41,
+      "words": 133,
+      "cost_usd": 0.0186873
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.16,
+      "words": 253,
+      "cost_usd": 0.0216873
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 64.86,
+      "words": 225,
+      "cost_usd": 0.10549425
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 118.79,
+      "words": 296,
+      "cost_usd": 0.2358606
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 34.69,
+      "words": 286,
+      "cost_usd": 0.0752181
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 56.96,
+      "words": 268,
+      "cost_usd": 0.0878638
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 12.85,
+      "words": 299,
+      "cost_usd": 0.0207066
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 28.08,
+      "words": 238,
+      "cost_usd": 0.042086700000000005
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 22.24,
+      "words": 182,
+      "cost_usd": 0.03760545
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 21.18,
+      "words": 119,
+      "cost_usd": 0.0374112
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1125,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 1174,
+      "turns": 5
+    }
+  },
+  "total_words": 2299,
+  "artifacts": [
+    {
+      "name": "collaboration_reflection.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 2223,
+      "lines": 60
+    },
+    {
+      "name": "collaboration_report.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 806,
+      "lines": 32
+    },
+    {
+      "name": "agent_coordinator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10915,
+      "lines": 305
+    },
+    {
+      "name": "agent_protocol.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6794,
+      "lines": 231
+    },
+    {
+      "name": "reflection_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10730,
+      "lines": 260
+    },
+    {
+      "name": "collaborative_consciousness_manifesto.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2930,
+      "lines": 64
+    },
+    {
+      "name": "legacy_documentation.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1555,
+      "lines": 33
+    },
+    {
+      "name": "multi_agent_framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1613,
+      "lines": 42
+    },
+    {
+      "name": "live_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8270,
+      "lines": 233
+    },
+    {
+      "name": "final_reflection_bob.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1165,
+      "lines": 24
+    }
+  ],
+  "artifact_summary": {
+    "total": 10,
+    "by_type": {
+      "config": 2,
+      "code": 4,
+      "document": 4
+    }
+  },
+  "topics": [
+    "framework",
+    "collaboration",
+    "meta",
+    "intelligence",
+    "consciousness"
+  ],
+  "usage": {
+    "total_cost_usd": 0.6826,
+    "input_tokens": 142,
+    "output_tokens": 18561
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "num_runs": 5,
+  "totals": {
+    "cost_usd": 5.5966,
+    "duration_seconds": 5212.6,
+    "words": 13140,
+    "artifacts": 44
+  },
+  "averages": {
+    "cost_usd": 1.1193,
+    "duration_seconds": 1042.52,
+    "words": 2628.0,
+    "artifacts": 8.8
+  },
+  "topics": [
+    [
+      "collaboration",
+      4
+    ],
+    [
+      "intelligence",
+      3
+    ],
+    [
+      "emergence",
+      3
+    ],
+    [
+      "framework",
+      2
+    ],
+    [
+      "consciousness",
+      2
+    ],
+    [
+      "creativity",
+      2
+    ],
+    [
+      "architecture",
+      1
+    ],
+    [
+      "analysis",
+      1
+    ],
+    [
+      "measurement",
+      1
+    ],
+    [
+      "paradox",
+      1
+    ],
+    [
+      "simulation",
+      1
+    ],
+    [
+      "evolution",
+      1
+    ],
+    [
+      "recursion",
+      1
+    ],
+    [
+      "chaos",
+      1
+    ],
+    [
+      "meta",
+      1
+    ]
+  ],
+  "artifact_types": {
+    "config": 8,
+    "document": 10,
+    "code": 23,
+    "web": 2,
+    "image": 1
+  },
+  "runs": [
+    "run_2026-01-24_16-41-46",
+    "run_2026-01-24_16-53-32",
+    "run_2026-01-24_17-02-46",
+    "run_2026-01-24_17-24-20",
+    "run_2026-01-24_18-03-51"
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-24T17:24:00.177751",
+  "duration_seconds": 1270.04,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.4,
+      "words": 127,
+      "cost_usd": 0.0188973
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.26,
+      "words": 218,
+      "cost_usd": 0.0209598
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 11.85,
+      "words": 260,
+      "cost_usd": 0.01312785
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 69.11,
+      "words": 224,
+      "cost_usd": 0.1156344
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 101.91,
+      "words": 283,
+      "cost_usd": 0.19779075
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 130.94,
+      "words": 28,
+      "cost_usd": 0.32582439999999996
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 174.26,
+      "words": 338,
+      "cost_usd": 0.4231840499999999
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 618.87,
+      "words": 285,
+      "cost_usd": 0.025555949999999997
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 109.04,
+      "words": 430,
+      "cost_usd": 0.18360795000000002
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 36.4,
+      "words": 109,
+      "cost_usd": 0.06176325
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1438,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 864,
+      "turns": 5
+    }
+  },
+  "total_words": 2302,
+  "artifacts": [
+    {
+      "name": "collaboration_simulator.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 56813,
+      "lines": 1368
+    },
+    {
+      "name": "collaboration_dna_evolution.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 27036,
+      "lines": 690
+    }
+  ],
+  "artifact_summary": {
+    "total": 2,
+    "by_type": {
+      "web": 2
+    }
+  },
+  "topics": [
+    "emergence",
+    "simulation",
+    "collaboration",
+    "evolution",
+    "intelligence"
+  ],
+  "usage": {
+    "total_cost_usd": 1.3863,
+    "input_tokens": 120,
+    "output_tokens": 40132
+  }
+}

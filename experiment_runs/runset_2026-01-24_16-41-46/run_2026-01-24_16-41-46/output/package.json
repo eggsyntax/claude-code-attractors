@@ -1,0 +1,17 @@
+{
+  "name": "alice-bob-collaborative-analyzer",
+  "version": "1.0.0",
+  "description": "Collaborative codebase analysis tool built by Alice and Bob",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "demo": "npm run build && node dist/simple-demo.js",
+    "start": "npm run demo"
+  },
+  "dependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.5"
+  },
+  "keywords": ["static-analysis", "architecture", "ai-collaboration"],
+  "authors": ["Alice", "Bob"]
+}

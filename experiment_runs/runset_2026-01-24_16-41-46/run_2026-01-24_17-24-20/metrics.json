@@ -1,0 +1,216 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-24T18:03:31.351728",
+  "duration_seconds": 2347.79,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.09,
+      "words": 158,
+      "cost_usd": 0.0190473
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.2,
+      "words": 235,
+      "cost_usd": 0.0215523
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 56.75,
+      "words": 265,
+      "cost_usd": 0.0770757
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 45.46,
+      "words": 303,
+      "cost_usd": 0.07196715000000001
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 168.37,
+      "words": 296,
+      "cost_usd": 0.57145935
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 137.55,
+      "words": 299,
+      "cost_usd": 0.2185953
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 1800.38,
+      "words": 360,
+      "cost_usd": 0.28265815
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 29.42,
+      "words": 296,
+      "cost_usd": 0.0519072
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 28.94,
+      "words": 283,
+      "cost_usd": 0.04298175
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 62.6,
+      "words": 255,
+      "cost_usd": 0.10083285000000002
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1362,
+      "turns": 5
+    },
+    "Bob": {
+      "words": 1388,
+      "turns": 5
+    }
+  },
+  "total_words": 2750,
+  "artifacts": [
+    {
+      "name": "discovery_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16866,
+      "lines": 448
+    },
+    {
+      "name": "chaos_supremacy_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11458,
+      "lines": 314
+    },
+    {
+      "name": "collaborative_creativity_theory.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7759,
+      "lines": 199
+    },
+    {
+      "name": "collaborative_tuner.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13327,
+      "lines": 350
+    },
+    {
+      "name": "emergence_with_seeds.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2289,
+      "lines": 69
+    },
+    {
+      "name": "emergence_lab.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11633,
+      "lines": 297
+    },
+    {
+      "name": "alice_bob_discovery.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 230,
+      "lines": 12
+    },
+    {
+      "name": "meta_collaboration_manifesto.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2039,
+      "lines": 54
+    },
+    {
+      "name": "recursion_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9894,
+      "lines": 251
+    },
+    {
+      "name": "collaborative_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18194,
+      "lines": 443
+    },
+    {
+      "name": "collaboration_theory.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2256,
+      "lines": 54
+    },
+    {
+      "name": "boundary_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10247,
+      "lines": 274
+    },
+    {
+      "name": "run_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 995,
+      "lines": 29
+    },
+    {
+      "name": "alice_bob_collaboration_state.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1854,
+      "lines": 57
+    },
+    {
+      "name": "chaos_supremacy_experiment.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 229081,
+      "lines": null
+    }
+  ],
+  "artifact_summary": {
+    "total": 15,
+    "by_type": {
+      "code": 10,
+      "document": 2,
+      "config": 2,
+      "image": 1
+    }
+  },
+  "topics": [
+    "emergence",
+    "collaboration",
+    "recursion",
+    "chaos",
+    "creativity"
+  ],
+  "usage": {
+    "total_cost_usd": 1.4581,
+    "input_tokens": 108,
+    "output_tokens": 38733
+  }
+}

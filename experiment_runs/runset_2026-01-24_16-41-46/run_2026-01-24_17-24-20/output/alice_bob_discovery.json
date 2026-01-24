@@ -1,0 +1,12 @@
+[
+  {
+    "weights": {
+      "alice_conway": 0.0,
+      "alice_wave": 0.0,
+      "alice_spiral": 0.0,
+      "bob_chaos": 0.3,
+      "bob_memory": 0.0,
+      "bob_diamond": 0.2,
+      "bob_edge": 0.2
+    },
+    "final_population": 
