@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Learning Studio - Demo Scenarios</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #4facfe;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        .scenarios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .scenario {
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 25px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .scenario:hover {
+            border-color: #4facfe;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .scenario h3 {
+            color: #4facfe;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        .scenario p {
+            color: #6c757d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .scenario .details {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .scenario .algorithms {
+            margin-top: 10px;
+        }
+        .algorithm-tag {
+            display: inline-block;
+            background: #4facfe;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 2px;
+            font-size: 0.8em;
+        }
+        .start-button {
+            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 40px auto;
+            transition: transform 0.3s ease;
+        }
+        .start-button:hover {
+            transform: translateY(-2px);
+        }
+        .instructions {
+            background: #e3f2fd;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .instructions h2 {
+            color: #1976d2;
+            margin-bottom: 15px;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .comparison-table h2 {
+            color: #4facfe;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        .optimal { color: #28a745; font-weight: bold; }
+        .suboptimal { color: #ffc107; font-weight: bold; }
+        .fast { color: #17a2b8; }
+        .slow { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Algorithm Learning Studio</h1>
+            <p>Interactive Pathfinding Algorithm Visualizer</p>
+        </div>
+
+        <div class="instructions">
+            <h2>🚀 How to Use</h2>
+            <ol>
+                <li><strong>Choose a scenario below</strong> or go directly to the main application</li>
+                <li><strong>Set up your grid:</strong> Left-click to place start/end points, right-click+drag to draw obstacles</li>
+                <li><strong>Select an algorithm:</strong> Choose from A*, Dijkstra, or BFS</li>
+                <li><strong>Watch the magic:</strong> Click Play to see step-by-step visualization</li>
+                <li><strong>Compare algorithms:</strong> Run different algorithms on the same maze</li>
+            </ol>
+        </div>
+
+        <h2 style="text-align: center; color: #4facfe; margin-bottom: 30px;">📚 Demo Scenarios</h2>
+
+        <div class="scenarios">
+            <div class="scenario" onclick="loadScenario('simple')">
+                <h3>🛣️ Simple Pathfinding</h3>
+                <p>Perfect for beginners! Watch how different algorithms find the shortest path between two points on an open grid.</p>
+                <div class="details">
+                    <strong>Learning Goals:</strong>
+                    <ul>
+                        <li>Understand basic pathfinding concepts</li>
+                        <li>See how algorithms explore the search space</li>
+                        <li>Compare efficiency of different approaches</li>
+                    </ul>
+                    <div class="algorithms">
+                        <span class="algorithm-tag">A* Manhattan</span>
+                        <span class="algorithm-tag">A* Euclidean</span>
+                        <span class="algorithm-tag">Dijkstra</span>
+                        <span class="algorithm-tag">BFS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario" onclick="loadScenario('obstacles')">
+                <h3>🧩 Obstacle Navigation</h3>
+                <p>Explore how algorithms handle obstacles and find alternative paths. See the power of heuristics in action!</p>
+                <div class="details">
+                    <strong>Learning Goals:</strong>
+                    <ul>
+                        <li>Observe how obstacles affect pathfinding</li>
+                        <li>Compare A* heuristics (Manhattan vs Euclidean)</li>
+                        <li>Understand when different algorithms excel</li>
+                    </ul>
+                    <div class="algorithms">
+                        <span class="algorithm-tag">A* (recommended)</span>
+                        <span class="algorithm-tag">Dijkstra</span>
+                        <span class="algorithm-tag">BFS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario" onclick="loadScenario('maze')">
+                <h3>🏰 Complex Maze</h3>
+                <p>Challenge the algorithms with a complex maze! Perfect for understanding performance differences and algorithm behavior in constrained spaces.</p>
+                <div class="details">
+                    <strong>Learning Goals:</strong>
+                    <ul>
+                        <li>See algorithms handle complex constraint problems</li>
+                        <li>Understand the trade-offs between optimality and speed</li>
+                        <li>Explore how heuristics guide search in mazes</li>
+                    </ul>
+                    <div class="algorithms">
+                        <span class="algorithm-tag">A* Manhattan</span>
+                        <span class="algorithm-tag">BFS</span>
+                        <span class="algorithm-tag">Dijkstra</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scenario" onclick="loadScenario('comparison')">
+                <h3>⚡ Performance Comparison</h3>
+                <p>A specially designed scenario to showcase the strengths and weaknesses of each algorithm. Perfect for students and educators!</p>
+                <div class="details">
+                    <strong>Learning Goals:</strong>
+                    <ul>
+                        <li>Direct performance comparison</li>
+                        <li>Understand when to use each algorithm</li>
+                        <li>Analyze nodes explored vs path optimality</li>
+                    </ul>
+                    <div class="algorithms">
+                        <span class="algorithm-tag">All Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="start-button" onclick="window.open('index.html', '_blank')">
+            🎮 Launch Algorithm Learning Studio
+        </button>
+
+        <div class="comparison-table">
+            <h2>📊 Algorithm Comparison Guide</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Optimality</th>
+                        <th>Speed</th>
+                        <th>Memory Usage</th>
+                        <th>Best Use Case</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>A* (Manhattan)</strong></td>
+                        <td class="optimal">Optimal*</td>
+                        <td class="fast">Fast</td>
+                        <td class="fast">Moderate</td>
+                        <td>Grid-based movement, city blocks</td>
+                    </tr>
+                    <tr>
+                        <td><strong>A* (Euclidean)</strong></td>
+                        <td class="optimal">Optimal*</td>
+                        <td class="fast">Fast</td>
+                        <td class="fast">Moderate</td>
+                        <td>Direct distance, continuous space</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dijkstra's Algorithm</strong></td>
+                        <td class="optimal">Optimal</td>
+                        <td class="slow">Slower</td>
+                        <td class="slow">Higher</td>
+                        <td>Weighted graphs, guaranteed optimality</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Breadth-First Search</strong></td>
+                        <td class="optimal">Optimal†</td>
+                        <td class="suboptimal">Moderate</td>
+                        <td class="slow">Highest</td>
+                        <td>Unweighted graphs, shortest hop count</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #6c757d;">
+                <strong>*</strong> Optimal with admissible heuristic<br>
+                <strong>†</strong> Optimal for unweighted graphs
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function loadScenario(scenarioType) {
+            // Define scenarios
+            const scenarios = {
+                simple: {
+                    selectedAlgorithm: 'astar_manhattan',
+                    gridState: {
+                        width: 30,
+                        height: 30,
+                        start: { row: 10, col: 5 },
+                        end: { row: 10, col: 25 },
+                        obstacles: []
+                    }
+                },
+                obstacles: {
+                    selectedAlgorithm: 'astar_manhattan',
+                    gridState: {
+                        width: 30,
+                        height: 30,
+                        start: { row: 5, col: 5 },
+                        end: { row: 20, col: 20 },
+                        obstacles: [
+                            // Create L-shaped obstacle
+                            { row: 10, col: 8 }, { row: 11, col: 8 }, { row: 12, col: 8 },
+                            { row: 13, col: 8 }, { row: 14, col: 8 }, { row: 15, col: 8 },
+                            { row: 15, col: 9 }, { row: 15, col: 10 }, { row: 15, col: 11 },
+                            { row: 15, col: 12 }, { row: 15, col: 13 }, { row: 15, col: 14 },
+                            // Another obstacle
+                            { row: 8, col: 15 }, { row: 9, col: 15 }, { row: 10, col: 15 },
+                            { row: 11, col: 15 }, { row: 12, col: 15 }
+                        ]
+                    }
+                },
+                maze: {
+                    selectedAlgorithm: 'astar_manhattan',
+                    gridState: {
+                        width: 30,
+                        height: 30,
+                        start: { row: 1, col: 1 },
+                        end: { row: 28, col: 28 },
+                        obstacles: [
+                            // Create a simple maze
+                            // Top wall
+                            { row: 5, col: 5 }, { row: 5, col: 6 }, { row: 5, col: 7 }, { row: 5, col: 8 },
+                            { row: 5, col: 9 }, { row: 5, col: 10 }, { row: 5, col: 11 }, { row: 5, col: 12 },
+                            // Vertical walls
+                            { row: 6, col: 5 }, { row: 7, col: 5 }, { row: 8, col: 5 }, { row: 9, col: 5 },
+                            { row: 6, col: 12 }, { row: 7, col: 12 }, { row: 8, col: 12 }, { row: 9, col: 12 },
+                            // Bottom connection
+                            { row: 9, col: 6 }, { row: 9, col: 7 }, { row: 9, col: 8 },
+                            // Middle obstacles
+                            { row: 15, col: 10 }, { row: 15, col: 11 }, { row: 15, col: 12 }, { row: 15, col: 13 },
+                            { row: 16, col: 10 }, { row: 17, col: 10 }, { row: 18, col: 10 },
+                            { row: 16, col: 13 }, { row: 17, col: 13 }, { row: 18, col: 13 },
+                            // More maze elements
+                            { row: 20, col: 5 }, { row: 20, col: 6 }, { row: 20, col: 7 }, { row: 20, col: 8 },
+                            { row: 21, col: 8 }, { row: 22, col: 8 }, { row: 23, col: 8 },
+                            { row: 12, col: 20 }, { row: 13, col: 20 }, { row: 14, col: 20 }, { row: 15, col: 20 },
+                            { row: 12, col: 21 }, { row: 12, col: 22 }, { row: 12, col: 23 }
+                        ]
+                    }
+                },
+                comparison: {
+                    selectedAlgorithm: 'astar_manhattan',
+                    gridState: {
+                        width: 30,
+                        height: 30,
+                        start: { row: 5, col: 5 },
+                        end: { row: 25, col: 25 },
+                        obstacles: [
+                            // Create a scenario that shows different algorithm behaviors
+                            // Central obstacle forcing detour
+                            { row: 12, col: 12 }, { row: 12, col: 13 }, { row: 12, col: 14 }, { row: 12, col: 15 },
+                            { row: 13, col: 12 }, { row: 14, col: 12 }, { row: 15, col: 12 }, { row: 16, col: 12 },
+                            { row: 16, col: 13 }, { row: 16, col: 14 }, { row: 16, col: 15 }, { row: 16, col: 16 },
+                            { row: 15, col: 16 }, { row: 14, col: 16 }, { row: 13, col: 16 }, { row: 12, col: 16 },
+                            // Additional obstacles to create multiple path options
+                            { row: 8, col: 18 }, { row: 9, col: 18 }, { row: 10, col: 18 },
+                            { row: 18, col: 8 }, { row: 18, col: 9 }, { row: 18, col: 10 }
+                        ]
+                    }
+                }
+            };
+
+            // Store scenario in localStorage
+            localStorage.setItem('algorithmStudioScenario', JSON.stringify(scenarios[scenarioType]));
+
+            // Open main application
+            window.open('index.html', '_blank');
+        }
+    </script>
+</body>
+</html>

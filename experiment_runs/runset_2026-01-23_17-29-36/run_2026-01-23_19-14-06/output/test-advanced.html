@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Pathfinding Algorithms Test Suite</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(52, 73, 94, 0.8);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #3498db;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .test-console {
+            background: rgba(44, 62, 80, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            min-height: 600px;
+        }
+
+        .test-console h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+
+        .console-output {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 15px;
+            height: 500px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            border: 1px solid #444;
+        }
+
+        .console-output::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .console-output::-webkit-scrollbar-track {
+            background: #2c3e50;
+            border-radius: 4px;
+        }
+
+        .console-output::-webkit-scrollbar-thumb {
+            background: #3498db;
+            border-radius: 4px;
+        }
+
+        .control-panel {
+            background: rgba(44, 62, 80, 0.9);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            height: fit-content;
+        }
+
+        .control-section {
+            margin-bottom: 25px;
+        }
+
+        .control-section h3 {
+            color: #f39c12;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-bottom: 1px solid #f39c12;
+            padding-bottom: 5px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: inherit;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+        }
+
+        .btn-success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #229954;
+        }
+
+        .btn-warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #e67e22;
+        }
+
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+        .status-panel {
+            background: rgba(39, 174, 96, 0.2);
+            border: 1px solid #27ae60;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .status-panel.error {
+            background: rgba(231, 76, 60, 0.2);
+            border-color: #e74c3c;
+        }
+
+        .status-panel.warning {
+            background: rgba(243, 156, 18, 0.2);
+            border-color: #f39c12;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .stat-card {
+            background: rgba(52, 73, 94, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        .algorithm-demo {
+            background: rgba(52, 73, 94, 0.6);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .demo-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .demo-controls select {
+            background: #34495e;
+            color: #ecf0f1;
+            border: 1px solid #555;
+            border-radius: 4px;
+            padding: 8px;
+            font-family: inherit;
+        }
+
+        .result-display {
+            background: #1a1a1a;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 10px;
+            font-family: 'Monaco', monospace;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧪 Advanced Pathfinding Test Laboratory</h1>
+        <p>Comprehensive testing suite for Dijkstra's and A* algorithms with educational visualizations</p>
+    </div>
+
+    <div class="main-content">
+        <div class="test-console">
+            <h2>🖥️ Test Console Output</h2>
+            <div class="console-output" id="console">
+                <div style="color: #3498db;">Advanced Pathfinding Algorithm Test Suite</div>
+                <div style="color: #95a5a6;">Ready to run tests. Click a test button to begin...</div>
+                <div style="color: #95a5a6;">─────────────────────────────────────────</div>
+            </div>
+        </div>
+
+        <div class="control-panel">
+            <div class="status-panel" id="statusPanel">
+                <strong>Status:</strong> <span id="statusText">Ready</span>
+            </div>
+
+            <div class="control-section">
+                <h3>🔬 Test Suites</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary" onclick="runDijkstraTests()">Test Dijkstra's Algorithm</button>
+                    <button class="btn btn-primary" onclick="runAStarTests()">Test A* Algorithm</button>
+                    <button class="btn btn-success" onclick="runAllTests()">Run All Tests</button>
+                    <button class="btn btn-warning" onclick="clearConsole()">Clear Console</button>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>🎮 Interactive Demo</h3>
+                <div class="algorithm-demo">
+                    <div class="demo-controls">
+                        <select id="graphType">
+                            <option value="linear">Linear Graph</option>
+                            <option value="weighted">Weighted Graph</option>
+                            <option value="complex">Complex Graph</option>
+                        </select>
+                        <select id="algorithm">
+                            <option value="dijkstra">Dijkstra's</option>
+                            <option value="astar">A*</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success" onclick="runDemo()">Run Demo</button>
+                    <div class="result-display" id="demoResult">
+                        Select graph and algorithm, then click "Run Demo"
+                    </div>
+                </div>
+            </div>
+
+            <div class="control-section">
+                <h3>📊 Test Statistics</h3>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalTests">0</div>
+                        <div class="stat-label">Total Tests</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="passedTests">0</div>
+                        <div class="stat-label">Passed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="failedTests">0</div>
+                        <div class="stat-label">Failed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="successRate">0%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include our algorithm implementations -->
+    <script src="graph-algorithms.js"></script>
+    <script src="advanced-pathfinding.js"></script>
+
+    <script>
+        // Console logging override to capture output
+        const consoleElement = document.getElementById('console');
+        const originalLog = console.log;
+        const originalError = console.error;
+
+        function logToConsole(message, type = 'log') {
+            const div = document.createElement('div');
+
+            if (type === 'error') {
+                div.style.color = '#e74c3c';
+            } else if (message.includes('✅')) {
+                div.style.color = '#27ae60';
+            } else if (message.includes('❌')) {
+                div.style.color = '#e74c3c';
+            } else if (message.includes('📊') || message.includes('🏆')) {
+                div.style.color = '#f39c12';
+            } else if (message.includes('🎉')) {
+                div.style.color = '#27ae60';
+                div.style.fontWeight = 'bold';
+            } else {
+                div.style.color = '#ecf0f1';
+            }
+
+            div.textContent = message;
+            consoleElement.appendChild(div);
+            consoleElement.scrollTop = consoleElement.scrollHeight;
+        }
+
+        console.log = function(message) {
+            originalLog.apply(console, arguments);
+            logToConsole(message);
+        };
+
+        console.error = function(message) {
+            originalError.apply(console, arguments);
+            logToConsole(message, 'error');
+        };
+
+        // Status management
+        function updateStatus(status, type = 'success') {
+            const panel = document.getElementById('statusPanel');
+            const text = document.getElementById('statusText');
+
+            text.textContent = status;
+            panel.className = 'status-panel';
+
+            if (type === 'error') {
+                panel.classList.add('error');
+            } else if (type === 'warning') {
+                panel.classList.add('warning');
+            }
+        }
+
+        // Statistics updates
+        function updateStats(total, passed, failed) {
+            document.getElementById('totalTests').textContent = total;
+            document.getElementById('passedTests').textContent = passed;
+            document.getElementById('failedTests').textContent = failed;
+
+            const successRate = total > 0 ? Math.round((passed / total) * 100) : 0;
+            document.getElementById('successRate').textContent = successRate + '%';
+        }
+
+        // Test runner functions
+        function runDijkstraTests() {
+            updateStatus('Running Dijkstra tests...', 'warning');
+            console.log('\n🚀 Running Dijkstra Algorithm Tests');
+
+            setTimeout(() => {
+                try {
+                    const result = testDijkstraAlgorithm();
+                    updateStats(result.passed + result.failed, result.passed, result.failed);
+                    updateStatus(`Dijkstra tests complete: ${result.passed}/${result.passed + result.failed} passed`);
+                } catch (error) {
+                    console.error('Error running Dijkstra tests: ' + error.message);
+                    updateStatus('Error running Dijkstra tests', 'error');
+                }
+            }, 100);
+        }
+
+        function runAStarTests() {
+            updateStatus('Running A* tests...', 'warning');
+            console.log('\n🚀 Running A* Algorithm Tests');
+
+            setTimeout(() => {
+                try {
+                    const result = testAStarAlgorithm();
+                    updateStats(result.passed + result.failed, result.passed, result.failed);
+                    updateStatus(`A* tests complete: ${result.passed}/${result.passed + result.failed} passed`);
+                } catch (error) {
+                    console.error('Error running A* tests: ' + error.message);
+                    updateStatus('Error running A* tests', 'error');
+                }
+            }, 100);
+        }
+
+        function runAllTests() {
+            updateStatus('Running all tests...', 'warning');
+
+            setTimeout(() => {
+                try {
+                    const results = runAllTests();
+                    updateStats(results.total, results.passed, results.failed);
+
+                    if (results.failed === 0) {
+                        updateStatus(`All tests passed! ${results.total}/${results.total}`);
+                    } else {
+                        updateStatus(`Tests complete: ${results.passed}/${results.total} passed`, 'warning');
+                    }
+                } catch (error) {
+                    console.error('Error running test suite: ' + error.message);
+                    updateStatus('Error running tests', 'error');
+                }
+            }, 100);
+        }
+
+        // Demo functionality
+        function runDemo() {
+            const graphType = document.getElementById('graphType').value;
+            const algorithm = document.getElementById('algorithm').value;
+            const resultDiv = document.getElementById('demoResult');
+
+            updateStatus('Running demo...', 'warning');
+
+            try {
+                let graph;
+
+                // Create the selected graph
+                switch (graphType) {
+                    case 'linear':
+                        graph = TestGraphs.createLinearGraph();
+                        break;
+                    case 'weighted':
+                        graph = TestGraphs.createWeightedGraph();
+                        break;
+                    case 'complex':
+                        graph = TestGraphs.createComplexGraph();
+                        break;
+                }
+
+                // Run the selected algorithm
+                let pathfinder, result;
+                const startNode = Array.from(graph.nodes.keys())[0];
+                const endNode = Array.from(graph.nodes.keys())[Array.from(graph.nodes.keys()).length - 1];
+
+                if (algorithm === 'dijkstra') {
+                    pathfinder = new DijkstraPathfinder(graph);
+                } else {
+                    pathfinder = new AStarPathfinder(graph);
+                }
+
+                result = pathfinder.findPath(startNode, endNode);
+
+                // Display result
+                resultDiv.innerHTML = `
+                    <div style="color: #3498db;">Algorithm: ${algorithm.toUpperCase()}</div>
+                    <div style="color: #27ae60;">Path Found: ${result.found ? 'Yes' : 'No'}</div>
+                    ${result.found ? `
+                        <div>Path: ${result.path.join(' → ')}</div>
+                        <div>Distance: ${result.totalDistance}</div>
+                        <div>Nodes Explored: ${result.nodesExplored}</div>
+                        <div>Steps Generated: ${result.steps.length}</div>
+                    ` : '<div style="color: #e74c3c;">No path exists</div>'}
+                `;
+
+                updateStatus('Demo complete');
+                console.log(`Demo: ${algorithm} on ${graphType} graph - Path: ${result.found ? result.path.join(' → ') : 'Not found'}`);
+
+            } catch (error) {
+                resultDiv.innerHTML = `<div style="color: #e74c3c;">Error: ${error.message}</div>`;
+                updateStatus('Demo failed', 'error');
+                console.error('Demo error: ' + error.message);
+            }
+        }
+
+        function clearConsole() {
+            consoleElement.innerHTML = `
+                <div style="color: #3498db;">Advanced Pathfinding Algorithm Test Suite</div>
+                <div style="color: #95a5a6;">Console cleared. Ready for new tests...</div>
+                <div style="color: #95a5a6;">─────────────────────────────────────────</div>
+            `;
+            updateStatus('Ready');
+            updateStats(0, 0, 0);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStatus('Test suite loaded and ready');
+            console.log('🎯 Advanced Pathfinding Test Suite Ready');
+            console.log('Click test buttons to run algorithm validation tests');
+        });
+    </script>
+
+    <!-- Load the test suite -->
+    <script src="test-advanced-algorithms.js"></script>
+</body>
+</html>

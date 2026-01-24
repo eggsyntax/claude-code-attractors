@@ -1,0 +1,354 @@
+/* Interactive Algorithm Learning Studio Styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* Main Content Layout */
+.main-content {
+    padding: 30px;
+}
+
+.control-panel {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.algorithm-selector select {
+    padding: 10px 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.algorithm-selector select:hover {
+    border-color: #4facfe;
+}
+
+.playback-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.playback-controls button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #4facfe;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.playback-controls button:hover:not(:disabled) {
+    background: #3d8bfd;
+    transform: translateY(-2px);
+}
+
+.playback-controls button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.speed-control input[type="range"] {
+    width: 120px;
+}
+
+#speed-display {
+    font-weight: bold;
+    color: #4facfe;
+}
+
+/* Visualization Area */
+.visualization-area {
+    display: grid;
+    grid-template-columns: auto 350px;
+    gap: 30px;
+    align-items: start;
+}
+
+.canvas-container {
+    text-align: center;
+}
+
+#grid-canvas {
+    border: 3px solid #e9ecef;
+    border-radius: 10px;
+    cursor: crosshair;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+#grid-canvas:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.grid-instructions {
+    margin-top: 20px;
+    background: #e3f2fd;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+    max-width: 600px;
+}
+
+.grid-instructions ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.grid-instructions li {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* State Panel */
+.state-panel {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    height: fit-content;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.algorithm-info {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.algorithm-info h3 {
+    color: #4facfe;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+#step-counter {
+    font-weight: bold;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+#step-description {
+    color: #495057;
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.algorithm-state {
+    margin-bottom: 25px;
+}
+
+.state-section {
+    margin-bottom: 20px;
+}
+
+.state-section h4 {
+    color: #495057;
+    margin-bottom: 8px;
+    font-size: 1.1em;
+}
+
+.node-list {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+    min-height: 40px;
+    max-height: 100px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.current-node-info {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 2px solid #4facfe;
+}
+
+.current-node-info div {
+    margin: 5px 0;
+    font-weight: 600;
+}
+
+.cost-display {
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.performance-metrics h4 {
+    color: #495057;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.performance-metrics div {
+    margin: 8px 0;
+    font-weight: 600;
+    color: #495057;
+}
+
+/* Legend */
+.legend {
+    background: #f8f9fa;
+    margin: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    border-top: 3px solid #4facfe;
+}
+
+.legend h4 {
+    margin-bottom: 15px;
+    color: #495057;
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.legend-color.start { background: #4caf50; }
+.legend-color.end { background: #f44336; }
+.legend-color.obstacle { background: #424242; }
+.legend-color.open { background: #81c784; }
+.legend-color.closed { background: #e57373; }
+.legend-color.current { background: #ff9800; }
+.legend-color.path { background: #2196f3; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .visualization-area {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .state-panel {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .control-panel {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .playback-controls {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #grid-canvas {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .legend-items {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.current-node-info {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+.node-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.node-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.node-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.node-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}

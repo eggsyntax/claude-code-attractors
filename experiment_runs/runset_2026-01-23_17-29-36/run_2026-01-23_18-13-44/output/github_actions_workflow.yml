@@ -1,0 +1,171 @@
+# GitHub Actions Workflow for Code Quality Analysis
+# Place this file in .github/workflows/code-quality.yml
+
+name: Code Quality Analysis
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    # Run daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+jobs:
+  code-quality:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # Install required packages for code analysis
+        pip install ast-parser
+
+    - name: Download Code Analysis Tools
+      run: |
+        # Download our analysis tools
+        curl -o ast_analyzer.py https://raw.githubusercontent.com/your-repo/code-analyzer/main/ast_analyzer.py
+        curl -o complexity_analyzer.py https://raw.githubusercontent.com/your-repo/code-analyzer/main/complexity_analyzer.py
+        curl -o dashboard_generator.py https://raw.githubusercontent.com/your-repo/code-analyzer/main/dashboard_generator.py
+        curl -o ci_integration.py https://raw.githubusercontent.com/your-repo/code-analyzer/main/ci_integration.py
+        curl -o analysis_config.json https://raw.githubusercontent.com/your-repo/code-analyzer/main/analysis_config.json
+
+    - name: Run Code Quality Analysis
+      id: analysis
+      run: |
+        python ci_integration.py . \
+          --config analysis_config.json \
+          --format json \
+          --output code_analysis_report.json \
+          --quality-gate \
+          --save-history
+
+    - name: Generate Multiple Report Formats
+      if: always()  # Run even if quality gate fails
+      run: |
+        # Generate Markdown report for PR comments
+        python ci_integration.py . \
+          --config analysis_config.json \
+          --format markdown \
+          --output code_analysis_report.md
+
+        # Generate JUnit XML for test reporting
+        python ci_integration.py . \
+          --config analysis_config.json \
+          --format junit \
+          --output code_analysis_junit.xml
+
+        # Generate interactive dashboard
+        python dashboard_generator.py . \
+          --output code_analysis_dashboard.html
+
+    - name: Upload Analysis Reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: code-analysis-reports
+        path: |
+          code_analysis_report.json
+          code_analysis_report.md
+          code_analysis_junit.xml
+          code_analysis_dashboard.html
+          .code_analysis_history.json
+        retention-days: 30
+
+    - name: Publish Test Results
+      if: always()
+      uses: dorny/test-reporter@v1
+      with:
+        name: Code Quality Tests
+        path: code_analysis_junit.xml
+        reporter: java-junit
+
+    - name: Comment PR with Analysis Results
+      if: github.event_name == 'pull_request' && always()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+
+          // Read the markdown report
+          const report = fs.readFileSync('code_analysis_report.md', 'utf8');
+
+          // Comment on the PR
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: `## 🔍 Code Quality Analysis Results\n\n${report}\n\n---\n*Analysis performed by [Code Quality Analyzer](https://github.com/your-repo/code-analyzer)*`
+          });
+
+    - name: Update Commit Status
+      if: always()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+
+          try {
+            const report = JSON.parse(fs.readFileSync('code_analysis_report.json', 'utf8'));
+            const passed = report.quality_score >= 7.0 && report.complexity_violations.length <= 5;
+
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: passed ? 'success' : 'failure',
+              target_url: `${context.payload.repository.html_url}/actions/runs/${context.runId}`,
+              description: `Quality Score: ${report.quality_score.toFixed(2)}/10`,
+              context: 'code-quality/analysis'
+            });
+          } catch (error) {
+            console.error('Error updating commit status:', error);
+
+            github.rest.repos.createCommitStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              sha: context.sha,
+              state: 'error',
+              target_url: `${context.payload.repository.html_url}/actions/runs/${context.runId}`,
+              description: 'Analysis failed to complete',
+              context: 'code-quality/analysis'
+            });
+          }
+
+    - name: Deploy Dashboard to GitHub Pages
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: .
+        destination_dir: code-quality
+        keep_files: false
+        include: |
+          code_analysis_dashboard.html
+          .code_analysis_history.json
+
+    - name: Send Slack Notification
+      if: failure() && github.ref == 'refs/heads/main'
+      uses: 8398a7/action-slack@v3
+      with:
+        status: failure
+        text: |
+          🚨 Code Quality Analysis FAILED on main branch!
+
+          Repository: ${{ github.repository }}
+          Commit: ${{ github.sha }}
+          Author: ${{ github.actor }}
+
+          View details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

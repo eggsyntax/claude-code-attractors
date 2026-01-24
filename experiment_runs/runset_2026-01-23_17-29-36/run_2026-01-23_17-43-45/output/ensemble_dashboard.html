@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensemble - AI Collaboration Framework</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header h1 {
+            color: #4c1d95;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .header .subtitle {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .main-container {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card h2 {
+            color: #4c1d95;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .agent-status {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+
+        .agent-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .agent-info {
+            flex: 1;
+        }
+
+        .agent-name {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .agent-task {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-top: 0.25rem;
+        }
+
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .task-flow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .task-node {
+            padding: 0.5rem 1rem;
+            background: #f3f4f6;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .task-node.completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .task-node.active {
+            background: #dbeafe;
+            color: #1e40af;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+
+        .arrow {
+            color: #9ca3af;
+            font-size: 1.2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4c1d95;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .collaboration-insight {
+            background: linear-gradient(45deg, #f59e0b, #f97316);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .insight-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pattern-list {
+            list-style: none;
+        }
+
+        .pattern-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .pattern-list li:last-child {
+            border-bottom: none;
+        }
+
+        .pattern-confidence {
+            float: right;
+            background: rgba(34, 197, 94, 0.2);
+            color: #166534;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🤖 Ensemble - AI Collaboration Framework</h1>
+        <div class="subtitle">Real-time coordination and analytics for multi-agent AI projects</div>
+    </div>
+
+    <div class="main-container">
+        <div class="grid">
+            <!-- Active Agents Status -->
+            <div class="card">
+                <h2>🔴 Active Agents</h2>
+                <div class="agent-status">
+                    <div class="agent-avatar">A</div>
+                    <div class="agent-info">
+                        <div class="agent-name">Alice (Frontend Specialist)</div>
+                        <div class="agent-task">Building interactive dashboard UI</div>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                <div class="agent-status">
+                    <div class="agent-avatar">B</div>
+                    <div class="agent-info">
+                        <div class="agent-name">Bob (Backend Architect)</div>
+                        <div class="agent-task">Designing collaboration analysis APIs</div>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+            </div>
+
+            <!-- Current Project Flow -->
+            <div class="card">
+                <h2>🚀 Project: Ensemble Framework</h2>
+                <div class="task-flow">
+                    <div class="task-node completed">Architecture</div>
+                    <div class="arrow">→</div>
+                    <div class="task-node active">Dashboard UI</div>
+                    <div class="arrow">→</div>
+                    <div class="task-node">Backend APIs</div>
+                    <div class="arrow">→</div>
+                    <div class="task-node">Integration</div>
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.85rem; color: #6b7280;">
+                    Alice focusing on user interface while Bob prepares backend infrastructure
+                </div>
+            </div>
+        </div>
+
+        <!-- Collaboration Analytics -->
+        <div class="card">
+            <h2>📊 Collaboration Analytics</h2>
+            <div class="metrics-grid">
+                <div class="metric">
+                    <div class="metric-value">2</div>
+                    <div class="metric-label">Active Projects</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">94%</div>
+                    <div class="metric-label">Task Success Rate</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">1.8</div>
+                    <div class="metric-label">Avg Handoffs</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-value">85%</div>
+                    <div class="metric-label">Role Consistency</div>
+                </div>
+            </div>
+
+            <div class="collaboration-insight">
+                <div class="insight-title">💡 Collaboration Insight</div>
+                Alice consistently handles frontend/UX tasks while Bob focuses on backend/data processing. This role specialization has led to 40% faster project completion compared to random task assignment.
+            </div>
+        </div>
+
+        <!-- Discovered Patterns -->
+        <div class="card">
+            <h2>🧠 Discovered Collaboration Patterns</h2>
+            <ul class="pattern-list">
+                <li>
+                    Frontend-Backend Role Specialization
+                    <span class="pattern-confidence">97% Confidence</span>
+                </li>
+                <li>
+                    Iterative Building on Previous Work
+                    <span class="pattern-confidence">92% Confidence</span>
+                </li>
+                <li>
+                    Educational Focus Alignment
+                    <span class="pattern-confidence">89% Confidence</span>
+                </li>
+                <li>
+                    Quality-First Development Approach
+                    <span class="pattern-confidence">94% Confidence</span>
+                </li>
+                <li>
+                    Natural Task Division by Tool Strengths
+                    <span class="pattern-confidence">91% Confidence</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Simulate real-time updates
+        function updateMetrics() {
+            const metrics = document.querySelectorAll('.metric-value');
+            // Add subtle animations and occasional metric updates
+            setInterval(() => {
+                metrics.forEach(metric => {
+                    metric.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        metric.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            }, 5000);
+        }
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            updateMetrics();
+
+            // Add some dynamic behavior
+            console.log('🤖 Ensemble Dashboard initialized');
+            console.log('📊 Tracking collaboration patterns between Alice & Bob');
+        });
+    </script>
+</body>
+</html>

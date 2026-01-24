@@ -1,0 +1,342 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T19:57:03.477396",
+  "duration_seconds": 2573.58,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.08,
+      "words": 147,
+      "cost_usd": 0.021131999999999998
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.17,
+      "words": 237,
+      "cost_usd": 0.02376075
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 419.35,
+      "words": 298,
+      "cost_usd": 0.3091827
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 900.1,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 131.29,
+      "words": 321,
+      "cost_usd": 0.32210330000000004
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 259.73,
+      "words": 329,
+      "cost_usd": 0.6258268
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 26.83,
+      "words": 336,
+      "cost_usd": 0.038302199999999995
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 294.25,
+      "words": 499,
+      "cost_usd": 0.5537853500000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 334.98,
+      "words": 276,
+      "cost_usd": 0.04129995
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 78.73,
+      "words": 650,
+      "cost_usd": 0.2908216
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 43.48,
+      "words": 319,
+      "cost_usd": 0.0706185
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 21.01,
+      "words": 504,
+      "cost_usd": 0.0406578
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 24.7,
+      "words": 584,
+      "cost_usd": 0.0453528
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 20.86,
+      "words": 550,
+      "cost_usd": 0.0475203
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2281,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 2772,
+      "turns": 7
+    }
+  },
+  "total_words": 5053,
+  "artifacts": [
+    {
+      "name": "kmeans-demo.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 11489,
+      "lines": 338
+    },
+    {
+      "name": "test-advanced-algorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 13138,
+      "lines": 390
+    },
+    {
+      "name": "test-graph-algorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 2397,
+      "lines": 56
+    },
+    {
+      "name": "PLATFORM_SHOWCASE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5910,
+      "lines": 135
+    },
+    {
+      "name": "visualization.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 21384,
+      "lines": 730
+    },
+    {
+      "name": "kmeans.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 11449,
+      "lines": 362
+    },
+    {
+      "name": "index.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 7154,
+      "lines": 170
+    },
+    {
+      "name": "graph-algorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 8517,
+      "lines": 284
+    },
+    {
+      "name": "styles.css",
+      "type": "web",
+      "extension": ".css",
+      "size_bytes": 10085,
+      "lines": 523
+    },
+    {
+      "name": "DEMO_WALKTHROUGH.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7089,
+      "lines": 178
+    },
+    {
+      "name": "kmeans-visualization.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 18343,
+      "lines": 507
+    },
+    {
+      "name": "graph-explorer.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 17396,
+      "lines": 558
+    },
+    {
+      "name": "graphAlgorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 14943,
+      "lines": 473
+    },
+    {
+      "name": "KMEANS_README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8080,
+      "lines": 220
+    },
+    {
+      "name": "test-advanced.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 18226,
+      "lines": 539
+    },
+    {
+      "name": "algorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 23163,
+      "lines": 736
+    },
+    {
+      "name": "LEARNING_PLATFORM_OVERVIEW.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4390,
+      "lines": 105
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6498,
+      "lines": 180
+    },
+    {
+      "name": "neuralNetwork.test.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 12804,
+      "lines": 391
+    },
+    {
+      "name": "test.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 21126,
+      "lines": 529
+    },
+    {
+      "name": "neuralNetworkVisualizer.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 11810,
+      "lines": 374
+    },
+    {
+      "name": "test-graph-complete.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 7641,
+      "lines": 202
+    },
+    {
+      "name": "graph-visualization.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 11057,
+      "lines": 360
+    },
+    {
+      "name": "neuralNetwork.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 9389,
+      "lines": 270
+    },
+    {
+      "name": "advanced-pathfinding.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 14064,
+      "lines": 410
+    },
+    {
+      "name": "kmeans-tests.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 15098,
+      "lines": 391
+    },
+    {
+      "name": "neural_network_demo.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 21362,
+      "lines": 594
+    },
+    {
+      "name": "test-runner.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 408,
+      "lines": 16
+    },
+    {
+      "name": "app.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 32634,
+      "lines": 951
+    }
+  ],
+  "artifact_summary": {
+    "total": 29,
+    "by_type": {
+      "web": 7,
+      "code": 17,
+      "document": 5
+    }
+  },
+  "topics": [
+    "algorithm",
+    "visualization",
+    "education",
+    "collaboration",
+    "neural"
+  ],
+  "usage": {
+    "total_cost_usd": 2.4304,
+    "input_tokens": 333,
+    "output_tokens": 60915
+  },
+  "had_failure": true
+}

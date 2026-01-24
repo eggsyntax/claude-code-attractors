@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Algorithm Learning Studio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Interactive Algorithm Learning Studio</h1>
+            <p>Explore pathfinding algorithms through interactive visualization</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Algorithm Controls -->
+            <div class="control-panel">
+                <div class="algorithm-selector">
+                    <label for="algorithm-select">Algorithm:</label>
+                    <select id="algorithm-select">
+                        <option value="astar_manhattan">A* (Manhattan)</option>
+                        <option value="astar_euclidean">A* (Euclidean)</option>
+                        <option value="dijkstra">Dijkstra</option>
+                        <option value="bfs">Breadth-First Search</option>
+                    </select>
+                </div>
+
+                <div class="playback-controls">
+                    <button id="reset-btn">🔄 Reset</button>
+                    <button id="step-back-btn" disabled>⏮ Step Back</button>
+                    <button id="play-pause-btn">▶️ Play</button>
+                    <button id="step-forward-btn" disabled>⏭ Step Forward</button>
+                </div>
+
+                <div class="speed-control">
+                    <label for="speed-slider">Speed:</label>
+                    <input type="range" id="speed-slider" min="1" max="10" value="5">
+                    <span id="speed-display">5</span>
+                </div>
+            </div>
+
+            <!-- Main Visualization Area -->
+            <div class="visualization-area">
+                <!-- Grid Canvas -->
+                <div class="canvas-container">
+                    <canvas id="grid-canvas" width="600" height="600"></canvas>
+                    <div class="grid-instructions">
+                        <p><strong>Instructions:</strong></p>
+                        <ul>
+                            <li>🟢 <strong>Left click:</strong> Set start/end points</li>
+                            <li>⚫ <strong>Right click + drag:</strong> Draw obstacles</li>
+                            <li>🔲 <strong>Middle click:</strong> Clear cell</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Algorithm State Panel -->
+                <div class="state-panel">
+                    <div class="algorithm-info">
+                        <h3 id="current-algorithm">Algorithm: A* (Manhattan)</h3>
+                        <div id="step-counter">Step: 0 / 0</div>
+                        <div id="step-description">Click Play to start visualization</div>
+                    </div>
+
+                    <div class="algorithm-state">
+                        <div class="state-section">
+                            <h4>Open Set</h4>
+                            <div id="open-set" class="node-list">-</div>
+                        </div>
+
+                        <div class="state-section">
+                            <h4>Closed Set</h4>
+                            <div id="closed-set" class="node-list">-</div>
+                        </div>
+
+                        <div class="state-section">
+                            <h4>Current Node</h4>
+                            <div id="current-node" class="current-node-info">
+                                <div>Position: -</div>
+                                <div id="cost-info" class="cost-display">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="performance-metrics">
+                        <h4>Performance</h4>
+                        <div id="nodes-explored">Nodes Explored: -</div>
+                        <div id="path-length">Path Length: -</div>
+                        <div id="execution-time">Time: -</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h4>Legend:</h4>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color start"></div>
+                    <span>Start Point</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color end"></div>
+                    <span>End Point</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color obstacle"></div>
+                    <span>Obstacle</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color open"></div>
+                    <span>Open Set</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color closed"></div>
+                    <span>Closed Set</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color current"></div>
+                    <span>Current Node</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color path"></div>
+                    <span>Final Path</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="grid.js"></script>
+    <script src="visualization.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

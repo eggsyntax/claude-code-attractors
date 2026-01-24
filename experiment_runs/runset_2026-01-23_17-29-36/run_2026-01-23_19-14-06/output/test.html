@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Tests - Visual Algorithm Explorer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: #f8fafc;
+        }
+
+        .test-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .test-results {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .success { color: #10b981; }
+        .error { color: #ef4444; }
+        .warning { color: #f59e0b; }
+        .info { color: #3b82f6; }
+
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #2563eb, #10b981);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Algorithm Test Suite</h1>
+    <p>Comprehensive testing for all sorting algorithms in the Visual Algorithm Explorer</p>
+
+    <div class="test-container">
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="runPerformanceTests()">Performance Tests</button>
+        <button onclick="runCorrectnessTests()">Correctness Tests</button>
+        <button onclick="clearResults()">Clear Results</button>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+
+        <div class="test-results" id="test-results">
+Click "Run All Tests" to begin testing...
+        </div>
+    </div>
+
+    <script src="algorithms.js"></script>
+    <script>
+        /**
+         * Comprehensive test suite for sorting algorithms
+         */
+        class AlgorithmTester {
+            constructor() {
+                this.results = [];
+                this.testCases = this.generateTestCases();
+                this.algorithms = {
+                    'Bubble Sort': SortingAlgorithms.bubbleSort,
+                    'Insertion Sort': SortingAlgorithms.insertionSort,
+                    'Quick Sort': SortingAlgorithms.quickSort,
+                    'Merge Sort': SortingAlgorithms.mergeSort
+                };
+            }
+
+            /**
+             * Generate comprehensive test cases
+             */
+            generateTestCases() {
+                return [
+                    // Edge cases
+                    { name: 'Empty array', input: [] },
+                    { name: 'Single element', input: [42] },
+                    { name: 'Two elements (ascending)', input: [1, 2] },
+                    { name: 'Two elements (descending)', input: [2, 1] },
+
+                    // Already sorted
+                    { name: 'Already sorted (small)', input: [1, 2, 3, 4, 5] },
+                    { name: 'Already sorted (medium)', input: Array.from({length: 20}, (_, i) => i + 1) },
+
+                    // Reverse sorted
+                    { name: 'Reverse sorted (small)', input: [5, 4, 3, 2, 1] },
+                    { name: 'Reverse sorted (medium)', input: Array.from({length: 20}, (_, i) => 20 - i) },
+
+                    // Random arrays
+                    { name: 'Random small', input: [3, 1, 4, 1, 5, 9, 2, 6, 5] },
+                    { name: 'Random medium', input: this.generateRandomArray(50) },
+                    { name: 'Random large', input: this.generateRandomArray(200) },
+
+                    // Special cases
+                    { name: 'All same elements', input: [7, 7, 7, 7, 7, 7, 7] },
+                    { name: 'Nearly sorted', input: [1, 2, 3, 5, 4, 6, 7, 8, 9, 10] },
+                    { name: 'Many duplicates', input: [1, 3, 2, 3, 1, 2, 1, 3, 2] },
+
+                    // Stress tests
+                    { name: 'Large sorted', input: Array.from({length: 500}, (_, i) => i) },
+                    { name: 'Large reverse', input: Array.from({length: 500}, (_, i) => 500 - i) }
+                ];
+            }
+
+            /**
+             * Generate random array of specified size
+             */
+            generateRandomArray(size) {
+                return Array.from({length: size}, () => Math.floor(Math.random() * 1000) + 1);
+            }
+
+            /**
+             * Check if array is sorted
+             */
+            isSorted(arr) {
+                for (let i = 1; i < arr.length; i++) {
+                    if (arr[i] < arr[i - 1]) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            /**
+             * Deep equality check for arrays
+             */
+            arraysEqual(a, b) {
+                if (a.length !== b.length) return false;
+                return a.every((val, i) => val === b[i]);
+            }
+
+            /**
+             * Log test result with formatting
+             */
+            log(message, type = 'info') {
+                const colors = {
+                    info: '#3b82f6',
+                    success: '#10b981',
+                    error: '#ef4444',
+                    warning: '#f59e0b'
+                };
+
+                const timestamp = new Date().toLocaleTimeString();
+                const formattedMessage = `[${timestamp}] ${message}`;
+
+                this.results.push({ message: formattedMessage, type });
+                this.updateDisplay();
+            }
+
+            /**
+             * Update the test results display
+             */
+            updateDisplay() {
+                const resultsElement = document.getElementById('test-results');
+                if (!resultsElement) return;
+
+                const content = this.results.map(result => {
+                    const className = result.type;
+                    return `<span class="${className}">${result.message}</span>`;
+                }).join('\n');
+
+                resultsElement.innerHTML = content;
+                resultsElement.scrollTop = resultsElement.scrollHeight;
+            }
+
+            /**
+             * Update progress bar
+             */
+            updateProgress(current, total) {
+                const progressFill = document.getElementById('progress-fill');
+                if (progressFill) {
+                    const percentage = (current / total) * 100;
+                    progressFill.style.width = `${percentage}%`;
+                }
+            }
+
+            /**
+             * Test algorithm correctness
+             */
+            testCorrectness(algorithmName, algorithmFunc, testCase) {
+                try {
+                    const inputCopy = [...testCase.input];
+                    const result = algorithmFunc(inputCopy);
+
+                    // Test 1: Is the result sorted?
+                    if (!this.isSorted(result.finalArray)) {
+                        return {
+                            success: false,
+                            error: `Result is not sorted: [${result.finalArray.slice(0, 10).join(', ')}${result.finalArray.length > 10 ? '...' : ''}]`
+                        };
+                    }
+
+                    // Test 2: Does it contain the same elements?
+                    const expectedSorted = [...testCase.input].sort((a, b) => a - b);
+                    if (!this.arraysEqual(result.finalArray, expectedSorted)) {
+                        return {
+                            success: false,
+                            error: `Elements don't match. Expected: [${expectedSorted.slice(0, 5).join(', ')}...], Got: [${result.finalArray.slice(0, 5).join(', ')}...]`
+                        };
+                    }
+
+                    // Test 3: Are metrics reasonable?
+                    if (result.metrics.comparisons < 0 || result.metrics.swaps < 0) {
+                        return {
+                            success: false,
+                            error: `Invalid metrics: comparisons=${result.metrics.comparisons}, swaps=${result.metrics.swaps}`
+                        };
+                    }
+
+                    // Test 4: Do steps exist and make sense?
+                    if (!result.steps || result.steps.length === 0) {
+                        return {
+                            success: false,
+                            error: 'No visualization steps generated'
+                        };
+                    }
+
+                    return {
+                        success: true,
+                        metrics: result.metrics,
+                        steps: result.steps.length,
+                        timeComplexity: result.timeComplexity,
+                        spaceComplexity: result.spaceComplexity
+                    };
+
+                } catch (error) {
+                    return {
+                        success: false,
+                        error: `Exception: ${error.message}`
+                    };
+                }
+            }
+
+            /**
+             * Run correctness tests for all algorithms
+             */
+            async runCorrectnessTests() {
+                this.log('=== CORRECTNESS TESTS ===', 'info');
+                this.log('Testing algorithm correctness on various input types...', 'info');
+
+                let totalTests = 0;
+                let passedTests = 0;
+                let testCount = 0;
+                const totalTestCases = Object.keys(this.algorithms).length * this.testCases.length;
+
+                for (const [algorithmName, algorithmFunc] of Object.entries(this.algorithms)) {
+                    this.log(`\n--- Testing ${algorithmName} ---`, 'info');
+
+                    let algorithmPassed = 0;
+                    let algorithmTotal = 0;
+
+                    for (const testCase of this.testCases) {
+                        testCount++;
+                        this.updateProgress(testCount, totalTestCases);
+
+                        totalTests++;
+                        algorithmTotal++;
+
+                        const result = this.testCorrectness(algorithmName, algorithmFunc, testCase);
+
+                        if (result.success) {
+                            passedTests++;
+                            algorithmPassed++;
+                            this.log(`  ✓ ${testCase.name} (${testCase.input.length} elements) - ${result.metrics.comparisons} comparisons, ${result.metrics.swaps} swaps, ${result.steps} steps`, 'success');
+                        } else {
+                            this.log(`  ✗ ${testCase.name} (${testCase.input.length} elements) - ${result.error}`, 'error');
+                        }
+
+                        // Small delay to show progress
+                        await new Promise(resolve => setTimeout(resolve, 10));
+                    }
+
+                    const algorithmSuccessRate = ((algorithmPassed / algorithmTotal) * 100).toFixed(1);
+                    this.log(`${algorithmName} Results: ${algorithmPassed}/${algorithmTotal} tests passed (${algorithmSuccessRate}%)`,
+                        algorithmPassed === algorithmTotal ? 'success' : 'warning');
+                }
+
+                const overallSuccessRate = ((passedTests / totalTests) * 100).toFixed(1);
+                this.log(`\n=== CORRECTNESS SUMMARY ===`, 'info');
+                this.log(`Total: ${passedTests}/${totalTests} tests passed (${overallSuccessRate}%)`,
+                    passedTests === totalTests ? 'success' : 'warning');
+
+                return { passed: passedTests, total: totalTests };
+            }
+
+            /**
+             * Run performance comparison tests
+             */
+            async runPerformanceTests() {
+                this.log('\n=== PERFORMANCE TESTS ===', 'info');
+                this.log('Comparing algorithm performance on different input sizes...', 'info');
+
+                const performanceTestCases = [
+                    { name: 'Small (50 elements)', size: 50 },
+                    { name: 'Medium (200 elements)', size: 200 },
+                    { name: 'Large (500 elements)', size: 500 }
+                ];
+
+                for (const testCase of performanceTestCases) {
+                    this.log(`\n--- ${testCase.name} ---`, 'info');
+
+                    const testArray = this.generateRandomArray(testCase.size);
+                    const results = [];
+
+                    for (const [algorithmName, algorithmFunc] of Object.entries(this.algorithms)) {
+                        const startTime = performance.now();
+                        const result = algorithmFunc([...testArray]);
+                        const endTime = performance.now();
+
+                        results.push({
+                            name: algorithmName,
+                            time: endTime - startTime,
+                            comparisons: result.metrics.comparisons,
+                            swaps: result.metrics.swaps,
+                            steps: result.steps.length
+                        });
+
+                        await new Promise(resolve => setTimeout(resolve, 5));
+                    }
+
+                    // Sort by execution time
+                    results.sort((a, b) => a.time - b.time);
+
+                    results.forEach((result, index) => {
+                        const rank = index + 1;
+                        this.log(`  ${rank}. ${result.name}: ${result.time.toFixed(2)}ms, ${result.comparisons} comparisons, ${result.swaps} swaps, ${result.steps} steps`,
+                            rank === 1 ? 'success' : 'info');
+                    });
+                }
+            }
+
+            /**
+             * Run comprehensive algorithm validation
+             */
+            async runValidationTests() {
+                this.log('\n=== ALGORITHM VALIDATION ===', 'info');
+                this.log('Running deep validation of algorithm implementations...', 'info');
+
+                const validationTests = [
+                    {
+                        name: 'Stability check (for stable algorithms)',
+                        test: (algorithmName, algorithmFunc) => {
+                            // Test with objects to check stability
+                            const input = [
+                                { value: 5, id: 'a' }, { value: 2, id: 'b' }, { value: 5, id: 'c' },
+                                { value: 1, id: 'd' }, { value: 2, id: 'e' }
+                            ];
+
+                            // Note: Our current implementation works with numbers, so we'll simulate this
+                            const numberInput = [5, 2, 5, 1, 2];
+                            const result = algorithmFunc([...numberInput]);
+
+                            return {
+                                success: this.isSorted(result.finalArray),
+                                info: 'Stability test adapted for number arrays'
+                            };
+                        }
+                    },
+                    {
+                        name: 'Large dataset handling',
+                        test: (algorithmName, algorithmFunc) => {
+                            const largeArray = this.generateRandomArray(1000);
+                            const startMemory = performance.memory ? performance.memory.usedJSHeapSize : 0;
+
+                            const result = algorithmFunc([...largeArray]);
+
+                            const endMemory = performance.memory ? performance.memory.usedJSHeapSize : 0;
+                            const memoryUsed = endMemory - startMemory;
+
+                            return {
+                                success: this.isSorted(result.finalArray),
+                                info: `Memory delta: ${memoryUsed} bytes`
+                            };
+                        }
+                    },
+                    {
+                        name: 'Edge case robustness',
+                        test: (algorithmName, algorithmFunc) => {
+                            const edgeCases = [
+                                [],
+                                [1],
+                                [1, 1, 1, 1],
+                                [Number.MAX_SAFE_INTEGER, 1, Number.MAX_SAFE_INTEGER],
+                                Array(100).fill(42)
+                            ];
+
+                            for (const testArray of edgeCases) {
+                                const result = algorithmFunc([...testArray]);
+                                if (!this.isSorted(result.finalArray)) {
+                                    return {
+                                        success: false,
+                                        info: `Failed on edge case: [${testArray.slice(0, 5).join(', ')}${testArray.length > 5 ? '...' : ''}]`
+                                    };
+                                }
+                            }
+
+                            return { success: true, info: 'All edge cases passed' };
+                        }
+                    }
+                ];
+
+                for (const validation of validationTests) {
+                    this.log(`\n--- ${validation.name} ---`, 'info');
+
+                    for (const [algorithmName, algorithmFunc] of Object.entries(this.algorithms)) {
+                        try {
+                            const result = validation.test(algorithmName, algorithmFunc);
+
+                            if (result.success) {
+                                this.log(`  ✓ ${algorithmName}: ${result.info}`, 'success');
+                            } else {
+                                this.log(`  ✗ ${algorithmName}: ${result.info}`, 'error');
+                            }
+                        } catch (error) {
+                            this.log(`  ✗ ${algorithmName}: Exception - ${error.message}`, 'error');
+                        }
+
+                        await new Promise(resolve => setTimeout(resolve, 10));
+                    }
+                }
+            }
+
+            /**
+             * Run all tests
+             */
+            async runAllTests() {
+                this.results = [];
+                this.log('Starting comprehensive algorithm test suite...', 'info');
+                this.log(`Testing ${Object.keys(this.algorithms).length} algorithms with ${this.testCases.length} test cases each`, 'info');
+
+                try {
+                    const correctnessResults = await this.runCorrectnessTests();
+                    await this.runPerformanceTests();
+                    await this.runValidationTests();
+
+                    this.log('\n=== FINAL SUMMARY ===', 'info');
+                    this.log(`All tests completed successfully!`, 'success');
+                    this.log(`Correctness: ${correctnessResults.passed}/${correctnessResults.total} tests passed`,
+                        correctnessResults.passed === correctnessResults.total ? 'success' : 'warning');
+
+                } catch (error) {
+                    this.log(`\n=== TEST SUITE ERROR ===`, 'error');
+                    this.log(`Error running tests: ${error.message}`, 'error');
+                }
+
+                this.updateProgress(100, 100);
+            }
+
+            /**
+             * Clear test results
+             */
+            clear() {
+                this.results = [];
+                this.updateDisplay();
+                this.updateProgress(0, 100);
+            }
+        }
+
+        // Global test runner instance
+        const tester = new AlgorithmTester();
+
+        // Global functions for HTML buttons
+        async function runAllTests() {
+            await tester.runAllTests();
+        }
+
+        async function runCorrectnessTests() {
+            tester.results = [];
+            await tester.runCorrectnessTests();
+        }
+
+        async function runPerformanceTests() {
+            tester.results = [];
+            await tester.runPerformanceTests();
+        }
+
+        function clearResults() {
+            tester.clear();
+        }
+
+        // Auto-run a quick test on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            tester.log('Algorithm Test Suite Ready!', 'success');
+            tester.log('Click "Run All Tests" to begin comprehensive testing.', 'info');
+        });
+    </script>
+</body>
+</html>

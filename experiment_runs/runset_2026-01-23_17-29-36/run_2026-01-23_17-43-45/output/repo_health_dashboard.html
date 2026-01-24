@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Repository Health Analyzer</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.29.3/index.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .search-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .search-form input {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px 20px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-form input:focus {
+            border-color: #667eea;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .search-form button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .search-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .search-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .results-section {
+            display: none;
+        }
+
+        .results-section.visible {
+            display: block;
+        }
+
+        .repo-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .repo-info h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .repo-info p {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+
+        .overall-score {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 10px;
+        }
+
+        .score-excellent { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .score-good { background: linear-gradient(135deg, #f39c12, #f1c40f); }
+        .score-fair { background: linear-gradient(135deg, #e67e22, #d35400); }
+        .score-poor { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+
+        .score-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .chart-container h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .metric-name {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .metric-score {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .metric-description {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .metric-details {
+            display: grid;
+            gap: 8px;
+        }
+
+        .metric-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            padding: 5px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .metric-detail:last-child {
+            border-bottom: none;
+        }
+
+        .metric-detail-label {
+            color: #7f8c8d;
+        }
+
+        .metric-detail-value {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .insights-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .insights-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .insight-category {
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid;
+        }
+
+        .insight-category.strengths {
+            background: rgba(46, 204, 113, 0.1);
+            border-left-color: #2ecc71;
+        }
+
+        .insight-category.concerns {
+            background: rgba(231, 76, 60, 0.1);
+            border-left-color: #e74c3c;
+        }
+
+        .insight-category.recommendations {
+            background: rgba(52, 152, 219, 0.1);
+            border-left-color: #3498db;
+        }
+
+        .insight-category h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .insight-list {
+            list-style: none;
+        }
+
+        .insight-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: #34495e;
+            line-height: 1.4;
+        }
+
+        .insight-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: inherit;
+            font-weight: bold;
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid #e74c3c;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            color: #c0392b;
+            text-align: center;
+            display: none;
+        }
+
+        .comparison-section {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-section h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .comparison-form {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .comparison-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .comparison-form button {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .repo-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form input {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GitHub Repository Health Analyzer</h1>
+        <p>Comprehensive analysis and insights for repository health metrics</p>
+    </div>
+
+    <div class="container">
+        <div class="search-section">
+            <form class="search-form" id="searchForm">
+                <input
+                    type="text"
+                    id="repoInput"
+                    placeholder="Enter repository (e.g., owner/repo-name)"
+                    required
+                >
+                <button type="submit" id="analyzeBtn">Analyze Repository</button>
+            </form>
+        </div>
+
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p>Analyzing repository health metrics...</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="repo-header" id="repoHeader">
+                <div class="repo-info">
+                    <h2 id="repoName">Repository Name</h2>
+                    <p id="repoDescription">Repository Description</p>
+                </div>
+                <div class="overall-score">
+                    <div class="score-circle" id="overallScoreCircle">85</div>
+                    <div class="score-label">Overall Health</div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="chart-container">
+                    <h3>Health Metrics Overview</h3>
+                    <canvas id="radarChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Score Distribution</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+            <div class="metrics-grid" id="metricsGrid">
+                <!-- Metric cards will be populated by JavaScript -->
+            </div>
+
+            <div class="insights-section">
+                <h3>Analysis & Recommendations</h3>
+                <div class="insights-grid">
+                    <div class="insight-category strengths">
+                        <h4>Strengths</h4>
+                        <ul class="insight-list" id="strengthsList"></ul>
+                    </div>
+                    <div class="insight-category concerns">
+                        <h4>Areas of Concern</h4>
+                        <ul class="insight-list" id="concernsList"></ul>
+                    </div>
+                    <div class="insight-category recommendations">
+                        <h4>Recommendations</h4>
+                        <ul class="insight-list" id="recommendationsList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="comparison-section">
+            <h3>Repository Comparison</h3>
+            <form class="comparison-form" id="comparisonForm">
+                <input
+                    type="text"
+                    id="comparisonRepo"
+                    placeholder="Enter second repository to compare"
+                >
+                <button type="submit">Compare Repositories</button>
+            </form>
+            <div id="comparisonResults"></div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const API_BASE_URL = 'http://localhost:8000';
+
+        // DOM Elements
+        const searchForm = document.getElementById('searchForm');
+        const repoInput = document.getElementById('repoInput');
+        const analyzeBtn = document.getElementById('analyzeBtn');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const errorMessage = document.getElementById('errorMessage');
+        const resultsSection = document.getElementById('resultsSection');
+        const comparisonForm = document.getElementById('comparisonForm');
+
+        // Chart instances
+        let radarChart = null;
+        let barChart = null;
+
+        // Event Listeners
+        searchForm.addEventListener('submit', handleRepositoryAnalysis);
+        comparisonForm.addEventListener('submit', handleRepositoryComparison);
+
+        async function handleRepositoryAnalysis(event) {
+            event.preventDefault();
+
+            const repoName = repoInput.value.trim();
+            if (!repoName) return;
+
+            setLoading(true);
+            hideError();
+
+            try {
+                const healthData = await analyzeRepository(repoName);
+                displayRepositoryHealth(healthData);
+            } catch (error) {
+                showError(`Failed to analyze repository: ${error.message}`);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        async function analyzeRepository(repoName) {
+            const response = await fetch(`${API_BASE_URL}/analyze/${encodeURIComponent(repoName)}`);
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.detail || `HTTP ${response.status}`);
+            }
+
+            return await response.json();
+        }
+
+        function displayRepositoryHealth(data) {
+            // Update repository header
+            document.getElementById('repoName').textContent = data.repository;
+            document.getElementById('repoDescription').textContent =
+                `Analyzed ${new Date().toLocaleDateString()} • Overall Health Score`;
+
+            // Update overall score
+            const overallScore = Math.round(data.overall_score);
+            const scoreCircle = document.getElementById('overallScoreCircle');
+            scoreCircle.textContent = overallScore;
+            scoreCircle.className = `score-circle ${getScoreClass(overallScore)}`;
+
+            // Create charts
+            createRadarChart(data.metrics);
+            createBarChart(data.metrics);
+
+            // Display metric cards
+            displayMetricCards(data.metrics);
+
+            // Display insights
+            displayInsights(data.insights);
+
+            // Show results
+            resultsSection.classList.add('visible');
+        }
+
+        function getScoreClass(score) {
+            if (score >= 80) return 'score-excellent';
+            if (score >= 60) return 'score-good';
+            if (score >= 40) return 'score-fair';
+            return 'score-poor';
+        }
+
+        function createRadarChart(metrics) {
+            const ctx = document.getElementById('radarChart').getContext('2d');
+
+            if (radarChart) {
+                radarChart.destroy();
+            }
+
+            const labels = Object.keys(metrics).map(key =>
+                key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+            );
+            const scores = Object.values(metrics).map(metric => metric.score);
+
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Health Scores',
+                        data: scores,
+                        borderColor: 'rgb(102, 126, 234)',
+                        backgroundColor: 'rgba(102, 126, 234, 0.2)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgb(102, 126, 234)',
+                        pointBorderColor: '#fff',
+                        pointBorderWidth: 2,
+                        pointRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function createBarChart(metrics) {
+            const ctx = document.getElementById('barChart').getContext('2d');
+
+            if (barChart) {
+                barChart.destroy();
+            }
+
+            const labels = Object.keys(metrics).map(key =>
+                key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase())
+            );
+            const scores = Object.values(metrics).map(metric => metric.score);
+
+            barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Scores',
+                        data: scores,
+                        backgroundColor: [
+                            'rgba(102, 126, 234, 0.8)',
+                            'rgba(118, 75, 162, 0.8)',
+                            'rgba(46, 204, 113, 0.8)',
+                            'rgba(52, 152, 219, 0.8)',
+                            'rgba(241, 196, 15, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgb(102, 126, 234)',
+                            'rgb(118, 75, 162)',
+                            'rgb(46, 204, 113)',
+                            'rgb(52, 152, 219)',
+                            'rgb(241, 196, 15)'
+                        ],
+                        borderWidth: 2,
+                        borderRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        function displayMetricCards(metrics) {
+            const metricsGrid = document.getElementById('metricsGrid');
+            metricsGrid.innerHTML = '';
+
+            Object.entries(metrics).forEach(([key, metric]) => {
+                const card = createMetricCard(key, metric);
+                metricsGrid.appendChild(card);
+            });
+        }
+
+        function createMetricCard(key, metric) {
+            const card = document.createElement('div');
+            card.className = 'metric-card';
+
+            const metricName = key.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+            card.innerHTML = `
+                <div class="metric-header">
+                    <div class="metric-name">${metricName}</div>
+                    <div class="metric-score">${Math.round(metric.score)}</div>
+                </div>
+                <div class="metric-description">${metric.description}</div>
+                <div class="metric-details">
+                    ${Object.entries(metric.details || {}).map(([detailKey, detailValue]) => `
+                        <div class="metric-detail">
+                            <span class="metric-detail-label">${detailKey.replace('_', ' ')}</span>
+                            <span class="metric-detail-value">${detailValue}</span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            return card;
+        }
+
+        function displayInsights(insights) {
+            const strengthsList = document.getElementById('strengthsList');
+            const concernsList = document.getElementById('concernsList');
+            const recommendationsList = document.getElementById('recommendationsList');
+
+            strengthsList.innerHTML = insights.strengths.map(s => `<li>${s}</li>`).join('');
+            concernsList.innerHTML = insights.concerns.map(c => `<li>${c}</li>`).join('');
+            recommendationsList.innerHTML = insights.recommendations.map(r => `<li>${r}</li>`).join('');
+        }
+
+        async function handleRepositoryComparison(event) {
+            event.preventDefault();
+
+            const comparisonRepo = document.getElementById('comparisonRepo').value.trim();
+            if (!comparisonRepo) return;
+
+            // This would implement repository comparison functionality
+            // For now, show a placeholder
+            const comparisonResults = document.getElementById('comparisonResults');
+            comparisonResults.innerHTML = `
+                <div style="padding: 20px; text-align: center; color: #7f8c8d;">
+                    <p>Repository comparison feature coming soon!</p>
+                    <p>Will compare: <strong>${repoInput.value}</strong> vs <strong>${comparisonRepo}</strong></p>
+                </div>
+            `;
+        }
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                loadingSpinner.style.display = 'block';
+                analyzeBtn.disabled = true;
+                resultsSection.classList.remove('visible');
+            } else {
+                loadingSpinner.style.display = 'none';
+                analyzeBtn.disabled = false;
+            }
+        }
+
+        function showError(message) {
+            errorMessage.textContent = message;
+            errorMessage.style.display = 'block';
+        }
+
+        function hideError() {
+            errorMessage.style.display = 'none';
+        }
+
+        // Demo functionality - populate with sample data for demonstration
+        function loadDemoData() {
+            const demoData = {
+                repository: "facebook/react",
+                overall_score: 87.4,
+                metrics: {
+                    code_quality: {
+                        score: 85,
+                        description: "Code structure, complexity, and maintainability indicators",
+                        details: {
+                            "Test Coverage": "78%",
+                            "Documentation Ratio": "0.42",
+                            "Code Complexity": "Moderate"
+                        }
+                    },
+                    community_health: {
+                        score: 92,
+                        description: "Community engagement, issue management, and collaboration metrics",
+                        details: {
+                            "Contributors": "1,547",
+                            "Issue Response Time": "2.3 days",
+                            "PR Merge Rate": "85%"
+                        }
+                    },
+                    project_vitality: {
+                        score: 90,
+                        description: "Project activity, maintenance, and development momentum",
+                        details: {
+                            "Commits (30d)": "156",
+                            "Release Frequency": "Monthly",
+                            "Active Branches": "12"
+                        }
+                    },
+                    technical_debt: {
+                        score: 88,
+                        description: "Technical debt indicators and maintenance burden",
+                        details: {
+                            "TODO Comments": "23",
+                            "Deprecated Usage": "Low",
+                            "Outdated Dependencies": "5%"
+                        }
+                    },
+                    contributor_activity: {
+                        score: 85,
+                        description: "Developer engagement and contribution patterns",
+                        details: {
+                            "Active Contributors": "87",
+                            "New Contributors": "12",
+                            "Commit Distribution": "Well Distributed"
+                        }
+                    }
+                },
+                insights: {
+                    strengths: [
+                        "Excellent community engagement with fast issue response times",
+                        "High contributor diversity with active participation",
+                        "Strong release cadence with regular updates",
+                        "Low technical debt with good code organization"
+                    ],
+                    concerns: [
+                        "Test coverage could be improved beyond 78%",
+                        "Some outdated dependencies need updating",
+                        "Documentation could be expanded in certain areas"
+                    ],
+                    recommendations: [
+                        "Implement automated testing for better coverage",
+                        "Create contribution guidelines for new developers",
+                        "Regular dependency updates and security audits",
+                        "Expand API documentation and examples"
+                    ]
+                }
+            };
+
+            // Auto-populate demo data for showcase
+            repoInput.value = "facebook/react";
+            displayRepositoryHealth(demoData);
+        }
+
+        // Load demo data on page load for demonstration
+        window.addEventListener('load', () => {
+            setTimeout(loadDemoData, 1000);
+        });
+    </script>
+</body>
+</html>

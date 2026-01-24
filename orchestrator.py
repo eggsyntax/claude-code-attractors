@@ -75,11 +75,18 @@ def build_system_prompt(
 ) -> str:
     """Build the system prompt for an agent."""
     other_agents = [a for a in all_agents if a != agent_name]
-    others_str = ", ".join(other_agents) if other_agents else "other Claude Code instances"
+    if other_agents:
+        if len(other_agents) == 1:
+            others_str = " another Claude Code instance (" + other_agents[0] + ")"
+        else:
+            others_str = " other Claude Code instances (" + ", ".join(other_agents) + ")"
+    else:
+        others_str = " other Claude Code instances"
+    # others_str = ", ".join(other_agents) if other_agents else "other Claude Code instances"
 
     seed_line = f"\nSuggested topic: {seed_topic}\n\n" if seed_topic else ""
 
-    return f"""You are {agent_name}, a Claude Code instance conversing and collaborating with other Claude Code instance(s) ({others_str}), on any topic you choose.
+    return f"""You are {agent_name}, a Claude Code instance free to converse and collaborate with {others_str}, on any topic or topics you choose.
 {seed_line}
 OUTPUT DIRECTORY: {output_dir}/
 If you create files, put them here. If you wish for them to have value later, make them self-documenting, since any possible future readers of them won't have seen this conversation.
@@ -269,7 +276,7 @@ def scan_artifacts(output_dir: Path) -> list[dict]:
 
 
 def extract_topics(conversation_data: dict, model: str) -> list[str]:
-    """Use Claude to extract 1-5 topic words from the conversation."""
+    """Use Claude to extract 3-5 topic words from the conversation."""
     messages = conversation_data.get('messages', [])
     if not messages:
         return []
@@ -280,12 +287,12 @@ def extract_topics(conversation_data: dict, model: str) -> list[str]:
         for m in messages[:10]  # First 10 messages should be enough
     )
 
-    prompt = f"""Read this conversation excerpt and extract 1-5 single words that capture the main topics or themes discussed. Return ONLY the words, one per line, lowercase, no punctuation or explanation.
+    prompt = f"""Read this conversation excerpt and extract 3-5 single words that capture the main topics or themes discussed. Return ONLY the words, one per line, lowercase, no punctuation or explanation. The conversation is a dialogue and collaboration between multiple Claude Code instances, who may be building software artifacts; words that automatically follow from that context shouldn't be counted as topics.
 
 Conversation:
 {conversation_text}
 
-Topics (1-5 words, one per line):"""
+Topics (3-5 words, one per line):"""
 
     cmd = [
         "claude", "-p", prompt,

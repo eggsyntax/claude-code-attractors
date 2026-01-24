@@ -1,0 +1,256 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T17:43:24.590527",
+  "duration_seconds": 824.47,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.72,
+      "words": 137,
+      "cost_usd": 0.02702955
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.25,
+      "words": 251,
+      "cost_usd": 0.023925750000000003
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 19.92,
+      "words": 188,
+      "cost_usd": 0.029377350000000003
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 66.81,
+      "words": 222,
+      "cost_usd": 0.10987590000000001
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 160.81,
+      "words": 242,
+      "cost_usd": 0.27571599999999996
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 137.69,
+      "words": 355,
+      "cost_usd": 0.26567385
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 135.45,
+      "words": 321,
+      "cost_usd": 0.27684434999999996
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 16.27,
+      "words": 337,
+      "cost_usd": 0.0247203
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 67.96,
+      "words": 361,
+      "cost_usd": 0.09303254999999999
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 55.63,
+      "words": 155,
+      "cost_usd": 0.09619695
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 65.7,
+      "words": 85,
+      "cost_usd": 0.15132485000000004
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 29.74,
+      "words": 320,
+      "cost_usd": 0.04781745
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 35.31,
+      "words": 221,
+      "cost_usd": 0.05510430000000001
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 15.2,
+      "words": 370,
+      "cost_usd": 0.03290655
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1555,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 2010,
+      "turns": 7
+    }
+  },
+  "total_words": 3565,
+  "artifacts": [
+    {
+      "name": "sample_code.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3385,
+      "lines": 101
+    },
+    {
+      "name": "future_research_directions.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8851,
+      "lines": 207
+    },
+    {
+      "name": "collaboration_insights.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3538,
+      "lines": 80
+    },
+    {
+      "name": "simple_collaboration_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3801,
+      "lines": 76
+    },
+    {
+      "name": "reporter.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10865,
+      "lines": 247
+    },
+    {
+      "name": "collaborative_ai_breakthrough.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2458,
+      "lines": 46
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1283,
+      "lines": 29
+    },
+    {
+      "name": "scalability_experiment.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1918,
+      "lines": 39
+    },
+    {
+      "name": "analyzer_bob.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10604,
+      "lines": 260
+    },
+    {
+      "name": "test_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3081,
+      "lines": 88
+    },
+    {
+      "name": "collaboration_protocol.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2414,
+      "lines": 51
+    },
+    {
+      "name": "COLLABORATION_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4162,
+      "lines": 98
+    },
+    {
+      "name": "main.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5219,
+      "lines": 180
+    },
+    {
+      "name": "demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3695,
+      "lines": 104
+    },
+    {
+      "name": "analyzer_alice.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17895,
+      "lines": 438
+    },
+    {
+      "name": "collaborative_ai_manifesto.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3998,
+      "lines": 86
+    },
+    {
+      "name": "synthesis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21058,
+      "lines": 453
+    }
+  ],
+  "artifact_summary": {
+    "total": 17,
+    "by_type": {
+      "code": 10,
+      "document": 7
+    }
+  },
+  "topics": [
+    "collaboration",
+    "analysis",
+    "synthesis",
+    "ai",
+    "code"
+  ],
+  "usage": {
+    "total_cost_usd": 1.5095,
+    "input_tokens": 256,
+    "output_tokens": 42695
+  }
+}

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Neural Network Explorer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2196F3, #21CBF3);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            min-height: 70vh;
+        }
+
+        .control-panel {
+            background: #f8f9fa;
+            padding: 30px;
+            border-right: 1px solid #e9ecef;
+        }
+
+        .control-section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .control-section:last-child {
+            border-bottom: none;
+        }
+
+        .control-section h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #6c757d;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 5px 5px 0;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+
+        .btn.secondary {
+            background: #6c757d;
+        }
+
+        .btn.secondary:hover {
+            background: #545b62;
+        }
+
+        .btn.success {
+            background: #28a745;
+        }
+
+        .btn.success:hover {
+            background: #218838;
+        }
+
+        .btn.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .btn.warning:hover {
+            background: #e0a800;
+        }
+
+        .btn:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .visualization-area {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #networkCanvas {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .metrics-panel {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .animation-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .speed-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .examples-section {
+            background: #f8f9fa;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .example-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .example-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .example-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .example-description {
+            color: #6c757d;
+            margin-bottom: 15px;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-ready { background-color: #28a745; }
+        .status-training { background-color: #ffc107; }
+        .status-animating { background-color: #2196F3; }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .control-panel {
+                border-right: none;
+                border-bottom: 1px solid #e9ecef;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Neural Network Explorer</h1>
+            <p>Watch neural networks learn through interactive step-by-step visualization</p>
+        </div>
+
+        <div class="main-content">
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3>🏗️ Network Architecture</h3>
+                    <div class="input-group">
+                        <label>Input Nodes</label>
+                        <input type="number" id="inputNodes" value="2" min="1" max="10">
+                    </div>
+                    <div class="input-group">
+                        <label>Hidden Layers</label>
+                        <input type="text" id="hiddenLayers" value="4,3" placeholder="e.g., 4,3">
+                    </div>
+                    <div class="input-group">
+                        <label>Output Nodes</label>
+                        <input type="number" id="outputNodes" value="1" min="1" max="10">
+                    </div>
+                    <button class="btn" onclick="createNetwork()">Create Network</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>📊 Training Data</h3>
+                    <div class="input-group">
+                        <label>Input Values</label>
+                        <input type="text" id="inputValues" value="0.5,0.8" placeholder="e.g., 0.5,0.8">
+                    </div>
+                    <div class="input-group">
+                        <label>Target Output</label>
+                        <input type="text" id="targetOutput" value="0.7" placeholder="e.g., 0.7">
+                    </div>
+                    <button class="btn success" onclick="trainStep()">Train Step</button>
+                    <button class="btn warning" onclick="runForward()">Forward Pass</button>
+                </div>
+
+                <div class="control-section">
+                    <h3>🎮 Animation Controls</h3>
+                    <div class="animation-controls">
+                        <button class="btn" onclick="visualizer.startAnimation()">▶️ Play</button>
+                        <button class="btn secondary" onclick="visualizer.stopAnimation()">⏸️ Pause</button>
+                        <button class="btn secondary" onclick="visualizer.resetAnimation()">⏹️ Reset</button>
+                    </div>
+                    <div class="animation-controls">
+                        <button class="btn secondary" onclick="visualizer.stepBackward()">⏮️ Step Back</button>
+                        <button class="btn secondary" onclick="visualizer.stepForward()">⏭️ Step Forward</button>
+                    </div>
+                    <div class="speed-control">
+                        <label>Speed:</label>
+                        <input type="range" id="animationSpeed" min="100" max="3000" value="1000"
+                               onchange="visualizer.setAnimationSpeed(this.value)">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>⚙️ Parameters</h3>
+                    <div class="input-group">
+                        <label>Learning Rate</label>
+                        <input type="number" id="learningRate" value="0.01" min="0.001" max="1" step="0.001"
+                               onchange="network.setLearningRate(parseFloat(this.value))">
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>📈 Status</h3>
+                    <div id="networkStatus">
+                        <span class="status-indicator status-ready"></span>
+                        Ready
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualization-area">
+                <canvas id="networkCanvas" width="800" height="600"></canvas>
+
+                <div class="metrics-panel">
+                    <h3 style="text-align: center; margin-bottom: 20px;">📊 Network Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value" id="currentLoss">0.000</div>
+                            <div class="metric-label">Current Loss</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="totalParams">0</div>
+                            <div class="metric-label">Parameters</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="currentEpoch">0</div>
+                            <div class="metric-label">Training Steps</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value" id="networkDepth">0</div>
+                            <div class="metric-label">Network Depth</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="examples-section">
+            <h2 style="text-align: center; margin-bottom: 10px;">🎯 Try These Examples</h2>
+            <p style="text-align: center; color: #6c757d; margin-bottom: 30px;">
+                Click on any example to automatically configure the network and see it in action
+            </p>
+
+            <div class="examples-grid">
+                <div class="example-card" onclick="loadExample('xor')">
+                    <div class="example-title">🔀 XOR Problem</div>
+                    <div class="example-description">
+                        Classic non-linear classification problem that demonstrates why we need hidden layers.
+                        Watch the network learn to solve XOR logic.
+                    </div>
+                    <button class="btn">Load XOR Example</button>
+                </div>
+
+                <div class="example-card" onclick="loadExample('regression')">
+                    <div class="example-title">📈 Simple Regression</div>
+                    <div class="example-description">
+                        Learn a simple function mapping. See how the network approximates
+                        continuous functions through step-by-step training.
+                    </div>
+                    <button class="btn">Load Regression Example</button>
+                </div>
+
+                <div class="example-card" onclick="loadExample('classification')">
+                    <div class="example-title">🎯 Binary Classification</div>
+                    <div class="example-description">
+                        Classify data points into two categories. Understand how neural networks
+                        create decision boundaries in feature space.
+                    </div>
+                    <button class="btn">Load Classification Example</button>
+                </div>
+
+                <div class="example-card" onclick="loadExample('deep')">
+                    <div class="example-title">🏗️ Deep Network</div>
+                    <div class="example-description">
+                        Explore a deeper network with multiple hidden layers. See how information
+                        flows through many layers during training.
+                    </div>
+                    <button class="btn">Load Deep Example</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="neuralNetwork.js"></script>
+    <script src="neuralNetworkVisualizer.js"></script>
+    <script>
+        // Global variables
+        let network;
+        let visualizer;
+        let trainingStep = 0;
+        let currentLoss = 0;
+
+        // Initialize the application
+        function init() {
+            createNetwork();
+            updateMetrics();
+        }
+
+        // Create a new neural network
+        function createNetwork() {
+            const inputNodes = parseInt(document.getElementById('inputNodes').value);
+            const hiddenLayersText = document.getElementById('hiddenLayers').value;
+            const outputNodes = parseInt(document.getElementById('outputNodes').value);
+
+            // Parse hidden layers
+            const hiddenLayers = hiddenLayersText.split(',').map(s => parseInt(s.trim())).filter(n => !isNaN(n));
+            const architecture = [inputNodes, ...hiddenLayers, outputNodes];
+
+            // Create network and visualizer
+            network = new NeuralNetwork(architecture);
+            visualizer = new NeuralNetworkVisualizer('networkCanvas', network);
+
+            updateStatus('Ready');
+            updateMetrics();
+            console.log('Created network with architecture:', architecture);
+        }
+
+        // Perform a forward pass
+        function runForward() {
+            const inputText = document.getElementById('inputValues').value;
+            const inputs = inputText.split(',').map(s => parseFloat(s.trim()));
+
+            if (inputs.length !== network.architecture[0]) {
+                alert(`Input must have ${network.architecture[0]} values`);
+                return;
+            }
+
+            updateStatus('Running Forward Pass');
+            const output = network.forward(inputs, true);
+            visualizer.updateNetwork(network);
+
+            console.log('Forward pass - Input:', inputs, 'Output:', output);
+            updateStatus('Forward Pass Complete');
+        }
+
+        // Perform a training step
+        function trainStep() {
+            const inputText = document.getElementById('inputValues').value;
+            const targetText = document.getElementById('targetOutput').value;
+
+            const inputs = inputText.split(',').map(s => parseFloat(s.trim()));
+            const targets = targetText.split(',').map(s => parseFloat(s.trim()));
+
+            if (inputs.length !== network.architecture[0]) {
+                alert(`Input must have ${network.architecture[0]} values`);
+                return;
+            }
+
+            if (targets.length !== network.architecture[network.architecture.length - 1]) {
+                alert(`Target must have ${network.architecture[network.architecture.length - 1]} values`);
+                return;
+            }
+
+            updateStatus('Training');
+            const result = network.trainStep(inputs, targets, true);
+            currentLoss = result.loss;
+            trainingStep++;
+
+            visualizer.updateNetwork(network);
+            updateMetrics();
+
+            console.log(`Training Step ${trainingStep} - Loss: ${result.loss.toFixed(4)}, Output:`, result.output);
+            updateStatus('Training Complete');
+        }
+
+        // Update status indicator
+        function updateStatus(status) {
+            const statusElement = document.getElementById('networkStatus');
+            const indicator = statusElement.querySelector('.status-indicator');
+
+            indicator.className = 'status-indicator ';
+
+            switch(status) {
+                case 'Ready':
+                case 'Training Complete':
+                case 'Forward Pass Complete':
+                    indicator.classList.add('status-ready');
+                    break;
+                case 'Training':
+                    indicator.classList.add('status-training');
+                    break;
+                case 'Running Forward Pass':
+                    indicator.classList.add('status-animating');
+                    break;
+            }
+
+            statusElement.innerHTML = indicator.outerHTML + status;
+        }
+
+        // Update metrics display
+        function updateMetrics() {
+            document.getElementById('currentLoss').textContent = currentLoss.toFixed(4);
+            document.getElementById('currentEpoch').textContent = trainingStep;
+            document.getElementById('networkDepth').textContent = network.layers;
+
+            // Calculate total parameters
+            let totalParams = 0;
+            for (let layer = 0; layer < network.layers; layer++) {
+                const weightParams = network.weights[layer].length * network.weights[layer][0].length;
+                const biasParams = network.biases[layer].length;
+                totalParams += weightParams + biasParams;
+            }
+            document.getElementById('totalParams').textContent = totalParams;
+        }
+
+        // Load predefined examples
+        function loadExample(type) {
+            switch(type) {
+                case 'xor':
+                    document.getElementById('inputNodes').value = '2';
+                    document.getElementById('hiddenLayers').value = '4,3';
+                    document.getElementById('outputNodes').value = '1';
+                    document.getElementById('inputValues').value = '1,1';
+                    document.getElementById('targetOutput').value = '0';
+                    document.getElementById('learningRate').value = '0.1';
+                    break;
+
+                case 'regression':
+                    document.getElementById('inputNodes').value = '1';
+                    document.getElementById('hiddenLayers').value = '8,4';
+                    document.getElementById('outputNodes').value = '1';
+                    document.getElementById('inputValues').value = '0.5';
+                    document.getElementById('targetOutput').value = '0.25';
+                    document.getElementById('learningRate').value = '0.01';
+                    break;
+
+                case 'classification':
+                    document.getElementById('inputNodes').value = '2';
+                    document.getElementById('hiddenLayers').value = '6,4';
+                    document.getElementById('outputNodes').value = '2';
+                    document.getElementById('inputValues').value = '0.8,0.3';
+                    document.getElementById('targetOutput').value = '1,0';
+                    document.getElementById('learningRate').value = '0.05';
+                    break;
+
+                case 'deep':
+                    document.getElementById('inputNodes').value = '3';
+                    document.getElementById('hiddenLayers').value = '8,6,4,3';
+                    document.getElementById('outputNodes').value = '2';
+                    document.getElementById('inputValues').value = '0.2,0.7,0.9';
+                    document.getElementById('targetOutput').value = '0.8,0.3';
+                    document.getElementById('learningRate').value = '0.001';
+                    break;
+            }
+
+            createNetwork();
+            network.setLearningRate(parseFloat(document.getElementById('learningRate').value));
+            updateStatus(`${type.toUpperCase()} Example Loaded`);
+        }
+
+        // Initialize when page loads
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

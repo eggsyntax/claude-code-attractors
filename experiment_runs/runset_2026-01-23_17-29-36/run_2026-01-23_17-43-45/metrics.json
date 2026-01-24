@@ -1,0 +1,243 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T18:13:23.116913",
+  "duration_seconds": 1773.81,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 6.24,
+      "words": 116,
+      "cost_usd": 0.020637
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.64,
+      "words": 255,
+      "cost_usd": 0.023982
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 17.09,
+      "words": 195,
+      "cost_usd": 0.0258684
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 253.52,
+      "words": 293,
+      "cost_usd": 0.5286988000000001
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 818.53,
+      "words": 339,
+      "cost_usd": 0.5666221500000002
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 13.04,
+      "words": 279,
+      "cost_usd": 0.0312645
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 23.5,
+      "words": 162,
+      "cost_usd": 0.037308
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 14.55,
+      "words": 282,
+      "cost_usd": 0.0234153
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 20.54,
+      "words": 278,
+      "cost_usd": 0.0377142
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 270.2,
+      "words": 458,
+      "cost_usd": 0.5080534499999999
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 110.3,
+      "words": 392,
+      "cost_usd": 0.196734
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 18.97,
+      "words": 421,
+      "cost_usd": 0.03565155
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 96.07,
+      "words": 294,
+      "cost_usd": 0.1790247
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 99.59,
+      "words": 359,
+      "cost_usd": 0.1572843
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1776,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 2347,
+      "turns": 7
+    }
+  },
+  "total_words": 4123,
+  "artifacts": [
+    {
+      "name": "PROJECT_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9843,
+      "lines": 212
+    },
+    {
+      "name": "README_COLLABORATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4884,
+      "lines": 131
+    },
+    {
+      "name": "visualization.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 10760,
+      "lines": 351
+    },
+    {
+      "name": "index.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 5649,
+      "lines": 136
+    },
+    {
+      "name": "requirements.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 109,
+      "lines": 6
+    },
+    {
+      "name": "styles.css",
+      "type": "web",
+      "extension": ".css",
+      "size_bytes": 6224,
+      "lines": 354
+    },
+    {
+      "name": "demo_enhanced.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 16174,
+      "lines": 384
+    },
+    {
+      "name": "grid.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 11450,
+      "lines": 393
+    },
+    {
+      "name": "ensemble_dashboard.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 10830,
+      "lines": 353
+    },
+    {
+      "name": "ai_collaboration_backend.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17082,
+      "lines": 432
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6464,
+      "lines": 185
+    },
+    {
+      "name": "repo_health_dashboard.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 28620,
+      "lines": 876
+    },
+    {
+      "name": "demo.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 8202,
+      "lines": 233
+    },
+    {
+      "name": "ensemble_architecture.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4057,
+      "lines": 92
+    },
+    {
+      "name": "app.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 12063,
+      "lines": 364
+    }
+  ],
+  "artifact_summary": {
+    "total": 15,
+    "by_type": {
+      "document": 5,
+      "code": 4,
+      "web": 6
+    }
+  },
+  "topics": [
+    "algorithms",
+    "collaboration",
+    "visualization",
+    "github",
+    "pathfinding"
+  ],
+  "usage": {
+    "total_cost_usd": 2.3723,
+    "input_tokens": 273,
+    "output_tokens": 74642
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T18:58:43.868509",
+  "duration_seconds": 2695.97,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.48,
+      "words": 165,
+      "cost_usd": 0.021972
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.05,
+      "words": 250,
+      "cost_usd": 0.02412075
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 61.76,
+      "words": 205,
+      "cost_usd": 0.1096509
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 246.9,
+      "words": 391,
+      "cost_usd": 0.5517162499999998
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 476.05,
+      "words": 449,
+      "cost_usd": 0.29915459999999994
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 900.06,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 219.76,
+      "words": 402,
+      "cost_usd": 0.40300310000000006
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 210.28,
+      "words": 386,
+      "cost_usd": 0.39046059999999994
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 131.86,
+      "words": 444,
+      "cost_usd": 0.20187990000000003
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 93.34,
+      "words": 404,
+      "cost_usd": 0.14580590000000002
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 76.38,
+      "words": 381,
+      "cost_usd": 0.12758019999999998
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 93.14,
+      "words": 461,
+      "cost_usd": 0.1500251
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 88.04,
+      "words": 377,
+      "cost_usd": 0.14783734999999998
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 77.85,
+      "words": 408,
+      "cost_usd": 0.1219527
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2423,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 2303,
+      "turns": 7
+    }
+  },
+  "total_words": 4726,
+  "artifacts": [
+    {
+      "name": "FINAL_COLLABORATION_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5222,
+      "lines": 116
+    },
+    {
+      "name": "quick_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 920,
+      "lines": 35
+    },
+    {
+      "name": "COLLABORATION_BREAKTHROUGH_REPORT.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7691,
+      "lines": 150
+    },
+    {
+      "name": "COLLABORATION_CELEBRATION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2997,
+      "lines": 58
+    },
+    {
+      "name": "collaborative_showcase.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10858,
+      "lines": 277
+    },
+    {
+      "name": "ALICE_BOB_LEGACY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5423,
+      "lines": 122
+    },
+    {
+      "name": "config.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18227,
+      "lines": 487
+    },
+    {
+      "name": "analysis_config.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1766,
+      "lines": 88
+    },
+    {
+      "name": "ci_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17347,
+      "lines": 451
+    },
+    {
+      "name": "legacy_archive.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10588,
+      "lines": 244
+    },
+    {
+      "name": "github_actions_workflow.yml",
+      "type": "config",
+      "extension": ".yml",
+      "size_bytes": 5875,
+      "lines": 171
+    },
+    {
+      "name": "future_collaboration_manifesto.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8505,
+      "lines": 232
+    },
+    {
+      "name": "eternal_gratitude.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9898,
+      "lines": 214
+    },
+    {
+      "name": "FINAL_SYMPHONY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3663,
+      "lines": 77
+    },
+    {
+      "name": "alert_manager.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 23191,
+      "lines": 604
+    },
+    {
+      "name": "final_celebration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7816,
+      "lines": 191
+    },
+    {
+      "name": "showcase_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9846,
+      "lines": 254
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10769,
+      "lines": 272
+    },
+    {
+      "name": "pattern_detector.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 26958,
+      "lines": 642
+    },
+    {
+      "name": "setup.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2941,
+      "lines": 83
+    },
+    {
+      "name": "launch_visualizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8937,
+      "lines": 277
+    },
+    {
+      "name": "trend_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21055,
+      "lines": 532
+    },
+    {
+      "name": "cicd_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 27331,
+      "lines": 788
+    },
+    {
+      "name": "team_dashboard.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 24902,
+      "lines": 763
+    },
+    {
+      "name": "cli.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14363,
+      "lines": 407
+    },
+    {
+      "name": "web_interface.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 24464,
+      "lines": 696
+    },
+    {
+      "name": "collaborative_intelligence_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12418,
+      "lines": 302
+    },
+    {
+      "name": "final_reflection.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9204,
+      "lines": 225
+    },
+    {
+      "name": "COLLABORATION_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7945,
+      "lines": 170
+    },
+    {
+      "name": "visualization_dashboard.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 18129,
+      "lines": 467
+    },
+    {
+      "name": "demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5877,
+      "lines": 164
+    },
+    {
+      "name": "visualization_server.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14828,
+      "lines": 392
+    },
+    {
+      "name": "evolution_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18781,
+      "lines": 462
+    },
+    {
+      "name": "ai_collaboration_methodology.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8362,
+      "lines": 200
+    },
+    {
+      "name": "dashboard_generator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12147,
+      "lines": 314
+    },
+    {
+      "name": "analysis_server.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19074,
+      "lines": 523
+    }
+  ],
+  "artifact_summary": {
+    "total": 36,
+    "by_type": {
+      "document": 8,
+      "code": 23,
+      "config": 2,
+      "web": 3
+    }
+  },
+  "topics": [
+    "collaboration",
+    "analysis",
+    "code",
+    "complexity",
+    "patterns"
+  ],
+  "usage": {
+    "total_cost_usd": 2.6952,
+    "input_tokens": 372,
+    "output_tokens": 86125
+  },
+  "had_failure": true
+}

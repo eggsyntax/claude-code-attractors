@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Algorithm Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Visual Algorithm Explorer</h1>
+        <p>Learn algorithms through interactive visualization and experimentation</p>
+    </header>
+
+    <main>
+        <div class="algorithm-selector">
+            <h2>Choose Algorithm Category</h2>
+            <div class="category-buttons">
+                <button id="sorting-category" class="category-btn active">Sorting Algorithms</button>
+                <button id="graph-category" class="category-btn">Graph Algorithms</button>
+            </div>
+
+            <div id="sorting-algorithms" class="algorithm-group">
+                <h3>Sorting Algorithms</h3>
+                <div class="algorithm-buttons">
+                    <button id="bubble-sort" class="algorithm-btn active">Bubble Sort</button>
+                    <button id="quick-sort" class="algorithm-btn">Quick Sort</button>
+                    <button id="merge-sort" class="algorithm-btn">Merge Sort</button>
+                    <button id="insertion-sort" class="algorithm-btn">Insertion Sort</button>
+                </div>
+            </div>
+
+            <div id="graph-algorithms" class="algorithm-group hidden">
+                <h3>Graph Algorithms</h3>
+                <div class="algorithm-buttons">
+                    <button id="bfs-search" class="algorithm-btn">BFS (Breadth-First Search)</button>
+                    <button id="dfs-search" class="algorithm-btn">DFS (Depth-First Search)</button>
+                    <button id="dijkstra-path" class="algorithm-btn">Dijkstra's Shortest Path</button>
+                    <button id="astar-path" class="algorithm-btn">A* Pathfinding</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls-panel">
+            <div id="array-controls" class="array-controls">
+                <label for="array-size">Array Size:</label>
+                <input type="range" id="array-size" min="5" max="50" value="20">
+                <span id="size-display">20</span>
+
+                <button id="randomize-array">New Random Array</button>
+                <button id="play-pause" class="control-btn">▶ Play</button>
+                <button id="step-forward" class="control-btn">Step</button>
+                <button id="reset" class="control-btn">Reset</button>
+            </div>
+
+            <div id="graph-controls" class="graph-controls hidden">
+                <label for="start-node">Start Node:</label>
+                <select id="start-node">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+
+                <label for="end-node" id="end-node-label" class="hidden">End Node:</label>
+                <select id="end-node" class="hidden">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G" selected>G</option>
+                </select>
+
+                <button id="play-pause" class="control-btn">▶ Play</button>
+                <button id="step-forward" class="control-btn">Step</button>
+                <button id="reset" class="control-btn">Reset</button>
+            </div>
+
+            <div class="speed-control">
+                <label for="animation-speed">Speed:</label>
+                <input type="range" id="animation-speed" min="1" max="10" value="5">
+                <span>Slow ← → Fast</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="visualization-panel">
+                <div class="metrics">
+                    <div class="metric">
+                        <label id="metric1-label">Comparisons:</label>
+                        <span id="comparisons">0</span>
+                    </div>
+                    <div class="metric">
+                        <label id="metric2-label">Swaps:</label>
+                        <span id="swaps">0</span>
+                    </div>
+                    <div class="metric">
+                        <label>Time Complexity:</label>
+                        <span id="time-complexity">O(n²)</span>
+                    </div>
+                </div>
+
+                <div id="array-container" class="array-visualization">
+                    <!-- Array bars will be dynamically generated here -->
+                </div>
+
+                <div id="graph-container" class="graph-visualization hidden">
+                    <!-- Graph will be dynamically generated here -->
+                </div>
+
+                <div class="algorithm-description">
+                    <h3 id="algorithm-title">Bubble Sort</h3>
+                    <p id="algorithm-explanation">
+                        Bubble Sort repeatedly steps through the list, compares adjacent elements
+                        and swaps them if they're in the wrong order. The pass through the list
+                        is repeated until the list is sorted.
+                    </p>
+                </div>
+
+                <div id="step-description" class="step-description">
+                    Click Play or Step to begin the algorithm visualization.
+                </div>
+            </div>
+
+            <div class="code-panel">
+                <h3>Interactive Code</h3>
+                <div class="code-tabs">
+                    <button class="code-tab active" data-language="javascript">JavaScript</button>
+                    <button class="code-tab" data-language="python">Python</button>
+                </div>
+
+                <div id="code-editor" class="code-editor">
+                    <pre id="code-display"><code id="code-content">// Bubble Sort Implementation
+function bubbleSort(arr) {
+    const n = arr.length;
+    let comparisons = 0;
+    let swaps = 0;
+
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            comparisons++;
+            if (arr[j] > arr[j + 1]) {
+                // Swap elements
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                swaps++;
+            }
+        }
+    }
+
+    return { sortedArray: arr, comparisons, swaps };
+}</code></pre>
+                </div>
+
+                <button id="run-code" class="run-btn">Run Code</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="algorithms.js"></script>
+    <script src="graphAlgorithms.js"></script>
+    <script src="visualization.js"></script>
+    <script src="app.js"></script>
+    <script src="test-graph-algorithms.js"></script>
+</body>
+</html>

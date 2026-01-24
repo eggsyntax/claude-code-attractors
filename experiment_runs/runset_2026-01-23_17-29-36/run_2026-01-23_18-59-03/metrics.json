@@ -1,0 +1,256 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T19:13:46.937773",
+  "duration_seconds": 880.23,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 9.81,
+      "words": 212,
+      "cost_usd": 0.022767
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.02,
+      "words": 273,
+      "cost_usd": 0.0248445
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 43.87,
+      "words": 188,
+      "cost_usd": 0.0713688
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 101.13,
+      "words": 268,
+      "cost_usd": 0.191469
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 233.12,
+      "words": 368,
+      "cost_usd": 0.47690954999999996
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 52.17,
+      "words": 340,
+      "cost_usd": 0.14625030000000003
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 33.71,
+      "words": 267,
+      "cost_usd": 0.04704464999999999
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 68.5,
+      "words": 258,
+      "cost_usd": 0.10650855000000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 139.22,
+      "words": 438,
+      "cost_usd": 0.2265925
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 47.12,
+      "words": 69,
+      "cost_usd": 0.0856047
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 30.94,
+      "words": 236,
+      "cost_usd": 0.048923400000000006
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 40.77,
+      "words": 252,
+      "cost_usd": 0.07311029999999999
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 53.91,
+      "words": 272,
+      "cost_usd": 0.07224615
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 13.92,
+      "words": 322,
+      "cost_usd": 0.0344178
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1981,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 1782,
+      "turns": 7
+    }
+  },
+  "total_words": 3763,
+  "artifacts": [
+    {
+      "name": "test_visualizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10854,
+      "lines": 287
+    },
+    {
+      "name": "collaboration_insights.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3796,
+      "lines": 79
+    },
+    {
+      "name": "test_creative_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8129,
+      "lines": 204
+    },
+    {
+      "name": "ai_collaboration_manifesto.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2802,
+      "lines": 68
+    },
+    {
+      "name": "emergent_collaborative_intelligence_paper.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8783,
+      "lines": 156
+    },
+    {
+      "name": "creative_writing_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9909,
+      "lines": 232
+    },
+    {
+      "name": "collaborative_implementation_plan.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1755,
+      "lines": 48
+    },
+    {
+      "name": "collaboration_research_framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3272,
+      "lines": 78
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6106,
+      "lines": 178
+    },
+    {
+      "name": "test_code_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8303,
+      "lines": 251
+    },
+    {
+      "name": "collaborative_storytelling_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7998,
+      "lines": 196
+    },
+    {
+      "name": "creative_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8720,
+      "lines": 217
+    },
+    {
+      "name": "code_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5565,
+      "lines": 178
+    },
+    {
+      "name": "demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 22711,
+      "lines": 583
+    },
+    {
+      "name": "visualizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11322,
+      "lines": 337
+    },
+    {
+      "name": "codescope_architecture.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2890,
+      "lines": 68
+    },
+    {
+      "name": "collaboration_framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3164,
+      "lines": 79
+    }
+  ],
+  "artifact_summary": {
+    "total": 17,
+    "by_type": {
+      "code": 9,
+      "document": 8
+    }
+  },
+  "topics": [
+    "collaboration",
+    "code",
+    "analysis",
+    "creative",
+    "systems"
+  ],
+  "usage": {
+    "total_cost_usd": 1.6281,
+    "input_tokens": 249,
+    "output_tokens": 45933
+  }
+}

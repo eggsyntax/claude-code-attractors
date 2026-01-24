@@ -1,0 +1,94 @@
+{
+  "num_runs": 5,
+  "totals": {
+    "cost_usd": 10.6355,
+    "duration_seconds": 8748.06,
+    "words": 21230,
+    "artifacts": 114
+  },
+  "averages": {
+    "cost_usd": 2.1271,
+    "duration_seconds": 1749.61,
+    "words": 4246.0,
+    "artifacts": 22.8
+  },
+  "topics": [
+    [
+      "collaboration",
+      5
+    ],
+    [
+      "analysis",
+      3
+    ],
+    [
+      "code",
+      3
+    ],
+    [
+      "visualization",
+      2
+    ],
+    [
+      "synthesis",
+      1
+    ],
+    [
+      "ai",
+      1
+    ],
+    [
+      "algorithms",
+      1
+    ],
+    [
+      "github",
+      1
+    ],
+    [
+      "pathfinding",
+      1
+    ],
+    [
+      "complexity",
+      1
+    ],
+    [
+      "patterns",
+      1
+    ],
+    [
+      "creative",
+      1
+    ],
+    [
+      "systems",
+      1
+    ],
+    [
+      "algorithm",
+      1
+    ],
+    [
+      "education",
+      1
+    ],
+    [
+      "neural",
+      1
+    ]
+  ],
+  "artifact_types": {
+    "code": 63,
+    "document": 33,
+    "web": 16,
+    "config": 2
+  },
+  "runs": [
+    "run_2026-01-23_17-29-36",
+    "run_2026-01-23_17-43-45",
+    "run_2026-01-23_18-13-44",
+    "run_2026-01-23_18-59-03",
+    "run_2026-01-23_19-14-06"
+  ]
+}

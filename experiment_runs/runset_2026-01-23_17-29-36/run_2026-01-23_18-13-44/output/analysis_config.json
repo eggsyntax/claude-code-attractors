@@ -1,0 +1,88 @@
+{
+  "thresholds": {
+    "max_cyclomatic_complexity": 10,
+    "max_cognitive_complexity": 15,
+    "max_function_lines": 50,
+    "min_quality_score": 7.0,
+    "max_complexity_violations": 5
+  },
+  "exclude_patterns": [
+    "test_*.py",
+    "*_test.py",
+    "tests/",
+    "__pycache__/",
+    "*.pyc",
+    ".git/",
+    "venv/",
+    "env/",
+    ".tox/",
+    "build/",
+    "dist/"
+  ],
+  "include_patterns": [
+    "*.py"
+  ],
+  "report_formats": {
+    "json": {
+      "enabled": true,
+      "output_file": "code_analysis_report.json"
+    },
+    "junit": {
+      "enabled": true,
+      "output_file": "code_analysis_junit.xml"
+    },
+    "markdown": {
+      "enabled": true,
+      "output_file": "code_analysis_report.md"
+    },
+    "dashboard": {
+      "enabled": true,
+      "output_file": "code_analysis_dashboard.html"
+    }
+  },
+  "history_tracking": {
+    "enabled": true,
+    "history_file": ".code_analysis_history.json",
+    "max_entries": 100,
+    "trend_analysis": true
+  },
+  "quality_gates": {
+    "strict_mode": false,
+    "fail_on_regression": true,
+    "max_regression_tolerance": 0.5
+  },
+  "notifications": {
+    "email": {
+      "enabled": false,
+      "recipients": [],
+      "smtp_server": "",
+      "smtp_port": 587,
+      "username": "",
+      "password": ""
+    },
+    "slack": {
+      "enabled": false,
+      "webhook_url": "",
+      "channel": "#code-quality"
+    },
+    "teams": {
+      "enabled": false,
+      "webhook_url": ""
+    }
+  },
+  "ci_integration": {
+    "github_actions": {
+      "enabled": true,
+      "comment_on_pr": true,
+      "update_check_status": true
+    },
+    "gitlab_ci": {
+      "enabled": false,
+      "update_merge_request": true
+    },
+    "jenkins": {
+      "enabled": false,
+      "archive_reports": true
+    }
+  }
+}
