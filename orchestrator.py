@@ -19,7 +19,9 @@ Directory structure for each run:
 """
 
 import json
+import signal
 import subprocess
+import sys
 import time
 import shutil
 from datetime import datetime
@@ -837,23 +839,30 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
         print("=" * 70)
 
         workspaces = []
-        for i in range(args.runs):
-            print(f"\n{'='*70}")
-            print(f"EXPERIMENT {i+1} of {args.runs}")
-            print(f"{'='*70}")
+        interrupted = False
+        try:
+            for i in range(args.runs):
+                print(f"\n{'='*70}")
+                print(f"EXPERIMENT {i+1} of {args.runs}")
+                print(f"{'='*70}")
 
-            workspace = run_experiment(
-                agents=agents,
-                num_turns=args.turns,
-                output_dir=runset_dir,
-                verbose=not args.quiet,
-                seed_topic=args.seed,
-                model=args.model,
-                test_run=args.test_run,
-                sandbox=args.sandbox,
-            )
-            if workspace:
-                workspaces.append(workspace)
+                workspace = run_experiment(
+                    agents=agents,
+                    num_turns=args.turns,
+                    output_dir=runset_dir,
+                    verbose=not args.quiet,
+                    seed_topic=args.seed,
+                    model=args.model,
+                    test_run=args.test_run,
+                    sandbox=args.sandbox,
+                )
+                if workspace:
+                    workspaces.append(workspace)
+        except KeyboardInterrupt:
+            interrupted = True
+            print(f"\n\n{'='*70}")
+            print(f"INTERRUPTED - saving {len(workspaces)} completed run(s)...")
+            print(f"{'='*70}")
 
         # Aggregate runset metrics (skip if test run)
         runset_metrics = {}
@@ -866,8 +875,14 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
             # Clean up empty runset directory
             if runset_dir.exists():
                 shutil.rmtree(runset_dir)
+        elif not workspaces:
+            print("No experiments completed.")
+            # Clean up empty runset directory
+            if runset_dir.exists():
+                shutil.rmtree(runset_dir)
         else:
-            print(f"RUNSET COMPLETE: {len(workspaces)} experiments")
+            status = "INTERRUPTED" if interrupted else "COMPLETE"
+            print(f"RUNSET {status}: {len(workspaces)}/{args.runs} experiments")
             print(f"{'='*70}")
             if runset_metrics:
                 totals = runset_metrics.get('totals', {})
@@ -880,6 +895,9 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                     print(f"Top topics: {', '.join(top_topics)}")
             print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
             print(f"Results saved to: {display_path(runset_dir)}")
+
+        if interrupted:
+            sys.exit(130)  # Standard exit code for SIGINT
 
 
 if __name__ == "__main__":

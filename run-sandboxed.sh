@@ -28,7 +28,30 @@ fi
 # Create a temporary directory for this run only
 # This ensures agents can't see past experiment runs
 TEMP_OUTPUT=$(mktemp -d)
-trap "rm -rf $TEMP_OUTPUT" EXIT
+CLEANED_UP=false
+
+# Cleanup function: move any results before deleting temp dir
+cleanup() {
+    if [ "$CLEANED_UP" = true ]; then
+        return
+    fi
+    CLEANED_UP=true
+
+    # Move any results to actual experiment_runs directory
+    if [ -n "$(ls -A $TEMP_OUTPUT 2>/dev/null)" ]; then
+        mkdir -p "$SCRIPT_DIR/experiment_runs"
+        mv "$TEMP_OUTPUT"/* "$SCRIPT_DIR/experiment_runs/"
+        echo ""
+        echo "Results moved to $SCRIPT_DIR/experiment_runs/"
+    fi
+
+    # Clean up temp directory
+    rm -rf "$TEMP_OUTPUT"
+}
+
+# Trap both normal exit and interrupt signals
+trap cleanup EXIT
+trap 'echo ""; echo "Interrupted - saving completed runs..."; cleanup; exit 130' INT TERM
 
 # Run with sandbox enabled
 # -t: pseudo-TTY for proper output streaming
@@ -40,10 +63,3 @@ docker run --rm -t \
     -v "$TEMP_OUTPUT:/app/experiment_runs" \
     claude-orchestrator \
     python orchestrator.py --sandbox "$@"
-
-# Move results to actual experiment_runs directory
-if [ -n "$(ls -A $TEMP_OUTPUT 2>/dev/null)" ]; then
-    mkdir -p "$SCRIPT_DIR/experiment_runs"
-    mv "$TEMP_OUTPUT"/* "$SCRIPT_DIR/experiment_runs/"
-    echo "Results moved to $SCRIPT_DIR/experiment_runs/"
-fi
