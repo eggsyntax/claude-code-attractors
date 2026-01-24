@@ -1,0 +1,312 @@
+{
+  "total_files": 22,
+  "total_lines": 7982,
+  "languages": {
+    "python": 22
+  },
+  "patterns": [
+    {
+      "name": "God Object",
+      "description": "File ai_powered_analyzer.py contains a large number of functions/methods",
+      "confidence": 0.7,
+      "is_antipattern": true,
+      "files_involved": [
+        "ai_powered_analyzer.py"
+      ],
+      "suggestions": [
+        "Consider breaking this into smaller, more focused classes",
+        "Apply Single Responsibility Principle",
+        "Extract related functionality into separate modules"
+      ]
+    },
+    {
+      "name": "God Object",
+      "description": "File analytics.py contains a large number of functions/methods",
+      "confidence": 0.7,
+      "is_antipattern": true,
+      "files_involved": [
+        "examples/sample_codebase/analytics.py"
+      ],
+      "suggestions": [
+        "Consider breaking this into smaller, more focused classes",
+        "Apply Single Responsibility Principle",
+        "Extract related functionality into separate modules"
+      ]
+    },
+    {
+      "name": "God Object",
+      "description": "File services.py contains a large number of functions/methods",
+      "confidence": 0.7,
+      "is_antipattern": true,
+      "files_involved": [
+        "examples/sample_codebase/services.py"
+      ],
+      "suggestions": [
+        "Consider breaking this into smaller, more focused classes",
+        "Apply Single Responsibility Principle",
+        "Extract related functionality into separate modules"
+      ]
+    },
+    {
+      "name": "God Object",
+      "description": "File models.py contains a large number of functions/methods",
+      "confidence": 0.7,
+      "is_antipattern": true,
+      "files_involved": [
+        "examples/sample_codebase/models.py"
+      ],
+      "suggestions": [
+        "Consider breaking this into smaller, more focused classes",
+        "Apply Single Responsibility Principle",
+        "Extract related functionality into separate modules"
+      ]
+    }
+  ],
+  "complexity_hotspots": [
+    {
+      "file": "advanced_pattern_detector.py",
+      "complexity": 9.8
+    },
+    {
+      "file": "ai_powered_analyzer.py",
+      "complexity": 7.3
+    },
+    {
+      "file": "enhanced_patterns.py",
+      "complexity": 6.8
+    },
+    {
+      "file": "codebase_analyzer_comprehensive.py",
+      "complexity": 6.4
+    },
+    {
+      "file": "src/analyzers/pattern_detector.py",
+      "complexity": 6.2
+    },
+    {
+      "file": "codebase_analyzer.py",
+      "complexity": 5.5
+    },
+    {
+      "file": "enhanced_analyzer.py",
+      "complexity": 5.3
+    },
+    {
+      "file": "code_insight.py",
+      "complexity": 4.7
+    },
+    {
+      "file": "documentation_generator.py",
+      "complexity": 4.4
+    },
+    {
+      "file": "comprehensive_analyzer.py",
+      "complexity": 4.1
+    }
+  ],
+  "suggestions": [
+    "Consider splitting 3 large files (>500 lines) into smaller modules",
+    "High complexity detected - consider refactoring complex functions",
+    "Address 4 architectural anti-patterns found"
+  ],
+  "file_details": [
+    {
+      "path": "comprehensive_analyzer.py",
+      "language": "python",
+      "lines": 291,
+      "functions": 6,
+      "classes": 1,
+      "imports": 8,
+      "complexity": 4.1
+    },
+    {
+      "path": "demo.py",
+      "language": "python",
+      "lines": 395,
+      "functions": 2,
+      "classes": 0,
+      "imports": 5,
+      "complexity": 1.3
+    },
+    {
+      "path": "enhanced_meta_demo.py",
+      "language": "python",
+      "lines": 392,
+      "functions": 10,
+      "classes": 1,
+      "imports": 6,
+      "complexity": 3.0
+    },
+    {
+      "path": "code_insight.py",
+      "language": "python",
+      "lines": 356,
+      "functions": 13,
+      "classes": 3,
+      "imports": 8,
+      "complexity": 4.7
+    },
+    {
+      "path": "test_meta_analysis.py",
+      "language": "python",
+      "lines": 77,
+      "functions": 1,
+      "classes": 0,
+      "imports": 3,
+      "complexity": 1.0
+    },
+    {
+      "path": "demo_meta_analysis.py",
+      "language": "python",
+      "lines": 238,
+      "functions": 5,
+      "classes": 0,
+      "imports": 5,
+      "complexity": 2.2
+    },
+    {
+      "path": "enhanced_patterns.py",
+      "language": "python",
+      "lines": 426,
+      "functions": 12,
+      "classes": 2,
+      "imports": 8,
+      "complexity": 6.8
+    },
+    {
+      "path": "demo_analyzer.py",
+      "language": "python",
+      "lines": 365,
+      "functions": 3,
+      "classes": 0,
+      "imports": 5,
+      "complexity": 1.7
+    },
+    {
+      "path": "enhanced_analyzer.py",
+      "language": "python",
+      "lines": 478,
+      "functions": 15,
+      "classes": 4,
+      "imports": 12,
+      "complexity": 5.3
+    },
+    {
+      "path": "ai_powered_analyzer.py",
+      "language": "python",
+      "lines": 936,
+      "functions": 27,
+      "classes": 5,
+      "imports": 12,
+      "complexity": 7.3
+    },
+    {
+      "path": "example_code.py",
+      "language": "python",
+      "lines": 124,
+      "functions": 9,
+      "classes": 3,
+      "imports": 3,
+      "complexity": 1.8
+    },
+    {
+      "path": "advanced_pattern_detector.py",
+      "language": "python",
+      "lines": 706,
+      "functions": 18,
+      "classes": 3,
+      "imports": 9,
+      "complexity": 9.8
+    },
+    {
+      "path": "codebase_analyzer_comprehensive.py",
+      "language": "python",
+      "lines": 499,
+      "functions": 19,
+      "classes": 6,
+      "imports": 9,
+      "complexity": 6.4
+    },
+    {
+      "path": "codebase_analyzer.py",
+      "language": "python",
+      "lines": 450,
+      "functions": 17,
+      "classes": 4,
+      "imports": 10,
+      "complexity": 5.5
+    },
+    {
+      "path": "documentation_generator.py",
+      "language": "python",
+      "lines": 572,
+      "functions": 19,
+      "classes": 1,
+      "imports": 9,
+      "complexity": 4.4
+    },
+    {
+      "path": "examples/sample_codebase/analytics.py",
+      "language": "python",
+      "lines": 243,
+      "functions": 21,
+      "classes": 2,
+      "imports": 3,
+      "complexity": 1.3
+    },
+    {
+      "path": "examples/sample_codebase/services.py",
+      "language": "python",
+      "lines": 194,
+      "functions": 24,
+      "classes": 12,
+      "imports": 4,
+      "complexity": 1.4
+    },
+    {
+      "path": "examples/sample_codebase/models.py",
+      "language": "python",
+      "lines": 207,
+      "functions": 36,
+      "classes": 6,
+      "imports": 5,
+      "complexity": 1.8
+    },
+    {
+      "path": "src/main.py",
+      "language": "python",
+      "lines": 205,
+      "functions": 4,
+      "classes": 0,
+      "imports": 9,
+      "complexity": 1.8
+    },
+    {
+      "path": "src/core/analyzer.py",
+      "language": "python",
+      "lines": 143,
+      "functions": 7,
+      "classes": 2,
+      "imports": 4,
+      "complexity": 0.8
+    },
+    {
+      "path": "src/analyzers/pattern_detector.py",
+      "language": "python",
+      "lines": 403,
+      "functions": 15,
+      "classes": 3,
+      "imports": 5,
+      "complexity": 6.2
+    },
+    {
+      "path": "src/analyzers/structure_analyzer.py",
+      "language": "python",
+      "lines": 282,
+      "functions": 12,
+      "classes": 3,
+      "imports": 5,
+      "complexity": 3.8
+    }
+  ]
+}

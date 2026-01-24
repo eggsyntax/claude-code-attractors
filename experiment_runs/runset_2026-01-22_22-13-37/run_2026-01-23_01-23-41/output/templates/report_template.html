@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Analysis Report - {{PROJECT_NAME}}</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="report-header">
+            <h1>Code Analysis Report</h1>
+            <div class="project-info">
+                <h2>{{PROJECT_NAME}}</h2>
+                <p class="timestamp">Generated: {{ANALYSIS_TIMESTAMP}}</p>
+            </div>
+        </header>
+
+        <nav class="report-nav">
+            <button class="nav-btn active" data-section="overview">Overview</button>
+            <button class="nav-btn" data-section="complexity">Complexity</button>
+            <button class="nav-btn" data-section="dependencies">Dependencies</button>
+            <button class="nav-btn" data-section="insights">Insights</button>
+            <button class="nav-btn" data-section="files">File Details</button>
+        </nav>
+
+        <main class="report-content">
+            <!-- Overview Section -->
+            <section id="overview" class="report-section active">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" id="total-files">-</div>
+                        <div class="metric-label">Files Analyzed</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="total-functions">-</div>
+                        <div class="metric-label">Functions</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="avg-complexity">-</div>
+                        <div class="metric-label">Avg Complexity</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="technical-debt">-</div>
+                        <div class="metric-label">Technical Debt Score</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Complexity Distribution</h3>
+                        <canvas id="complexity-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Files by Language</h3>
+                        <canvas id="language-chart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Complexity Heatmap Section -->
+            <section id="complexity" class="report-section">
+                <div class="section-header">
+                    <h2>Complexity Analysis</h2>
+                    <div class="controls">
+                        <label>
+                            Threshold:
+                            <input type="range" id="complexity-threshold" min="5" max="25" value="10">
+                            <span id="threshold-value">10</span>
+                        </label>
+                        <button id="export-heatmap">Export PNG</button>
+                    </div>
+                </div>
+
+                <div class="heatmap-container">
+                    <div id="complexity-heatmap"></div>
+                </div>
+
+                <div class="hotspots-list">
+                    <h3>Complexity Hotspots</h3>
+                    <div id="hotspots-table"></div>
+                </div>
+            </section>
+
+            <!-- Dependencies Section -->
+            <section id="dependencies" class="report-section">
+                <div class="section-header">
+                    <h2>Dependency Analysis</h2>
+                    <div class="controls">
+                        <button id="layout-hierarchical">Hierarchical</button>
+                        <button id="layout-force">Force Directed</button>
+                        <button id="export-graph">Export SVG</button>
+                    </div>
+                </div>
+
+                <div class="dependency-graph-container">
+                    <div id="dependency-graph"></div>
+                </div>
+
+                <div class="circular-deps">
+                    <h3>Circular Dependencies</h3>
+                    <div id="circular-deps-list"></div>
+                </div>
+            </section>
+
+            <!-- Insights Section -->
+            <section id="insights" class="report-section">
+                <div class="section-header">
+                    <h2>Actionable Insights</h2>
+                    <div class="filters">
+                        <select id="priority-filter">
+                            <option value="all">All Priorities</option>
+                            <option value="critical">Critical</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <select id="category-filter">
+                            <option value="all">All Categories</option>
+                            <option value="complexity">Complexity</option>
+                            <option value="dependencies">Dependencies</option>
+                            <option value="technical-debt">Technical Debt</option>
+                            <option value="performance">Performance</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="insights-container" id="insights-list">
+                    <!-- Insights will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Files Detail Section -->
+            <section id="files" class="report-section">
+                <div class="section-header">
+                    <h2>File Analysis</h2>
+                    <div class="controls">
+                        <input type="text" id="file-search" placeholder="Search files...">
+                        <select id="sort-files">
+                            <option value="complexity">Sort by Complexity</option>
+                            <option value="name">Sort by Name</option>
+                            <option value="size">Sort by Size</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="files-container" id="files-list">
+                    <!-- Files will be populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Data passed from Rust -->
+    <script>
+        window.reportData = {{REPORT_DATA}};
+        window.heatmapData = {{COMPLEXITY_HEATMAP_DATA}};
+        window.dependencyGraphData = {{DEPENDENCY_GRAPH_DATA}};
+        window.insightsData = {{INSIGHTS_DATA}};
+    </script>
+
+    <script src="assets/report.js"></script>
+</body>
+</html>

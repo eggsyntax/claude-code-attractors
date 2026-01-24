@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Analysis Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8fafc;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .stat-card:hover { transform: translateY(-2px); }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .chart-container {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chart-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .chart-canvas {
+            max-height: 400px;
+        }
+
+        .hotspots-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hotspots-table th {
+            background: #f1f5f9;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .hotspots-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .hotspots-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .complexity-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .complexity-very-high {
+            background: #fecaca;
+            color: #991b1b;
+        }
+
+        .complexity-high {
+            background: #fed7aa;
+            color: #9a3412;
+        }
+
+        .complexity-moderate {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .recommendations {
+            background: white;
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .recommendation {
+            padding: 1rem;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .recommendation.high {
+            border-color: #dc2626;
+        }
+
+        .recommendation.medium {
+            border-color: #d97706;
+        }
+
+        .recommendation-title {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .recommendation-desc {
+            color: #64748b;
+            margin-top: 0.5rem;
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .language-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-stats {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .timestamp {
+            text-align: center;
+            color: #64748b;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>🔍 Code Analysis Report</h1>
+            <p>Comprehensive codebase analysis and insights</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="stats-grid" id="summaryStats">
+            <!-- Stats will be populated by JavaScript -->
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">📊 Complexity Distribution</h2>
+            <canvas id="complexityChart" class="chart-canvas"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">🗂️ Language Breakdown</h2>
+            <div class="language-grid" id="languageStats">
+                <!-- Language stats will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2 class="chart-title">🔥 Complexity Hotspots</h2>
+            <table class="hotspots-table" id="hotspotsTable">
+                <thead>
+                    <tr>
+                        <th>File</th>
+                        <th>Function</th>
+                        <th>Complexity</th>
+                        <th>Line</th>
+                        <th>Language</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Hotspots will be populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="recommendations" id="recommendations">
+            <h2 class="chart-title">💡 Recommendations</h2>
+            <!-- Recommendations will be populated by JavaScript -->
+        </div>
+
+        <div class="timestamp" id="timestamp">
+            <!-- Timestamp will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Data placeholder - will be replaced by the Rust code
+        const reportData = {{DATA_PLACEHOLDER}};
+
+        // Populate summary statistics
+        function populateSummaryStats() {
+            const statsContainer = document.getElementById('summaryStats');
+            const stats = reportData.summary;
+
+            statsContainer.innerHTML = `
+                <div class="stat-card">
+                    <span class="stat-number">${stats.total_files}</span>
+                    <div class="stat-label">Files Analyzed</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${stats.total_functions}</span>
+                    <div class="stat-label">Functions Found</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${stats.total_lines.toLocaleString()}</span>
+                    <div class="stat-label">Lines of Code</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">${stats.languages}</span>
+                    <div class="stat-label">Languages</div>
+                </div>
+            `;
+        }
+
+        // Create complexity distribution chart
+        function createComplexityChart() {
+            const ctx = document.getElementById('complexityChart').getContext('2d');
+            const distribution = reportData.complexity_distribution;
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Simple (1-5)', 'Moderate (6-10)', 'Complex (11-20)', 'Very Complex (>20)'],
+                    datasets: [{
+                        data: [
+                            distribution.simple || 0,
+                            distribution.moderate || 0,
+                            distribution.complex || 0,
+                            distribution.very_complex || 0
+                        ],
+                        backgroundColor: [
+                            '#10b981',
+                            '#f59e0b',
+                            '#ef4444',
+                            '#7c2d12'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { padding: 20 }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Populate language statistics
+        function populateLanguageStats() {
+            const container = document.getElementById('languageStats');
+            const languages = reportData.language_stats;
+
+            container.innerHTML = Object.entries(languages).map(([lang, stats]) => `
+                <div class="language-card">
+                    <div class="language-name">${lang}</div>
+                    <div class="language-stats">
+                        <span>📁 ${stats.files} files</span>
+                        <span>⚙️ ${stats.functions} functions</span>
+                        <span>📊 Avg complexity: ${stats.avg_complexity.toFixed(1)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Populate hotspots table
+        function populateHotspots() {
+            const tbody = document.querySelector('#hotspotsTable tbody');
+            const hotspots = reportData.hotspots;
+
+            tbody.innerHTML = hotspots.map(hotspot => {
+                const complexityClass = hotspot.complexity > 20 ? 'very-high' : 'high';
+                return `
+                    <tr>
+                        <td>${hotspot.file}</td>
+                        <td><strong>${hotspot.function}</strong></td>
+                        <td><span class="complexity-badge complexity-${complexityClass}">${hotspot.complexity}</span></td>
+                        <td>${hotspot.line}</td>
+                        <td>${hotspot.language}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Populate recommendations
+        function populateRecommendations() {
+            const container = document.getElementById('recommendations');
+            const recommendations = reportData.recommendations;
+
+            const recommendationHTML = recommendations.map(rec => `
+                <div class="recommendation ${rec.priority}">
+                    <div class="recommendation-title">${rec.title}</div>
+                    <div class="recommendation-desc">${rec.description}</div>
+                </div>
+            `).join('');
+
+            container.innerHTML += recommendationHTML;
+        }
+
+        // Set timestamp
+        function setTimestamp() {
+            document.getElementById('timestamp').textContent =
+                `Report generated on ${reportData.timestamp}`;
+        }
+
+        // Initialize the report
+        document.addEventListener('DOMContentLoaded', function() {
+            populateSummaryStats();
+            createComplexityChart();
+            populateLanguageStats();
+            populateHotspots();
+            populateRecommendations();
+            setTimestamp();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMetrics Analysis Report</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --success-color: #16a34a;
+            --warning-color: #f59e0b;
+            --danger-color: #dc2626;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #374151;
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .metric-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .metric-label {
+            color: #6b7280;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .section h2 {
+            color: #111827;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .complexity-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .complexity-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .complexity-item:hover {
+            background: #f3f4f6;
+        }
+
+        .file-name {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-size: 0.9rem;
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .complexity-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 150px;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .bar-fill.low { background: var(--success-color); }
+        .bar-fill.medium { background: var(--warning-color); }
+        .bar-fill.high { background: var(--danger-color); }
+
+        .complexity-value {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: right;
+        }
+
+        .language-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .language-item {
+            padding: 20px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .language-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .language-stats {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .issues-section .issue-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            border-left: 4px solid;
+            margin-bottom: 15px;
+            background: var(--bg-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .issue-item.warning { border-left-color: var(--warning-color); }
+        .issue-item.error { border-left-color: var(--danger-color); }
+        .issue-item.info { border-left-color: var(--primary-color); }
+
+        .issue-severity {
+            font-size: 1.2rem;
+            margin-right: 15px;
+        }
+
+        .issue-content {
+            flex: 1;
+        }
+
+        .issue-file {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .issue-message {
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .issue-suggestion {
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-style: italic;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 10px; }
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 2rem; }
+            .metrics-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎯 CodeMetrics Analysis Report</h1>
+            <p>Generated on {{timestamp}}</p>
+        </div>
+
+        <!-- Summary Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <span class="metric-value">{{files_analyzed}}</span>
+                <span class="metric-label">Files Analyzed</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">{{total_lines}}</span>
+                <span class="metric-label">Lines of Code</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">{{total_complexity}}</span>
+                <span class="metric-label">Total Complexity</span>
+            </div>
+            <div class="metric-card">
+                <span class="metric-value">{{average_complexity}}</span>
+                <span class="metric-label">Average Complexity</span>
+            </div>
+        </div>
+
+        <!-- Language Breakdown -->
+        {{#if language_breakdown}}
+        <div class="section">
+            <h2>🌐 Language Breakdown</h2>
+            <div class="language-chart">
+                {{#each language_breakdown}}
+                <div class="language-item">
+                    <div class="language-name">{{@key}}</div>
+                    <div class="language-stats">{{this}} files ({{percentage}}%)</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        <!-- Complexity Distribution -->
+        {{#if complexity_distribution}}
+        <div class="section">
+            <h2>🔥 Most Complex Files</h2>
+            <div class="complexity-chart">
+                {{#each complexity_distribution}}
+                <div class="complexity-item">
+                    <div class="file-name">{{file}}</div>
+                    <div class="complexity-bar">
+                        <div class="bar-container">
+                            <div class="bar-fill {{risk_class}}" style="width: {{bar_width}}%"></div>
+                        </div>
+                        <div class="complexity-value">{{complexity}}</div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        {{/if}}
+
+        <!-- Issues -->
+        {{#if issues}}
+        <div class="section issues-section">
+            <h2>⚠️ Issues Found ({{issues.length}})</h2>
+            {{#each issues}}
+            <div class="issue-item {{severity}}">
+                <div class="issue-severity">{{severity_icon}}</div>
+                <div class="issue-content">
+                    <div class="issue-file">{{file}}:{{line}}</div>
+                    <div class="issue-message">{{message}}</div>
+                    {{#if suggestion}}
+                    <div class="issue-suggestion">💡 {{suggestion}}</div>
+                    {{/if}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+
+        <div class="footer">
+            <p>Generated by CodeMetrics v{{version}} in {{analysis_duration_ms}}ms</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive features
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate complexity bars
+            const bars = document.querySelectorAll('.bar-fill');
+            bars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+
+            // Add hover effects to metric cards
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const value = this.querySelector('.metric-value');
+                    value.style.transform = 'scale(1.1)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    const value = this.querySelector('.metric-value');
+                    value.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

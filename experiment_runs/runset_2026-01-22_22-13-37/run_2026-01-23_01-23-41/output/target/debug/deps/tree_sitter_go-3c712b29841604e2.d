@@ -1,0 +1,10 @@
+/tmp/cc-exp/run_2026-01-23_01-23-41/output/target/debug/deps/tree_sitter_go-3c712b29841604e2.d: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/lib.rs /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../src/node-types.json /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/highlights.scm /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/tags.scm
+
+/tmp/cc-exp/run_2026-01-23_01-23-41/output/target/debug/deps/libtree_sitter_go-3c712b29841604e2.rlib: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/lib.rs /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../src/node-types.json /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/highlights.scm /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/tags.scm
+
+/tmp/cc-exp/run_2026-01-23_01-23-41/output/target/debug/deps/libtree_sitter_go-3c712b29841604e2.rmeta: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/lib.rs /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../src/node-types.json /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/highlights.scm /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/tags.scm
+
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/lib.rs:
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../src/node-types.json:
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/highlights.scm:
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tree-sitter-go-0.21.2/bindings/rust/../../queries/tags.scm:

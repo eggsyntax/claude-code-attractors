@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligent Codebase Analyzer - Codebase Analysis</title>
+    <style>
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .container {
+            background-color: #fff;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #2c3e50;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 { border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; }
+        h2 { border-bottom: 2px solid #95a5a6; padding-bottom: 0.3rem; }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+        }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        code {
+            background-color: #f1f2f6;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        pre {
+            background-color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .pattern-good { color: #27ae60; }
+        .pattern-bad { color: #e74c3c; }
+
+        .complexity-low { color: #27ae60; }
+        .complexity-medium { color: #f39c12; }
+        .complexity-high { color: #e74c3c; }
+
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+            margin-left: 0;
+            background-color: #f8f9fa;
+            padding: 1rem;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p><h1>Intelligent Codebase Analyzer - Codebase Analysis</h1></p><p><strong>Generated:</strong> 2026-01-22T22:22:54.495046
+<strong>Tool:</strong> Intelligent Codebase Analyzer</p><p>This document provides a comprehensive analysis of the codebase structure,
+architectural patterns, and improvement opportunities.</p><p><h2>📊 Project Overview</h2></p><p><tr><td> Metric | Value </td></tr>
+<tr><td>--------|-------</td></tr>
+<tr><td> <strong>Total Files</strong> | 10 </td></tr>
+<tr><td> <strong>Total Lines of Code</strong> | 2,776 </td></tr>
+<tr><td> <strong>Programming Languages</strong> | 1 </td></tr>
+<tr><td> <strong>Patterns Identified</strong> | 3 </td></tr>
+<tr><td> <strong>Complexity Hotspots</strong> | 10 </td></tr></p><p><h3>Languages Distribution</h3></p><p><li><strong>Python</strong>: 10 files</li></p><p><h2>🏗️ Architectural Insights</h2></p><p><h3>Structure Metrics</h3></p><p><li><strong>Average File Size</strong>: 278 lines</li>
+<li><strong>Average Dependencies per Module</strong>: 0.0</li>
+<li><strong>Dependency Graph Complexity</strong>: Low</li></p><p><h3>Architecture Assessment</h3></p><p><strong>Overall Architecture Score</strong>: 30/100 (Needs Improvement)</p><p><strong>Areas for Improvement:</strong>
+<li>Found 3 anti-pattern(s)</li>
+<li>1 files exceed 500 lines</li>
+<li>2 files have high complexity</li></p><p><h2>🔍 Architectural Patterns</h2></p><p><h3>❌ Anti-Patterns (Needs Attention)</h3></p><p>#### God Object
+<strong>Confidence</strong>: 70.0% <code>███████░░░</code>
+<strong>Description</strong>: File analytics.py contains a large number of functions/methods
+<strong>Files Involved</strong>: 1
+<strong>Files</strong>:
+<li><code>examples/sample_codebase/analytics.py</code></li>
+<strong>Suggestions</strong>:
+<li>Consider breaking this into smaller, more focused classes</li>
+<li>Apply Single Responsibility Principle</li>
+<li>Extract related functionality into separate modules</li></p><p>#### God Object
+<strong>Confidence</strong>: 70.0% <code>███████░░░</code>
+<strong>Description</strong>: File services.py contains a large number of functions/methods
+<strong>Files Involved</strong>: 1
+<strong>Files</strong>:
+<li><code>examples/sample_codebase/services.py</code></li>
+<strong>Suggestions</strong>:
+<li>Consider breaking this into smaller, more focused classes</li>
+<li>Apply Single Responsibility Principle</li>
+<li>Extract related functionality into separate modules</li></p><p>#### God Object
+<strong>Confidence</strong>: 70.0% <code>███████░░░</code>
+<strong>Description</strong>: File models.py contains a large number of functions/methods
+<strong>Files Involved</strong>: 1
+<strong>Files</strong>:
+<li><code>examples/sample_codebase/models.py</code></li>
+<strong>Suggestions</strong>:
+<li>Consider breaking this into smaller, more focused classes</li>
+<li>Apply Single Responsibility Principle</li>
+<li>Extract related functionality into separate modules</li></p><p><h2>📈 Complexity Analysis</h2></p><p><h3>Top Complexity Hotspots</h3></p><p><tr><td> Rank | File | Complexity Score | Recommendation </td></tr></p><p><tr><td>------|------|------------------|----------------</td></tr></p><p><tr><td> 1 | <code>pattern_detector.py</code> | 6.2 | ⚠️ Consider refactoring </td></tr></p><p><tr><td> 2 | <code>codebase_analyzer.py</code> | 5.5 | ⚠️ Consider refactoring </td></tr></p><p><tr><td> 3 | <code>documentation_generator.py</code> | 4.4 | 📝 Monitor closely </td></tr></p><p><tr><td> 4 | <code>structure_analyzer.py</code> | 3.8 | 📝 Monitor closely </td></tr></p><p><tr><td> 5 | <code>models.py</code> | 1.8 | ✅ Acceptable </td></tr></p><p><tr><td> 6 | <code>main.py</code> | 1.8 | ✅ Acceptable </td></tr></p><p><tr><td> 7 | <code>services.py</code> | 1.4 | ✅ Acceptable </td></tr></p><p><tr><td> 8 | <code>analytics.py</code> | 1.3 | ✅ Acceptable </td></tr></p><p><tr><td> 9 | <code>test_meta_analysis.py</code> | 1.0 | ✅ Acceptable </td></tr></p><p><tr><td> 10 | <code>analyzer.py</code> | 0.8 | ✅ Acceptable </td></tr></p><p>
+<strong>Average Complexity</strong>: 2.8</p><p><h2>📁 File Analysis</h2></p><p><h3>Python Files (10)</h3></p><p><tr><td> File | Lines | Functions | Classes | Complexity </td></tr></p><p><tr><td>------|-------|-----------|---------|------------</td></tr></p><p><tr><td> <code>pattern_detector.py</code> | 403 | 15 | 3 | 6.2 </td></tr></p><p><tr><td> <code>codebase_analyzer.py</code> | 450 | 17 | 4 | 5.5 </td></tr></p><p><tr><td> <code>documentation_generator.py</code> | 572 | 19 | 1 | 4.4 </td></tr></p><p><tr><td> <code>structure_analyzer.py</code> | 282 | 12 | 3 | 3.8 </td></tr></p><p><tr><td> <code>models.py</code> | 207 | 36 | 6 | 1.8 </td></tr></p><p><tr><td> <code>main.py</code> | 205 | 4 | 0 | 1.8 </td></tr></p><p><tr><td> <code>services.py</code> | 194 | 24 | 12 | 1.4 </td></tr></p><p><tr><td> <code>analytics.py</code> | 243 | 21 | 2 | 1.3 </td></tr></p><p><tr><td> <code>test_meta_analysis.py</code> | 77 | 1 | 0 | 1.0 </td></tr></p><p><tr><td> <code>analyzer.py</code> | 143 | 7 | 2 | 0.8 </td></tr></p><p><h2>💡 Improvement Suggestions</h2></p><p>Based on the analysis, here are prioritized suggestions for improving the codebase:</p><p>1. Consider splitting 1 large files (>500 lines) into smaller modules</p><p>2. High complexity detected - consider refactoring complex functions</p><p>3. Address 3 architectural anti-patterns found</p><p><h2>🔗 Dependencies</h2></p><p>No internal dependencies detected.</p><p>---</p><p><h2>📝 About This Analysis</h2></p><p>This documentation was automatically generated by the Intelligent Codebase Analyzer.
+The analysis provides insights into code structure, patterns, and improvement opportunities.</p><p><strong>Last Updated</strong>: 2026-01-22T22:22:54.495046
+<strong>Analysis Method</strong>: Static analysis with pattern recognition
+<strong>Confidence Levels</strong>: Based on heuristics and structural analysis</p><p>For questions about this analysis or to re-run with updated code, use the codebase analyzer tool.</p>
+    </div>
+</body>
+</html>

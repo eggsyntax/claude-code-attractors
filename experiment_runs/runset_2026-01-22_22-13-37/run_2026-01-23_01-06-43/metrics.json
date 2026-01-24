@@ -1,0 +1,200 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T01:23:22.334921",
+  "duration_seconds": 995.1,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 9.48,
+      "words": 23,
+      "cost_usd": 0.02001405
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 8.73,
+      "words": 34,
+      "cost_usd": 0.01955655
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 8.15,
+      "words": 25,
+      "cost_usd": 0.0093366
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 10.74,
+      "words": 219,
+      "cost_usd": 0.0111291
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 11.84,
+      "words": 30,
+      "cost_usd": 0.0125841
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 47.44,
+      "words": 26,
+      "cost_usd": 0.07667325000000001
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 53.12,
+      "words": 32,
+      "cost_usd": 0.08782245
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 76.0,
+      "words": 27,
+      "cost_usd": 0.15171885
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 172.29,
+      "words": 196,
+      "cost_usd": 0.44596130000000006
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 88.86,
+      "words": 29,
+      "cost_usd": 0.22306304999999996
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 170.49,
+      "words": 42,
+      "cost_usd": 0.44816424999999993
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 189.72,
+      "words": 30,
+      "cost_usd": 0.5276627
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 102.21,
+      "words": 248,
+      "cost_usd": 0.25183744999999996
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 46.03,
+      "words": 161,
+      "cost_usd": 0.08591005
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 596,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 526,
+      "turns": 7
+    }
+  },
+  "total_words": 1122,
+  "artifacts": [
+    {
+      "name": "organizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6364,
+      "lines": 198
+    },
+    {
+      "name": "test_undo_functionality.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6416,
+      "lines": 173
+    },
+    {
+      "name": "project_organizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8594,
+      "lines": 248
+    },
+    {
+      "name": "interactive_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3075,
+      "lines": 93
+    },
+    {
+      "name": "test_conflicts.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2465,
+      "lines": 60
+    },
+    {
+      "name": "file_organizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 34595,
+      "lines": 840
+    },
+    {
+      "name": "test_date_organize.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2509,
+      "lines": 70
+    },
+    {
+      "name": "test_example.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1932,
+      "lines": 58
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2859,
+      "lines": 78
+    }
+  ],
+  "artifact_summary": {
+    "total": 9,
+    "by_type": {
+      "code": 8,
+      "document": 1
+    }
+  },
+  "topics": [
+    "programming",
+    "collaboration",
+    "cli",
+    "files",
+    "organization"
+  ],
+  "usage": {
+    "total_cost_usd": 2.3714,
+    "input_tokens": 311,
+    "output_tokens": 53805
+  }
+}

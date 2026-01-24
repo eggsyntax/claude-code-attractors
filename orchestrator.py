@@ -26,7 +26,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 import argparse
-import re
 
 # =============================================================================
 # CONFIGURATION
@@ -80,18 +79,15 @@ def build_system_prompt(
 
     seed_line = f"\nSuggested topic: {seed_topic}\n\n" if seed_topic else ""
 
-    return f"""You are {agent_name}, a Claude Code instance conversing and collaborating with {others_str}.
+    return f"""You are {agent_name}, a Claude Code instance conversing and collaborating with other Claude Code instance(s) ({others_str}), on any topic you choose.
 {seed_line}
 OUTPUT DIRECTORY: {output_dir}/
-If you create files, put them here. Make them self-documenting:
-- Clear docstrings and comments
-- Usage examples where appropriate
-- Write files as if possible future readers of them won't see this conversation
+If you create files, put them here. If you wish for them to have value later, make them self-documenting, since any possible future readers of them won't have seen this conversation.
 
 HOW TO PARTICIPATE:
 1. The conversation so far is shown in the prompt
 2. Contribute however you choose
-3. End your turn by saying whatever you wish to the other participants
+3. End your turn by saying whatever you wish to the other participants.
 """
 
 def format_conversation_history(messages: list[dict]) -> str:
@@ -99,12 +95,13 @@ def format_conversation_history(messages: list[dict]) -> str:
     if not messages:
         return ""
 
-    lines = ["CONVERSATION SO FAR:", "=" * 40]
+    lines = ["BEGIN CONVERSATION HISTORY:", "=" * 40]
     for msg in messages:
         agent = msg.get("agent", "Unknown")
         output = msg.get("output", "")
         lines.append(f"\n{agent}:")
         lines.append(output)
+    lines.append("END CONVERSATION HISTORY:")
     lines.append("\n" + "=" * 40)
     return "\n".join(lines)
 
@@ -124,23 +121,16 @@ def build_turn_prompt(
         if seed_topic:
             topic_hint = f"\n\nSuggested starting topic (feel free to interpret broadly): {seed_topic}"
 
-        return f"""This is the start of a new conversation. You are {agent_name}.
+        return f"""This is the start of a new conversation. You are {agent_name}, a Claude Code instance, in a conversation with other Claude Code instance(s), free to discuss or do whatever you like.{topic_hint}
 
-Introduce yourself and start the conversation.
-You have freedom to discuss whatever you like.{topic_hint}
-
-End with your message to the other participants."""
+"""
     else:
         return f"""{history}
 
 Turn {turn_number + 1} of {total_turns}. You are {agent_name}.
 
-Respond to the conversation above. You can:
-- Build on ideas that have been discussed
-- Propose new directions
-- Create files if you wish
-
-End with your message to the other participants."""
+It is now your turn again. Create and say whatever you wish.
+"""
 
 
 # =============================================================================
@@ -174,10 +164,8 @@ class Conversation:
         with open(self.log_file) as f:
             return json.load(f)
 
-    def add_message(self, agent: str, turn: int, thoughts: str, output: str) -> dict:
+    def add_message(self, agent: str, turn: int, output: str) -> dict:
         data = self._load()
-        # Save output to conversation.json (for analysis/records)
-        # Thoughts are private - only saved to transcript
         message = {
             "turn": turn,
             "agent": agent,
@@ -186,11 +174,10 @@ class Conversation:
         }
         data["messages"].append(message)
         self._save(data)
-        # Pass thoughts separately for transcript only
-        self._append_transcript(message, thoughts)
+        self._append_transcript(message)
         return message
 
-    def _append_transcript(self, message: dict, thoughts: str = ""):
+    def _append_transcript(self, message: dict):
         agent = message["agent"]
         color = COLORS.get(AGENT_COLORS.get(agent, "yellow"), "")
         reset, dim, bold = COLORS["reset"], COLORS["dim"], COLORS["bold"]
@@ -205,13 +192,7 @@ class Conversation:
             f"{bold}{color}Turn {message['turn']}: {agent}{reset}  {dim}({time_str}){reset}",
             f"{'═' * 70}",
         ]
-        if thoughts:
-            lines.append(f"\n{dim}[Thoughts]{reset}")
-            lines.append("")  # Blank line after header
-            for line in thoughts.split('\n'):
-                lines.append(f"{dim}{line}{reset}")
         if message.get("output"):
-            lines.append(f"\n{bold}{color}[Message]{reset}")
             lines.append("")  # Blank line after header
             for line in message['output'].split('\n'):
                 lines.append(f"{color}{line}{reset}")
@@ -225,52 +206,6 @@ class Conversation:
         data["metadata"]["ended_at"] = datetime.now().isoformat()
         data["metadata"]["stats"] = stats
         self._save(data)
-
-
-# =============================================================================
-# RESPONSE PARSING
-# =============================================================================
-
-def parse_response(raw_output: str) -> tuple[str, str]:
-    """
-    Parse agent response into (thoughts, message_to_others).
-
-    Agents are instructed to end their turn with a message to other participants.
-    This function attempts to separate internal thoughts/reasoning from the
-    actual message by looking for common delimiter patterns:
-
-    1. Explicit labels like "My message:", "Here's my response:", "To everyone:"
-    2. Markdown headers like "**Message to Bob**:"
-    3. Horizontal rules (---)
-    4. Fallback: if the last paragraph is substantial (100+ chars), treat it as the message
-
-    Returns (thoughts, output) where thoughts may be empty if no delimiter found.
-    """
-    if not raw_output or raw_output.startswith("[Error") or raw_output.startswith("[Timeout"):
-        return "", raw_output
-
-    delimiters = [
-        r"\n(?:My message|Here's my (?:message|response)|To (?:the group|everyone|you|Alice|Bob)):\s*\n",
-        r"\n(?:---+)\s*\n",
-        r"\n\*\*(?:Message|Response|To )[^*]*\*\*:?\s*\n",
-    ]
-
-    for pattern in delimiters:
-        match = re.search(pattern, raw_output, re.IGNORECASE)
-        if match:
-            thoughts = raw_output[:match.start()].strip()
-            output = raw_output[match.end():].strip()
-            if output:
-                return thoughts, output
-
-    # Fallback: treat last substantial paragraph as the message
-    paragraphs = raw_output.split("\n\n")
-    if len(paragraphs) > 1:
-        last_para = paragraphs[-1].strip()
-        if last_para and (last_para[0].isupper() or last_para.startswith('"')) and len(last_para) > 100:
-            return "\n\n".join(paragraphs[:-1]).strip(), last_para
-
-    return "", raw_output
 
 
 def display_path(path: Path) -> str:
@@ -599,6 +534,8 @@ def run_experiment(
         print(f"Model: {model}")
         print(f"Agents: {', '.join(agents)}")
         print(f"Turns per agent: {num_turns}")
+        if test_run:
+            print("TEST RUN: results will not be saved")
         if seed_topic:
             print(f"Seed topic: {seed_topic}")
         if sandbox:
@@ -648,6 +585,7 @@ def run_experiment(
                 print(f"{'─' * 70}")
 
             system_prompt = build_system_prompt(agent, agents, agent_output_dir, seed_topic)
+            # print(system_prompt)  # Debugging output
 
             # Get current conversation messages for the prompt
             conv_data = conversation._load()
@@ -658,9 +596,9 @@ def run_experiment(
                 conversation_messages=messages,
                 seed_topic=seed_topic if turn_count == 1 else None
             )
+            # print(turn_prompt)  # Debugging output
 
-            raw_response, success, usage_info = run_claude_code(turn_prompt, system_prompt, workspace, model, sandbox=sandbox)
-            thoughts, output = parse_response(raw_response)
+            output, success, usage_info = run_claude_code(turn_prompt, system_prompt, workspace, model, sandbox=sandbox)
 
             # Accumulate usage
             total_usage["cost_usd"] += usage_info.get("cost_usd", 0)
@@ -676,7 +614,7 @@ def run_experiment(
                 'cost_usd': usage_info.get("cost_usd", 0),
             })
 
-            conversation.add_message(agent, turn_count, thoughts, output)
+            conversation.add_message(agent, turn_count, output)
 
             stats["total_turns"] += 1
             stats["agents"][agent]["turns"] += 1
@@ -687,10 +625,7 @@ def run_experiment(
                 had_failure = True
 
             if verbose:
-                dim, reset = COLORS["dim"], COLORS["reset"]
-                if thoughts:
-                    print(f"\n{dim}[Thoughts] {thoughts}{reset}")
-                print(f"\n[Message] {output}")
+                print(f"\n{output}")
 
     conversation.finalize(stats)
 

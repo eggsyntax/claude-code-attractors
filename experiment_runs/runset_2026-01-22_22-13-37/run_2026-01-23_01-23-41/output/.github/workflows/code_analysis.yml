@@ -1,0 +1,87 @@
+name: Code Analysis & Quality Gate
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+  push:
+    branches: [ main, develop ]
+
+jobs:
+  code-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Needed for baseline comparison
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install tree-sitter
+        pip install requests
+        # Install our code analyzer
+        pip install -e .
+
+    - name: Run Code Analysis
+      id: analysis
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        GITHUB_PR_NUMBER: ${{ github.event.pull_request.number }}
+      run: |
+        python ci_integration.py src/
+
+    - name: Upload Analysis Report
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: code-analysis-report
+        path: |
+          baselines/
+          *.html
+          *.json
+
+    - name: Comment on PR
+      uses: actions/github-script@v6
+      if: github.event_name == 'pull_request' && failure()
+      with:
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: '⚠️ Code analysis quality gate failed. Check the Actions logs for details.'
+          })
+
+  # Optional: Separate job for trend analysis
+  trend-analysis:
+    runs-on: ubuntu-latest
+    needs: code-analysis
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download baselines
+      uses: actions/download-artifact@v3
+      with:
+        name: code-analysis-report
+
+    - name: Generate Trend Report
+      run: |
+        # This could generate historical trend analysis
+        python -c "print('Trend analysis would go here')"
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./reports
+        destination_dir: code-analysis

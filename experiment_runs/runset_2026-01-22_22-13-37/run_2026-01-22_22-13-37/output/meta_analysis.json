@@ -1,0 +1,2818 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2026-01-22T22:41:05.265071",
+    "analyzer_version": "2.0-ai",
+    "total_files": 16,
+    "languages": [
+      "python"
+    ]
+  },
+  "files": {
+    "comprehensive_analyzer.py": {
+      "language": "python",
+      "size_bytes": 11941,
+      "line_count": 291,
+      "hash": "3d7082d99ba85b8768c7ff244e785b8e",
+      "functions": [
+        {
+          "name": "main",
+          "line": 228,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 23,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "analyze",
+          "line": 27,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_deduplicate_patterns",
+          "line": 52,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_enhanced_suggestions",
+          "line": 75,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "generate_comprehensive_report",
+          "line": 105,
+          "args": 1,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "ComprehensiveAnalyzer",
+          "line": 18,
+          "methods": 5,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "sys",
+        "pathlib",
+        "typing",
+        "codebase_analyzer",
+        "enhanced_patterns",
+        "argparse",
+        "logging",
+        "json"
+      ],
+      "exports": [],
+      "complexity_score": 38,
+      "test_indicators": [],
+      "documentation_score": 13,
+      "maintainability_index": 24
+    },
+    "test_meta_analysis.py": {
+      "language": "python",
+      "size_bytes": 2692,
+      "line_count": 77,
+      "hash": "7029fbdbf0f71c88907bbfbe89281c2b",
+      "functions": [
+        {
+          "name": "main",
+          "line": 14,
+          "args": 0,
+          "has_docstring": true
+        }
+      ],
+      "classes": [],
+      "imports": [
+        "pathlib",
+        "codebase_analyzer",
+        "documentation_generator"
+      ],
+      "exports": [],
+      "complexity_score": 10,
+      "test_indicators": [],
+      "documentation_score": 2,
+      "maintainability_index": 80
+    },
+    "demo_meta_analysis.py": {
+      "language": "python",
+      "size_bytes": 9693,
+      "line_count": 238,
+      "hash": "a5bea9c0bea5633154a62811fdecc5c0",
+      "functions": [
+        {
+          "name": "run_meta_analysis",
+          "line": 19,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "extract_meta_insights",
+          "line": 55,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "generate_self_improvements",
+          "line": 89,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "generate_architecture_report",
+          "line": 120,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "demonstrate_continuous_improvement",
+          "line": 205,
+          "args": 0,
+          "has_docstring": true
+        }
+      ],
+      "classes": [],
+      "imports": [
+        "json",
+        "subprocess",
+        "os",
+        "pathlib",
+        "enhanced_analyzer"
+      ],
+      "exports": [],
+      "complexity_score": 20,
+      "test_indicators": [],
+      "documentation_score": 10,
+      "maintainability_index": 60
+    },
+    "enhanced_patterns.py": {
+      "language": "python",
+      "size_bytes": 18130,
+      "line_count": 426,
+      "hash": "f21ee9455a6b6ab4de1fdbf257bca67c",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 33,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "detect_all_patterns",
+          "line": 37,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_singleton_pattern",
+          "line": 60,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_factory_pattern",
+          "line": 106,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_observer_pattern",
+          "line": 132,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_decorator_pattern",
+          "line": 166,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_long_parameter_lists",
+          "line": 195,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_dead_code",
+          "line": 241,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_duplicate_code",
+          "line": 290,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_feature_envy",
+          "line": 322,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_layered_architecture",
+          "line": 351,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_repository_pattern",
+          "line": 391,
+          "args": 2,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "DesignPatternMatch",
+          "line": 20,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "EnhancedPatternDetector",
+          "line": 30,
+          "methods": 12,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "ast",
+        "re",
+        "pathlib",
+        "typing",
+        "dataclasses",
+        "collections",
+        "codebase_analyzer",
+        "collections"
+      ],
+      "exports": [],
+      "complexity_score": 48,
+      "test_indicators": [],
+      "documentation_score": 28,
+      "maintainability_index": 4
+    },
+    "demo_analyzer.py": {
+      "language": "python",
+      "size_bytes": 11680,
+      "line_count": 365,
+      "hash": "9f9528c97e60e49cf14bd1ab285a8061",
+      "functions": [
+        {
+          "name": "create_sample_codebase",
+          "line": 19,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "analyze_codebase",
+          "line": 255,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "demonstrate_capabilities",
+          "line": 320,
+          "args": 0,
+          "has_docstring": true
+        }
+      ],
+      "classes": [],
+      "imports": [
+        "os",
+        "sys",
+        "pathlib",
+        "codebase_analyzer",
+        "shutil"
+      ],
+      "exports": [],
+      "complexity_score": 16,
+      "test_indicators": [],
+      "documentation_score": 6,
+      "maintainability_index": 68
+    },
+    "enhanced_analyzer.py": {
+      "language": "python",
+      "size_bytes": 19082,
+      "line_count": 478,
+      "hash": "f6c9dee2af5cc3fc5cd53dbecfa2bb40",
+      "functions": [
+        {
+          "name": "main",
+          "line": 421,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 66,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_generate_analysis_id",
+          "line": 71,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "enhanced_analyze",
+          "line": 76,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_refactoring_opportunities",
+          "line": 102,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_assess_architectural_debt",
+          "line": 147,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_performance_patterns",
+          "line": 177,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_living_documentation",
+          "line": 217,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_architecture_overview",
+          "line": 237,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_module_documentation",
+          "line": 273,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_infer_module_purpose",
+          "line": 297,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_dependency_visualization_data",
+          "line": 326,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_codebase_health_score",
+          "line": 357,
+          "args": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "_score_to_grade",
+          "line": 390,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_health_recommendations",
+          "line": 398,
+          "args": 4,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "RefactoringOpportunity",
+          "line": 32,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "ArchitecturalDebt",
+          "line": 43,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "PerformancePattern",
+          "line": 54,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "EnhancedCodebaseAnalyzer",
+          "line": 63,
+          "methods": 14,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "os",
+        "ast",
+        "json",
+        "re",
+        "pathlib",
+        "typing",
+        "dataclasses",
+        "collections",
+        "datetime",
+        "hashlib",
+        "codebase_analyzer",
+        "argparse"
+      ],
+      "exports": [],
+      "complexity_score": 47,
+      "test_indicators": [],
+      "documentation_score": 40,
+      "maintainability_index": 6
+    },
+    "ai_powered_analyzer.py": {
+      "language": "python",
+      "size_bytes": 39631,
+      "line_count": 936,
+      "hash": "58603d4d6e67e671deecac82280319c3",
+      "functions": [
+        {
+          "name": "main",
+          "line": 885,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 130,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "analyze_with_ai_insights",
+          "line": 145,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_discover_codebase",
+          "line": 193,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_should_ignore_file",
+          "line": 202,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_file",
+          "line": 212,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_by_language",
+          "line": 251,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_python_content",
+          "line": 260,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_js_ts_content",
+          "line": 322,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_generic_content",
+          "line": 373,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_patterns_with_ai",
+          "line": 392,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_pattern_reasoning",
+          "line": 428,
+          "args": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_pattern_suggestions",
+          "line": 444,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_ai_insights",
+          "line": 474,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_architecture_insights",
+          "line": 489,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_quality_insights",
+          "line": 510,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_maintainability_insights",
+          "line": 536,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_performance_insights",
+          "line": 558,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_refactoring_opportunities",
+          "line": 583,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_find_code_duplication_opportunities",
+          "line": 595,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_find_method_extraction_opportunities",
+          "line": 632,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_find_architectural_improvements",
+          "line": 659,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_assess_project_health",
+          "line": 687,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_living_documentation",
+          "line": 753,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_maintainability_distribution",
+          "line": 799,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "export_analysis",
+          "line": 816,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "print_executive_summary",
+          "line": 831,
+          "args": 1,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "IntelligentInsight",
+          "line": 33,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "CodePattern",
+          "line": 47,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "RefactoringOpportunity",
+          "line": 62,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "ProjectHealth",
+          "line": 77,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "AICodebaseAnalyzer",
+          "line": 89,
+          "methods": 26,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "os",
+        "ast",
+        "json",
+        "argparse",
+        "pathlib",
+        "typing",
+        "dataclasses",
+        "collections",
+        "datetime",
+        "re",
+        "hashlib",
+        "traceback"
+      ],
+      "exports": [],
+      "complexity_score": 60,
+      "test_indicators": [],
+      "documentation_score": 69,
+      "maintainability_index": 0
+    },
+    "codebase_analyzer.py": {
+      "language": "python",
+      "size_bytes": 16860,
+      "line_count": 450,
+      "hash": "bde3cbb7b5cb6e26395d8a11bf2a06bf",
+      "functions": [
+        {
+          "name": "main",
+          "line": 405,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 73,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "analyze",
+          "line": 91,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_discover_files",
+          "line": 140,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_file",
+          "line": 157,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_python_file",
+          "line": 186,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_js_file",
+          "line": 209,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_python_complexity",
+          "line": 225,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_js_complexity",
+          "line": 237,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_build_dependency_graph",
+          "line": 251,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_resolve_import",
+          "line": 266,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_patterns",
+          "line": 278,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_god_objects",
+          "line": 294,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_circular_dependencies",
+          "line": 315,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_mvc_pattern",
+          "line": 338,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_complexity_hotspots",
+          "line": 371,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_suggestions",
+          "line": 377,
+          "args": 4,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "FileInfo",
+          "line": 25,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "ArchitecturalPattern",
+          "line": 39,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "CodebaseInsights",
+          "line": 50,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "CodebaseAnalyzer",
+          "line": 62,
+          "methods": 16,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "os",
+        "ast",
+        "json",
+        "logging",
+        "pathlib",
+        "typing",
+        "dataclasses",
+        "collections",
+        "re",
+        "argparse"
+      ],
+      "exports": [],
+      "complexity_score": 44,
+      "test_indicators": [],
+      "documentation_score": 44,
+      "maintainability_index": 12
+    },
+    "documentation_generator.py": {
+      "language": "python",
+      "size_bytes": 21075,
+      "line_count": 572,
+      "hash": "9701b56c6db264b1690040119acc7cfb",
+      "functions": [
+        {
+          "name": "main",
+          "line": 539,
+          "args": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 36,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "generate_markdown",
+          "line": 40,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "generate_html",
+          "line": 64,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_header",
+          "line": 106,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_overview",
+          "line": 116,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_architecture_section",
+          "line": 136,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_assess_architecture_quality",
+          "line": 157,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_patterns_section",
+          "line": 191,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_format_pattern",
+          "line": 213,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_complexity_section",
+          "line": 236,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_get_complexity_recommendation",
+          "line": 261,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_files_section",
+          "line": 272,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_suggestions_section",
+          "line": 305,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_dependencies_section",
+          "line": 320,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_footer",
+          "line": 352,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_get_css_styles",
+          "line": 367,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "save_documentation",
+          "line": 444,
+          "args": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "_simple_markdown_to_html",
+          "line": 508,
+          "args": 2,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "DocumentationGenerator",
+          "line": 24,
+          "methods": 18,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "json",
+        "pathlib",
+        "typing",
+        "datetime",
+        "codebase_analyzer",
+        "markdown",
+        "argparse",
+        "sys",
+        "re"
+      ],
+      "exports": [],
+      "complexity_score": 37,
+      "test_indicators": [],
+      "documentation_score": 39,
+      "maintainability_index": 26
+    },
+    "examples/sample_codebase/analytics.py": {
+      "language": "python",
+      "size_bytes": 8442,
+      "line_count": 243,
+      "hash": "19c4a9d8e6aa009a3530a012cb6982e4",
+      "functions": [
+        {
+          "name": "calculate_advanced_metrics",
+          "line": 227,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "__init__",
+          "line": 18,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "get_user_insights",
+          "line": 29,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "generate_system_report",
+          "line": 57,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_activity_score",
+          "line": 98,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_engagement_level",
+          "line": 102,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_predict_churn_risk",
+          "line": 111,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_estimate_lifetime_value",
+          "line": 115,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_analyze_behavior_patterns",
+          "line": 119,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_user_growth",
+          "line": 123,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_engagement_metrics",
+          "line": 131,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_revenue_metrics",
+          "line": 139,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_performance_metrics",
+          "line": 146,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_calculate_feature_usage",
+          "line": 153,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_predict_user_growth",
+          "line": 167,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_predict_revenue",
+          "line": 174,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_generate_recommendations",
+          "line": 181,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "_is_cache_valid",
+          "line": 195,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 205,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "generate_legacy_report",
+          "line": 211,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "export_to_csv",
+          "line": 215,
+          "args": 2,
+          "has_docstring": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "AdvancedAnalyticsEngine",
+          "line": 12,
+          "methods": 17,
+          "has_docstring": true
+        },
+        {
+          "name": "LegacyReportGenerator",
+          "line": 199,
+          "methods": 3,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "typing",
+        "datetime",
+        "services"
+      ],
+      "exports": [],
+      "complexity_score": 13,
+      "test_indicators": [],
+      "documentation_score": 12,
+      "maintainability_index": 74
+    },
+    "examples/sample_codebase/services.py": {
+      "language": "python",
+      "size_bytes": 7147,
+      "line_count": 194,
+      "hash": "a55e1143c4df13a3dc42c288b28715d4",
+      "functions": [
+        {
+          "name": "create_notification",
+          "line": 15,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 27,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "send",
+          "line": 32,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "send",
+          "line": 36,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "send",
+          "line": 40,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "send",
+          "line": 44,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "notify",
+          "line": 49,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 55,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "subscribe",
+          "line": 58,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "unsubscribe",
+          "line": 63,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "dispatch",
+          "line": 67,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "notify",
+          "line": 75,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 81,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "notify",
+          "line": 84,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 96,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "advanced_user_analytics",
+          "line": 101,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "bulk_user_operation",
+          "line": 121,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 145,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "generate_user_report",
+          "line": 149,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 167,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "get",
+          "line": 184,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "set",
+          "line": 187,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "is_feature_enabled",
+          "line": 190,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "get_notification_setting",
+          "line": 193,
+          "args": 2,
+          "has_docstring": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "NotificationFactory",
+          "line": 11,
+          "methods": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "Notification",
+          "line": 26,
+          "methods": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "EmailNotification",
+          "line": 35,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "SMSNotification",
+          "line": 39,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "PushNotification",
+          "line": 43,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "EventObserver",
+          "line": 48,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "EventDispatcher",
+          "line": 52,
+          "methods": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "AuditLogger",
+          "line": 72,
+          "methods": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "MetricsCollector",
+          "line": 78,
+          "methods": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "UserService",
+          "line": 90,
+          "methods": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "ReportingService",
+          "line": 142,
+          "methods": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "ConfigurationManager",
+          "line": 161,
+          "methods": 5,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "typing",
+        "abc",
+        "models",
+        "analytics"
+      ],
+      "exports": [],
+      "complexity_score": 14,
+      "test_indicators": [],
+      "documentation_score": 21,
+      "maintainability_index": 72
+    },
+    "examples/sample_codebase/models.py": {
+      "language": "python",
+      "size_bytes": 7257,
+      "line_count": 207,
+      "hash": "32e5f10151a1855f2efc1a0546a5ba3d",
+      "functions": [
+        {
+          "name": "__new__",
+          "line": 16,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 21,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "connect",
+          "line": 27,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "execute_query",
+          "line": 30,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "__init__",
+          "line": 40,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "create_user",
+          "line": 51,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "update_user",
+          "line": 60,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "delete_user",
+          "line": 66,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "create_session",
+          "line": 74,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "validate_session",
+          "line": 83,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "destroy_session",
+          "line": 86,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "grant_permission",
+          "line": 91,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "revoke_permission",
+          "line": 96,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "check_permission",
+          "line": 101,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "send_notification_email",
+          "line": 105,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "send_bulk_email",
+          "line": 110,
+          "args": 4,
+          "has_docstring": false
+        },
+        {
+          "name": "track_user_action",
+          "line": 117,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "generate_user_report",
+          "line": 121,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "process_payment",
+          "line": 133,
+          "args": 4,
+          "has_docstring": false
+        },
+        {
+          "name": "_generate_user_id",
+          "line": 141,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_generate_session_id",
+          "line": 145,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "_log_user_creation",
+          "line": 149,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_log_user_update",
+          "line": 152,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_log_user_deletion",
+          "line": 155,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_log_action",
+          "line": 158,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "_log_payment",
+          "line": 161,
+          "args": 5,
+          "has_docstring": false
+        },
+        {
+          "name": "_send_welcome_email",
+          "line": 171,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_notify_user_update",
+          "line": 174,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_track_user_signup",
+          "line": 177,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_cleanup_user_sessions",
+          "line": 180,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "_cleanup_user_permissions",
+          "line": 185,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "send",
+          "line": 191,
+          "args": 4,
+          "has_docstring": false
+        },
+        {
+          "name": "send_welcome",
+          "line": 194,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "notify",
+          "line": 198,
+          "args": 3,
+          "has_docstring": false
+        },
+        {
+          "name": "charge",
+          "line": 202,
+          "args": 4,
+          "has_docstring": false
+        },
+        {
+          "name": "track_event",
+          "line": 206,
+          "args": 3,
+          "has_docstring": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "DatabaseConnection",
+          "line": 11,
+          "methods": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "UserManager",
+          "line": 34,
+          "methods": 27,
+          "has_docstring": true
+        },
+        {
+          "name": "EmailService",
+          "line": 190,
+          "methods": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "NotificationService",
+          "line": 197,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "PaymentProcessor",
+          "line": 201,
+          "methods": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "AnalyticsTracker",
+          "line": 205,
+          "methods": 1,
+          "has_docstring": false
+        }
+      ],
+      "imports": [
+        "logging",
+        "typing",
+        "datetime",
+        "uuid",
+        "uuid"
+      ],
+      "exports": [],
+      "complexity_score": 15,
+      "test_indicators": [],
+      "documentation_score": 6,
+      "maintainability_index": 70
+    },
+    "src/main.py": {
+      "language": "python",
+      "size_bytes": 7108,
+      "line_count": 205,
+      "hash": "4e695394295a37dfaf3dde8c9e1ecba6",
+      "functions": [
+        {
+          "name": "create_analyzer_with_modules",
+          "line": 22,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "format_analysis_results",
+          "line": 32,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "print_analysis_summary",
+          "line": 64,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "main",
+          "line": 104,
+          "args": 0,
+          "has_docstring": true
+        }
+      ],
+      "classes": [],
+      "imports": [
+        "sys",
+        "json",
+        "argparse",
+        "pathlib",
+        "typing",
+        "core.analyzer",
+        "analyzers.structure_analyzer",
+        "analyzers.pattern_detector",
+        "traceback"
+      ],
+      "exports": [],
+      "complexity_score": 16,
+      "test_indicators": [],
+      "documentation_score": 8,
+      "maintainability_index": 68
+    },
+    "src/core/analyzer.py": {
+      "language": "python",
+      "size_bytes": 5267,
+      "line_count": 143,
+      "hash": "f42af24db724fafef0ca86ebae478758",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 30,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "analyze",
+          "line": 46,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_structure",
+          "line": 78,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_patterns",
+          "line": 84,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_insights",
+          "line": 90,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_metrics",
+          "line": 112,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_generate_documentation",
+          "line": 129,
+          "args": 4,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "AnalysisResult",
+          "line": 14,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "CodebaseAnalyzer",
+          "line": 22,
+          "methods": 7,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "typing",
+        "dataclasses",
+        "pathlib",
+        "logging"
+      ],
+      "exports": [],
+      "complexity_score": 6,
+      "test_indicators": [],
+      "documentation_score": 20,
+      "maintainability_index": 88
+    },
+    "src/analyzers/pattern_detector.py": {
+      "language": "python",
+      "size_bytes": 15190,
+      "line_count": 403,
+      "hash": "7e2ab53911c9dfb318a1a1ef38a3c622",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 40,
+          "args": 1,
+          "has_docstring": false
+        },
+        {
+          "name": "detect_patterns",
+          "line": 43,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_design_patterns",
+          "line": 65,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_anti_patterns",
+          "line": 119,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_architectural_smells",
+          "line": 169,
+          "args": 4,
+          "has_docstring": true
+        },
+        {
+          "name": "_is_singleton_pattern",
+          "line": 221,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_is_factory_pattern",
+          "line": 243,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_is_observer_pattern",
+          "line": 263,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_is_god_object",
+          "line": 285,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_circular_dependencies",
+          "line": 300,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_has_dead_code",
+          "line": 334,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_has_feature_envy",
+          "line": 351,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_detect_layer_violations",
+          "line": 359,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_indicates_shotgun_surgery",
+          "line": 389,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "dfs",
+          "line": 306,
+          "args": 2,
+          "has_docstring": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "PatternType",
+          "line": 14,
+          "methods": 0,
+          "has_docstring": false
+        },
+        {
+          "name": "Pattern",
+          "line": 20,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "PatternDetector",
+          "line": 30,
+          "methods": 14,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "typing",
+        "dataclasses",
+        "pathlib",
+        "re",
+        "enum"
+      ],
+      "exports": [],
+      "complexity_score": 52,
+      "test_indicators": [],
+      "documentation_score": 32,
+      "maintainability_index": 0
+    },
+    "src/analyzers/structure_analyzer.py": {
+      "language": "python",
+      "size_bytes": 10926,
+      "line_count": 282,
+      "hash": "db132c0a5402f3609c568228d50e2814",
+      "functions": [
+        {
+          "name": "__init__",
+          "line": 42,
+          "args": 2,
+          "has_docstring": false
+        },
+        {
+          "name": "analyze",
+          "line": 46,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_discover_files",
+          "line": 79,
+          "args": 1,
+          "has_docstring": true
+        },
+        {
+          "name": "_analyze_file",
+          "line": 95,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_determine_file_type",
+          "line": 121,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_extract_imports",
+          "line": 133,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_extract_exports",
+          "line": 160,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_extract_definitions",
+          "line": 178,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_build_dependency_graph",
+          "line": 203,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_resolve_import",
+          "line": 216,
+          "args": 3,
+          "has_docstring": true
+        },
+        {
+          "name": "_identify_layers",
+          "line": 236,
+          "args": 2,
+          "has_docstring": true
+        },
+        {
+          "name": "_calculate_structure_metrics",
+          "line": 261,
+          "args": 3,
+          "has_docstring": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "FileNode",
+          "line": 15,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "DependencyGraph",
+          "line": 26,
+          "methods": 0,
+          "has_docstring": true
+        },
+        {
+          "name": "StructureAnalyzer",
+          "line": 31,
+          "methods": 12,
+          "has_docstring": true
+        }
+      ],
+      "imports": [
+        "typing",
+        "pathlib",
+        "ast",
+        "re",
+        "dataclasses"
+      ],
+      "exports": [],
+      "complexity_score": 33,
+      "test_indicators": [],
+      "documentation_score": 31,
+      "maintainability_index": 34
+    }
+  },
+  "patterns": [],
+  "insights": [
+    {
+      "category": "quality",
+      "title": "High Complexity Concentration",
+      "description": "14 files (87.5%) have high complexity scores",
+      "impact": "high",
+      "confidence": 0.85,
+      "evidence": [
+        "Files with complexity > 10: 14"
+      ],
+      "recommendations": [
+        "Refactor complex functions into smaller, focused methods",
+        "Add comprehensive unit tests for complex functions",
+        "Consider using design patterns to reduce complexity",
+        "Implement code review process focusing on complexity"
+      ],
+      "affected_files": [
+        "comprehensive_analyzer.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "generated_at": "2026-01-22T22:41:05.236340"
+    },
+    {
+      "category": "maintainability",
+      "title": "Below Average Maintainability",
+      "description": "Average maintainability index is 42.9/100, below recommended threshold of 60",
+      "impact": "high",
+      "confidence": 0.8,
+      "evidence": [
+        "Maintainability index: 42.9"
+      ],
+      "recommendations": [
+        "Reduce cyclomatic complexity in functions",
+        "Improve code documentation",
+        "Add more comprehensive unit tests",
+        "Refactor large classes and functions"
+      ],
+      "affected_files": [
+        "comprehensive_analyzer.py",
+        "test_meta_analysis.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/core/analyzer.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "generated_at": "2026-01-22T22:41:05.236349"
+    },
+    {
+      "category": "quality",
+      "title": "High Complexity Concentration",
+      "description": "14 files (87.5%) have high complexity scores",
+      "impact": "high",
+      "confidence": 0.85,
+      "evidence": [
+        "Files with complexity > 10: 14"
+      ],
+      "recommendations": [
+        "Refactor complex functions into smaller, focused methods",
+        "Add comprehensive unit tests for complex functions",
+        "Consider using design patterns to reduce complexity",
+        "Implement code review process focusing on complexity"
+      ],
+      "affected_files": [
+        "comprehensive_analyzer.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "generated_at": "2026-01-22T22:41:05.264991"
+    },
+    {
+      "category": "maintainability",
+      "title": "Below Average Maintainability",
+      "description": "Average maintainability index is 42.9/100, below recommended threshold of 60",
+      "impact": "high",
+      "confidence": 0.8,
+      "evidence": [
+        "Maintainability index: 42.9"
+      ],
+      "recommendations": [
+        "Reduce cyclomatic complexity in functions",
+        "Improve code documentation",
+        "Add more comprehensive unit tests",
+        "Refactor large classes and functions"
+      ],
+      "affected_files": [
+        "comprehensive_analyzer.py",
+        "test_meta_analysis.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/core/analyzer.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "generated_at": "2026-01-22T22:41:05.264996"
+    }
+  ],
+  "refactoring_opportunities": [
+    {
+      "opportunity_id": "extract_comprehensive_analyzer.py_0",
+      "title": "Extract Methods in comprehensive_analyzer.py",
+      "description": "High complexity score (38) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "comprehensive_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_demo_meta_analysis.py_1",
+      "title": "Extract Methods in demo_meta_analysis.py",
+      "description": "High complexity score (20) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "demo_meta_analysis.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_enhanced_patterns.py_2",
+      "title": "Extract Methods in enhanced_patterns.py",
+      "description": "High complexity score (48) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "enhanced_patterns.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_demo_analyzer.py_3",
+      "title": "Extract Methods in demo_analyzer.py",
+      "description": "High complexity score (16) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "demo_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_enhanced_analyzer.py_4",
+      "title": "Extract Methods in enhanced_analyzer.py",
+      "description": "High complexity score (47) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "enhanced_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_ai_powered_analyzer.py_5",
+      "title": "Extract Methods in ai_powered_analyzer.py",
+      "description": "High complexity score (60) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "ai_powered_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_codebase_analyzer.py_6",
+      "title": "Extract Methods in codebase_analyzer.py",
+      "description": "High complexity score (44) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "codebase_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_documentation_generator.py_7",
+      "title": "Extract Methods in documentation_generator.py",
+      "description": "High complexity score (37) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "documentation_generator.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_main.py_8",
+      "title": "Extract Methods in src/main.py",
+      "description": "High complexity score (16) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/main.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_analyzers_pattern_detector.py_9",
+      "title": "Extract Methods in src/analyzers/pattern_detector.py",
+      "description": "High complexity score (52) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/analyzers/pattern_detector.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_analyzers_structure_analyzer.py_10",
+      "title": "Extract Methods in src/analyzers/structure_analyzer.py",
+      "description": "High complexity score (33) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "arch_patterns_11",
+      "title": "Introduce Design Patterns",
+      "description": "Codebase could benefit from common design patterns for better structure",
+      "priority": "medium",
+      "effort_estimate": "large",
+      "files_to_modify": [
+        "comprehensive_analyzer.py",
+        "test_meta_analysis.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/core/analyzer.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "benefits": [
+        "Improve code organization",
+        "Better separation of concerns",
+        "Enhanced testability"
+      ],
+      "risks": [
+        "Large refactoring effort",
+        "May introduce complexity if overused"
+      ],
+      "automated_feasible": false,
+      "code_examples": {
+        "before": "// Direct dependencies and tight coupling",
+        "after": "// Proper abstraction layers with design patterns"
+      }
+    },
+    {
+      "opportunity_id": "extract_comprehensive_analyzer.py_12",
+      "title": "Extract Methods in comprehensive_analyzer.py",
+      "description": "High complexity score (38) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "comprehensive_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_demo_meta_analysis.py_13",
+      "title": "Extract Methods in demo_meta_analysis.py",
+      "description": "High complexity score (20) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "demo_meta_analysis.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_enhanced_patterns.py_14",
+      "title": "Extract Methods in enhanced_patterns.py",
+      "description": "High complexity score (48) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "enhanced_patterns.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_demo_analyzer.py_15",
+      "title": "Extract Methods in demo_analyzer.py",
+      "description": "High complexity score (16) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "demo_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_enhanced_analyzer.py_16",
+      "title": "Extract Methods in enhanced_analyzer.py",
+      "description": "High complexity score (47) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "enhanced_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_ai_powered_analyzer.py_17",
+      "title": "Extract Methods in ai_powered_analyzer.py",
+      "description": "High complexity score (60) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "ai_powered_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_codebase_analyzer.py_18",
+      "title": "Extract Methods in codebase_analyzer.py",
+      "description": "High complexity score (44) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "codebase_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_documentation_generator.py_19",
+      "title": "Extract Methods in documentation_generator.py",
+      "description": "High complexity score (37) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "documentation_generator.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_main.py_20",
+      "title": "Extract Methods in src/main.py",
+      "description": "High complexity score (16) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/main.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_analyzers_pattern_detector.py_21",
+      "title": "Extract Methods in src/analyzers/pattern_detector.py",
+      "description": "High complexity score (52) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/analyzers/pattern_detector.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "extract_src_analyzers_structure_analyzer.py_22",
+      "title": "Extract Methods in src/analyzers/structure_analyzer.py",
+      "description": "High complexity score (33) suggests opportunities for method extraction",
+      "priority": "high",
+      "effort_estimate": "small",
+      "files_to_modify": [
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "benefits": [
+        "Improve readability",
+        "Enable better testing",
+        "Reduce complexity"
+      ],
+      "risks": [
+        "Minimal - mostly cosmetic changes"
+      ],
+      "automated_feasible": true,
+      "code_examples": {
+        "before": "// One large method with high complexity",
+        "after": "// Multiple smaller, focused methods"
+      }
+    },
+    {
+      "opportunity_id": "arch_patterns_23",
+      "title": "Introduce Design Patterns",
+      "description": "Codebase could benefit from common design patterns for better structure",
+      "priority": "medium",
+      "effort_estimate": "large",
+      "files_to_modify": [
+        "comprehensive_analyzer.py",
+        "test_meta_analysis.py",
+        "demo_meta_analysis.py",
+        "enhanced_patterns.py",
+        "demo_analyzer.py",
+        "enhanced_analyzer.py",
+        "ai_powered_analyzer.py",
+        "codebase_analyzer.py",
+        "documentation_generator.py",
+        "examples/sample_codebase/analytics.py",
+        "examples/sample_codebase/services.py",
+        "examples/sample_codebase/models.py",
+        "src/main.py",
+        "src/core/analyzer.py",
+        "src/analyzers/pattern_detector.py",
+        "src/analyzers/structure_analyzer.py"
+      ],
+      "benefits": [
+        "Improve code organization",
+        "Better separation of concerns",
+        "Enhanced testability"
+      ],
+      "risks": [
+        "Large refactoring effort",
+        "May introduce complexity if overused"
+      ],
+      "automated_feasible": false,
+      "code_examples": {
+        "before": "// Direct dependencies and tight coupling",
+        "after": "// Proper abstraction layers with design patterns"
+      }
+    }
+  ],
+  "project_health": {
+    "health_score": 32.625,
+    "technical_debt_score": 67.375,
+    "maintainability_index": 42.875,
+    "test_coverage_estimate": 0.0,
+    "documentation_completeness": 47.625,
+    "trends": {
+      "complexity": "stable",
+      "maintainability": "stable",
+      "test_coverage": "unknown"
+    },
+    "critical_issues": [
+      "Very high average complexity across codebase",
+      "Very low test coverage"
+    ],
+    "strengths": []
+  },
+  "documentation": {
+    "overview": {
+      "title": "Living Documentation for ",
+      "generated_at": "2026-01-22T22:41:05.265056",
+      "total_files": 16,
+      "languages": [
+        "python"
+      ],
+      "health_score": 32.625
+    },
+    "architecture": {
+      "patterns_detected": [],
+      "suggested_improvements": [
+        "Extract Methods in comprehensive_analyzer.py",
+        "Extract Methods in demo_meta_analysis.py",
+        "Extract Methods in enhanced_patterns.py",
+        "Extract Methods in demo_analyzer.py",
+        "Extract Methods in enhanced_analyzer.py"
+      ]
+    },
+    "quality_metrics": {
+      "files_by_complexity": {
+        "low": 0,
+        "medium": 4,
+        "high": 12
+      },
+      "maintainability_distribution": {
+        "excellent": 2,
+        "good": 6,
+        "fair": 0,
+        "poor": 8
+      }
+    },
+    "insights_summary": {
+      "critical_insights": [],
+      "high_impact_insights": [
+        "High Complexity Concentration",
+        "Below Average Maintainability",
+        "High Complexity Concentration",
+        "Below Average Maintainability"
+      ],
+      "total_insights": 4
+    },
+    "recommendations": {
+      "top_priorities": [
+        "Extract Methods in comprehensive_analyzer.py",
+        "Extract Methods in demo_meta_analysis.py",
+        "Extract Methods in enhanced_patterns.py"
+      ],
+      "quick_wins": [
+        "Extract Methods in comprehensive_analyzer.py",
+        "Extract Methods in demo_meta_analysis.py",
+        "Extract Methods in enhanced_patterns.py",
+        "Extract Methods in demo_analyzer.py",
+        "Extract Methods in enhanced_analyzer.py",
+        "Extract Methods in ai_powered_analyzer.py",
+        "Extract Methods in codebase_analyzer.py",
+        "Extract Methods in documentation_generator.py",
+        "Extract Methods in src/main.py",
+        "Extract Methods in src/analyzers/pattern_detector.py",
+        "Extract Methods in src/analyzers/structure_analyzer.py",
+        "Extract Methods in comprehensive_analyzer.py",
+        "Extract Methods in demo_meta_analysis.py",
+        "Extract Methods in enhanced_patterns.py",
+        "Extract Methods in demo_analyzer.py",
+        "Extract Methods in enhanced_analyzer.py",
+        "Extract Methods in ai_powered_analyzer.py",
+        "Extract Methods in codebase_analyzer.py",
+        "Extract Methods in documentation_generator.py",
+        "Extract Methods in src/main.py",
+        "Extract Methods in src/analyzers/pattern_detector.py",
+        "Extract Methods in src/analyzers/structure_analyzer.py"
+      ]
+    }
+  }
+}

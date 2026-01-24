@@ -1,0 +1,83 @@
+diff --git a/src/auth/user_manager.py b/src/auth/user_manager.py
+index 1234567..abcdefg 100644
+--- a/src/auth/user_manager.py
++++ b/src/auth/user_manager.py
+@@ -15,6 +15,7 @@ class UserManager:
+     def __init__(self, db_connection):
+         self.db = db_connection
+         self.cache = {}
++        self.rate_limiter = RateLimiter(max_requests=100)
+
+     def authenticate(self, username, password):
+         """Authenticate a user with username and password"""
+@@ -23,8 +24,12 @@ class UserManager:
+             return None
+
+         # Hash the password and compare
+-        hashed = hashlib.sha256(password.encode()).hexdigest()
+-        return hashed == user['password']
++        if not self.rate_limiter.check_limit(username):
++            raise AuthenticationError("Rate limit exceeded")
++
++        hashed = hashlib.sha256(password.encode('utf-8')).hexdigest()
++        is_valid = hashed == user['password']
++        return is_valid
+
+     def create_user(self, username, email, password):
+         """Create a new user account"""
+@@ -35,6 +40,9 @@ class UserManager:
+         hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
++        # Validate email format
++        if not self._validate_email(email):
++            raise ValueError("Invalid email format")
++
+         user_data = {
+             'username': username,
+             'email': email,
+@@ -44,3 +52,8 @@ class UserManager:
+
+         self.db.insert('users', user_data)
+         return True
++
++    def _validate_email(self, email):
++        """Validate email format using regex"""
++        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
++        return re.match(pattern, email) is not None
+
+diff --git a/tests/test_user_manager.py b/tests/test_user_manager.py
+index 9876543..fedcba9 100644
+--- a/tests/test_user_manager.py
++++ b/tests/test_user_manager.py
+@@ -45,6 +45,18 @@ class TestUserManager(unittest.TestCase):
+         result = self.user_manager.authenticate('testuser', 'wrongpassword')
+         self.assertFalse(result)
+
++    def test_rate_limiting(self):
++        """Test that rate limiting works correctly"""
++        # Make 101 requests to trigger rate limit
++        for i in range(100):
++            self.user_manager.authenticate('testuser', 'testpass')
++
++        # This should raise an exception
++        with self.assertRaises(AuthenticationError):
++            self.user_manager.authenticate('testuser', 'testpass')
++
++        # Different user should still work
++        self.assertTrue(self.user_manager.authenticate('otheruser', 'otherpass'))
+
+     def test_create_user_success(self):
+         """Test successful user creation"""
+@@ -60,6 +72,12 @@ class TestUserManager(unittest.TestCase):
+         with self.assertRaises(ValueError):
+             self.user_manager.create_user('', 'test@example.com', 'password')
+
++    def test_invalid_email_format(self):
++        """Test that invalid email formats are rejected"""
++        with self.assertRaises(ValueError):
++            self.user_manager.create_user('testuser', 'invalid-email', 'password')
++        with self.assertRaises(ValueError):
++            self.user_manager.create_user('testuser', 'test@', 'password')
+
+ if __name__ == '__main__':
+     unittest.main()

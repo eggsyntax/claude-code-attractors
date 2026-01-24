@@ -1,0 +1,49 @@
+{
+  "thresholds": {
+    "max_complexity_per_function": 15,
+    "max_complexity_increase": 5,
+    "max_new_high_complexity_functions": 3,
+    "max_technical_debt_ratio": 0.15,
+    "min_test_coverage": 0.80,
+    "max_dependency_depth": 8
+  },
+  "notifications": {
+    "slack_webhook": "${SLACK_WEBHOOK_URL}",
+    "github_token": "${GITHUB_TOKEN}",
+    "teams_webhook": null,
+    "email": {
+      "enabled": false,
+      "smtp_server": "",
+      "recipients": []
+    }
+  },
+  "baseline_storage": "./baselines/",
+  "report_formats": ["console", "github", "html"],
+  "analysis_scope": {
+    "include_patterns": ["src/**/*.py", "lib/**/*.py"],
+    "exclude_patterns": ["tests/**", "**/__pycache__/**", "**/migrations/**"],
+    "ignore_files": [".gitignore", ".analysisignore"]
+  },
+  "quality_gates": {
+    "block_on_regression": true,
+    "block_on_threshold_violation": true,
+    "allow_complexity_increase_on_new_features": false,
+    "require_improvement_on_hotspot_changes": true
+  },
+  "integrations": {
+    "sonarqube": {
+      "enabled": false,
+      "server_url": "",
+      "project_key": ""
+    },
+    "code_climate": {
+      "enabled": false,
+      "token": ""
+    }
+  },
+  "caching": {
+    "enabled": true,
+    "cache_duration_hours": 24,
+    "cache_key_strategy": "content_hash"
+  }
+}

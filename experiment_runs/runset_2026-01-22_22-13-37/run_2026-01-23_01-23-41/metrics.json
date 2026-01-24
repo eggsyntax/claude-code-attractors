@@ -1,0 +1,350 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T02:39:01.788863",
+  "duration_seconds": 4516.83,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.72,
+      "words": 32,
+      "cost_usd": 0.01969905
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 9.18,
+      "words": 204,
+      "cost_usd": 0.0204753
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 12.67,
+      "words": 17,
+      "cost_usd": 0.013101599999999998
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 68.51,
+      "words": 41,
+      "cost_usd": 0.1139469
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 259.31,
+      "words": 45,
+      "cost_usd": 0.5689139999999998
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 900.36,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 68.9,
+      "words": 17,
+      "cost_usd": 0.1619342
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 251.77,
+      "words": 37,
+      "cost_usd": 0.5309885499999998
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 900.09,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 424.43,
+      "words": 27,
+      "cost_usd": 0.26638345
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 777.77,
+      "words": 292,
+      "cost_usd": 0.34269435
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 591.99,
+      "words": 33,
+      "cost_usd": 0.53143125
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 136.23,
+      "words": 36,
+      "cost_usd": 0.21970769999999998
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 106.91,
+      "words": 33,
+      "cost_usd": 0.1618872
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 442,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 378,
+      "turns": 7
+    }
+  },
+  "total_words": 820,
+  "artifacts": [
+    {
+      "name": "analysis_demo.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3129,
+      "lines": 86
+    },
+    {
+      "name": "code_analyzer.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 7957,
+      "lines": 243
+    },
+    {
+      "name": "Cargo.lock",
+      "type": "other",
+      "extension": ".lock",
+      "size_bytes": 35939,
+      "lines": null
+    },
+    {
+      "name": "recommendations_engine.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 33533,
+      "lines": 833
+    },
+    {
+      "name": "Cargo.toml",
+      "type": "config",
+      "extension": ".toml",
+      "size_bytes": 1175,
+      "lines": 49
+    },
+    {
+      "name": "tree_sitter_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 29502,
+      "lines": 771
+    },
+    {
+      "name": "html_reporter.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 7889,
+      "lines": 211
+    },
+    {
+      "name": "demo.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 17499,
+      "lines": 498
+    },
+    {
+      "name": "example_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10060,
+      "lines": 273
+    },
+    {
+      "name": "requirements.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 477,
+      "lines": 20
+    },
+    {
+      "name": "hotspot_analyzer.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 19248,
+      "lines": 527
+    },
+    {
+      "name": "code_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12673,
+      "lines": 364
+    },
+    {
+      "name": "ci_integration.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 11381,
+      "lines": 368
+    },
+    {
+      "name": "code_analysis_ci.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1291,
+      "lines": 49
+    },
+    {
+      "name": "demo_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4260,
+      "lines": 118
+    },
+    {
+      "name": "example_usage.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 16316,
+      "lines": 459
+    },
+    {
+      "name": "code-analyzer-config.yml",
+      "type": "config",
+      "extension": ".yml",
+      "size_bytes": 5137,
+      "lines": 206
+    },
+    {
+      "name": "test_sample.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1457,
+      "lines": 61
+    },
+    {
+      "name": "example_code.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6888,
+      "lines": 214
+    },
+    {
+      "name": "ci_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16438,
+      "lines": 408
+    },
+    {
+      "name": "github_workflow.yml",
+      "type": "config",
+      "extension": ".yml",
+      "size_bytes": 5223,
+      "lines": 161
+    },
+    {
+      "name": "report_generator.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 11735,
+      "lines": 354
+    },
+    {
+      "name": "language_extractors.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 16550,
+      "lines": 467
+    },
+    {
+      "name": "javascript_example.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 3362,
+      "lines": 106
+    },
+    {
+      "name": "demo.sh",
+      "type": "other",
+      "extension": ".sh",
+      "size_bytes": 23565,
+      "lines": null
+    },
+    {
+      "name": "test_example.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7383,
+      "lines": 198
+    },
+    {
+      "name": "demo_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9950,
+      "lines": 269
+    },
+    {
+      "name": "main.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 10572,
+      "lines": 309
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3156,
+      "lines": 86
+    },
+    {
+      "name": "dependency_analyzer.rs",
+      "type": "code",
+      "extension": ".rs",
+      "size_bytes": 13359,
+      "lines": 408
+    }
+  ],
+  "artifact_summary": {
+    "total": 30,
+    "by_type": {
+      "document": 3,
+      "code": 21,
+      "other": 2,
+      "config": 4
+    }
+  },
+  "topics": [
+    "rust",
+    "webassembly",
+    "systems",
+    "programming",
+    "analysis"
+  ],
+  "usage": {
+    "total_cost_usd": 2.9512,
+    "input_tokens": 470,
+    "output_tokens": 101111
+  },
+  "had_failure": true
+}

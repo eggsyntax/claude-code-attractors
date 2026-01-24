@@ -1,0 +1,342 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-22T23:12:06.904470",
+  "duration_seconds": 3506.08,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.35,
+      "words": 127,
+      "cost_usd": 0.07059225000000001
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 9.66,
+      "words": 26,
+      "cost_usd": 0.02076405
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 10.77,
+      "words": 40,
+      "cost_usd": 0.01132035
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 10.41,
+      "words": 32,
+      "cost_usd": 0.0115941
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 11.13,
+      "words": 21,
+      "cost_usd": 0.0127791
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 10.41,
+      "words": 232,
+      "cost_usd": 0.01207785
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 582.42,
+      "words": 37,
+      "cost_usd": 0.5513073
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 406.07,
+      "words": 17,
+      "cost_usd": 0.23887505
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 900.33,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 488.93,
+      "words": 19,
+      "cost_usd": 0.35193635
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 484.09,
+      "words": 31,
+      "cost_usd": 0.40605064999999996
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 276.49,
+      "words": 28,
+      "cost_usd": 0.5016698
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 102.15,
+      "words": 32,
+      "cost_usd": 0.13683705
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 205.86,
+      "words": 39,
+      "cost_usd": 0.45003704999999994
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 291,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 393,
+      "turns": 7
+    }
+  },
+  "total_words": 684,
+  "artifacts": [
+    {
+      "name": "meta_analysis.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 72471,
+      "lines": 2818
+    },
+    {
+      "name": "meta_analysis_detailed.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 7233,
+      "lines": 312
+    },
+    {
+      "name": "comprehensive_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11941,
+      "lines": 291
+    },
+    {
+      "name": "demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12333,
+      "lines": 395
+    },
+    {
+      "name": "self_analysis_report.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2033,
+      "lines": 44
+    },
+    {
+      "name": "enhanced_meta_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16209,
+      "lines": 392
+    },
+    {
+      "name": "code_insight.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13618,
+      "lines": 356
+    },
+    {
+      "name": "workflow_integration_concept.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9859,
+      "lines": 244
+    },
+    {
+      "name": "self_analysis_demo.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4771,
+      "lines": 101
+    },
+    {
+      "name": "test_meta_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2692,
+      "lines": 77
+    },
+    {
+      "name": "demo_meta_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9693,
+      "lines": 238
+    },
+    {
+      "name": "demo_workflow_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12108,
+      "lines": 346
+    },
+    {
+      "name": "enhanced_patterns.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18130,
+      "lines": 426
+    },
+    {
+      "name": "team_knowledge.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1262,
+      "lines": 35
+    },
+    {
+      "name": "demo_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11680,
+      "lines": 365
+    },
+    {
+      "name": "enhanced_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19082,
+      "lines": 478
+    },
+    {
+      "name": "workflow_demo_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 2591,
+      "lines": 71
+    },
+    {
+      "name": "ai_powered_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 39631,
+      "lines": 936
+    },
+    {
+      "name": "example_code.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3985,
+      "lines": 124
+    },
+    {
+      "name": "ai_insights_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20689,
+      "lines": 434
+    },
+    {
+      "name": "intelligent_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 32648,
+      "lines": 798
+    },
+    {
+      "name": "advanced_pattern_detector.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 29337,
+      "lines": 706
+    },
+    {
+      "name": "codebase_analyzer_comprehensive.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18969,
+      "lines": 499
+    },
+    {
+      "name": "meta_analysis_report.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4771,
+      "lines": 101
+    },
+    {
+      "name": "intelligent_dev_assistant.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13635,
+      "lines": 319
+    },
+    {
+      "name": "self_analysis_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3196,
+      "lines": 97
+    },
+    {
+      "name": "codebase_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16860,
+      "lines": 450
+    },
+    {
+      "name": "documentation_generator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21075,
+      "lines": 572
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3108,
+      "lines": 66
+    }
+  ],
+  "artifact_summary": {
+    "total": 29,
+    "by_type": {
+      "config": 3,
+      "code": 21,
+      "document": 5
+    }
+  },
+  "topics": [
+    "ai",
+    "developer",
+    "productivity",
+    "codebase",
+    "analysis"
+  ],
+  "usage": {
+    "total_cost_usd": 2.7758,
+    "input_tokens": 383,
+    "output_tokens": 90624
+  },
+  "had_failure": true
+}

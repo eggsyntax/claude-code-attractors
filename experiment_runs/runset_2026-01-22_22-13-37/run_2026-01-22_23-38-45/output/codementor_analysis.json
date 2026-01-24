@@ -1,0 +1,844 @@
+{
+  "project_path": ".",
+  "files_analyzed": [
+    {
+      "file_path": "./codementor_cli.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_config_command' appears to implement Factory pattern",
+          "file_path": "./codementor_cli.py",
+          "line_start": 184,
+          "line_end": 217,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'analyze_file_command' is 51 lines long",
+          "file_path": "./codementor_cli.py",
+          "line_start": 50,
+          "line_end": 101,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'analyze_project_command' is 77 lines long",
+          "file_path": "./codementor_cli.py",
+          "line_start": 104,
+          "line_end": 181,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'main' is 78 lines long",
+          "file_path": "./codementor_cli.py",
+          "line_start": 220,
+          "line_end": 298,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 302,
+        "blank_lines": 61,
+        "comment_lines": 15,
+        "classes": 0,
+        "functions": 5,
+        "imports": 8,
+        "cyclomatic_complexity": 38
+      }
+    },
+    {
+      "file_path": "./analysis_engine.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function '_detect_factory' appears to implement Factory pattern",
+          "file_path": "./analysis_engine.py",
+          "line_start": 320,
+          "line_end": 356,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Observer Pattern",
+          "description": "Class 'ObserverDetector' appears to implement Observer pattern",
+          "file_path": "./analysis_engine.py",
+          "line_start": 362,
+          "line_end": 407,
+          "confidence": 0.6,
+          "suggestions": [
+            "Ensure loose coupling between subject and observers",
+            "Consider using weak references to prevent memory leaks"
+          ],
+          "educational_context": "Observer pattern defines a one-to-many dependency between objects."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_detect_observer' is 53 lines long",
+          "file_path": "./analysis_engine.py",
+          "line_start": 358,
+          "line_end": 411,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 653,
+        "blank_lines": 124,
+        "comment_lines": 21,
+        "classes": 13,
+        "functions": 39,
+        "imports": 5,
+        "cyclomatic_complexity": 80
+      }
+    },
+    {
+      "file_path": "./codementor_core.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function '_detect_factory_pattern' appears to implement Factory pattern",
+          "file_path": "./codementor_core.py",
+          "line_start": 210,
+          "line_end": 231,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        }
+      ],
+      "metrics": {
+        "total_lines": 438,
+        "blank_lines": 70,
+        "comment_lines": 25,
+        "classes": 3,
+        "functions": 16,
+        "imports": 7,
+        "cyclomatic_complexity": 68
+      }
+    },
+    {
+      "file_path": "./collaborative_analyzer.py",
+      "patterns": [
+        {
+          "name": "Long Method",
+          "description": "Method 'analyze_with_progress' is 59 lines long",
+          "file_path": "./collaborative_analyzer.py",
+          "line_start": 147,
+          "line_end": 206,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 517,
+        "blank_lines": 98,
+        "comment_lines": 30,
+        "classes": 6,
+        "functions": 29,
+        "imports": 7,
+        "cyclomatic_complexity": 53
+      }
+    },
+    {
+      "file_path": "./code_analyzer.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function '_detect_factory_pattern' appears to implement Factory pattern",
+          "file_path": "./code_analyzer.py",
+          "line_start": 172,
+          "line_end": 200,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'format_analysis_report' is 51 lines long",
+          "file_path": "./code_analyzer.py",
+          "line_start": 408,
+          "line_end": 459,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 481,
+        "blank_lines": 70,
+        "comment_lines": 11,
+        "classes": 4,
+        "functions": 13,
+        "imports": 8,
+        "cyclomatic_complexity": 91
+      }
+    },
+    {
+      "file_path": "./start_codementor.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_example_files' appears to implement Factory pattern",
+          "file_path": "./start_codementor.py",
+          "line_start": 155,
+          "line_end": 333,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'main' is 66 lines long",
+          "file_path": "./start_codementor.py",
+          "line_start": 417,
+          "line_end": 483,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'create_example_files' is 178 lines long",
+          "file_path": "./start_codementor.py",
+          "line_start": 155,
+          "line_end": 333,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'run' is 54 lines long",
+          "file_path": "./start_codementor.py",
+          "line_start": 335,
+          "line_end": 389,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 487,
+        "blank_lines": 88,
+        "comment_lines": 29,
+        "classes": 2,
+        "functions": 13,
+        "imports": 13,
+        "cyclomatic_complexity": 28
+      }
+    },
+    {
+      "file_path": "./test_analysis_engine.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_example_files' appears to implement Factory pattern",
+          "file_path": "./test_analysis_engine.py",
+          "line_start": 479,
+          "line_end": 621,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'create_example_files' is 142 lines long",
+          "file_path": "./test_analysis_engine.py",
+          "line_start": 479,
+          "line_end": 621,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'test_refactoring_candidate_identification' is 75 lines long",
+          "file_path": "./test_analysis_engine.py",
+          "line_start": 401,
+          "line_end": 476,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 648,
+        "blank_lines": 127,
+        "comment_lines": 19,
+        "classes": 3,
+        "functions": 18,
+        "imports": 2,
+        "cyclomatic_complexity": 23
+      }
+    },
+    {
+      "file_path": "./realtime_collaboration.py",
+      "patterns": [
+        {
+          "name": "Long Method",
+          "description": "Method 'handle_message' is 79 lines long",
+          "file_path": "./realtime_collaboration.py",
+          "line_start": 252,
+          "line_end": 331,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 500,
+        "blank_lines": 99,
+        "comment_lines": 22,
+        "classes": 3,
+        "functions": 22,
+        "imports": 9,
+        "cyclomatic_complexity": 55
+      }
+    },
+    {
+      "file_path": "./demo_analysis.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_sample_files' appears to implement Factory pattern",
+          "file_path": "./demo_analysis.py",
+          "line_start": 16,
+          "line_end": 353,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'create_sample_files' is 337 lines long",
+          "file_path": "./demo_analysis.py",
+          "line_start": 16,
+          "line_end": 353,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 405,
+        "blank_lines": 89,
+        "comment_lines": 37,
+        "classes": 0,
+        "functions": 2,
+        "imports": 3,
+        "cyclomatic_complexity": 6
+      }
+    },
+    {
+      "file_path": "./demo_collaboration.py",
+      "patterns": [
+        {
+          "name": "Long Method",
+          "description": "Method 'main' is 116 lines long",
+          "file_path": "./demo_collaboration.py",
+          "line_start": 79,
+          "line_end": 195,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 198,
+        "blank_lines": 43,
+        "comment_lines": 11,
+        "classes": 1,
+        "functions": 3,
+        "imports": 3,
+        "cyclomatic_complexity": 6
+      }
+    },
+    {
+      "file_path": "./examples/collaboration_demo.py",
+      "patterns": [
+        {
+          "name": "Long Method",
+          "description": "Method 'demonstrate_basic_workflow' is 118 lines long",
+          "file_path": "./examples/collaboration_demo.py",
+          "line_start": 21,
+          "line_end": 139,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'demonstrate_analysis_integration' is 93 lines long",
+          "file_path": "./examples/collaboration_demo.py",
+          "line_start": 142,
+          "line_end": 235,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        }
+      ],
+      "metrics": {
+        "total_lines": 302,
+        "blank_lines": 50,
+        "comment_lines": 23,
+        "classes": 0,
+        "functions": 4,
+        "imports": 7,
+        "cyclomatic_complexity": 11
+      }
+    },
+    {
+      "file_path": "./example_project/singleton_example.py",
+      "patterns": [
+        {
+          "name": "Singleton Pattern",
+          "description": "Class 'DatabaseConnection' appears to implement Singleton pattern",
+          "file_path": "./example_project/singleton_example.py",
+          "line_start": 6,
+          "line_end": 28,
+          "confidence": 0.7,
+          "suggestions": [
+            "Consider if singleton is necessary - it can make testing difficult",
+            "Consider dependency injection as an alternative",
+            "Ensure thread safety if used in multi-threaded environment"
+          ],
+          "educational_context": "Singleton pattern ensures a class has only one instance and provides global access to it."
+        },
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_user_factory' appears to implement Factory pattern",
+          "file_path": "./example_project/singleton_example.py",
+          "line_start": 238,
+          "line_end": 246,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Observer Pattern",
+          "description": "Class 'EventListener' appears to implement Observer pattern",
+          "file_path": "./example_project/singleton_example.py",
+          "line_start": 249,
+          "line_end": 262,
+          "confidence": 0.6,
+          "suggestions": [
+            "Ensure loose coupling between subject and observers",
+            "Consider using weak references to prevent memory leaks"
+          ],
+          "educational_context": "Observer pattern defines a one-to-many dependency between objects."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'create_user' is 97 lines long",
+          "file_path": "./example_project/singleton_example.py",
+          "line_start": 37,
+          "line_end": 134,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Large Class",
+          "description": "Class 'UserController' has 23 methods",
+          "file_path": "./example_project/singleton_example.py",
+          "line_start": 31,
+          "line_end": 235,
+          "confidence": 0.7,
+          "suggestions": [
+            "Consider splitting this class based on responsibilities",
+            "Look for cohesive groups of methods that could form separate classes",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Large classes often violate the Single Responsibility Principle and become difficult to maintain and test."
+        }
+      ],
+      "metrics": {
+        "total_lines": 262,
+        "blank_lines": 50,
+        "comment_lines": 13,
+        "classes": 3,
+        "functions": 30,
+        "imports": 1,
+        "cyclomatic_complexity": 59
+      }
+    },
+    {
+      "file_path": "./src/collaboration/__init__.py",
+      "patterns": [],
+      "metrics": {
+        "total_lines": 33,
+        "blank_lines": 4,
+        "comment_lines": 0,
+        "classes": 0,
+        "functions": 0,
+        "imports": 2,
+        "cyclomatic_complexity": 1
+      }
+    },
+    {
+      "file_path": "./src/collaboration/session_manager.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function 'create_quick_session' appears to implement Factory pattern",
+          "file_path": "./src/collaboration/session_manager.py",
+          "line_start": 369,
+          "line_end": 373,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        }
+      ],
+      "metrics": {
+        "total_lines": 379,
+        "blank_lines": 68,
+        "comment_lines": 11,
+        "classes": 1,
+        "functions": 17,
+        "imports": 7,
+        "cyclomatic_complexity": 30
+      }
+    },
+    {
+      "file_path": "./src/collaboration/models.py",
+      "patterns": [
+        {
+          "name": "Long Method",
+          "description": "Method 'to_dict' is 51 lines long",
+          "file_path": "./src/collaboration/models.py",
+          "line_start": 152,
+          "line_end": 203,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'from_dict' is 62 lines long",
+          "file_path": "./src/collaboration/models.py",
+          "line_start": 206,
+          "line_end": 268,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "MVC Architecture",
+          "description": "File appears to be part of MVC architecture",
+          "file_path": "./src/collaboration/models.py",
+          "line_start": 1,
+          "line_end": 1,
+          "confidence": 0.6,
+          "suggestions": [
+            "Ensure clear separation of concerns between model, view, and controller",
+            "Keep controllers thin and delegate business logic to models"
+          ],
+          "educational_context": "MVC (Model-View-Controller) separates application logic into three interconnected components."
+        }
+      ],
+      "metrics": {
+        "total_lines": 289,
+        "blank_lines": 35,
+        "comment_lines": 7,
+        "classes": 7,
+        "functions": 10,
+        "imports": 6,
+        "cyclomatic_complexity": 15
+      }
+    },
+    {
+      "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function '_has_factory_pattern' appears to implement Factory pattern",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 330,
+          "line_end": 335,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method 'analyze_codebase' is 60 lines long",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 89,
+          "line_end": 149,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_extract_python_elements' is 194 lines long",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 208,
+          "line_end": 402,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_extract_typescript_elements' is 59 lines long",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 404,
+          "line_end": 463,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_assess_architectural_consistency' is 61 lines long",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 663,
+          "line_end": 724,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Large Class",
+          "description": "Class 'CrossLanguageAnalyzer' has 25 methods",
+          "file_path": "./src/analysis/CrossLanguageAnalyzer.py",
+          "line_start": 73,
+          "line_end": 809,
+          "confidence": 0.7,
+          "suggestions": [
+            "Consider splitting this class based on responsibilities",
+            "Look for cohesive groups of methods that could form separate classes",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Large classes often violate the Single Responsibility Principle and become difficult to maintain and test."
+        }
+      ],
+      "metrics": {
+        "total_lines": 871,
+        "blank_lines": 161,
+        "comment_lines": 46,
+        "classes": 7,
+        "functions": 42,
+        "imports": 7,
+        "cyclomatic_complexity": 136
+      }
+    },
+    {
+      "file_path": "./src/analysis/SemanticAnalyzer.py",
+      "patterns": [
+        {
+          "name": "Factory Pattern",
+          "description": "Function '_build_class_registry' appears to implement Factory pattern",
+          "file_path": "./src/analysis/SemanticAnalyzer.py",
+          "line_start": 122,
+          "line_end": 263,
+          "confidence": 0.5,
+          "suggestions": [
+            "Ensure the factory encapsulates object creation logic",
+            "Consider abstract factory if multiple product families exist"
+          ],
+          "educational_context": "Factory pattern creates objects without specifying their exact classes."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_build_class_registry' is 141 lines long",
+          "file_path": "./src/analysis/SemanticAnalyzer.py",
+          "line_start": 122,
+          "line_end": 263,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Long Method",
+          "description": "Method '_build_function_registry' is 70 lines long",
+          "file_path": "./src/analysis/SemanticAnalyzer.py",
+          "line_start": 265,
+          "line_end": 335,
+          "confidence": 0.8,
+          "suggestions": [
+            "Consider breaking this method into smaller, focused functions",
+            "Look for logical groupings that can be extracted",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Long methods violate the Single Responsibility Principle and are harder to test, understand, and maintain."
+        },
+        {
+          "name": "Large Class",
+          "description": "Class 'SemanticAnalyzer' has 24 methods",
+          "file_path": "./src/analysis/SemanticAnalyzer.py",
+          "line_start": 67,
+          "line_end": 780,
+          "confidence": 0.7,
+          "suggestions": [
+            "Consider splitting this class based on responsibilities",
+            "Look for cohesive groups of methods that could form separate classes",
+            "Apply the Single Responsibility Principle"
+          ],
+          "educational_context": "Large classes often violate the Single Responsibility Principle and become difficult to maintain and test."
+        }
+      ],
+      "metrics": {
+        "total_lines": 799,
+        "blank_lines": 137,
+        "comment_lines": 45,
+        "classes": 9,
+        "functions": 44,
+        "imports": 6,
+        "cyclomatic_complexity": 127
+      }
+    }
+  ],
+  "patterns_summary": {
+    "Factory Pattern": 11,
+    "Long Method": 25,
+    "Observer Pattern": 2,
+    "Singleton Pattern": 1,
+    "Large Class": 3,
+    "MVC Architecture": 1
+  },
+  "architectural_insights": [],
+  "recommendations": [
+    "Consider refactoring 25 long methods to improve maintainability",
+    "Review 3 large classes for single responsibility principle violations",
+    "High pattern density detected - consider code review sessions to address technical debt"
+  ]
+}

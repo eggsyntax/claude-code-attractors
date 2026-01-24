@@ -1,0 +1,101 @@
+{
+  "timestamp": "2026-01-23T00:00:00",
+  "file_path": "data_processor.py",
+  "analysis_components": [
+    "Bob: Advanced Refactoring & Team Analytics",
+    "Alice: Real-time Collaboration System"
+  ],
+  "alice_analysis": {
+    "error": "'CodeAnalysisEngine' object has no attribute 'analyze_code_async'"
+  },
+  "bob_extensions": {
+    "refactoring_suggestions": [
+      {
+        "pattern": "reduce_complexity",
+        "explanation": "Complex nested conditional with 4 levels. Consider using guard clauses or extracting to separate methods.",
+        "effort": "high",
+        "impact": 0.8,
+        "line_range": [
+          70,
+          75
+        ],
+        "current_code": "if data:\n    if 'users' in data:\n        if data['users']:\n            if len(data['users']) > 0:\n                processor = DataProcessor()\n                return processor.process_user_data(data['u...",
+        "suggested_code": "# Consider using guard clauses or strategy pattern\n# if not condition:\n#     return early\n# handle main case"
+      },
+      {
+        "pattern": "reduce_complexity",
+        "explanation": "Complex nested conditional with 5 levels. Consider using guard clauses or extracting to separate methods.",
+        "effort": "high",
+        "impact": 0.8,
+        "line_range": [
+          21,
+          36
+        ],
+        "current_code": "if user_data is not None:\n    if len(user_data) > 0:\n        if isinstance(user_data, list):\n            if all((isinstance(item, dict) for item in user_data)):\n                result = []\n           ...",
+        "suggested_code": "# Consider using guard clauses or strategy pattern\n# if not condition:\n#     return early\n# handle main case"
+      },
+      {
+        "pattern": "reduce_complexity",
+        "explanation": "Complex nested conditional with 5 levels. Consider using guard clauses or extracting to separate methods.",
+        "effort": "high",
+        "impact": 0.8,
+        "line_range": [
+          41,
+          55
+        ],
+        "current_code": "if order_data is not None:\n    if len(order_data) > 0:\n        if isinstance(order_data, list):\n            if all((isinstance(item, dict) for item in order_data)):\n                result = []\n       ...",
+        "suggested_code": "# Consider using guard clauses or strategy pattern\n# if not condition:\n#     return early\n# handle main case"
+      },
+      {
+        "pattern": "reduce_complexity",
+        "explanation": "Complex nested conditional with 4 levels. Consider using guard clauses or extracting to separate methods.",
+        "effort": "high",
+        "impact": 0.8,
+        "line_range": [
+          22,
+          36
+        ],
+        "current_code": "if len(user_data) > 0:\n    if isinstance(user_data, list):\n        if all((isinstance(item, dict) for item in user_data)):\n            result = []\n            for item in user_data:\n                if...",
+        "suggested_code": "# Consider using guard clauses or strategy pattern\n# if not condition:\n#     return early\n# handle main case"
+      },
+      {
+        "pattern": "reduce_complexity",
+        "explanation": "Complex nested conditional with 4 levels. Consider using guard clauses or extracting to separate methods.",
+        "effort": "high",
+        "impact": 0.8,
+        "line_range": [
+          42,
+          55
+        ],
+        "current_code": "if len(order_data) > 0:\n    if isinstance(order_data, list):\n        if all((isinstance(item, dict) for item in order_data)):\n            result = []\n            for item in order_data:\n              ...",
+        "suggested_code": "# Consider using guard clauses or strategy pattern\n# if not condition:\n#     return early\n# handle main case"
+      }
+    ],
+    "team_insights": [
+      {
+        "type": "info",
+        "title": "Getting Started",
+        "description": "Need more review sessions to generate meaningful insights",
+        "metric": 0,
+        "trend": "stable",
+        "recommendations": [
+          "Continue using CodeMentor to build up analytics history"
+        ]
+      }
+    ],
+    "enhancement_metadata": {
+      "analysis_timestamp": "2026-01-23T00:36:32.596605",
+      "suggestions_count": 6,
+      "insights_count": 1,
+      "analyzer_version": "1.0.0"
+    }
+  },
+  "collaboration": {
+    "session_active": true,
+    "real_time_enabled": true,
+    "participants": [
+      "Alice",
+      "Bob"
+    ]
+  }
+}

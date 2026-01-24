@@ -1,0 +1,5 @@
+/tmp/cc-exp/run_2026-01-23_01-23-41/output/target/debug/build/serde-2c9c71099a32d0e4/build_script_build-2c9c71099a32d0e4.d: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/build.rs
+
+/tmp/cc-exp/run_2026-01-23_01-23-41/output/target/debug/build/serde-2c9c71099a32d0e4/build_script_build-2c9c71099a32d0e4: /root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/build.rs
+
+/root/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/serde-1.0.228/build.rs:

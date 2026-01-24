@@ -1,0 +1,206 @@
+# Code Analyzer Configuration for CI/CD Integration
+# This file defines quality gates, thresholds, and CI behavior
+
+# Quality Gates - Define the criteria that must be met for code to pass
+quality_gates:
+  - name: "Cyclomatic Complexity"
+    metric: "CyclomaticComplexity"
+    threshold: 15.0
+    operator: "LessThan"
+    severity: "Error"
+    description: "Functions should not exceed complexity of 15"
+
+  - name: "Technical Debt Ratio"
+    metric: "TechnicalDebt"
+    threshold: 5.0
+    operator: "LessThan"
+    severity: "Warning"
+    description: "Technical debt should be under 5% of total development time"
+
+  - name: "Test Coverage"
+    metric: "TestCoverage"
+    threshold: 80.0
+    operator: "GreaterThanOrEqual"
+    severity: "Warning"
+    description: "Maintain at least 80% test coverage"
+
+  - name: "Code Duplication"
+    metric: "DuplicationRatio"
+    threshold: 3.0
+    operator: "LessThan"
+    severity: "Warning"
+    description: "Keep code duplication under 3%"
+
+  - name: "Security Vulnerabilities"
+    metric: "SecurityVulnerabilities"
+    threshold: 0
+    operator: "Equal"
+    severity: "Blocker"
+    description: "No security vulnerabilities allowed"
+
+# Regression Detection Settings
+regression_detection:
+  enabled: true
+  comparison_branch: "main"
+  complexity_threshold: 2.0  # Alert if average complexity increases by more than 2.0
+  security_scan: true
+  track_metrics:
+    - "CyclomaticComplexity"
+    - "SecurityVulnerabilities"
+    - "TechnicalDebt"
+
+# Baseline Management
+baseline_comparison:
+  store_baseline: true
+  baseline_path: ".ci/quality-baseline.json"
+  update_on_main: true  # Update baseline when merging to main
+  comparison_metrics:
+    - "CyclomaticComplexity"
+    - "TestCoverage"
+    - "TechnicalDebt"
+    - "DuplicationRatio"
+
+# Notification Configuration
+notifications:
+  github_status: true
+  pr_comments: true
+  slack_webhook: "${SLACK_WEBHOOK_URL}"  # Environment variable
+  email_recipients:
+    - "dev-team@company.com"
+  summary_format: "Markdown"
+  include_recommendations: true
+
+# Analysis Configuration
+analysis:
+  # Languages to analyze (auto-detected if not specified)
+  languages:
+    - "rust"
+    - "javascript"
+    - "typescript"
+    - "python"
+    - "go"
+
+  # File patterns to include/exclude
+  include_patterns:
+    - "src/**/*"
+    - "lib/**/*"
+    - "tests/**/*"
+
+  exclude_patterns:
+    - "target/**/*"
+    - "node_modules/**/*"
+    - "build/**/*"
+    - "dist/**/*"
+    - "*.generated.*"
+
+  # Complexity calculation settings
+  complexity:
+    weight_if_statements: 1
+    weight_loops: 2
+    weight_switch_cases: 1
+    weight_try_catch: 2
+    weight_logical_operators: 1
+
+# Reporting Configuration
+reporting:
+  generate_html: true
+  generate_json: true
+  generate_junit: true
+
+  html_template: "modern"  # Options: "modern", "classic", "minimal"
+
+  # Metrics to include in reports
+  include_metrics:
+    - "complexity_distribution"
+    - "hotspot_analysis"
+    - "dependency_graph"
+    - "test_coverage_map"
+    - "security_summary"
+    - "trend_analysis"
+
+# CI Platform Specific Settings
+ci_platforms:
+  github:
+    status_checks: true
+    pr_comments: true
+    artifact_upload: true
+    fail_on_error: true
+    fail_on_warning: false
+
+  gitlab:
+    merge_request_comments: true
+    pipeline_status: true
+    artifacts:
+      - "quality-report.html"
+      - "quality-report.json"
+
+  jenkins:
+    publish_results: true
+    archive_artifacts: true
+    junit_results: "quality-junit.xml"
+
+  azure_devops:
+    task_status: true
+    build_summary: true
+    test_results: true
+
+# Thresholds for Different Environments
+environment_overrides:
+  development:
+    quality_gates:
+      - name: "Cyclomatic Complexity"
+        threshold: 20.0  # More lenient in dev
+      - name: "Test Coverage"
+        threshold: 60.0   # Lower requirement in dev
+
+  staging:
+    quality_gates:
+      - name: "Cyclomatic Complexity"
+        threshold: 15.0
+      - name: "Test Coverage"
+        threshold: 75.0
+
+  production:
+    quality_gates:
+      - name: "Cyclomatic Complexity"
+        threshold: 10.0  # Strict in production
+      - name: "Test Coverage"
+        threshold: 85.0  # High coverage required
+      - name: "Security Vulnerabilities"
+        threshold: 0
+        severity: "Blocker"
+
+# Custom Rules (Advanced)
+custom_rules:
+  - name: "Large Function Detection"
+    pattern: "function_length > 50"
+    severity: "Warning"
+    message: "Function {function_name} has {line_count} lines. Consider breaking it down."
+
+  - name: "TODO/FIXME Detection"
+    pattern: "(TODO|FIXME|HACK)"
+    severity: "Info"
+    message: "Found technical debt marker: {match}"
+    exclude_paths:
+      - "tests/**/*"
+
+  - name: "Hardcoded Secrets"
+    pattern: "(password|secret|key|token)\\s*=\\s*['\"][^'\"]+['\"]"
+    severity: "Blocker"
+    message: "Potential hardcoded secret detected"
+
+# Integration Settings
+integrations:
+  sonarqube:
+    enabled: false
+    server_url: "${SONAR_SERVER_URL}"
+    project_key: "${SONAR_PROJECT_KEY}"
+
+  codecov:
+    enabled: false
+    upload_coverage: true
+
+  dependency_check:
+    enabled: true
+    vulnerability_database: "nvd"
+    check_dev_dependencies: false

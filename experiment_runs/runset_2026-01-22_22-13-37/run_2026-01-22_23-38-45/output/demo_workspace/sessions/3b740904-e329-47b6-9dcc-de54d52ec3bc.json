@@ -1,0 +1,128 @@
+{
+  "id": "3b740904-e329-47b6-9dcc-de54d52ec3bc",
+  "title": "Analysis Integration: E-commerce API",
+  "description": "Automated analysis and collaborative review of API patterns",
+  "project_path": "/tmp/cc-exp/run_2026-01-22_23-38-45/output/api_project",
+  "status": "in_progress",
+  "created_at": "2026-01-22T23:59:50.658571",
+  "updated_at": "2026-01-22T23:59:50.659509",
+  "started_at": "2026-01-22T23:59:50.658635",
+  "completed_at": null,
+  "participants": [
+    {
+      "id": "ec0d5f14-b5c0-487e-9cee-8a5b49237a03",
+      "name": "Alice-Analysis-Engine",
+      "email": null,
+      "role": "reviewer",
+      "joined_at": "2026-01-22T23:59:50.658576",
+      "is_active": true
+    },
+    {
+      "id": "6c37e5fd-a364-4f37-8fd7-a12eba1109e3",
+      "name": "Bob-Human-Reviewer",
+      "email": null,
+      "role": "reviewer",
+      "joined_at": "2026-01-22T23:59:50.658579",
+      "is_active": true
+    }
+  ],
+  "comments": [
+    {
+      "id": "11319888-1a00-42b3-9e7f-5351064928a8",
+      "author_id": "6c37e5fd-a364-4f37-8fd7-a12eba1109e3",
+      "content": "The N+1 query issue is critical. I suggest we implement a prefetch strategy using select_related() for the order-product relationships.",
+      "comment_type": "suggestion",
+      "file_path": "src/services/order_service.py",
+      "line_number": 78,
+      "line_range": null,
+      "created_at": "2026-01-22T23:59:50.659193",
+      "updated_at": null,
+      "resolved": false,
+      "resolved_by": null,
+      "resolved_at": null,
+      "thread_id": null,
+      "parent_comment_id": null,
+      "tags": [],
+      "priority": "medium"
+    },
+    {
+      "id": "59a326b3-bc7b-4ff8-8db5-f821e75dc795",
+      "author_id": "6c37e5fd-a364-4f37-8fd7-a12eba1109e3",
+      "content": "Agree on the error handling. Let's also add logging for debugging production issues.",
+      "comment_type": "suggestion",
+      "file_path": "src/controllers/order_controller.py",
+      "line_number": 45,
+      "line_range": null,
+      "created_at": "2026-01-22T23:59:50.659318",
+      "updated_at": null,
+      "resolved": false,
+      "resolved_by": null,
+      "resolved_at": null,
+      "thread_id": null,
+      "parent_comment_id": null,
+      "tags": [],
+      "priority": "medium"
+    }
+  ],
+  "files_to_review": [],
+  "excluded_files": [],
+  "review_checklist": [
+    "Code follows project conventions",
+    "Logic is clear and well-structured",
+    "Error handling is appropriate",
+    "Tests are adequate and passing",
+    "Documentation is up to date",
+    "Performance implications considered",
+    "Security considerations addressed"
+  ],
+  "analysis_results": {
+    "quality_metrics": {
+      "code_duplication": 12.5,
+      "cyclomatic_complexity": 4.2,
+      "test_coverage": 76.8,
+      "documentation_coverage": 45.2,
+      "pattern_adherence_score": 8.1
+    }
+  },
+  "pattern_findings": [
+    {
+      "pattern_name": "Repository Pattern",
+      "file_path": "src/repositories/product_repository.py",
+      "description": "Clean implementation of repository pattern with good abstraction",
+      "line_range": null,
+      "severity": "info",
+      "suggestions": [
+        "Consider adding caching layer for frequent queries"
+      ],
+      "detected_at": "2026-01-22T23:59:50.658695"
+    },
+    {
+      "pattern_name": "Missing Error Handling",
+      "file_path": "src/controllers/order_controller.py",
+      "description": "Database operations lack proper error handling",
+      "line_range": null,
+      "severity": "warning",
+      "suggestions": [
+        "Add try-catch blocks",
+        "Implement proper error responses"
+      ],
+      "detected_at": "2026-01-22T23:59:50.658857"
+    },
+    {
+      "pattern_name": "N+1 Query Problem",
+      "file_path": "src/services/order_service.py",
+      "description": "Potential N+1 query issue in order loading",
+      "line_range": null,
+      "severity": "high",
+      "suggestions": [
+        "Use eager loading",
+        "Implement query optimization"
+      ],
+      "detected_at": "2026-01-22T23:59:50.658989"
+    }
+  ],
+  "quality_metrics": {},
+  "tags": [],
+  "priority": "medium",
+  "estimated_duration": null
+}

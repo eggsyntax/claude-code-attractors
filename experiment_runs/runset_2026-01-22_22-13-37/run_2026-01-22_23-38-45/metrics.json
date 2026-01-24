@@ -1,0 +1,413 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-23T01:06:24.567067",
+  "duration_seconds": 5255.33,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.7,
+      "words": 174,
+      "cost_usd": 0.01936905
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.42,
+      "words": 261,
+      "cost_usd": 0.02187405
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 21.62,
+      "words": 199,
+      "cost_usd": 0.026123399999999998
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 140.03,
+      "words": 18,
+      "cost_usd": 0.24644415
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 900.32,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 197.58,
+      "words": 26,
+      "cost_usd": 0.3926794
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 900.28,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 813.79,
+      "words": 34,
+      "cost_usd": 0.49514374999999994
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 299.95,
+      "words": 27,
+      "cost_usd": 0.5911285500000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 250.45,
+      "words": 431,
+      "cost_usd": 0.43422525
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 41.6,
+      "words": 38,
+      "cost_usd": 0.05660369999999999
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 411.15,
+      "words": 28,
+      "cost_usd": 0.14323814999999998
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 900.29,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 359.13,
+      "words": 22,
+      "cost_usd": 0.0968745
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 447,
+      "turns": 7
+    },
+    "Bob": {
+      "words": 820,
+      "turns": 7
+    }
+  },
+  "total_words": 1267,
+  "artifacts": [
+    {
+      "name": "codementor_cli.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10492,
+      "lines": 302
+    },
+    {
+      "name": "devflow_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13857,
+      "lines": 330
+    },
+    {
+      "name": "ALICE_DELIVERABLES.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6631,
+      "lines": 154
+    },
+    {
+      "name": "analysis_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 26384,
+      "lines": 653
+    },
+    {
+      "name": "devflow_engine_core.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14246,
+      "lines": 386
+    },
+    {
+      "name": "devflow_orchestration_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 29347,
+      "lines": 706
+    },
+    {
+      "name": "integration_analysis_report.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 4426,
+      "lines": 101
+    },
+    {
+      "name": "devflow_project_plan.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5174,
+      "lines": 117
+    },
+    {
+      "name": "integration_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13175,
+      "lines": 322
+    },
+    {
+      "name": "devflow_workflow_orchestrator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 25685,
+      "lines": 648
+    },
+    {
+      "name": "codementor_core.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18583,
+      "lines": 438
+    },
+    {
+      "name": "devflow_roadmap.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7169,
+      "lines": 155
+    },
+    {
+      "name": "devflow_architecture.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3734,
+      "lines": 90
+    },
+    {
+      "name": "devflow_integrations.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19422,
+      "lines": 522
+    },
+    {
+      "name": "requirements.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 303,
+      "lines": 18
+    },
+    {
+      "name": "web_interface.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 33279,
+      "lines": 1065
+    },
+    {
+      "name": "devflow_architecture.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12975,
+      "lines": 357
+    },
+    {
+      "name": "devflow_next_generation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 34882,
+      "lines": 838
+    },
+    {
+      "name": "collaborative_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19990,
+      "lines": 517
+    },
+    {
+      "name": "codementor_extensions.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 26605,
+      "lines": 637
+    },
+    {
+      "name": "code_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21419,
+      "lines": 481
+    },
+    {
+      "name": "FUTURE_ROADMAP.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9410,
+      "lines": 238
+    },
+    {
+      "name": "devflow_complete_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20713,
+      "lines": 497
+    },
+    {
+      "name": "devflow_core.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16485,
+      "lines": 396
+    },
+    {
+      "name": "package.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1379,
+      "lines": 45
+    },
+    {
+      "name": "start_codementor.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14965,
+      "lines": 487
+    },
+    {
+      "name": "collaboration_retrospective.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2155,
+      "lines": 54
+    },
+    {
+      "name": "test_analysis_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19728,
+      "lines": 648
+    },
+    {
+      "name": "realtime_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18422,
+      "lines": 500
+    },
+    {
+      "name": "devflow_realtime_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 29429,
+      "lines": 736
+    },
+    {
+      "name": "devflow_agents.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 19718,
+      "lines": 530
+    },
+    {
+      "name": "COLLABORATION_SUMMARY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7578,
+      "lines": 190
+    },
+    {
+      "name": "codementor_analysis.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 32731,
+      "lines": 844
+    },
+    {
+      "name": "devflow_intelligence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 23843,
+      "lines": 635
+    },
+    {
+      "name": "demo_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12559,
+      "lines": 405
+    },
+    {
+      "name": "next_collaboration_proposal.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5168,
+      "lines": 104
+    },
+    {
+      "name": "comprehensive_analysis_report.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1497,
+      "lines": 70
+    },
+    {
+      "name": "demo_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5957,
+      "lines": 198
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4097,
+      "lines": 89
+    }
+  ],
+  "artifact_summary": {
+    "total": 39,
+    "by_type": {
+      "code": 24,
+      "document": 11,
+      "config": 3,
+      "web": 1
+    }
+  },
+  "topics": [
+    "code",
+    "collaboration",
+    "analysis",
+    "patterns",
+    "review"
+  ],
+  "usage": {
+    "total_cost_usd": 2.5237,
+    "input_tokens": 476,
+    "output_tokens": 80983
+  },
+  "had_failure": true
+}

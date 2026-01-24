@@ -1,0 +1,20 @@
+# Core dependencies for code analyzer
+# Note: This project is designed to minimize external dependencies
+# Most functionality uses Python standard library
+
+# Optional: For advanced tree-sitter integration (when we add it)
+# tree-sitter==0.21.3
+
+# Optional: For enhanced CLI experience
+# click>=8.0.0
+# rich>=13.0.0
+
+# Optional: For configuration file support
+# pyyaml>=6.0
+# toml>=0.10.2
+
+# Development dependencies
+# pytest>=7.0.0
+# black>=23.0.0
+# mypy>=1.0.0
+# flake8>=6.0.0

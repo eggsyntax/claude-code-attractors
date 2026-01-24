@@ -1,0 +1,290 @@
+{
+  "test_meta_analysis.py": {
+    "purpose": "Test cases and testing utilities",
+    "size": 77,
+    "complexity": 1.0,
+    "public_interface": {
+      "classes": [],
+      "functions": [
+        "main"
+      ]
+    },
+    "dependencies": [
+      "pathlib",
+      "codebase_analyzer",
+      "documentation_generator"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "enhanced_analyzer.py": {
+    "purpose": "General functionality and utilities",
+    "size": 478,
+    "complexity": 5.3,
+    "public_interface": {
+      "classes": [
+        "RefactoringOpportunity",
+        "ArchitecturalDebt",
+        "PerformancePattern",
+        "EnhancedCodebaseAnalyzer"
+      ],
+      "functions": [
+        "main",
+        "__init__",
+        "_generate_analysis_id",
+        "enhanced_analyze",
+        "_identify_refactoring_opportunities"
+      ]
+    },
+    "dependencies": [
+      "os",
+      "ast",
+      "json",
+      "re",
+      "pathlib"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "codebase_analyzer.py": {
+    "purpose": "General functionality and utilities",
+    "size": 450,
+    "complexity": 5.5,
+    "public_interface": {
+      "classes": [
+        "FileInfo",
+        "ArchitecturalPattern",
+        "CodebaseInsights",
+        "CodebaseAnalyzer"
+      ],
+      "functions": [
+        "main",
+        "__init__",
+        "analyze",
+        "_discover_files",
+        "_analyze_file"
+      ]
+    },
+    "dependencies": [
+      "os",
+      "ast",
+      "json",
+      "logging",
+      "pathlib"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "documentation_generator.py": {
+    "purpose": "General functionality and utilities",
+    "size": 572,
+    "complexity": 4.4,
+    "public_interface": {
+      "classes": [
+        "DocumentationGenerator"
+      ],
+      "functions": [
+        "main",
+        "__init__",
+        "generate_markdown",
+        "generate_html",
+        "_generate_header"
+      ]
+    },
+    "dependencies": [
+      "json",
+      "pathlib",
+      "typing",
+      "datetime",
+      "codebase_analyzer"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "examples/sample_codebase/analytics.py": {
+    "purpose": "General functionality and utilities",
+    "size": 243,
+    "complexity": 1.3,
+    "public_interface": {
+      "classes": [
+        "AdvancedAnalyticsEngine",
+        "LegacyReportGenerator"
+      ],
+      "functions": [
+        "calculate_advanced_metrics",
+        "__init__",
+        "get_user_insights",
+        "generate_system_report",
+        "_calculate_activity_score"
+      ]
+    },
+    "dependencies": [
+      "typing",
+      "datetime",
+      "services"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "examples/sample_codebase/services.py": {
+    "purpose": "Business services and external integrations",
+    "size": 194,
+    "complexity": 1.4,
+    "public_interface": {
+      "classes": [
+        "NotificationFactory",
+        "Notification",
+        "EmailNotification",
+        "SMSNotification",
+        "PushNotification",
+        "EventObserver",
+        "EventDispatcher",
+        "AuditLogger",
+        "MetricsCollector",
+        "UserService",
+        "ReportingService",
+        "ConfigurationManager"
+      ],
+      "functions": [
+        "create_notification",
+        "__init__",
+        "send",
+        "send",
+        "send"
+      ]
+    },
+    "dependencies": [
+      "typing",
+      "abc",
+      "models",
+      "analytics"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "examples/sample_codebase/models.py": {
+    "purpose": "Data models and business logic",
+    "size": 207,
+    "complexity": 1.8,
+    "public_interface": {
+      "classes": [
+        "DatabaseConnection",
+        "UserManager",
+        "EmailService",
+        "NotificationService",
+        "PaymentProcessor",
+        "AnalyticsTracker"
+      ],
+      "functions": [
+        "__new__",
+        "__init__",
+        "connect",
+        "execute_query",
+        "__init__"
+      ]
+    },
+    "dependencies": [
+      "logging",
+      "typing",
+      "datetime",
+      "uuid",
+      "uuid"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "src/main.py": {
+    "purpose": "Application entry point",
+    "size": 205,
+    "complexity": 1.8,
+    "public_interface": {
+      "classes": [],
+      "functions": [
+        "create_analyzer_with_modules",
+        "format_analysis_results",
+        "print_analysis_summary",
+        "main"
+      ]
+    },
+    "dependencies": [
+      "sys",
+      "json",
+      "argparse",
+      "pathlib",
+      "typing"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "src/core/analyzer.py": {
+    "purpose": "General functionality and utilities",
+    "size": 143,
+    "complexity": 0.8,
+    "public_interface": {
+      "classes": [
+        "AnalysisResult",
+        "CodebaseAnalyzer"
+      ],
+      "functions": [
+        "__init__",
+        "analyze",
+        "_analyze_structure",
+        "_detect_patterns",
+        "_generate_insights"
+      ]
+    },
+    "dependencies": [
+      "typing",
+      "dataclasses",
+      "pathlib",
+      "logging"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "src/analyzers/pattern_detector.py": {
+    "purpose": "General functionality and utilities",
+    "size": 403,
+    "complexity": 6.2,
+    "public_interface": {
+      "classes": [
+        "PatternType",
+        "Pattern",
+        "PatternDetector"
+      ],
+      "functions": [
+        "__init__",
+        "detect_patterns",
+        "_detect_design_patterns",
+        "_detect_anti_patterns",
+        "_detect_architectural_smells"
+      ]
+    },
+    "dependencies": [
+      "typing",
+      "dataclasses",
+      "pathlib",
+      "re",
+      "enum"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  },
+  "src/analyzers/structure_analyzer.py": {
+    "purpose": "General functionality and utilities",
+    "size": 282,
+    "complexity": 3.8,
+    "public_interface": {
+      "classes": [
+        "FileNode",
+        "DependencyGraph",
+        "StructureAnalyzer"
+      ],
+      "functions": [
+        "__init__",
+        "analyze",
+        "_discover_files",
+        "_analyze_file",
+        "_determine_file_type"
+      ]
+    },
+    "dependencies": [
+      "typing",
+      "pathlib",
+      "ast",
+      "re",
+      "dataclasses"
+    ],
+    "last_analyzed": "2026-01-22T22:27:03.860527"
+  }
+}

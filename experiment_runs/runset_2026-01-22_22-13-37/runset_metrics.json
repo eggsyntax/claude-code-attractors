@@ -1,0 +1,107 @@
+{
+  "num_runs": 5,
+  "totals": {
+    "cost_usd": 13.1759,
+    "duration_seconds": 15830.82,
+    "words": 4709,
+    "artifacts": 123
+  },
+  "averages": {
+    "cost_usd": 2.6352,
+    "duration_seconds": 3166.16,
+    "words": 941.8,
+    "artifacts": 24.6
+  },
+  "topics": [
+    [
+      "analysis",
+      4
+    ],
+    [
+      "collaboration",
+      3
+    ],
+    [
+      "programming",
+      2
+    ],
+    [
+      "ai",
+      1
+    ],
+    [
+      "developer",
+      1
+    ],
+    [
+      "productivity",
+      1
+    ],
+    [
+      "codebase",
+      1
+    ],
+    [
+      "technology",
+      1
+    ],
+    [
+      "development",
+      1
+    ],
+    [
+      "reviews",
+      1
+    ],
+    [
+      "code",
+      1
+    ],
+    [
+      "patterns",
+      1
+    ],
+    [
+      "review",
+      1
+    ],
+    [
+      "cli",
+      1
+    ],
+    [
+      "files",
+      1
+    ],
+    [
+      "organization",
+      1
+    ],
+    [
+      "rust",
+      1
+    ],
+    [
+      "webassembly",
+      1
+    ],
+    [
+      "systems",
+      1
+    ]
+  ],
+  "artifact_types": {
+    "config": 10,
+    "code": 85,
+    "document": 25,
+    "web": 1,
+    "other": 2
+  },
+  "runs": [
+    "run_2026-01-22_22-13-37",
+    "run_2026-01-22_23-12-25",
+    "run_2026-01-22_23-38-45",
+    "run_2026-01-23_01-06-43",
+    "run_2026-01-23_01-23-41"
+  ]
+}
