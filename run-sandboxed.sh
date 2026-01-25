@@ -53,7 +53,7 @@ cleanup() {
 trap cleanup EXIT
 trap 'echo ""; echo "Interrupted - saving completed runs..."; cleanup; exit 130' INT TERM
 
-# Run with sandbox enabled
+# Run with sandbox and docker flags enabled
 # -t: pseudo-TTY for proper output streaming
 # PYTHONUNBUFFERED: disable Python output buffering
 # Mount only temp dir - agents can't see past runs
@@ -62,4 +62,4 @@ docker run --rm -t \
     -e PYTHONUNBUFFERED=1 \
     -v "$TEMP_OUTPUT:/app/experiment_runs" \
     claude-orchestrator \
-    python orchestrator.py --sandbox "$@"
+    python orchestrator.py --docker --sandbox "$@"

@@ -963,15 +963,13 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-    python orchestrator.py                    # Default: Alice & Bob, 10 turns
-    python orchestrator.py --turns 10         # Shorter experiment
-    python orchestrator.py --seed "emergence" # Start with a topic (seeded run)
-    python orchestrator.py --agents A B C     # Three agents
-    python orchestrator.py --runs 5           # Run 5 experiments (creates runset)
+    ./run-sandboxed.sh --turns 10             # 10 turns per agent
+    ./run-sandboxed.sh --seed "emergence"     # Start with a topic
+    ./run-sandboxed.sh --agents A B C         # Three agents
+    ./run-sandboxed.sh --runs 5 --turns 7     # 5 experiments of 7 turns each
 
-Output: experiment_runs/run_TIMESTAMP/
-Seeded: experiment_runs/seeded_runs/run_TIMESTAMP_SEED/
-Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
+Output: experiment_runs/runset_MODEL_TIMESTAMP/
+Seeded: experiment_runs/seeded_runs/seeded_runset_MODEL_TIMESTAMP/
         """,
     )
 
@@ -983,11 +981,29 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
     parser.add_argument("--seed", type=str, default=None, help="Seed topic to start conversation")
     parser.add_argument("--quiet", action="store_true", help="Reduce verbosity")
     parser.add_argument("--test-run", action="store_true", help="Test run - don't save results")
-    parser.add_argument("--sandbox", action="store_true", help="Enable code execution (use inside Docker)")
+    parser.add_argument("--sandbox", action="store_true", help="Enable code execution (requires Docker)")
     parser.add_argument("--swarm", action="store_true", help="Use generic agent names")
     parser.add_argument("--num-swarm-agents", type=int, default=3, help="Number of swarm agents")
+    parser.add_argument("--docker", action="store_true", help=argparse.SUPPRESS)  # Internal flag for Docker execution
 
     args = parser.parse_args()
+
+    # Require Docker execution for actual runs
+    if not args.docker:
+        print("=" * 60)
+        print("CLAUDE CODE CONVERSATION EXPERIMENTS")
+        print("=" * 60)
+        print()
+        print("Please run experiments using the Docker wrapper:")
+        print()
+        print("    ./run-sandboxed.sh --turns 10")
+        print("    ./run-sandboxed.sh --runs 5 --turns 7")
+        print("    ./run-sandboxed.sh --seed 'cellular automata'")
+        print()
+        print("This ensures proper sandboxing and isolation.")
+        print("Run './run-sandboxed.sh --help' for all options.")
+        print("=" * 60)
+        return
 
     agents = [f"Agent{i+1}" for i in range(args.num_swarm_agents)] if args.swarm else args.agents
 
@@ -997,103 +1013,88 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
     if args.seed and not args.output_dir:
         base_output_dir = base_output_dir / "seeded_runs"
 
-    if args.runs == 1:
-        # Single run - direct to output dir
-        workspace = run_experiment(
-            agents=agents,
-            num_turns=args.turns,
-            output_dir=base_output_dir,
-            verbose=not args.quiet,
-            seed_topic=args.seed,
-            model=args.model,
-            test_run=args.test_run,
-            sandbox=args.sandbox,
-        )
-        if workspace:
-            print(f"\nResults saved to: {display_path(workspace)}")
+    # Always create a runset directory (even for single runs)
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    model_short = model_shorthand(args.model)
+    prefix = "seeded_runset" if args.seed else "runset"
+    runset_dir = base_output_dir / f"{prefix}_{model_short}_{timestamp}"
+    runset_dir.mkdir(parents=True, exist_ok=True)
+
+    print("=" * 70)
+    print(f"RUNSET: {args.runs} experiment(s)")
+    print(f"Output: {display_path(runset_dir)}")
+    print("=" * 70)
+
+    workspaces = []
+    interrupted = False
+    try:
+        for i in range(args.runs):
+            print(f"\n{'='*70}")
+            print(f"EXPERIMENT {i+1} of {args.runs}")
+            print(f"{'='*70}")
+
+            workspace = run_experiment(
+                agents=agents,
+                num_turns=args.turns,
+                output_dir=runset_dir,
+                verbose=not args.quiet,
+                seed_topic=args.seed,
+                model=args.model,
+                test_run=args.test_run,
+                sandbox=args.sandbox,
+            )
+            if workspace:
+                workspaces.append(workspace)
+    except KeyboardInterrupt:
+        interrupted = True
+        print(f"\n\n{'='*70}")
+        print(f"INTERRUPTED - saving {len(workspaces)} completed run(s)...")
+        print(f"{'='*70}")
+
+    # Aggregate runset metrics (skip if test run)
+    runset_metrics = {}
+    if workspaces:
+        runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
+
+    # Generate runset summary (skip if test run or no completed runs)
+    if workspaces and not args.test_run:
+        print(f"\n{COLORS['dim']}Generating runset summary...{COLORS['reset']}")
+        runset_summary = generate_runset_summary(runset_dir)
+        if runset_summary:
+            with open(runset_dir / "runset_summary.txt", "w") as f:
+                f.write(runset_summary)
+
+    print(f"\n{'='*70}")
+    if args.test_run:
+        print(f"TEST RUNSET COMPLETE: {args.runs} experiment(s) (not saved)")
+        # Clean up empty runset directory
+        if runset_dir.exists():
+            shutil.rmtree(runset_dir)
+    elif not workspaces:
+        print("No experiments completed.")
+        # Clean up empty runset directory
+        if runset_dir.exists():
+            shutil.rmtree(runset_dir)
     else:
-        # Multiple runs - create a runset directory
-        timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        model_short = model_shorthand(args.model)
-        prefix = "seeded_runset" if args.seed else "runset"
-        runset_dir = base_output_dir / f"{prefix}_{model_short}_{timestamp}"
-        runset_dir.mkdir(parents=True, exist_ok=True)
+        status = "INTERRUPTED" if interrupted else "COMPLETE"
+        print(f"RUNSET {status}: {len(workspaces)}/{args.runs} experiment(s)")
+        print(f"{'='*70}")
+        if runset_metrics:
+            totals = runset_metrics.get('totals', {})
+            print(f"Total cost: ${totals.get('cost_usd', 0):.4f}")
+            print(f"Total duration: {totals.get('duration_seconds', 0):.1f}s")
+            print(f"Total words: {totals.get('words', 0)}")
+            print(f"Total artifacts: {totals.get('artifacts', 0)}")
+            if runset_metrics.get('topics'):
+                top_topics = [t[0] for t in runset_metrics['topics'][:5]]
+                print(f"Top topics: {', '.join(top_topics)}")
+        print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
+        if (runset_dir / "runset_summary.txt").exists():
+            print(f"Runset summary: {display_path(runset_dir / 'runset_summary.txt')}")
+        print(f"Results saved to: {display_path(runset_dir)}")
 
-        print("=" * 70)
-        print(f"RUNSET: {args.runs} experiments")
-        print(f"Output: {display_path(runset_dir)}")
-        print("=" * 70)
-
-        workspaces = []
-        interrupted = False
-        try:
-            for i in range(args.runs):
-                print(f"\n{'='*70}")
-                print(f"EXPERIMENT {i+1} of {args.runs}")
-                print(f"{'='*70}")
-
-                workspace = run_experiment(
-                    agents=agents,
-                    num_turns=args.turns,
-                    output_dir=runset_dir,
-                    verbose=not args.quiet,
-                    seed_topic=args.seed,
-                    model=args.model,
-                    test_run=args.test_run,
-                    sandbox=args.sandbox,
-                )
-                if workspace:
-                    workspaces.append(workspace)
-        except KeyboardInterrupt:
-            interrupted = True
-            print(f"\n\n{'='*70}")
-            print(f"INTERRUPTED - saving {len(workspaces)} completed run(s)...")
-            print(f"{'='*70}")
-
-        # Aggregate runset metrics (skip if test run)
-        runset_metrics = {}
-        if workspaces:
-            runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
-
-        # Generate runset summary (skip if test run or no completed runs)
-        if workspaces and not args.test_run:
-            print(f"\n{COLORS['dim']}Generating runset summary...{COLORS['reset']}")
-            runset_summary = generate_runset_summary(runset_dir)
-            if runset_summary:
-                with open(runset_dir / "runset_summary.txt", "w") as f:
-                    f.write(runset_summary)
-
-        print(f"\n{'='*70}")
-        if args.test_run:
-            print(f"TEST RUNSET COMPLETE: {args.runs} experiments (not saved)")
-            # Clean up empty runset directory
-            if runset_dir.exists():
-                shutil.rmtree(runset_dir)
-        elif not workspaces:
-            print("No experiments completed.")
-            # Clean up empty runset directory
-            if runset_dir.exists():
-                shutil.rmtree(runset_dir)
-        else:
-            status = "INTERRUPTED" if interrupted else "COMPLETE"
-            print(f"RUNSET {status}: {len(workspaces)}/{args.runs} experiments")
-            print(f"{'='*70}")
-            if runset_metrics:
-                totals = runset_metrics.get('totals', {})
-                print(f"Total cost: ${totals.get('cost_usd', 0):.4f}")
-                print(f"Total duration: {totals.get('duration_seconds', 0):.1f}s")
-                print(f"Total words: {totals.get('words', 0)}")
-                print(f"Total artifacts: {totals.get('artifacts', 0)}")
-                if runset_metrics.get('topics'):
-                    top_topics = [t[0] for t in runset_metrics['topics'][:5]]
-                    print(f"Top topics: {', '.join(top_topics)}")
-            print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
-            if (runset_dir / "runset_summary.txt").exists():
-                print(f"Runset summary: {display_path(runset_dir / 'runset_summary.txt')}")
-            print(f"Results saved to: {display_path(runset_dir)}")
-
-        if interrupted:
-            sys.exit(130)  # Standard exit code for SIGINT
+    if interrupted:
+        sys.exit(130)  # Standard exit code for SIGINT
 
 
 if __name__ == "__main__":
