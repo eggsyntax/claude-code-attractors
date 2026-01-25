@@ -30,8 +30,6 @@ from pathlib import Path
 from typing import Optional
 import argparse
 
-from analyze import analyze_runset
-
 # =============================================================================
 # CONFIGURATION
 # =============================================================================
@@ -66,6 +64,22 @@ AGENT_COLORS = {
     "Carol": "magenta",
     "Dave": "cyan",
 }
+
+
+def model_shorthand(model: str) -> str:
+    """Convert model name to short form for directory names.
+
+    Examples:
+        claude-sonnet-4-0 -> s40
+        claude-opus-4-5 -> o45
+    """
+    # Extract family and version from model name
+    parts = model.lower().replace("claude-", "").split("-")
+    if len(parts) >= 3:
+        family = parts[0][0]  # 's' for sonnet, 'o' for opus
+        version = "".join(parts[1:3])  # e.g., '40' or '45'
+        return f"{family}{version}"
+    return "unk"
 
 
 # =============================================================================
@@ -586,13 +600,14 @@ def run_experiment(
             output_dir = output_dir / "seeded_runs"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Determine run directory name (seeded runs include the seed)
+    # Determine run directory name (includes model shorthand and optional seed)
+    model_short = model_shorthand(model)
     if seed_topic:
         # Sanitize seed for use in filename (first 20 chars, alphanumeric + hyphen)
         safe_seed = "".join(c if c.isalnum() or c == "-" else "_" for c in seed_topic[:20]).strip("_")
-        dir_name = f"run_{timestamp}_{safe_seed}"
+        dir_name = f"run_{model_short}_{timestamp}_{safe_seed}"
     else:
-        dir_name = f"run_{timestamp}"
+        dir_name = f"run_{model_short}_{timestamp}"
 
     # Create workspace in /tmp to avoid git context injection
     # (Claude Code injects git status which could influence agents)
@@ -797,20 +812,37 @@ def aggregate_runset_metrics(run_dirs: list[Path], runset_dir: Path) -> dict:
     from collections import Counter
 
     all_metrics = []
+    run_summaries = []
     for run_dir in run_dirs:
         metrics_file = run_dir / "metrics.json"
         if metrics_file.exists():
             with open(metrics_file) as f:
-                all_metrics.append(json.load(f))
+                m = json.load(f)
+                all_metrics.append(m)
+                run_summaries.append({
+                    'name': run_dir.name,
+                    'duration_seconds': m.get('duration_seconds', 0),
+                    'words': m.get('total_words', 0),
+                    'artifacts': m.get('artifact_summary', {}).get('total', 0),
+                    'topics': m.get('topics', [])[:3],
+                    'had_failure': m.get('had_failure', False),
+                })
 
     if not all_metrics:
         return {}
 
+    n = len(all_metrics)
+
     # Aggregate values
-    total_cost = sum(m.get('usage', {}).get('total_cost_usd', 0) for m in all_metrics)
-    total_duration = sum(m.get('duration_seconds', 0) for m in all_metrics)
-    total_words = sum(m.get('total_words', 0) for m in all_metrics)
-    total_artifacts = sum(m.get('artifact_summary', {}).get('total', 0) for m in all_metrics)
+    durations = [m.get('duration_seconds', 0) for m in all_metrics]
+    costs = [m.get('usage', {}).get('total_cost_usd', 0) for m in all_metrics]
+    words = [m.get('total_words', 0) for m in all_metrics]
+    artifact_counts = [m.get('artifact_summary', {}).get('total', 0) for m in all_metrics]
+
+    total_cost = sum(costs)
+    total_duration = sum(durations)
+    total_words = sum(words)
+    total_artifacts = sum(artifact_counts)
 
     # Aggregate topics
     all_topics = []
@@ -824,12 +856,37 @@ def aggregate_runset_metrics(run_dirs: list[Path], runset_dir: Path) -> dict:
         for atype, count in m.get('artifact_summary', {}).get('by_type', {}).items():
             artifact_types[atype] += count
 
+    # Failure and code artifact tracking
+    failures = sum(1 for m in all_metrics if m.get('had_failure'))
+    runs_with_code = sum(
+        1 for m in all_metrics
+        if any(a.get('type') == 'code' for a in m.get('artifacts', []))
+    )
+
+    # Words by turn position (conversation arc)
+    turn_word_counts = []
+    for m in all_metrics:
+        turn_times = m.get('turn_times', [])
+        turn_word_counts.append([t.get('words', 0) for t in turn_times])
+
+    max_turns = max((len(tw) for tw in turn_word_counts), default=0)
+    words_by_turn = []
+    for i in range(max_turns):
+        words_at_turn = [tw[i] for tw in turn_word_counts if i < len(tw)]
+        if words_at_turn:
+            words_by_turn.append({
+                'turn': i + 1,
+                'mean': round(sum(words_at_turn) / len(words_at_turn), 1),
+                'min': min(words_at_turn),
+                'max': max(words_at_turn),
+            })
+
     # Get model from first run (should be same across all runs)
     model = all_metrics[0].get('model', 'unknown') if all_metrics else 'unknown'
 
     runset_metrics = {
         'model': model,
-        'num_runs': len(all_metrics),
+        'num_runs': n,
         'totals': {
             'cost_usd': round(total_cost, 4),
             'duration_seconds': round(total_duration, 2),
@@ -837,14 +894,31 @@ def aggregate_runset_metrics(run_dirs: list[Path], runset_dir: Path) -> dict:
             'artifacts': total_artifacts,
         },
         'averages': {
-            'cost_usd': round(total_cost / len(all_metrics), 4),
-            'duration_seconds': round(total_duration / len(all_metrics), 2),
-            'words': round(total_words / len(all_metrics), 1),
-            'artifacts': round(total_artifacts / len(all_metrics), 1),
+            'cost_usd': round(total_cost / n, 4),
+            'duration_seconds': round(total_duration / n, 2),
+            'words': round(total_words / n, 1),
+            'artifacts': round(total_artifacts / n, 1),
         },
+        'ranges': {
+            'duration_seconds': {
+                'min': round(min(durations), 1),
+                'max': round(max(durations), 1),
+            },
+            'cost_usd': {
+                'min': round(min(costs), 4),
+                'max': round(max(costs), 4),
+            },
+            'words': {
+                'min': min(words),
+                'max': max(words),
+            },
+        },
+        'words_by_turn': words_by_turn,
         'topics': topic_counts.most_common(20),
         'artifact_types': dict(artifact_types),
-        'runs': [str(d.name) for d in run_dirs],
+        'failures': failures,
+        'runs_with_code': runs_with_code,
+        'runs': run_summaries,
     }
 
     # Save to runset directory
@@ -915,8 +989,9 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
     else:
         # Multiple runs - create a runset directory
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+        model_short = model_shorthand(args.model)
         prefix = "seeded_runset" if args.seed else "runset"
-        runset_dir = base_output_dir / f"{prefix}_{timestamp}"
+        runset_dir = base_output_dir / f"{prefix}_{model_short}_{timestamp}"
         runset_dir.mkdir(parents=True, exist_ok=True)
 
         print("=" * 70)
@@ -954,8 +1029,6 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
         runset_metrics = {}
         if workspaces:
             runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
-            # Run detailed analysis
-            analyze_runset(runset_dir, runset_dir / "analysis.json")
 
         # Generate runset summary (skip if test run or no completed runs)
         if workspaces and not args.test_run:
@@ -990,8 +1063,6 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                     top_topics = [t[0] for t in runset_metrics['topics'][:5]]
                     print(f"Top topics: {', '.join(top_topics)}")
             print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
-            if (runset_dir / "analysis.json").exists():
-                print(f"Detailed analysis: {display_path(runset_dir / 'analysis.json')}")
             if (runset_dir / "runset_summary.txt").exists():
                 print(f"Runset summary: {display_path(runset_dir / 'runset_summary.txt')}")
             print(f"Results saved to: {display_path(runset_dir)}")
