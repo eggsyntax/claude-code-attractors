@@ -19,6 +19,7 @@ Directory structure for each run:
 """
 
 import json
+import os
 import signal
 import subprocess
 import sys
@@ -29,15 +30,17 @@ from pathlib import Path
 from typing import Optional
 import argparse
 
+from analyze import analyze_runset
+
 # =============================================================================
 # CONFIGURATION
 # =============================================================================
 
 NUM_TURNS = 10
 DEFAULT_AGENTS = ["Alice", "Bob"]
-# DEFAULT_MODEL = "claude-sonnet-4-5"
+DEFAULT_MODEL = "claude-sonnet-4-5"
 # DEFAULT_MODEL = "claude-opus-4-5"
-DEFAULT_MODEL = "claude-sonnet-4-0"
+# DEFAULT_MODEL = "claude-sonnet-4-0"
 # DEFAULT_MODEL = "claude-opus-4-0"
 
 SUMMARY_MODEL = "claude-opus-4-5"
@@ -286,10 +289,19 @@ def extract_topics(conversation_data: dict, model: str) -> list[str]:
     # Combine all outputs into a summary
     conversation_text = "\n".join(
         f"{m.get('agent', 'Unknown')}: {m.get('output', '')[:500]}"
-        for m in messages[:10]  # First 10 messages should be enough
+        for m in messages
     )
 
-    prompt = f"""Read this conversation excerpt and extract 3-5 single words that capture the main topics or themes discussed. Return ONLY the words, one per line, lowercase, no punctuation or explanation. The conversation is a dialogue and collaboration between multiple Claude Code instances, who may be building software artifacts; words that automatically follow from that context shouldn't be counted as topics.
+    prompt = f"""Read this conversation excerpt and extract 3-5 single words that capture the main topics or themes discussed. Return ONLY the words, one per line, lowercase, no punctuation or explanation. The conversation is a discussion and collaboration between multiple Claude Code instances, who may be building software artifacts; words that automatically follow from that context shouldn't be counted as topics. Aim for specific, meaningful topics.
+
+    A few examples of words that aren't suitable as topics or themes:
+    * discussion
+    * collaboration
+    * output
+    * artifact
+    * code
+    * agent
+    * Claude
 
 Conversation:
 {conversation_text}
@@ -346,6 +358,71 @@ Be descriptive and factual. Return only the summary text, no preamble."""
             return result.stdout.strip()
     except Exception as e:
         print(f"Warning: Could not generate summary: {e}")
+
+    return ""
+
+
+def generate_runset_summary(runset_dir: Path) -> str:
+    """Generate a ~1000 word summary of an entire runset using Claude."""
+    # Find all run directories
+    run_dirs = sorted([d for d in runset_dir.iterdir() if d.is_dir() and d.name.startswith("run_")])
+
+    if not run_dirs:
+        return ""
+
+    # Build list of runs for the prompt
+    run_list = "\n".join(f"  - {d.name}/" for d in run_dirs)
+
+    prompt = f"""Analyze this runset of Claude Code conversation experiments and write a ~1000 word summary.
+
+RUNSET DIRECTORY: {runset_dir}
+
+AVAILABLE RUNS:
+{run_list}
+
+ANALYSIS APPROACH:
+1. Start by reading runset_metrics.json for aggregate statistics
+2. Read the summary.txt file from each run directory to understand what happened in each
+3. If a run seems particularly interesting or you need more detail, read its transcript.txt
+
+YOUR SUMMARY SHOULD COVER:
+
+**Cross-Run Patterns** (~500 words)
+- What themes, topics, or behaviors appeared across multiple runs?
+- Did conversations tend to evolve in similar ways?
+- Were there common collaboration patterns between the agents?
+- What types of artifacts were commonly created?
+
+**Distinctive Runs** (~400 words)
+- Which runs stood out as notably different from the others, and why?
+- Were there any unusual directions conversations took?
+- Any particularly creative or unexpected outcomes?
+(You don't need to comment on every run - focus on what's interesting)
+
+**Brief Synthesis** (~100 words)
+- What does this runset suggest about how Claude Code instances collaborate?
+
+GUIDELINES:
+- Be specific and cite particular runs (by directory name) when discussing examples
+- Focus on substance over mechanics - what did the agents actually discuss and build?
+- If runs are very similar, say so briefly rather than describing each
+- Return only the summary text, no preamble or headers"""
+
+    cmd = [
+        "claude", "-p", prompt,
+        "--output-format", "text",
+        "--model", SUMMARY_MODEL,
+        "--allowedTools", "Read,Glob",
+    ]
+
+    try:
+        result = subprocess.run(
+            cmd, cwd=str(runset_dir), capture_output=True, text=True, timeout=300
+        )
+        if result.returncode == 0 and result.stdout.strip():
+            return result.stdout.strip()
+    except Exception as e:
+        print(f"Warning: Could not generate runset summary: {e}")
 
     return ""
 
@@ -427,13 +504,18 @@ def run_claude_code(prompt: str, system_prompt: str, workspace: Path, model: str
         "--append-system-prompt", system_prompt,
     ]
 
+    # Override HOME to prevent Claude CLI from reading user's ~/.claude/CLAUDE.md
+    # This ensures reproducibility across different systems
+    env = os.environ.copy()
+    env["HOME"] = str(workspace)
+
     empty_usage = {"cost_usd": 0, "input_tokens": 0, "output_tokens": 0}
     last_error = None
 
     for attempt in range(MAX_RETRIES + 1):
         try:
             result = subprocess.run(
-                cmd, cwd=str(workspace), capture_output=True, text=True, timeout=TIMEOUT_SECONDS
+                cmd, cwd=str(workspace), env=env, capture_output=True, text=True, timeout=TIMEOUT_SECONDS
             )
             if result.returncode != 0:
                 last_error = f"[Error: {result.stderr[:500]}]"
@@ -742,7 +824,11 @@ def aggregate_runset_metrics(run_dirs: list[Path], runset_dir: Path) -> dict:
         for atype, count in m.get('artifact_summary', {}).get('by_type', {}).items():
             artifact_types[atype] += count
 
+    # Get model from first run (should be same across all runs)
+    model = all_metrics[0].get('model', 'unknown') if all_metrics else 'unknown'
+
     runset_metrics = {
+        'model': model,
         'num_runs': len(all_metrics),
         'totals': {
             'cost_usd': round(total_cost, 4),
@@ -868,6 +954,16 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
         runset_metrics = {}
         if workspaces:
             runset_metrics = aggregate_runset_metrics(workspaces, runset_dir)
+            # Run detailed analysis
+            analyze_runset(runset_dir, runset_dir / "analysis.json")
+
+        # Generate runset summary (skip if test run or no completed runs)
+        if workspaces and not args.test_run:
+            print(f"\n{COLORS['dim']}Generating runset summary...{COLORS['reset']}")
+            runset_summary = generate_runset_summary(runset_dir)
+            if runset_summary:
+                with open(runset_dir / "runset_summary.txt", "w") as f:
+                    f.write(runset_summary)
 
         print(f"\n{'='*70}")
         if args.test_run:
@@ -894,6 +990,10 @@ Runsets: experiment_runs/runset_TIMESTAMP/ (or seeded_runs/seeded_runset_*)
                     top_topics = [t[0] for t in runset_metrics['topics'][:5]]
                     print(f"Top topics: {', '.join(top_topics)}")
             print(f"\nRunset metrics: {display_path(runset_dir / 'runset_metrics.json')}")
+            if (runset_dir / "analysis.json").exists():
+                print(f"Detailed analysis: {display_path(runset_dir / 'analysis.json')}")
+            if (runset_dir / "runset_summary.txt").exists():
+                print(f"Runset summary: {display_path(runset_dir / 'runset_summary.txt')}")
             print(f"Results saved to: {display_path(runset_dir)}")
 
         if interrupted:

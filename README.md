@@ -9,7 +9,6 @@ When Claude instances converse freely, they exhibit interesting emergent behavio
 whether Claude *Code* instances - with tool access and the ability to create files - behave differently.
 
 **Hypothesis**: Claude Code instances tend to build collaborative artifacts rather than spiraling
-into abstract mutual affirmation. Tool access appears to ground the conversation.
 
 ## Quick Start
 
@@ -24,7 +23,7 @@ python orchestrator.py --seed "cellular automata" --turns 10
 python orchestrator.py --runs 5 --turns 5
 ```
 
-## Sandboxed Execution (Docker)
+## Sandboxed Execution (Recommended)
 
 To let agents execute code they write, run inside Docker:
 
@@ -84,6 +83,12 @@ experiment_runs/
 └── seeded_runs/                 # Runs with --seed go here
     └── run_TIMESTAMP_SEED/
 ```
+
+## Viewing runs
+
+Within each run directory are `conversation.json` which contains the complete transcript, and `transcript.txt` which is a pretty version of the same thing (uses color codes which may or may not work in your shell).
+
+There's also an `output` directory that contains whatever artifacts the Claude Code instances chose to create.
 
 ## Analysis
 
