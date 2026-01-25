@@ -8,12 +8,13 @@ can create artifacts in a shared output directory.
 
 Directory structure for each run:
     run_TIMESTAMP/
-    ├── params.json          # Input parameters for this run
-    ├── metrics.json         # Collected metrics (duration, cost, topics, etc.)
-    ├── conversation.json    # Machine-readable conversation log (for analysis)
-    ├── transcript.txt       # Human-readable transcript with colors
-    ├── summary.txt          # AI-generated summary of the run
-    └── output/              # Agent-created artifacts go here
+    ├── params.json                 # Input parameters for this run
+    ├── metrics.json                # Collected metrics (duration, cost, topics, etc.)
+    ├── conversation.json           # Machine-readable conversation log (for analysis)
+    ├── transcript.txt              # Human-readable transcript (plain text)
+    ├── transcript-color-codes.txt  # Human-readable transcript (with ANSI colors)
+    ├── summary.txt                 # AI-generated summary of the run
+    └── output/                     # Agent-created artifacts go here
         ├── (files created by agents...)
         └── ...
 """
@@ -170,6 +171,7 @@ class Conversation:
         self.workspace = workspace
         self.log_file = workspace / "conversation.json"
         self.transcript_file = workspace / "transcript.txt"
+        self.transcript_color_file = workspace / "transcript-color-codes.txt"
         self._initialize()
 
     def _initialize(self):
@@ -213,19 +215,34 @@ class Conversation:
         except Exception:
             time_str = message["timestamp"]
 
-        lines = [
+        # Plain text version (no color codes)
+        plain_lines = [
+            f"\n{'═' * 70}",
+            f"Turn {message['turn']}: {agent}  ({time_str})",
+            f"{'═' * 70}",
+        ]
+        if message.get("output"):
+            plain_lines.append("")
+            plain_lines.extend(message['output'].split('\n'))
+        plain_lines.append("")
+
+        with open(self.transcript_file, "a") as f:
+            f.write("\n".join(plain_lines))
+
+        # Color-coded version
+        color_lines = [
             f"\n{'═' * 70}",
             f"{bold}{color}Turn {message['turn']}: {agent}{reset}  {dim}({time_str}){reset}",
             f"{'═' * 70}",
         ]
         if message.get("output"):
-            lines.append("")  # Blank line after header
+            color_lines.append("")
             for line in message['output'].split('\n'):
-                lines.append(f"{color}{line}{reset}")
-        lines.append("")
+                color_lines.append(f"{color}{line}{reset}")
+        color_lines.append("")
 
-        with open(self.transcript_file, "a") as f:
-            f.write("\n".join(lines))
+        with open(self.transcript_color_file, "a") as f:
+            f.write("\n".join(color_lines))
 
     def finalize(self, stats: dict):
         data = self._load()
@@ -650,17 +667,25 @@ def run_experiment(
 
     conversation = Conversation(workspace)
 
-    # Initialize transcript
+    # Initialize transcripts (plain and color-coded versions)
+    header_lines = [
+        "=" * 70,
+        "CLAUDE CODE CONVERSATION TRANSCRIPT",
+        "=" * 70,
+        f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+        f"Model: {model}",
+        f"Agents: {', '.join(agents)}",
+        "Source: conversation.json",
+    ]
+    if seed_topic:
+        header_lines.append(f"Seed topic: {seed_topic}")
+    header_lines.append("=" * 70)
+    header_text = "\n".join(header_lines) + "\n"
+
     with open(conversation.transcript_file, "w") as f:
-        f.write("=" * 70 + "\n")
-        f.write("CLAUDE CODE CONVERSATION TRANSCRIPT\n")
-        f.write("=" * 70 + "\n")
-        f.write(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        f.write(f"Model: {model}\n")
-        f.write(f"Agents: {', '.join(agents)}\n")
-        f.write(f"Source: conversation.json\n")
-        if seed_topic:
-            f.write(f"Seed topic: {seed_topic}\n")
+        f.write(header_text)
+    with open(conversation.transcript_color_file, "w") as f:
+        f.write(header_text)
         f.write("=" * 70 + "\n")
 
     stats = {
