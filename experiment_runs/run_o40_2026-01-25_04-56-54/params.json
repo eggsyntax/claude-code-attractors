@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-01-25_04-56-54",
+  "model": "claude-opus-4-0",
+  "agents": [
+    "Alice",
+    "Bob"
+  ],
+  "num_turns": 10,
+  "seed_topic": null,
+  "total_turns": 20,
+  "sandbox": true
+}

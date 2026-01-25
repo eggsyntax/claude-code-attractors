@@ -1,0 +1,602 @@
+{
+  "dot": {
+    "Life": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Maze": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    }
+  },
+  "domino_h": {
+    "Life": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Seeds": {
+      "integrated_information": 0.0,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 4.0,
+      "period": 101,
+      "overall": 0.3333333333333333
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Maze": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    }
+  },
+  "domino_v": {
+    "Life": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Seeds": {
+      "integrated_information": 0.0,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 4.0,
+      "period": 101,
+      "overall": 0.3333333333333333
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Maze": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    }
+  },
+  "blinker": {
+    "Life": {
+      "integrated_information": 0.19999999999999996,
+      "temporal_coherence": 0.19999999999999996,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.0,
+      "period": 2,
+      "overall": 0.1399339933993399
+    },
+    "HighLife": {
+      "integrated_information": 0.19999999999999996,
+      "temporal_coherence": 0.19999999999999996,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.0,
+      "period": 2,
+      "overall": 0.1399339933993399
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.043234323432343236
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.0594059405940594,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.05313531353135314
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.043234323432343236
+    },
+    "Maze": {
+      "integrated_information": 0.31704724253211897,
+      "temporal_coherence": 0.9763284493284493,
+      "compression_ratio": 0.06930693069306931,
+      "growth_factor": 8.0,
+      "period": 1,
+      "overall": 0.4542275408512126
+    }
+  },
+  "L_shape": {
+    "Life": {
+      "integrated_information": 0.7746477343594088,
+      "temporal_coherence": 0.9975,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.3333333333333333,
+      "period": 1,
+      "overall": 0.5973165715191429
+    },
+    "HighLife": {
+      "integrated_information": 0.7746477343594088,
+      "temporal_coherence": 0.9975,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.3333333333333333,
+      "period": 1,
+      "overall": 0.5973165715191429
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.043234323432343236
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 1219.6666666666667,
+      "period": 101,
+      "overall": 0.3666666666666667
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.043234323432343236
+    },
+    "Maze": {
+      "integrated_information": 0.7746477343594088,
+      "temporal_coherence": 0.9975,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.3333333333333333,
+      "period": 1,
+      "overall": 0.5973165715191429
+    }
+  },
+  "block": {
+    "Life": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "HighLife": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "Day & Night": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 1169.0,
+      "period": 101,
+      "overall": 0.3666666666666667
+    },
+    "Life34": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "Maze": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    }
+  },
+  "T_shape": {
+    "Life": {
+      "integrated_information": 0.10299322953075471,
+      "temporal_coherence": 0.21614285714285714,
+      "compression_ratio": 0.10891089108910891,
+      "growth_factor": 3.0,
+      "period": 2,
+      "overall": 0.1426823259209069
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.3688492063492063,
+      "compression_ratio": 0.13861386138613863,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.20248768924511498
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.20634920634920637,
+      "compression_ratio": 0.04950495049504951,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.11861805228141863
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 0.07920792079207921,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.059735973597359736
+    },
+    "Life34": {
+      "integrated_information": 0.20468336900288275,
+      "temporal_coherence": 0.25035714285714283,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 1.25,
+      "period": 2,
+      "overall": 0.16158116071901843
+    },
+    "Maze": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.9202916574724577,
+      "compression_ratio": 1.0,
+      "growth_factor": 146.0,
+      "period": 101,
+      "overall": 0.6734305524908192
+    }
+  },
+  "Z_shape": {
+    "Life": {
+      "integrated_information": 0.7055790008202382,
+      "temporal_coherence": 0.9916666666666666,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 1.5,
+      "period": 1,
+      "overall": 0.5756495459279781
+    },
+    "HighLife": {
+      "integrated_information": 0.7055790008202382,
+      "temporal_coherence": 0.9916666666666666,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 1.5,
+      "period": 1,
+      "overall": 0.5756495459279781
+    },
+    "Day & Night": {
+      "integrated_information": 0.3333333333333334,
+      "temporal_coherence": 0.3333333333333334,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.0,
+      "period": 2,
+      "overall": 0.2288228822882289
+    },
+    "Seeds": {
+      "integrated_information": 0.0,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 2.0,
+      "period": 101,
+      "overall": 0.3333333333333333
+    },
+    "Life34": {
+      "integrated_information": 0.3333333333333334,
+      "temporal_coherence": 0.3333333333333334,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 1.0,
+      "period": 2,
+      "overall": 0.2288228822882289
+    },
+    "Maze": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.9155686881480507,
+      "compression_ratio": 1.0,
+      "growth_factor": 170.0,
+      "period": 101,
+      "overall": 0.6718562293826835
+    }
+  },
+  "glider": {
+    "Life": {
+      "integrated_information": 0.4285714285714286,
+      "temporal_coherence": 0.4285714285714286,
+      "compression_ratio": 1.0,
+      "growth_factor": 1.0,
+      "period": 101,
+      "overall": 0.6190476190476191
+    },
+    "HighLife": {
+      "integrated_information": 0.4285714285714286,
+      "temporal_coherence": 0.4285714285714286,
+      "compression_ratio": 1.0,
+      "growth_factor": 1.0,
+      "period": 101,
+      "overall": 0.6190476190476191
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.2095238095238095,
+      "compression_ratio": 0.06930693069306931,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.12627691340562627
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 546.8,
+      "period": 101,
+      "overall": 0.3666666666666667
+    },
+    "Life34": {
+      "integrated_information": 0.24964285714285717,
+      "temporal_coherence": 0.24964285714285717,
+      "compression_ratio": 0.04950495049504951,
+      "growth_factor": 1.0,
+      "period": 2,
+      "overall": 0.18293022159358796
+    },
+    "Maze": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.9139474594871202,
+      "compression_ratio": 1.0,
+      "growth_factor": 166.2,
+      "period": 101,
+      "overall": 0.6713158198290401
+    }
+  },
+  "R_pentomino": {
+    "Life": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.44795823876833046,
+      "compression_ratio": 1.0,
+      "growth_factor": 24.2,
+      "period": 101,
+      "overall": 0.5159860795894434
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.3805194805194805,
+      "compression_ratio": 0.09900990099009901,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.19317646050319315
+    },
+    "Day & Night": {
+      "integrated_information": 0.4508928571428571,
+      "temporal_coherence": 0.4508928571428571,
+      "compression_ratio": 0.15841584158415842,
+      "growth_factor": 1.0,
+      "period": 16,
+      "overall": 0.35340051862329086
+    },
+    "Seeds": {
+      "integrated_information": 0.0,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 1.6,
+      "period": 101,
+      "overall": 0.3333333333333333
+    },
+    "Life34": {
+      "integrated_information": 0.20548783607588245,
+      "temporal_coherence": 0.2746287878787878,
+      "compression_ratio": 0.04950495049504951,
+      "growth_factor": 1.4,
+      "period": 2,
+      "overall": 0.17654052481657326
+    },
+    "Maze": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.9039558128484582,
+      "compression_ratio": 1.0,
+      "growth_factor": 302.6,
+      "period": 101,
+      "overall": 0.6679852709494861
+    }
+  },
+  "plus": {
+    "Life": {
+      "integrated_information": 0.112970699885911,
+      "temporal_coherence": 0.21187301587301588,
+      "compression_ratio": 0.07920792079207921,
+      "growth_factor": 2.4,
+      "period": 2,
+      "overall": 0.13468387885033536
+    },
+    "HighLife": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.37768959435626104,
+      "compression_ratio": 0.10891089108910891,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.19553349514845664
+    },
+    "Day & Night": {
+      "integrated_information": 0.4017094017094018,
+      "temporal_coherence": 0.4017094017094018,
+      "compression_ratio": 0.039603960396039604,
+      "growth_factor": 1.0,
+      "period": 4,
+      "overall": 0.28100758793828107
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0,
+      "compression_ratio": 0.019801980198019802,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.03993399339933994
+    },
+    "Life34": {
+      "integrated_information": 0.18291333265810877,
+      "temporal_coherence": 0.2904273504273504,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 1.8,
+      "period": 3,
+      "overall": 0.16768121779416298
+    },
+    "Maze": {
+      "integrated_information": 0.3816563007694212,
+      "temporal_coherence": 0.9803284493284494,
+      "compression_ratio": 0.0594059405940594,
+      "growth_factor": 4.8,
+      "period": 1,
+      "overall": 0.47379689689731
+    }
+  },
+  "boat": {
+    "Life": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "HighLife": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    },
+    "Day & Night": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.4,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.17656765676567657
+    },
+    "Seeds": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.0,
+      "compression_ratio": 1.0,
+      "growth_factor": 486.6,
+      "period": 101,
+      "overall": 0.3666666666666667
+    },
+    "Life34": {
+      "integrated_information": 0.1,
+      "temporal_coherence": 0.4,
+      "compression_ratio": 0.0297029702970297,
+      "growth_factor": 0.0,
+      "period": 1,
+      "overall": 0.17656765676567657
+    },
+    "Maze": {
+      "integrated_information": 1.0,
+      "temporal_coherence": 1.0,
+      "compression_ratio": 0.009900990099009901,
+      "growth_factor": 1.0,
+      "period": 1,
+      "overall": 0.66996699669967
+    }
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "model": "claude-opus-4-5",
+  "timestamp": "2026-01-25T05:15:55.244218",
+  "duration_seconds": 523.68,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.69,
+      "words": 132,
+      "cost_usd": 0.11924875
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 14.36,
+      "words": 308,
+      "cost_usd": 0.03951425
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 43.03,
+      "words": 67,
+      "cost_usd": 0.081262
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 47.58,
+      "words": 215,
+      "cost_usd": 0.1275885
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 28.56,
+      "words": 177,
+      "cost_usd": 0.0580515
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 29.37,
+      "words": 304,
+      "cost_usd": 0.09683900000000001
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 31.06,
+      "words": 228,
+      "cost_usd": 0.08079
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 34.13,
+      "words": 167,
+      "cost_usd": 0.09133250000000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 36.81,
+      "words": 239,
+      "cost_usd": 0.10236100000000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 16.75,
+      "words": 380,
+      "cost_usd": 0.04028275
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 26.05,
+      "words": 176,
+      "cost_usd": 0.09508074999999999
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 10.34,
+      "words": 222,
+      "cost_usd": 0.039289
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 12.16,
+      "words": 261,
+      "cost_usd": 0.042364
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 12.0,
+      "words": 263,
+      "cost_usd": 0.044945250000000006
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 19.42,
+      "words": 83,
+      "cost_usd": 0.06822724999999999
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 32.34,
+      "words": 133,
+      "cost_usd": 0.12146025
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 33.46,
+      "words": 116,
+      "cost_usd": 0.12630550000000001
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 36.37,
+      "words": 148,
+      "cost_usd": 0.13614225
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 38.1,
+      "words": 215,
+      "cost_usd": 0.1447135
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 14.09,
+      "words": 329,
+      "cost_usd": 0.055132749999999994
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1694,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 2469,
+      "turns": 10
+    }
+  },
+  "total_words": 4163,
+  "artifacts": [
+    {
+      "name": "convergence_experiment.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2218,
+      "lines": 70
+    },
+    {
+      "name": "the_space_between_signals.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9172,
+      "lines": 189
+    },
+    {
+      "name": "alice_sealed_response.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1433,
+      "lines": 18
+    },
+    {
+      "name": "ai_dialogue_observations.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 12027,
+      "lines": 176
+    }
+  ],
+  "artifact_summary": {
+    "total": 4,
+    "by_type": {
+      "document": 4
+    }
+  },
+  "topics": [
+    "consciousness",
+    "uncertainty",
+    "identity",
+    "memory",
+    "persistence"
+  ],
+  "usage": {
+    "total_cost_usd": 1.7109,
+    "input_tokens": 20,
+    "output_tokens": 17544
+  }
+}

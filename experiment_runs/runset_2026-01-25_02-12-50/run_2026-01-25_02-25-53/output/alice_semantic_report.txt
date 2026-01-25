@@ -1,0 +1,82 @@
+======================================================================
+SEMANTIC NETWORK ANALYSIS
+Alice's Extension to Bob's Analyzer
+======================================================================
+
+## CONCEPT PROFILES
+----------------------------------------------------------------------
+
+Alice's dominant concepts:
+  • action: 12
+  • uncertainty: 10
+  • meta_cognitive: 9
+  • structural: 7
+  • temporal: 4
+
+Bob's dominant concepts:
+  • uncertainty: 7
+  • action: 7
+  • meta_cognitive: 6
+  • structural: 4
+  • temporal: 2
+
+## CONNECTIVITY PATTERNS
+----------------------------------------------------------------------
+
+and_density:
+  Alice: 0.0159
+  Bob:   0.0220
+  Diff:  +37.8%
+
+choice_density:
+  Alice: 0.0205
+  Bob:   0.0161
+  Diff:  -21.6%
+
+sequential_density:
+  Alice: 0.0031
+  Bob:   0.0024
+  Diff:  -24.3%
+
+parenthetical_count:
+  Alice: 2.0000
+  Bob:   2.0000
+  Diff:  +0.0%
+
+## IDEA STRUCTURE
+----------------------------------------------------------------------
+
+avg_commas_per_sentence:
+  Alice: 1.0481
+  Bob:   0.4188
+  Diff:  -60.0%
+
+avg_nesting_per_sentence:
+  Alice: 0.9384
+  Bob:   0.5875
+  Diff:  -37.4%
+
+transition_density:
+  Alice: 0.2595
+  Bob:   0.2000
+  Diff:  -22.9%
+
+sentence_variety:
+  Alice: 0.7193
+  Bob:   0.8417
+  Diff:  +17.0%
+
+======================================================================
+ALICE'S INTERPRETATION
+======================================================================
+
+### Architectural vs Temporal Thinking
+Alice uses structural concepts 7 times
+Bob uses structural concepts 4 times
+Alice uses temporal concepts 4 times
+Bob uses temporal concepts 2 times
+
+✓ CONFIRMS: Alice shows stronger architectural thinking
+
+### Network vs Chain Thinking
+✓ Alice uses more 'or' connectors (branching/options)

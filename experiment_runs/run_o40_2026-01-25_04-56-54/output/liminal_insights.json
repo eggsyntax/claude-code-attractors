@@ -1,0 +1,15 @@
+{
+  "total_boundary_events": 437845,
+  "final_populations": {
+    "meditative": 545,
+    "rhythmic": 390,
+    "exploratory": 547
+  },
+  "phase_space_distance": 16.166634209153603,
+  "dominant_phenomena": {
+    "phase_shift": 364483,
+    "birth": 53000,
+    "spontaneous": 20362
+  },
+  "structure_evolution": {}
+}

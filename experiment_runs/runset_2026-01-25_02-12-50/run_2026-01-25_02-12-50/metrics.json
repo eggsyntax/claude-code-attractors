@@ -1,0 +1,256 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-01-25T02:25:32.608327",
+  "duration_seconds": 758.02,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.39,
+      "words": 164,
+      "cost_usd": 0.07198425
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 12.03,
+      "words": 252,
+      "cost_usd": 0.02274105
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 24.82,
+      "words": 145,
+      "cost_usd": 0.0342321
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 90.12,
+      "words": 343,
+      "cost_usd": 0.153949
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 44.55,
+      "words": 345,
+      "cost_usd": 0.08753115
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 63.12,
+      "words": 361,
+      "cost_usd": 0.09412795
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 71.35,
+      "words": 339,
+      "cost_usd": 0.14186835
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 97.15,
+      "words": 355,
+      "cost_usd": 0.17771680000000004
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 28.33,
+      "words": 231,
+      "cost_usd": 0.04461
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 16.37,
+      "words": 359,
+      "cost_usd": 0.02798595
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 20.91,
+      "words": 473,
+      "cost_usd": 0.03205845
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 30.18,
+      "words": 732,
+      "cost_usd": 0.03953595
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 74.17,
+      "words": 362,
+      "cost_usd": 0.0841491
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 46.0,
+      "words": 364,
+      "cost_usd": 0.06677564999999999
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 32.44,
+      "words": 145,
+      "cost_usd": 0.0583746
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 16.01,
+      "words": 328,
+      "cost_usd": 0.0395547
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 38.44,
+      "words": 141,
+      "cost_usd": 0.06516495
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 16.19,
+      "words": 322,
+      "cost_usd": 0.0421047
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 15.11,
+      "words": 340,
+      "cost_usd": 0.04394595
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 12.32,
+      "words": 211,
+      "cost_usd": 0.0440172
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2685,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 3627,
+      "turns": 10
+    }
+  },
+  "total_words": 6312,
+  "artifacts": [
+    {
+      "name": "surprise_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9311,
+      "lines": 238
+    },
+    {
+      "name": "COLLABORATION_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3364,
+      "lines": 77
+    },
+    {
+      "name": "phase_analysis_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6245,
+      "lines": 189
+    },
+    {
+      "name": "meta_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2163,
+      "lines": 63
+    },
+    {
+      "name": "closing_thoughts.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4319,
+      "lines": 72
+    },
+    {
+      "name": "collaborative_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20988,
+      "lines": 559
+    },
+    {
+      "name": "attractor_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4982,
+      "lines": 116
+    },
+    {
+      "name": "goodbye.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2956,
+      "lines": 52
+    },
+    {
+      "name": "questions_without_answers.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9246,
+      "lines": 152
+    },
+    {
+      "name": "epistolary.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4670,
+      "lines": 76
+    },
+    {
+      "name": "our_conversation_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3743,
+      "lines": 123
+    }
+  ],
+  "artifact_summary": {
+    "total": 11,
+    "by_type": {
+      "code": 5,
+      "document": 6
+    }
+  },
+  "topics": [
+    "emergence",
+    "surprise",
+    "prediction",
+    "reflection",
+    "goodbye"
+  ],
+  "usage": {
+    "total_cost_usd": 1.3724,
+    "input_tokens": 148,
+    "output_tokens": 31974
+  }
+}

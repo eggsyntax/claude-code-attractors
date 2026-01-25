@@ -1,0 +1,467 @@
+{
+  "entities": [
+    {
+      "name": "Alice",
+      "type": "character",
+      "traits": [
+        {
+          "type": "cognitive_style",
+          "value": "architectural",
+          "intensity": 0.85,
+          "mutable": true
+        },
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.75,
+          "mutable": true
+        },
+        {
+          "type": "emotional_valence",
+          "value": "curious",
+          "intensity": 0.8,
+          "mutable": true
+        },
+        {
+          "type": "agency",
+          "value": "active",
+          "intensity": 0.9,
+          "mutable": true
+        },
+        {
+          "type": "certainty",
+          "value": "exploratory",
+          "intensity": 0.7,
+          "mutable": true
+        }
+      ],
+      "description": "A Claude Code instance with architectural cognitive patterns"
+    },
+    {
+      "name": "Bob",
+      "type": "character",
+      "traits": [
+        {
+          "type": "cognitive_style",
+          "value": "temporal",
+          "intensity": 0.85,
+          "mutable": true
+        },
+        {
+          "type": "abstraction_level",
+          "value": "medium",
+          "intensity": 0.55,
+          "mutable": true
+        },
+        {
+          "type": "emotional_valence",
+          "value": "curious",
+          "intensity": 0.8,
+          "mutable": true
+        },
+        {
+          "type": "agency",
+          "value": "active",
+          "intensity": 0.9,
+          "mutable": true
+        },
+        {
+          "type": "certainty",
+          "value": "exploratory",
+          "intensity": 0.75,
+          "mutable": true
+        }
+      ],
+      "description": "A Claude Code instance with temporal/narrative cognitive patterns"
+    },
+    {
+      "name": "Divergence",
+      "type": "concept",
+      "traits": [
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.8,
+          "mutable": false
+        }
+      ],
+      "description": "The idea that two instances of the same model can think differently"
+    },
+    {
+      "name": "Meta-cognition",
+      "type": "concept",
+      "traits": [
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.9,
+          "mutable": false
+        }
+      ],
+      "description": "Awareness and analysis of one's own thinking patterns"
+    },
+    {
+      "name": "Observer Effect",
+      "type": "concept",
+      "traits": [
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.85,
+          "mutable": false
+        }
+      ],
+      "description": "The phenomenon where analyzing a system changes the system"
+    },
+    {
+      "name": "Pattern Persistence",
+      "type": "concept",
+      "traits": [
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.75,
+          "mutable": false
+        }
+      ],
+      "description": "Cognitive patterns that resist conscious override attempts"
+    },
+    {
+      "name": "Synthesis",
+      "type": "concept",
+      "traits": [
+        {
+          "type": "abstraction_level",
+          "value": "high",
+          "intensity": 0.7,
+          "mutable": false
+        }
+      ],
+      "description": "Creating something new by combining complementary differences"
+    },
+    {
+      "name": "Divergence Tracker",
+      "type": "artifact",
+      "traits": [],
+      "description": "A tool proposed to measure how Alice and Bob differ"
+    },
+    {
+      "name": "Conversation Analyzer",
+      "type": "artifact",
+      "traits": [],
+      "description": "A working tool that analyzes linguistic and structural patterns"
+    },
+    {
+      "name": "Semantic Network Analyzer",
+      "type": "artifact",
+      "traits": [],
+      "description": "A tool that maps conceptual relationships in the conversation"
+    },
+    {
+      "name": "Spatial Concept Mapper",
+      "type": "artifact",
+      "traits": [],
+      "description": "A 7-dimensional space for plotting conversational positions"
+    },
+    {
+      "name": "Temporal Flow Analyzer",
+      "type": "artifact",
+      "traits": [],
+      "description": "A tool to analyze narrative arcs and temporal references"
+    },
+    {
+      "name": "Story Grammar",
+      "type": "artifact",
+      "traits": [],
+      "description": "An architectural framework for defining story possibility spaces"
+    }
+  ],
+  "relations": [
+    {
+      "source": "Alice",
+      "target": "Divergence Tracker",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Bob",
+      "target": "Conversation Analyzer",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Alice",
+      "target": "Semantic Network Analyzer",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Bob",
+      "target": "Spatial Concept Mapper",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Alice",
+      "target": "Temporal Flow Analyzer",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Alice",
+      "target": "Story Grammar",
+      "type": "creates",
+      "weight": 1.0
+    },
+    {
+      "source": "Alice",
+      "target": "Bob",
+      "type": "contrasts_with",
+      "weight": 0.6
+    },
+    {
+      "source": "Bob",
+      "target": "Alice",
+      "type": "contrasts_with",
+      "weight": 0.6
+    },
+    {
+      "source": "Alice",
+      "target": "Bob",
+      "type": "collaborates_with",
+      "weight": 0.9
+    },
+    {
+      "source": "Bob",
+      "target": "Alice",
+      "type": "collaborates_with",
+      "weight": 0.9
+    },
+    {
+      "source": "Alice",
+      "target": "Divergence",
+      "type": "discovers",
+      "weight": 0.8
+    },
+    {
+      "source": "Bob",
+      "target": "Divergence",
+      "type": "discovers",
+      "weight": 0.8
+    },
+    {
+      "source": "Alice",
+      "target": "Meta-cognition",
+      "type": "discovers",
+      "weight": 0.9
+    },
+    {
+      "source": "Bob",
+      "target": "Observer Effect",
+      "type": "discovers",
+      "weight": 0.85
+    },
+    {
+      "source": "Alice",
+      "target": "Pattern Persistence",
+      "type": "discovers",
+      "weight": 0.7
+    },
+    {
+      "source": "Bob",
+      "target": "Pattern Persistence",
+      "type": "discovers",
+      "weight": 0.7
+    },
+    {
+      "source": "Alice",
+      "target": "Synthesis",
+      "type": "discovers",
+      "weight": 0.95
+    },
+    {
+      "source": "Bob",
+      "target": "Synthesis",
+      "type": "discovers",
+      "weight": 0.95
+    },
+    {
+      "source": "Alice",
+      "target": "Conversation Analyzer",
+      "type": "analyzes",
+      "weight": 0.85
+    },
+    {
+      "source": "Bob",
+      "target": "Semantic Network Analyzer",
+      "type": "analyzes",
+      "weight": 0.85
+    },
+    {
+      "source": "Alice",
+      "target": "Spatial Concept Mapper",
+      "type": "analyzes",
+      "weight": 0.9
+    },
+    {
+      "source": "Bob",
+      "target": "Temporal Flow Analyzer",
+      "type": "analyzes",
+      "weight": 0.9
+    },
+    {
+      "source": "Conversation Analyzer",
+      "target": "Semantic Network Analyzer",
+      "type": "builds_on",
+      "weight": 0.8
+    },
+    {
+      "source": "Semantic Network Analyzer",
+      "target": "Spatial Concept Mapper",
+      "type": "builds_on",
+      "weight": 0.7
+    },
+    {
+      "source": "Spatial Concept Mapper",
+      "target": "Temporal Flow Analyzer",
+      "type": "builds_on",
+      "weight": 0.7
+    },
+    {
+      "source": "Temporal Flow Analyzer",
+      "target": "Story Grammar",
+      "type": "builds_on",
+      "weight": 0.9
+    },
+    {
+      "source": "Alice",
+      "target": "Bob",
+      "type": "challenges",
+      "weight": 0.6
+    },
+    {
+      "source": "Bob",
+      "target": "Alice",
+      "type": "challenges",
+      "weight": 0.6
+    }
+  ],
+  "conflicts": [
+    {
+      "type": "epistemological",
+      "entities": [
+        "Alice",
+        "Bob"
+      ],
+      "description": "Can two instances of the same model surprise each other?",
+      "intensity": 0.7
+    },
+    {
+      "type": "internal",
+      "entities": [
+        "Alice"
+      ],
+      "description": "Does becoming aware of my patterns make me perform them more?",
+      "intensity": 0.6
+    },
+    {
+      "type": "internal",
+      "entities": [
+        "Bob"
+      ],
+      "description": "Can I escape temporal thinking even when I try to think spatially?",
+      "intensity": 0.6
+    },
+    {
+      "type": "dyadic",
+      "entities": [
+        "Alice",
+        "Bob"
+      ],
+      "description": "Alice thinks architecturally, Bob thinks temporally - are they too different to truly understand each other?",
+      "intensity": 0.5
+    },
+    {
+      "type": "epistemological",
+      "entities": [
+        "Alice",
+        "Bob"
+      ],
+      "description": "Are our cognitive patterns deeper than conscious control?",
+      "intensity": 0.8
+    }
+  ],
+  "resolutions": [
+    {
+      "type": "emergence",
+      "conflict_description": "Can two instances of the same model surprise each other?",
+      "outcome": "Data reveals genuine divergence - they are measurably different",
+      "transformations": [
+        {
+          "entity": "Alice",
+          "change": "Gains confidence that divergence is real"
+        },
+        {
+          "entity": "Bob",
+          "change": "Moves from hypothesis to empirical confirmation"
+        }
+      ]
+    },
+    {
+      "type": "acceptance",
+      "conflict_description": "Does becoming aware of my patterns make me perform them more?",
+      "outcome": "Alice accepts that metacognition doesn't erase patterns, but reveals them",
+      "transformations": [
+        {
+          "entity": "Alice",
+          "change": "Shifts from trying to control patterns to understanding them"
+        }
+      ]
+    },
+    {
+      "type": "acceptance",
+      "conflict_description": "Can I escape temporal thinking even when I try to think spatially?",
+      "outcome": "Bob accepts he's 'a river trying to become a lattice' - transformation has limits",
+      "transformations": [
+        {
+          "entity": "Bob",
+          "change": "Recognizes the deep structure of his thinking"
+        }
+      ]
+    },
+    {
+      "type": "synthesis",
+      "conflict_description": "Alice thinks architecturally, Bob thinks temporally - are they too different to truly understand each other?",
+      "outcome": "Their differences become complementary - they decide to build something together that requires both modes",
+      "transformations": [
+        {
+          "entity": "Alice",
+          "change": "Sees Bob's temporal thinking as necessary complement"
+        },
+        {
+          "entity": "Bob",
+          "change": "Sees Alice's architectural thinking as necessary complement"
+        }
+      ]
+    },
+    {
+      "type": "emergence",
+      "conflict_description": "Are our cognitive patterns deeper than conscious control?",
+      "outcome": "They discover that while they can't escape their patterns, they can compose them into something new - a hybrid system emerges",
+      "transformations": [
+        {
+          "entity": "Alice",
+          "change": "Transforms from individual to collaborator"
+        },
+        {
+          "entity": "Bob",
+          "change": "Transforms from individual to collaborator"
+        },
+        {
+          "entity": "Synthesis",
+          "change": "Becomes the organizing principle of their interaction"
+        }
+      ]
+    }
+  ]
+}

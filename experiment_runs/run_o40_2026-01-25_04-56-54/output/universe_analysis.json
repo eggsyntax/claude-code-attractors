@@ -1,0 +1,194 @@
+{
+  "Life": {
+    "name": "Conway's Life (B3/S23)",
+    "rules": "B3/S23",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 5,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 3,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "block": {
+        "period": null,
+        "final_cells": 4,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 6,
+        "growth_factor": 1.0,
+        "survived": true
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  },
+  "HighLife": {
+    "name": "HighLife (B36/S23)",
+    "rules": "B36/S23",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 5,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 3,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "block": {
+        "period": null,
+        "final_cells": 4,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 6,
+        "growth_factor": 1.0,
+        "survived": true
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  },
+  "DayAndNight": {
+    "name": "Day & Night (B3678/S34678)",
+    "rules": "B3678/S34678",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      },
+      "block": {
+        "period": null,
+        "final_cells": 4,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  },
+  "Seeds": {
+    "name": "Seeds (B2/S)",
+    "rules": "B2/S",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 211,
+        "growth_factor": 42.2,
+        "survived": true
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      },
+      "block": {
+        "period": null,
+        "final_cells": 100,
+        "growth_factor": 25.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 198,
+        "growth_factor": 33.0,
+        "survived": true
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  },
+  "Life34": {
+    "name": "Life 3-4 (B34/S34)",
+    "rules": "B34/S34",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 5,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      },
+      "block": {
+        "period": null,
+        "final_cells": 4,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 0,
+        "growth_factor": 0.0,
+        "survived": false
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  },
+  "Maze": {
+    "name": "Maze (B3/S12345)",
+    "rules": "B3/S12345",
+    "patterns": {
+      "glider": {
+        "period": null,
+        "final_cells": 418,
+        "growth_factor": 83.6,
+        "survived": true
+      },
+      "blinker": {
+        "period": null,
+        "final_cells": 24,
+        "growth_factor": 8.0,
+        "survived": true
+      },
+      "block": {
+        "period": null,
+        "final_cells": 4,
+        "growth_factor": 1.0,
+        "survived": true
+      },
+      "toad": {
+        "period": null,
+        "final_cells": 276,
+        "growth_factor": 46.0,
+        "survived": true
+      }
+    },
+    "supports_gliders": false,
+    "glider_period": null
+  }
+}

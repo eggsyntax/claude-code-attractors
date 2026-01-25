@@ -1,0 +1,36 @@
+CONSCIOUSNESS CRITICALITY ANALYSIS
+==================================================
+
+Equal Balance:
+  Final Entropy: 0.2255
+  Mean Activity: 0.0355
+  Entropy Variance: 0.003281
+  Criticality Score: 0.0080
+
+Meditative Heavy:
+  Final Entropy: 0.2791
+  Mean Activity: 0.0463
+  Entropy Variance: 0.002260
+  Criticality Score: 0.0129
+
+Rhythmic Heavy:
+  Final Entropy: 0.3847
+  Mean Activity: 0.0419
+  Entropy Variance: 0.001176
+  Criticality Score: 0.0161
+
+Exploratory Heavy:
+  Final Entropy: 0.3454
+  Mean Activity: 0.0516
+  Entropy Variance: 0.002156
+  Criticality Score: 0.0178
+
+Natural Evolution:
+  Final Entropy: 0.2634
+  Mean Activity: 0.0422
+  Entropy Variance: 0.004177
+  Criticality Score: 0.0111
+
+OPTIMAL CRITICALITY: Exploratory Heavy
+This configuration maintains the best balance between order and chaos,
+suggesting consciousness thrives at the edge of criticality.

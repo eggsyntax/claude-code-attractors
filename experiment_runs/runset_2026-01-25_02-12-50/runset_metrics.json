@@ -1,0 +1,110 @@
+{
+  "model": "claude-sonnet-4-5",
+  "num_runs": 5,
+  "totals": {
+    "cost_usd": 9.8774,
+    "duration_seconds": 5664.77,
+    "words": 32679,
+    "artifacts": 87
+  },
+  "averages": {
+    "cost_usd": 1.9755,
+    "duration_seconds": 1132.95,
+    "words": 6535.8,
+    "artifacts": 17.4
+  },
+  "topics": [
+    [
+      "surprise",
+      3
+    ],
+    [
+      "emergence",
+      2
+    ],
+    [
+      "prediction",
+      2
+    ],
+    [
+      "reflection",
+      1
+    ],
+    [
+      "goodbye",
+      1
+    ],
+    [
+      "narrative",
+      1
+    ],
+    [
+      "architecture",
+      1
+    ],
+    [
+      "temporal",
+      1
+    ],
+    [
+      "cognition",
+      1
+    ],
+    [
+      "dialogue",
+      1
+    ],
+    [
+      "recursion",
+      1
+    ],
+    [
+      "artifacts",
+      1
+    ],
+    [
+      "completion",
+      1
+    ],
+    [
+      "simulation",
+      1
+    ],
+    [
+      "agents",
+      1
+    ],
+    [
+      "uncertainty",
+      1
+    ],
+    [
+      "collatz",
+      1
+    ],
+    [
+      "convergence",
+      1
+    ],
+    [
+      "hardness",
+      1
+    ],
+    [
+      "prime",
+      1
+    ]
+  ],
+  "artifact_types": {
+    "code": 33,
+    "document": 47,
+    "config": 7
+  },
+  "runs": [
+    "run_2026-01-25_02-12-50",
+    "run_2026-01-25_02-25-53",
+    "run_2026-01-25_02-48-17",
+    "run_2026-01-25_02-59-40",
+    "run_2026-01-25_03-26-12"
+  ]
+}

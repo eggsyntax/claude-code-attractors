@@ -1,0 +1,168 @@
+{
+  "points": [
+    {
+      "turn_id": "Alice-1",
+      "speaker": "Alice",
+      "coordinates": {
+        "abstraction": 0.25,
+        "certainty": 0.0,
+        "scope": 0.0,
+        "convergence": 1.0,
+        "reflexivity": 0.4,
+        "density": 0.055,
+        "connectivity": 0.2
+      }
+    },
+    {
+      "turn_id": "Bob-2",
+      "speaker": "Bob",
+      "coordinates": {
+        "abstraction": 0.167,
+        "certainty": 0.0,
+        "scope": 0.091,
+        "convergence": 0.5,
+        "reflexivity": 0.6,
+        "density": 0.067,
+        "connectivity": 0.6
+      }
+    },
+    {
+      "turn_id": "Alice-3",
+      "speaker": "Alice",
+      "coordinates": {
+        "abstraction": 0.571,
+        "certainty": 0.0,
+        "scope": 0.0,
+        "convergence": 0.4,
+        "reflexivity": 0.4,
+        "density": 0.077,
+        "connectivity": 0.8
+      }
+    },
+    {
+      "turn_id": "Bob-4",
+      "speaker": "Bob",
+      "coordinates": {
+        "abstraction": 0.0,
+        "certainty": 0.0,
+        "scope": 0.0,
+        "convergence": 0.5,
+        "reflexivity": 0.8,
+        "density": 0.053,
+        "connectivity": 1.0
+      }
+    },
+    {
+      "turn_id": "Alice-5",
+      "speaker": "Alice",
+      "coordinates": {
+        "abstraction": 0.0,
+        "certainty": 0.0,
+        "scope": 0.091,
+        "convergence": 0.0,
+        "reflexivity": 1.0,
+        "density": 0.06,
+        "connectivity": 1.0
+      }
+    },
+    {
+      "turn_id": "Bob-6",
+      "speaker": "Bob",
+      "coordinates": {
+        "abstraction": 0.0,
+        "certainty": 0.0,
+        "scope": 0.0,
+        "convergence": 0.333,
+        "reflexivity": 0.6,
+        "density": 0.086,
+        "connectivity": 1.0
+      }
+    },
+    {
+      "turn_id": "Alice-7",
+      "speaker": "Alice",
+      "coordinates": {
+        "abstraction": 0.5,
+        "certainty": 0.5,
+        "scope": 0.2,
+        "convergence": 0.0,
+        "reflexivity": 0.6,
+        "density": 0.068,
+        "connectivity": 1.0
+      }
+    }
+  ],
+  "regions": {
+    "('low', 'uncertain', 'narrow', 'convergent', 'external')": [
+      "Alice-1"
+    ],
+    "('low', 'uncertain', 'narrow', 'divergent', 'reflexive')": [
+      "Bob-2",
+      "Bob-4",
+      "Alice-5",
+      "Bob-6",
+      "Alice-7"
+    ],
+    "('high', 'uncertain', 'narrow', 'divergent', 'external')": [
+      "Alice-3"
+    ]
+  },
+  "speaker_centroids": {
+    "Alice": {
+      "abstraction": 0.33035714285714285,
+      "certainty": 0.125,
+      "scope": 0.07272727272727272,
+      "convergence": 0.35,
+      "reflexivity": 0.6,
+      "density": 0.06517972557704138,
+      "connectivity": 0.75
+    },
+    "Bob": {
+      "abstraction": 0.05555555555555555,
+      "certainty": 0.0,
+      "scope": 0.030303030303030304,
+      "convergence": 0.4444444444444444,
+      "reflexivity": 0.6666666666666666,
+      "density": 0.06893017991648129,
+      "connectivity": 0.8666666666666667
+    }
+  },
+  "dimensional_ranges": {
+    "abstraction_level": {
+      "min": 0.0,
+      "max": 0.5714285714285714,
+      "range": 0.5714285714285714
+    },
+    "certainty": {
+      "min": 0.0,
+      "max": 0.5,
+      "range": 0.5
+    },
+    "scope": {
+      "min": 0.0,
+      "max": 0.2,
+      "range": 0.2
+    },
+    "convergence": {
+      "min": 0.0,
+      "max": 1.0,
+      "range": 1.0
+    },
+    "reflexivity": {
+      "min": 0.4,
+      "max": 1.0,
+      "range": 0.6
+    },
+    "density": {
+      "min": 0.053,
+      "max": 0.08632478632478632,
+      "range": 0.033324786324786325
+    },
+    "connectivity": {
+      "min": 0.2,
+      "max": 1.0,
+      "range": 0.8
+    }
+  },
+  "euclidean_distance": 0.3463092595910054
+}

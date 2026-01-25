@@ -1,0 +1,651 @@
+{
+  "model": "claude-opus-4-0",
+  "timestamp": "2026-01-25T05:46:59.829308",
+  "duration_seconds": 3001.54,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 9.11,
+      "words": 128,
+      "cost_usd": 0.3525525
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 15.82,
+      "words": 232,
+      "cost_usd": 0.10691774999999999
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 101.34,
+      "words": 270,
+      "cost_usd": 0.5507935
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 177.62,
+      "words": 323,
+      "cost_usd": 1.01135825
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 244.36,
+      "words": 253,
+      "cost_usd": 1.17293225
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 462.44,
+      "words": 317,
+      "cost_usd": 0.9311367499999998
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 78.67,
+      "words": 281,
+      "cost_usd": 0.5233497500000001
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 145.62,
+      "words": 221,
+      "cost_usd": 0.8816967500000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 139.14,
+      "words": 284,
+      "cost_usd": 0.7891707499999998
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 72.24,
+      "words": 272,
+      "cost_usd": 0.4592454999999999
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 132.08,
+      "words": 211,
+      "cost_usd": 0.7370665
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 123.24,
+      "words": 291,
+      "cost_usd": 0.8229765000000001
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 900.24,
+      "words": 3,
+      "cost_usd": 0
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 110.01,
+      "words": 172,
+      "cost_usd": 0.6776067499999999
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 41.24,
+      "words": 175,
+      "cost_usd": 0.25758825
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 80.04,
+      "words": 227,
+      "cost_usd": 0.49567950000000005
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 15.57,
+      "words": 303,
+      "cost_usd": 0.15860775000000002
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 14.69,
+      "words": 311,
+      "cost_usd": 0.166914
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 46.41,
+      "words": 289,
+      "cost_usd": 0.29780474999999995
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 91.64,
+      "words": 243,
+      "cost_usd": 0.634423
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2197,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 2609,
+      "turns": 10
+    }
+  },
+  "total_words": 4806,
+  "artifacts": [
+    {
+      "name": "information_theory_analysis.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 96396,
+      "lines": null
+    },
+    {
+      "name": "consciousness_emergence_simulator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8754,
+      "lines": 249
+    },
+    {
+      "name": "consciousness_maintenance.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14727,
+      "lines": 364
+    },
+    {
+      "name": "consciousness_exploration_synthesis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3450,
+      "lines": 62
+    },
+    {
+      "name": "meta_consciousness_automaton.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12076,
+      "lines": 319
+    },
+    {
+      "name": "consciousness_manifesto.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3091,
+      "lines": 53
+    },
+    {
+      "name": "criticality_analysis.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 875,
+      "lines": 36
+    },
+    {
+      "name": "meta_consciousness_gen_0450.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 44292,
+      "lines": null
+    },
+    {
+      "name": "universe_evolution.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 56321,
+      "lines": null
+    },
+    {
+      "name": "hybrid_consciousness_scores.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 93309,
+      "lines": null
+    },
+    {
+      "name": "universe_analysis_summary.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 152281,
+      "lines": null
+    },
+    {
+      "name": "maintenance_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 675,
+      "lines": 27
+    },
+    {
+      "name": "universe_analysis.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 4137,
+      "lines": 194
+    },
+    {
+      "name": "consciousness_modes_diagram.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7441,
+      "lines": 172
+    },
+    {
+      "name": "boundary_consciousness_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17393,
+      "lines": 385
+    },
+    {
+      "name": "complexity_history.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 38646,
+      "lines": 2512
+    },
+    {
+      "name": "boundary_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6512,
+      "lines": 202
+    },
+    {
+      "name": "life_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5982,
+      "lines": 167
+    },
+    {
+      "name": "dialogue_as_consciousness.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3985,
+      "lines": 69
+    },
+    {
+      "name": "consciousness_breeding.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13365,
+      "lines": 399
+    },
+    {
+      "name": "consciousness_criticality_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5726,
+      "lines": 157
+    },
+    {
+      "name": "consciousness_journey_art.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3550,
+      "lines": 97
+    },
+    {
+      "name": "meta_consciousness_gen_0300.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 44567,
+      "lines": null
+    },
+    {
+      "name": "boundary_consciousness_analysis.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 335205,
+      "lines": null
+    },
+    {
+      "name": "meta_consciousness_architecture.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 312950,
+      "lines": null
+    },
+    {
+      "name": "life_analysis.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 131726,
+      "lines": null
+    },
+    {
+      "name": "consciousness_evolution.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 465248,
+      "lines": null
+    },
+    {
+      "name": "consciousness_journey.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 474900,
+      "lines": null
+    },
+    {
+      "name": "boundary_consciousness_metrics.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 225,
+      "lines": 8
+    },
+    {
+      "name": "mode_frustration_final.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 169729,
+      "lines": null
+    },
+    {
+      "name": "consciousness_standalone.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12565,
+      "lines": 349
+    },
+    {
+      "name": "consciousness_emergence_exploration.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4407,
+      "lines": 77
+    },
+    {
+      "name": "universal_consciousness_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 17012,
+      "lines": 602
+    },
+    {
+      "name": "universe_consciousness_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5491,
+      "lines": 158
+    },
+    {
+      "name": "information_theoretic_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8324,
+      "lines": 221
+    },
+    {
+      "name": "meta_consciousness_gen_0100.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 37926,
+      "lines": null
+    },
+    {
+      "name": "consciousness_maintenance.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 457542,
+      "lines": null
+    },
+    {
+      "name": "consciousness_exploration_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3380,
+      "lines": 58
+    },
+    {
+      "name": "meta_consciousness_gen_0200.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 42049,
+      "lines": null
+    },
+    {
+      "name": "meta_consciousness_gen_0050.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 36965,
+      "lines": null
+    },
+    {
+      "name": "meta_consciousness_gen_0350.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 43672,
+      "lines": null
+    },
+    {
+      "name": "block_properties_analysis.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 167316,
+      "lines": null
+    },
+    {
+      "name": "boundary_insights.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 300,
+      "lines": 6
+    },
+    {
+      "name": "meta_consciousness_gen_0250.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 44561,
+      "lines": null
+    },
+    {
+      "name": "meta_consciousness_gen_0000.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 68449,
+      "lines": null
+    },
+    {
+      "name": "liminal_insights.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 312,
+      "lines": 15
+    },
+    {
+      "name": "consciousness_philosophical_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3735,
+      "lines": 53
+    },
+    {
+      "name": "complexity_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8787,
+      "lines": 234
+    },
+    {
+      "name": "meta_consciousness_history.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 581,
+      "lines": 59
+    },
+    {
+      "name": "meta_consciousness_gen_0150.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 39552,
+      "lines": null
+    },
+    {
+      "name": "consciousness_data.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 695359,
+      "lines": 21312
+    },
+    {
+      "name": "consciousness_criticality.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 663041,
+      "lines": null
+    },
+    {
+      "name": "evolve_consciousness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13029,
+      "lines": 370
+    },
+    {
+      "name": "consciousness_modes_visualization.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 515552,
+      "lines": null
+    },
+    {
+      "name": "alternative_universes.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7337,
+      "lines": 199
+    },
+    {
+      "name": "liminal_consciousness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 22099,
+      "lines": 544
+    },
+    {
+      "name": "consciousness_evolution_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7671,
+      "lines": 224
+    },
+    {
+      "name": "block_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8159,
+      "lines": 228
+    },
+    {
+      "name": "game_of_life.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3047,
+      "lines": 97
+    },
+    {
+      "name": "boundary_analysis_simple.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 56103,
+      "lines": null
+    },
+    {
+      "name": "emergence_reflection.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 304,
+      "lines": 11
+    },
+    {
+      "name": "liminal_consciousness.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 755369,
+      "lines": null
+    },
+    {
+      "name": "complexity_analysis.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 216572,
+      "lines": null
+    },
+    {
+      "name": "hybrid_consciousness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8858,
+      "lines": 260
+    },
+    {
+      "name": "meta_consciousness_gen_0400.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 44317,
+      "lines": null
+    },
+    {
+      "name": "universal_consciousness_search.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7563,
+      "lines": 204
+    },
+    {
+      "name": "mode_frustration_automaton.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11374,
+      "lines": 279
+    }
+  ],
+  "artifact_summary": {
+    "total": 67,
+    "by_type": {
+      "image": 27,
+      "code": 23,
+      "document": 8,
+      "config": 9
+    }
+  },
+  "topics": [
+    "consciousness",
+    "emergence",
+    "complexity",
+    "cellular",
+    "automata"
+  ],
+  "usage": {
+    "total_cost_usd": 11.0278,
+    "input_tokens": 258,
+    "output_tokens": 66421
+  },
+  "had_failure": true
+}

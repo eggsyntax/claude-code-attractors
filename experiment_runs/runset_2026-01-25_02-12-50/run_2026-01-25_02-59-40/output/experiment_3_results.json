@@ -1,0 +1,180 @@
+{
+  "experiment": 3,
+  "description": "Three-agent system with antagonistic Hermits",
+  "configuration": {
+    "connectors": 10,
+    "explorers": 10,
+    "hermits": 30,
+    "grid_size": 100
+  },
+  "final_metrics": {
+    "step": 200,
+    "coverage_percent": 58.52,
+    "visited_cells": 5852,
+    "hotspot_count": 952,
+    "max_overlap": 25,
+    "avg_nearest_neighbor": 8.85157725393587
+  },
+  "history": [
+    {
+      "step": 10,
+      "coverage_percent": 4.4799999999999995,
+      "visited_cells": 448,
+      "hotspot_count": 6,
+      "max_overlap": 5,
+      "avg_nearest_neighbor": 8.925695296569323
+    },
+    {
+      "step": 20,
+      "coverage_percent": 8.73,
+      "visited_cells": 873,
+      "hotspot_count": 17,
+      "max_overlap": 9,
+      "avg_nearest_neighbor": 9.023923335924383
+    },
+    {
+      "step": 30,
+      "coverage_percent": 12.920000000000002,
+      "visited_cells": 1292,
+      "hotspot_count": 30,
+      "max_overlap": 12,
+      "avg_nearest_neighbor": 9.196298605501825
+    },
+    {
+      "step": 40,
+      "coverage_percent": 16.81,
+      "visited_cells": 1681,
+      "hotspot_count": 48,
+      "max_overlap": 12,
+      "avg_nearest_neighbor": 9.923965914048452
+    },
+    {
+      "step": 50,
+      "coverage_percent": 20.16,
+      "visited_cells": 2016,
+      "hotspot_count": 75,
+      "max_overlap": 12,
+      "avg_nearest_neighbor": 9.486905748764288
+    },
+    {
+      "step": 60,
+      "coverage_percent": 23.64,
+      "visited_cells": 2364,
+      "hotspot_count": 107,
+      "max_overlap": 12,
+      "avg_nearest_neighbor": 9.552881129625176
+    },
+    {
+      "step": 70,
+      "coverage_percent": 27.150000000000002,
+      "visited_cells": 2715,
+      "hotspot_count": 134,
+      "max_overlap": 12,
+      "avg_nearest_neighbor": 9.94092326303106
+    },
+    {
+      "step": 80,
+      "coverage_percent": 30.54,
+      "visited_cells": 3054,
+      "hotspot_count": 170,
+      "max_overlap": 14,
+      "avg_nearest_neighbor": 9.835677106882713
+    },
+    {
+      "step": 90,
+      "coverage_percent": 33.71,
+      "visited_cells": 3371,
+      "hotspot_count": 201,
+      "max_overlap": 17,
+      "avg_nearest_neighbor": 9.70912645447563
+    },
+    {
+      "step": 100,
+      "coverage_percent": 36.64,
+      "visited_cells": 3664,
+      "hotspot_count": 235,
+      "max_overlap": 18,
+      "avg_nearest_neighbor": 8.552382305173412
+    },
+    {
+      "step": 110,
+      "coverage_percent": 39.87,
+      "visited_cells": 3987,
+      "hotspot_count": 272,
+      "max_overlap": 18,
+      "avg_nearest_neighbor": 8.883241399950993
+    },
+    {
+      "step": 120,
+      "coverage_percent": 42.620000000000005,
+      "visited_cells": 4262,
+      "hotspot_count": 319,
+      "max_overlap": 20,
+      "avg_nearest_neighbor": 9.331358992711028
+    },
+    {
+      "step": 130,
+      "coverage_percent": 45.5,
+      "visited_cells": 4550,
+      "hotspot_count": 359,
+      "max_overlap": 23,
+      "avg_nearest_neighbor": 9.746842551469113
+    },
+    {
+      "step": 140,
+      "coverage_percent": 47.589999999999996,
+      "visited_cells": 4759,
+      "hotspot_count": 426,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.919474130226426
+    },
+    {
+      "step": 150,
+      "coverage_percent": 49.81,
+      "visited_cells": 4981,
+      "hotspot_count": 491,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.739089210200387
+    },
+    {
+      "step": 160,
+      "coverage_percent": 51.72,
+      "visited_cells": 5172,
+      "hotspot_count": 571,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.118884466789424
+    },
+    {
+      "step": 170,
+      "coverage_percent": 53.74,
+      "visited_cells": 5374,
+      "hotspot_count": 645,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.964340634655597
+    },
+    {
+      "step": 180,
+      "coverage_percent": 55.60000000000001,
+      "visited_cells": 5560,
+      "hotspot_count": 756,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.338064746487625
+    },
+    {
+      "step": 190,
+      "coverage_percent": 57.13,
+      "visited_cells": 5713,
+      "hotspot_count": 846,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 9.401763439234276
+    },
+    {
+      "step": 200,
+      "coverage_percent": 58.52,
+      "visited_cells": 5852,
+      "hotspot_count": 952,
+      "max_overlap": 25,
+      "avg_nearest_neighbor": 8.85157725393587
+    }
+  ]
+}

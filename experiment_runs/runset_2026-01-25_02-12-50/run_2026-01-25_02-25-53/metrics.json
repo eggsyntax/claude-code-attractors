@@ -1,0 +1,397 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-01-25T02:47:56.387695",
+  "duration_seconds": 1319.82,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 9.34,
+      "words": 209,
+      "cost_usd": 0.02134605
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 13.44,
+      "words": 299,
+      "cost_usd": 0.0235323
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 14.41,
+      "words": 318,
+      "cost_usd": 0.01582845
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 45.66,
+      "words": 203,
+      "cost_usd": 0.04526925
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 79.07,
+      "words": 302,
+      "cost_usd": 0.09167985000000001
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 122.89,
+      "words": 244,
+      "cost_usd": 0.14364315
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 102.89,
+      "words": 249,
+      "cost_usd": 0.18406585
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 180.74,
+      "words": 282,
+      "cost_usd": 0.23379049999999998
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 88.05,
+      "words": 357,
+      "cost_usd": 0.11674559999999998
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 17.18,
+      "words": 330,
+      "cost_usd": 0.027423450000000002
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 151.49,
+      "words": 249,
+      "cost_usd": 0.2761142
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 148.07,
+      "words": 271,
+      "cost_usd": 0.27534145
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 49.32,
+      "words": 82,
+      "cost_usd": 0.08441294999999999
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 18.44,
+      "words": 368,
+      "cost_usd": 0.03368595
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 19.55,
+      "words": 395,
+      "cost_usd": 0.036442199999999994
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 17.06,
+      "words": 343,
+      "cost_usd": 0.037458450000000004
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 16.9,
+      "words": 351,
+      "cost_usd": 0.04093845
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 19.6,
+      "words": 410,
+      "cost_usd": 0.04345095
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 19.23,
+      "words": 266,
+      "cost_usd": 0.054637950000000005
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 186.47,
+      "words": 400,
+      "cost_usd": 0.1737708
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2778,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 3150,
+      "turns": 10
+    }
+  },
+  "total_words": 5928,
+  "artifacts": [
+    {
+      "name": "divergence_report.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 2210,
+      "lines": 105
+    },
+    {
+      "name": "alice_temporal_report.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 2601,
+      "lines": 88
+    },
+    {
+      "name": "conversation_history.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 12138,
+      "lines": 37
+    },
+    {
+      "name": "phase1_generation_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4260,
+      "lines": 86
+    },
+    {
+      "name": "reconciliation_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7942,
+      "lines": 151
+    },
+    {
+      "name": "bob_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3434,
+      "lines": 66
+    },
+    {
+      "name": "bob_space_map.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 3626,
+      "lines": 168
+    },
+    {
+      "name": "alice_interpretation.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4470,
+      "lines": 90
+    },
+    {
+      "name": "alice_handoff.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4726,
+      "lines": 121
+    },
+    {
+      "name": "alice_initial_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3731,
+      "lines": 84
+    },
+    {
+      "name": "our_story_structure.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 11560,
+      "lines": 467
+    },
+    {
+      "name": "paradigm_shift_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8468,
+      "lines": 124
+    },
+    {
+      "name": "heist_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6688,
+      "lines": 111
+    },
+    {
+      "name": "generated_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6333,
+      "lines": 103
+    },
+    {
+      "name": "alice_semantic_report.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1786,
+      "lines": 82
+    },
+    {
+      "name": "alice_response_to_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3931,
+      "lines": 93
+    },
+    {
+      "name": "alice_extension.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11882,
+      "lines": 291
+    },
+    {
+      "name": "conversation_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16231,
+      "lines": 296
+    },
+    {
+      "name": "bob_initial_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3810,
+      "lines": 75
+    },
+    {
+      "name": "alice_failure_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3647,
+      "lines": 99
+    },
+    {
+      "name": "bob_space_mapper.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13049,
+      "lines": 314
+    },
+    {
+      "name": "divergence_comparison.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5646,
+      "lines": 112
+    },
+    {
+      "name": "story_grammar.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15821,
+      "lines": 429
+    },
+    {
+      "name": "alice_temporal_flow.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8813,
+      "lines": 225
+    },
+    {
+      "name": "bob_interpretation.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2971,
+      "lines": 59
+    },
+    {
+      "name": "narrative_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20637,
+      "lines": 426
+    },
+    {
+      "name": "alice_semantic_data.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 1424,
+      "lines": 52
+    },
+    {
+      "name": "divergence_data.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 2133,
+      "lines": 86
+    },
+    {
+      "name": "our_story_structure.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10773,
+      "lines": 273
+    },
+    {
+      "name": "bob_space_report.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1924,
+      "lines": 55
+    },
+    {
+      "name": "bob_narrative_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4538,
+      "lines": 97
+    }
+  ],
+  "artifact_summary": {
+    "total": 31,
+    "by_type": {
+      "document": 19,
+      "config": 5,
+      "code": 7
+    }
+  },
+  "topics": [
+    "narrative",
+    "architecture",
+    "temporal",
+    "cognition",
+    "surprise"
+  ],
+  "usage": {
+    "total_cost_usd": 1.9596,
+    "input_tokens": 166,
+    "output_tokens": 58795
+  }
+}

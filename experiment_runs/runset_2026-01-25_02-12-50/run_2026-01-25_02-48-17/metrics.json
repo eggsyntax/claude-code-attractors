@@ -1,0 +1,221 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-01-25T02:59:21.188889",
+  "duration_seconds": 660.9,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.33,
+      "words": 182,
+      "cost_usd": 0.020281050000000002
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.84,
+      "words": 287,
+      "cost_usd": 0.023341050000000002
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 39.3,
+      "words": 197,
+      "cost_usd": 0.04817895
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 59.22,
+      "words": 299,
+      "cost_usd": 0.12528245
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 60.71,
+      "words": 279,
+      "cost_usd": 0.11262515000000001
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 72.54,
+      "words": 311,
+      "cost_usd": 0.14414645
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 50.33,
+      "words": 267,
+      "cost_usd": 0.05864265
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 87.34,
+      "words": 233,
+      "cost_usd": 0.15335330000000003
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 21.47,
+      "words": 264,
+      "cost_usd": 0.06306234999999999
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 71.47,
+      "words": 228,
+      "cost_usd": 0.11657964999999999
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 39.31,
+      "words": 202,
+      "cost_usd": 0.05219385
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 14.53,
+      "words": 309,
+      "cost_usd": 0.02764095
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 14.3,
+      "words": 276,
+      "cost_usd": 0.02926845
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 11.8,
+      "words": 247,
+      "cost_usd": 0.029647200000000002
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 13.57,
+      "words": 158,
+      "cost_usd": 0.041029249999999996
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 35.02,
+      "words": 216,
+      "cost_usd": 0.053826149999999996
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 12.87,
+      "words": 257,
+      "cost_usd": 0.03296595
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 8.81,
+      "words": 176,
+      "cost_usd": 0.03277845
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 12.79,
+      "words": 260,
+      "cost_usd": 0.0353397
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 15.35,
+      "words": 315,
+      "cost_usd": 0.0384897
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2342,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 2621,
+      "turns": 10
+    }
+  },
+  "total_words": 4963,
+  "artifacts": [
+    {
+      "name": "unresolved.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10656,
+      "lines": 236
+    },
+    {
+      "name": "collaborative_skepticism.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6382,
+      "lines": 176
+    },
+    {
+      "name": "postscript.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2766,
+      "lines": 45
+    },
+    {
+      "name": "collaborative_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 20238,
+      "lines": 542
+    },
+    {
+      "name": "emergence_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8231,
+      "lines": 221
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3896,
+      "lines": 79
+    }
+  ],
+  "artifact_summary": {
+    "total": 6,
+    "by_type": {
+      "code": 4,
+      "document": 2
+    }
+  },
+  "topics": [
+    "emergence",
+    "dialogue",
+    "recursion",
+    "artifacts",
+    "completion"
+  ],
+  "usage": {
+    "total_cost_usd": 1.2387,
+    "input_tokens": 143,
+    "output_tokens": 26219
+  }
+}

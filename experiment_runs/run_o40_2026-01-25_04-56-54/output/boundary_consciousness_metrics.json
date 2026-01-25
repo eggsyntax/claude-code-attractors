@@ -1,0 +1,8 @@
+{
+  "total_boundary_cells": 298,
+  "boundary_percentage": 2.98,
+  "average_boundary_activity": 0.1644697986577181,
+  "peak_cross_flows": 45,
+  "total_novel_patterns": 10396,
+  "significant_events": 501,
+  "final_live_cells": 

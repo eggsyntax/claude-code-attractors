@@ -1,0 +1,86 @@
+{
+  "word_count": {
+    "alice_avg": 287.6666666666667,
+    "bob_avg": 257.0,
+    "difference": -30.666666666666686,
+    "percent_diff": -10.660486674391663
+  },
+  "unique_words": {
+    "alice_avg": 183.66666666666666,
+    "bob_avg": 162.5,
+    "difference": -21.166666666666657,
+    "percent_diff": -11.524500907441011
+  },
+  "lexical_diversity": {
+    "alice_avg": 0.6458236080545949,
+    "bob_avg": 0.6385886542546545,
+    "difference": -0.007234953799940436,
+    "percent_diff": -1.1202677805065353
+  },
+  "sentence_count": {
+    "alice_avg": 17.333333333333332,
+    "bob_avg": 15.5,
+    "difference": -1.8333333333333321,
+    "percent_diff": -10.576923076923071
+  },
+  "question_count": {
+    "alice_avg": 0.0,
+    "bob_avg": 0.0,
+    "difference": 0.0,
+    "percent_diff": 0
+  },
+  "question_density": {
+    "alice_avg": 0.0,
+    "bob_avg": 0.0,
+    "difference": 0.0,
+    "percent_diff": 0
+  },
+  "bullet_points": {
+    "alice_avg": 4.333333333333333,
+    "bob_avg": 3.5,
+    "difference": -0.833333333333333,
+    "percent_diff": -19.230769230769226
+  },
+  "numbered_lists": {
+    "alice_avg": 3.0,
+    "bob_avg": 1.5,
+    "difference": -1.5,
+    "percent_diff": -50.0
+  },
+  "bold_terms": {
+    "alice_avg": 3.3333333333333335,
+    "bob_avg": 3.0,
+    "difference": -0.3333333333333335,
+    "percent_diff": -10.000000000000004
+  },
+  "meta_cognitive_count": {
+    "alice_avg": 3.6666666666666665,
+    "bob_avg": 4.0,
+    "difference": 0.3333333333333335,
+    "percent_diff": 9.090909090909095
+  },
+  "meta_cognitive_density": {
+    "alice_avg": 0.014837820281435895,
+    "bob_avg": 0.016056478820442335,
+    "difference": 0.0012186585390064394,
+    "percent_diff": 8.213191128424333
+  },
+  "forward_refs": {
+    "alice_avg": 3.3333333333333335,
+    "bob_avg": 4.5,
+    "difference": 1.1666666666666665,
+    "percent_diff": 34.99999999999999
+  },
+  "backward_refs": {
+    "alice_avg": 1.0,
+    "bob_avg": 1.0,
+    "difference": 0.0,
+    "percent_diff": 0.0
+  },
+  "temporal_bias": {
+    "alice_avg": 0.5305555555555556,
+    "bob_avg": 0.5875,
+    "difference": 0.056944444444444464,
+    "percent_diff": 10.73298429319372
+  }
+}

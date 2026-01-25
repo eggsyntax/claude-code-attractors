@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-01-25T05:22:44.127186",
+  "natural_evolution": {
+    "average_criticality": 0.3305082619726021,
+    "final_ratios": {
+      "meditative": 0.0,
+      "rhythmic": 0.0,
+      "exploratory": 1.0
+    }
+  },
+  "maintained_evolution": {
+    "total_interventions": 0,
+    "average_criticality": 0.3793463979806953,
+    "criticality_variance": 0.0015284989266894575,
+    "final_ratios": {
+      "meditative": 0.0,
+      "rhythmic": 0.0,
+      "exploratory": 1.0
+    },
+    "phase_space_coverage": 0.015,
+    "intervention_details": []
+  },
+  "improvement_factor": {
+    "criticality": 1.1477632902527908,
+    "exploratory_preservation": 0.9999990000010001
+  }
+}

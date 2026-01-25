@@ -1,0 +1,52 @@
+{
+  "alice": {
+    "concept_profile": {
+      "meta_cognitive": 9,
+      "structural": 7,
+      "relational": 1,
+      "uncertainty": 10,
+      "action": 12,
+      "temporal": 4
+    },
+    "connectivity": {
+      "and_density": 0.015942488450514783,
+      "contrast_density": 0.004134456367062805,
+      "choice_density": 0.02049171362145916,
+      "sequential_density": 0.003115264797507788,
+      "parenthetical_count": 2.0,
+      "aside_markers": 0.3333333333333333,
+      "hierarchical_markers": 4.0
+    },
+    "structure": {
+      "avg_commas_per_sentence": 1.048100048100048,
+      "avg_nesting_per_sentence": 0.9384319384319384,
+      "transition_density": 0.2594997594997595,
+      "sentence_variety": 0.7193362193362193
+    }
+  },
+  "bob": {
+    "concept_profile": {
+      "meta_cognitive": 6,
+      "temporal": 2,
+      "structural": 4,
+      "uncertainty": 7,
+      "action": 7,
+      "relational": 1
+    },
+    "connectivity": {
+      "and_density": 0.021976133949768835,
+      "contrast_density": 0.006372610271148319,
+      "choice_density": 0.016056478820442335,
+      "sequential_density": 0.0023584905660377358,
+      "parenthetical_count": 2.0,
+      "aside_markers": 0.0,
+      "hierarchical_markers": 4.0
+    },
+    "structure": {
+      "avg_commas_per_sentence": 0.41875,
+      "avg_nesting_per_sentence": 0.5875,
+      "transition_density": 0.2,
+      "sentence_variety": 0.8416666666666667
+    }
+  }
+}

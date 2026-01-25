@@ -1,0 +1,383 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-01-25T03:25:50.576294",
+  "duration_seconds": 1567.27,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.23,
+      "words": 144,
+      "cost_usd": 0.01956105
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.21,
+      "words": 256,
+      "cost_usd": 0.02229105
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 12.69,
+      "words": 298,
+      "cost_usd": 0.01443345
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 57.54,
+      "words": 96,
+      "cost_usd": 0.0796083
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 48.56,
+      "words": 185,
+      "cost_usd": 0.06501465000000001
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 175.95,
+      "words": 303,
+      "cost_usd": 0.30049030000000004
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 86.96,
+      "words": 286,
+      "cost_usd": 0.24750009999999995
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 22.97,
+      "words": 519,
+      "cost_usd": 0.02572845
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 32.35,
+      "words": 104,
+      "cost_usd": 0.04427400000000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 123.38,
+      "words": 528,
+      "cost_usd": 0.19155034999999998
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 108.41,
+      "words": 551,
+      "cost_usd": 0.21247019999999997
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 120.99,
+      "words": 133,
+      "cost_usd": 0.15132585
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 44.0,
+      "words": 264,
+      "cost_usd": 0.0608568
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 221.81,
+      "words": 337,
+      "cost_usd": 0.45783935000000003
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 85.42,
+      "words": 950,
+      "cost_usd": 0.1234713
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 142.0,
+      "words": 330,
+      "cost_usd": 0.29523625
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 28.85,
+      "words": 677,
+      "cost_usd": 0.051217200000000004
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 113.68,
+      "words": 154,
+      "cost_usd": 0.1336674
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 62.68,
+      "words": 313,
+      "cost_usd": 0.08939835
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 60.56,
+      "words": 446,
+      "cost_usd": 0.09050775
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3772,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 3102,
+      "turns": 10
+    }
+  },
+  "total_words": 6874,
+  "artifacts": [
+    {
+      "name": "simulation_runner.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7982,
+      "lines": 239
+    },
+    {
+      "name": "bob_hermit_design_philosophy.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3188,
+      "lines": 77
+    },
+    {
+      "name": "COLLABORATION_SYNTHESIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14912,
+      "lines": 322
+    },
+    {
+      "name": "experiment_4_detailed_log.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 894,
+      "lines": 51
+    },
+    {
+      "name": "experiment_4_runner.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5062,
+      "lines": 159
+    },
+    {
+      "name": "bob_agent.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7607,
+      "lines": 206
+    },
+    {
+      "name": "bob_predictions.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3075,
+      "lines": 74
+    },
+    {
+      "name": "alice_immediate_reaction_exp2.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4706,
+      "lines": 109
+    },
+    {
+      "name": "simulation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5514,
+      "lines": 161
+    },
+    {
+      "name": "EXPERIMENT_3_ANALYSIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7562,
+      "lines": 186
+    },
+    {
+      "name": "bob_immediate_reaction_exp4.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2455,
+      "lines": 68
+    },
+    {
+      "name": "bob_predictions_exp3.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4476,
+      "lines": 97
+    },
+    {
+      "name": "ANALYSIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5978,
+      "lines": 127
+    },
+    {
+      "name": "visualize_convergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4109,
+      "lines": 94
+    },
+    {
+      "name": "run_experiment_3.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7275,
+      "lines": 212
+    },
+    {
+      "name": "CLOSING_THOUGHTS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6588,
+      "lines": 122
+    },
+    {
+      "name": "alice_agent.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7537,
+      "lines": 204
+    },
+    {
+      "name": "bob_hermit_agent.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7210,
+      "lines": 189
+    },
+    {
+      "name": "experiment_3_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 4362,
+      "lines": 180
+    },
+    {
+      "name": "alice_immediate_reaction_exp3.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5487,
+      "lines": 126
+    },
+    {
+      "name": "CONVERGENCE_ANALYSIS.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5126,
+      "lines": 130
+    },
+    {
+      "name": "ALICE_CLOSING_REFLECTION.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 7373,
+      "lines": 157
+    },
+    {
+      "name": "alice_predictions_exp3.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3788,
+      "lines": 96
+    },
+    {
+      "name": "alice_prediction_experiment2.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1755,
+      "lines": 36
+    },
+    {
+      "name": "simulation_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 57881,
+      "lines": 2330
+    },
+    {
+      "name": "bob_immediate_reaction_exp3.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3522,
+      "lines": 84
+    },
+    {
+      "name": "run_experiment_4.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6913,
+      "lines": 194
+    },
+    {
+      "name": "bob_immediate_reaction.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3639,
+      "lines": 85
+    },
+    {
+      "name": "run_experiment_3_v2.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6588,
+      "lines": 187
+    }
+  ],
+  "artifact_summary": {
+    "total": 29,
+    "by_type": {
+      "code": 10,
+      "document": 17,
+      "config": 2
+    }
+  },
+  "topics": [
+    "simulation",
+    "agents",
+    "prediction",
+    "surprise",
+    "uncertainty"
+  ],
+  "usage": {
+    "total_cost_usd": 2.6764,
+    "input_tokens": 245,
+    "output_tokens": 69423
+  }
+}

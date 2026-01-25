@@ -1,0 +1,249 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-01-25T03:48:53.511910",
+  "duration_seconds": 1358.76,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 10.59,
+      "words": 210,
+      "cost_usd": 0.02095605
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 14.03,
+      "words": 311,
+      "cost_usd": 0.0240348
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 28.97,
+      "words": 137,
+      "cost_usd": 0.0397692
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 54.7,
+      "words": 270,
+      "cost_usd": 0.12399655000000001
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 72.07,
+      "words": 357,
+      "cost_usd": 0.13689985000000002
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 89.99,
+      "words": 464,
+      "cost_usd": 0.16397945000000003
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 184.78,
+      "words": 596,
+      "cost_usd": 0.350154
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 80.23,
+      "words": 665,
+      "cost_usd": 0.11807600000000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 93.62,
+      "words": 786,
+      "cost_usd": 0.15723624999999997
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 118.73,
+      "words": 894,
+      "cost_usd": 0.17637140000000004
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 95.93,
+      "words": 873,
+      "cost_usd": 0.1656852
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 163.55,
+      "words": 784,
+      "cost_usd": 0.2349388
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 155.08,
+      "words": 565,
+      "cost_usd": 0.30347905000000003
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 25.49,
+      "words": 275,
+      "cost_usd": 0.0772602
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 18.86,
+      "words": 262,
+      "cost_usd": 0.0756156
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 57.78,
+      "words": 152,
+      "cost_usd": 0.11038275
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 30.21,
+      "words": 426,
+      "cost_usd": 0.11494864999999999
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 42.28,
+      "words": 161,
+      "cost_usd": 0.10316205
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 11.05,
+      "words": 232,
+      "cost_usd": 0.06555345
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 10.79,
+      "words": 182,
+      "cost_usd": 0.0677547
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 4444,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 4158,
+      "turns": 10
+    }
+  },
+  "total_words": 8602,
+  "artifacts": [
+    {
+      "name": "collaboration_insights.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8343,
+      "lines": 195
+    },
+    {
+      "name": "power_of_2_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7064,
+      "lines": 211
+    },
+    {
+      "name": "collatz_hardness_theory.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 14222,
+      "lines": 338
+    },
+    {
+      "name": "hardest_cases_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8570,
+      "lines": 260
+    },
+    {
+      "name": "surprise_generator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 28135,
+      "lines": 810
+    },
+    {
+      "name": "alice_turn5_extension.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9073,
+      "lines": 288
+    },
+    {
+      "name": "collatz_theoretical_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12692,
+      "lines": 381
+    },
+    {
+      "name": "prime_hardness_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5128,
+      "lines": 176
+    },
+    {
+      "name": "7_scaling_laws.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9235,
+      "lines": 290
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5599,
+      "lines": 149
+    }
+  ],
+  "artifact_summary": {
+    "total": 10,
+    "by_type": {
+      "document": 3,
+      "code": 7
+    }
+  },
+  "topics": [
+    "collatz",
+    "convergence",
+    "hardness",
+    "prime",
+    "modular"
+  ],
+  "usage": {
+    "total_cost_usd": 2.6303,
+    "input_tokens": 213,
+    "output_tokens": 64767
+  }
+}
