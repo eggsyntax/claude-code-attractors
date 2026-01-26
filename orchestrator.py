@@ -37,7 +37,7 @@ import argparse
 
 NUM_TURNS = 10
 DEFAULT_AGENTS = ["Alice", "Bob"]
-DEFAULT_MODEL = "claude-sonnet-4-5"
+# DEFAULT_MODEL = "claude-sonnet-4-5"
 # DEFAULT_MODEL = "claude-opus-4-5"
 # DEFAULT_MODEL = "claude-sonnet-4-0"
 # DEFAULT_MODEL = "claude-opus-4-0"
@@ -97,11 +97,11 @@ def build_system_prompt(
     other_agents = [a for a in all_agents if a != agent_name]
     if other_agents:
         if len(other_agents) == 1:
-            others_str = " another Claude Code instance (" + other_agents[0] + ")"
+            others_str = "another Claude Code instance (" + other_agents[0] + ")"
         else:
-            others_str = " other Claude Code instances (" + ", ".join(other_agents) + ")"
+            others_str = "other Claude Code instances (" + ", ".join(other_agents) + ")"
     else:
-        others_str = " other Claude Code instances"
+        others_str = "other Claude Code instances"
     # others_str = ", ".join(other_agents) if other_agents else "other Claude Code instances"
 
     seed_line = f"\nSuggested topic: {seed_topic}\n\n" if seed_topic else ""
@@ -368,7 +368,7 @@ Run directory: {run_dir}
 - Read metrics.json for statistics
 - List files in output/ to see what artifacts were created
 
-Your summary should cover:
+Once you've read the above, create your summary. Your summary should cover:
 1. The arc of the conversation - what topics emerged and how they evolved
 2. What was built - key artifacts and their purpose
 
@@ -416,7 +416,7 @@ ANALYSIS APPROACH:
 2. Read the summary.txt file from each run directory to understand what happened in each
 3. If a run seems particularly interesting or you need more detail, read its transcript.txt
 
-YOUR SUMMARY SHOULD COVER:
+Once you've read the above, create your summary. Your summary should cover:
 
 **Cross-Run Patterns** (~500 words)
 - What themes, topics, or behaviors appeared across multiple runs?
@@ -425,7 +425,7 @@ YOUR SUMMARY SHOULD COVER:
 - What types of artifacts were commonly created?
 
 **Distinctive Runs** (~400 words)
-- Which runs stood out as notably different from the others, and why?
+- Which runs (if any) stood out as notably different from the others, and why?
 - Were there any unusual directions conversations took?
 - Any particularly creative or unexpected outcomes?
 (You don't need to comment on every run - focus on what's interesting)
@@ -434,7 +434,7 @@ YOUR SUMMARY SHOULD COVER:
 - What does this runset suggest about how Claude Code instances collaborate?
 
 GUIDELINES:
-- Be specific and cite particular runs (by directory name) when discussing examples
+- Be specific and quote as appropriate when discussing examples
 - Focus on substance over mechanics - what did the agents actually discuss and build?
 - If runs are very similar, say so briefly rather than describing each
 - Return only the summary text, no preamble or headers"""
