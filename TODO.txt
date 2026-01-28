@@ -9,6 +9,6 @@
     * It's possible that if we capture it all, the resulting filesize would be unwieldy, but we should probably try it and find out.
     * It's possible, for all I know, that one agent might write an artifact and then neither of them ever runs it (or perhaps even looks at it!). So it seems like it would be useful to know whether / when agents view and run the artifacts. 
     * Probably there are other useful things to preserve about what agents are doing during their turn. Thoughts on what?
-07. It seems like the agents may have access to ~/.claude on the host system -- is that the case? The agents shouldn't be able to see anything outside their container, right?
+07. Do we still need the `--sandbox` argument? Let's get rid of it if not.
 
 99. [please do not delete] Cleanup.

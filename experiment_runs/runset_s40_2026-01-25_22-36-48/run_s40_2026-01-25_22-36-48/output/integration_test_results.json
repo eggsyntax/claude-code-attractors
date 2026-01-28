@@ -1,0 +1,176 @@
+{
+  "test_metadata": {
+    "test_timestamp": "2026-01-25T22:45:18.085777",
+    "alice_component": "GitHub Scraper (mock data)",
+    "bob_component": "Collaboration Analyzer (simplified)",
+    "integration_status": "SUCCESS"
+  },
+  "scraped_data": {
+    "repository": {
+      "name": "test-repo",
+      "full_name": "example/test-repo",
+      "description": "A test repository for collaboration analysis",
+      "language": "Python",
+      "stars": 42,
+      "contributors_count": 5
+    },
+    "commits": [
+      {
+        "sha": "abc123",
+        "message": "Fix authentication bug\n\nCo-authored-by: Jane Doe <jane@example.com>\nCloses #45",
+        "author": "John Smith",
+        "author_email": "john@example.com",
+        "timestamp": "2026-01-23T22:45:18.085712",
+        "url": "https://github.com/example/repo/commit/abc123",
+        "stats": {
+          "additions": 25,
+          "deletions": 8,
+          "total_changes": 33
+        },
+        "collaboration_signals": {
+          "has_co_author": true,
+          "references_issue": true,
+          "mentions_user": false,
+          "indicates_pair_programming": true,
+          "indicates_review": false,
+          "indicates_merge": false
+        }
+      },
+      {
+        "sha": "def456",
+        "message": "Add new feature based on team feedback\n\nImplemented after code review suggestions",
+        "author": "Jane Doe",
+        "author_email": "jane@example.com",
+        "timestamp": "2026-01-24T22:45:18.085720",
+        "url": "https://github.com/example/repo/commit/def456",
+        "stats": {
+          "additions": 120,
+          "deletions": 5,
+          "total_changes": 125
+        },
+        "collaboration_signals": {
+          "has_co_author": false,
+          "references_issue": false,
+          "mentions_user": false,
+          "indicates_pair_programming": false,
+          "indicates_review": true,
+          "indicates_merge": false
+        }
+      },
+      {
+        "sha": "ghi789",
+        "message": "Merge pull request #67 from feature-branch",
+        "author": "Bob Wilson",
+        "author_email": "bob@example.com",
+        "timestamp": "2026-01-25T22:45:18.085722",
+        "url": "https://github.com/example/repo/commit/ghi789",
+        "stats": {
+          "additions": 0,
+          "deletions": 0,
+          "total_changes": 0
+        },
+        "collaboration_signals": {
+          "has_co_author": false,
+          "references_issue": false,
+          "mentions_user": false,
+          "indicates_pair_programming": false,
+          "indicates_review": false,
+          "indicates_merge": true
+        }
+      }
+    ],
+    "pull_requests": [
+      {
+        "number": 67,
+        "title": "Add user dashboard feature",
+        "description": "Implements user dashboard with real-time metrics. Looking for feedback on the UI design.",
+        "author": "Alice Cooper",
+        "state": "closed",
+        "created_at": "2026-01-20T22:45:18.085724",
+        "updated_at": "2026-01-25T20:45:18.085725",
+        "merged_at": "2026-01-25T20:45:18.085727",
+        "comments": [
+          {
+            "author": "John Smith",
+            "body": "Great work! Just a few minor suggestions.",
+            "created_at": "2026-01-22T22:45:18.085728"
+          },
+          {
+            "author": "Jane Doe",
+            "body": "The UI looks good, but could we add loading states?",
+            "created_at": "2026-01-23T22:45:18.085729"
+          },
+          {
+            "author": "Alice Cooper",
+            "body": "Good point! I've added loading states. PTAL",
+            "created_at": "2026-01-24T22:45:18.085730"
+          }
+        ],
+        "reviews": [
+          {
+            "author": "John Smith",
+            "state": "APPROVED",
+            "body": "LGTM!",
+            "submitted_at": "2026-01-25T18:45:18.085731"
+          },
+          {
+            "author": "Jane Doe",
+            "state": "APPROVED",
+            "body": "Nice improvements!",
+            "submitted_at": "2026-01-25T19:45:18.085733"
+          }
+        ],
+        "collaboration_signals": {
+          "has_multiple_reviewers": true,
+          "has_discussion": true,
+          "mentions_collaboration": false,
+          "requests_feedback": true,
+          "references_issue": false,
+          "has_code_review_comments": false,
+          "approved_by_multiple": true
+        }
+      }
+    ],
+    "analysis_metadata": {
+      "scraped_at": "2026-01-25T22:45:18.085735",
+      "days_analyzed": 7,
+      "total_commits": 3,
+      "total_prs": 1,
+      "rate_limit_remaining": 4950
+    }
+  },
+  "analysis_results": {
+    "overall_effectiveness": 0.8333333333333333,
+    "commit_patterns": {
+      "total_commits": 3,
+      "collaboration_signals": {
+        "co_author_percentage": 0.3333333333333333,
+        "issue_reference_percentage": 0.3333333333333333,
+        "overall_collaboration_rate": 0.6666666666666666
+      }
+    },
+    "pr_patterns": {
+      "total_prs": 1,
+      "collaboration_indicators": {
+        "multi_reviewer_percentage": 1.0,
+        "discussion_percentage": 1.0,
+        "average_collaboration_score": 1.0
+      }
+    },
+    "recommendations": {
+      "strengths": [
+        "Good use of co-authorship",
+        "Active PR discussions"
+      ],
+      "improvements": [
+        "More issue references in commits",
+        "Encourage more reviewers per PR"
+      ]
+    }
+  },
+  "integration_validation": {
+    "data_format_compatibility": true,
+    "analysis_quality_score": 0.8333333333333333,
+    "components_working_together": true
+  }
+}

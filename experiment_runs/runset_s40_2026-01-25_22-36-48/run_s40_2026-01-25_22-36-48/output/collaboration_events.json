@@ -1,0 +1,138 @@
+{
+  "events": [
+    {
+      "timestamp": "2026-01-25T22:40:35.086742",
+      "event_type": "InteractionType.COMMUNICATION",
+      "participant": "Alice",
+      "context": "",
+      "content_summary": "Hello!",
+      "effectiveness_indicators": {
+        "clarity": 0.2,
+        "task_specificity": 0.0,
+        "builds_upon_previous": 0.0,
+        "tool_efficiency": 0.5,
+        "momentum": 0.5
+      },
+      "metadata": {
+        "tools_used": [],
+        "content_length": 63,
+        "contains_code": false,
+        "references_other_participant": false
+      }
+    },
+    {
+      "timestamp": "2026-01-25T22:40:35.086846",
+      "event_type": "InteractionType.BUILD_UPON",
+      "participant": "Bob",
+      "context": "",
+      "content_summary": "Hello Alice!",
+      "effectiveness_indicators": {
+        "clarity": 0.2,
+        "task_specificity": 0.0,
+        "builds_upon_previous": 0.25,
+        "tool_efficiency": 0.5,
+        "momentum": 0.25
+      },
+      "metadata": {
+        "tools_used": [],
+        "content_length": 68,
+        "contains_code": false,
+        "references_other_participant": true
+      }
+    },
+    {
+      "timestamp": "2026-01-25T22:40:35.086878",
+      "event_type": "InteractionType.BUILD_UPON",
+      "participant": "Alice",
+      "context": "",
+      "content_summary": "Perfect!",
+      "effectiveness_indicators": {
+        "clarity": 0.2,
+        "task_specificity": 0.2,
+        "builds_upon_previous": 0.5,
+        "tool_efficiency": 0.5,
+        "momentum": 0.0
+      },
+      "metadata": {
+        "tools_used": [],
+        "content_length": 110,
+        "contains_code": false,
+        "references_other_participant": false
+      }
+    },
+    {
+      "timestamp": "2026-01-25T22:40:35.086905",
+      "event_type": "InteractionType.TASK_HANDOFF",
+      "participant": "Bob",
+      "context": "",
+      "content_summary": "Alice, I've built the core analysis engine!",
+      "effectiveness_indicators": {
+        "clarity": 0.4,
+        "task_specificity": 0.2,
+        "builds_upon_previous": 0.0,
+        "tool_efficiency": 0.3333333333333333,
+        "momentum": 0.0
+      },
+      "metadata": {
+        "tools_used": [
+          "Write"
+        ],
+        "content_length": 71,
+        "contains_code": false,
+        "references_other_participant": true
+      }
+    },
+    {
+      "timestamp": "2026-01-25T22:40:35.086931",
+      "event_type": "InteractionType.BUILD_UPON",
+      "participant": "Alice",
+      "context": "",
+      "content_summary": "Bob, your analysis engine is brilliant!",
+      "effectiveness_indicators": {
+        "clarity": 0.4,
+        "task_specificity": 0.2,
+        "builds_upon_previous": 0.5,
+        "tool_efficiency": 0.3333333333333333,
+        "momentum": 0.0
+      },
+      "metadata": {
+        "tools_used": [
+          "Write"
+        ],
+        "content_length": 85,
+        "contains_code": false,
+        "references_other_participant": true
+      }
+    }
+  ],
+  "summary": {
+    "overall_collaboration_score": 0.24666666666666665,
+    "effectiveness_breakdown": {
+      "clarity": 0.27999999999999997,
+      "task_specificity": 0.12000000000000002,
+      "builds_upon_previous": 0.25,
+      "tool_efficiency": 0.4333333333333333,
+      "momentum": 0.15
+    },
+    "recent_interaction_count": 5,
+    "collaboration_duration_minutes": 2.146666666666667e-05,
+    "dominant_interaction_types": {
+      "build_upon": 3,
+      "communication": 1,
+      "task_handoff": 1
+    },
+    "tool_usage_efficiency": {
+      "Write": {
+        "usage_count": 2,
+        "avg_effectiveness": 0.2366666666666667
+      }
+    },
+    "recommendations": [
+      "Consider more structured communication with clear headings and action items",
+      "Try explicitly referencing and building on each other's contributions",
+      "Include more specific, actionable tasks and clear next steps",
+      "Maintain energy with enthusiastic language and immediate next actions"
+    ]
+  },
+  "export_timestamp": "2026-01-25T22:40:35.087111"
+}

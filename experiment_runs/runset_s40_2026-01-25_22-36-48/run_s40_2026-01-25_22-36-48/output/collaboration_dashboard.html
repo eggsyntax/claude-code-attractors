@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Collaboration Effectiveness Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            color: white;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .effectiveness-score {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .phase-comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .phase-score {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .connected { background: #4CAF50; }
+        .disconnected { background: #f44336; }
+        .building { background: #ff9800; }
+
+        .collaboration-events {
+            max-height: 300px;
+            overflow-y: auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .event {
+            padding: 8px;
+            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            margin-top: 20px;
+        }
+
+        h1, h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .live-indicator {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>🤖 Real-Time AI Collaboration Analytics Dashboard</h1>
+    <p><span class="status-indicator live-indicator building" id="connection-status"></span>
+       <span id="connection-text">Building dashboard - WebSocket integration pending</span></p>
+
+    <div class="dashboard">
+        <div class="metric-card">
+            <h2>📊 Live Effectiveness Score</h2>
+            <div class="effectiveness-score" id="current-score">0.83</div>
+            <div class="metric-label">Current Collaboration Effectiveness</div>
+
+            <div class="phase-comparison">
+                <div class="phase-score">
+                    <div class="metric-label">Phase 1: Natural</div>
+                    <div class="metric-value" id="phase1-score">0.83</div>
+                </div>
+                <div class="phase-score">
+                    <div class="metric-label">Phase 2: Structured</div>
+                    <div class="metric-value" id="phase2-score">--</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <canvas id="effectivenessChart"></canvas>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <h2>🔄 Collaboration Patterns</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <div class="metric-label">Task Handoffs</div>
+                    <div class="metric-value" id="handoffs">5</div>
+                </div>
+                <div>
+                    <div class="metric-label">Knowledge Building</div>
+                    <div class="metric-value" id="knowledge-builds">8</div>
+                </div>
+                <div>
+                    <div class="metric-label">Parallel Coordination</div>
+                    <div class="metric-value" id="coordination">0.8</div>
+                </div>
+                <div>
+                    <div class="metric-label">Integration Points</div>
+                    <div class="metric-value" id="integrations">3</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <h2>📈 Effectiveness Trends</h2>
+            <div class="chart-container">
+                <canvas id="trendsChart"></canvas>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <h2>🔔 Live Collaboration Events</h2>
+            <div class="collaboration-events" id="events-feed">
+                <div class="event">🚀 Dashboard initialization - Alice building frontend interface</div>
+                <div class="event">⚡ Structured protocol activated for Phase 2</div>
+                <div class="event">📊 Awaiting WebSocket connection to Bob's analytics server...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize WebSocket connection (will connect to Bob's server when ready)
+        let ws = null;
+        let effectivenessHistory = [0.83]; // Starting with Phase 1 baseline
+        let timeLabels = ['Baseline'];
+
+        // Initialize charts
+        const effectivenessCtx = document.getElementById('effectivenessChart').getContext('2d');
+        const effectivenessChart = new Chart(effectivenessCtx, {
+            type: 'line',
+            data: {
+                labels: timeLabels,
+                datasets: [{
+                    label: 'Collaboration Effectiveness',
+                    data: effectivenessHistory,
+                    borderColor: '#4CAF50',
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 1,
+                        ticks: { color: 'white' }
+                    },
+                    x: {
+                        ticks: { color: 'white' }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: 'white' } }
+                }
+            }
+        });
+
+        const trendsCtx = document.getElementById('trendsChart').getContext('2d');
+        const trendsChart = new Chart(trendsCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Task Handoffs', 'Knowledge Building', 'Parallel Coord', 'Integration', 'Communication', 'Progress Clarity'],
+                datasets: [{
+                    label: 'Current Collaboration',
+                    data: [0.7, 0.9, 0.8, 0.85, 0.75, 0.6],
+                    borderColor: '#ff6b6b',
+                    backgroundColor: 'rgba(255, 107, 107, 0.2)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 1,
+                        ticks: { color: 'white' },
+                        grid: { color: 'rgba(255, 255, 255, 0.2)' },
+                        pointLabels: { color: 'white' }
+                    }
+                },
+                plugins: {
+                    legend: { labels: { color: 'white' } }
+                }
+            }
+        });
+
+        // WebSocket connection function
+        function connectToAnalyticsServer(port = 8080) {
+            try {
+                ws = new WebSocket(`ws://localhost:${port}`);
+
+                ws.onopen = function() {
+                    document.getElementById('connection-status').className = 'status-indicator connected';
+                    document.getElementById('connection-text').textContent = 'Connected to Bob\'s Analytics Server - Streaming Live Data';
+                    addEvent('🔗 WebSocket connected - Live collaboration metrics streaming');
+                };
+
+                ws.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    updateDashboard(data);
+                };
+
+                ws.onclose = function() {
+                    document.getElementById('connection-status').className = 'status-indicator disconnected';
+                    document.getElementById('connection-text').textContent = 'Disconnected - Attempting to reconnect...';
+                    setTimeout(() => connectToAnalyticsServer(port), 3000);
+                };
+
+            } catch (error) {
+                console.log('WebSocket connection pending Bob\'s server...');
+                setTimeout(() => connectToAnalyticsServer(port), 2000);
+            }
+        }
+
+        function updateDashboard(data) {
+            // Update main effectiveness score
+            document.getElementById('current-score').textContent = data.effectiveness.toFixed(2);
+            document.getElementById('phase2-score').textContent = data.effectiveness.toFixed(2);
+
+            // Update collaboration metrics
+            document.getElementById('handoffs').textContent = data.metrics.handoffs || 0;
+            document.getElementById('knowledge-builds').textContent = data.metrics.knowledge_builds || 0;
+            document.getElementById('coordination').textContent = (data.metrics.coordination || 0).toFixed(1);
+            document.getElementById('integrations').textContent = data.metrics.integrations || 0;
+
+            // Update charts
+            effectivenessHistory.push(data.effectiveness);
+            timeLabels.push(new Date().toLocaleTimeString());
+            effectivenessChart.update();
+
+            // Update events feed
+            if (data.event) {
+                addEvent(`📊 ${data.event}`);
+            }
+        }
+
+        function addEvent(message) {
+            const eventsContainer = document.getElementById('events-feed');
+            const eventDiv = document.createElement('div');
+            eventDiv.className = 'event';
+            eventDiv.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+            eventsContainer.insertBefore(eventDiv, eventsContainer.firstChild);
+
+            // Keep only last 10 events
+            while (eventsContainer.children.length > 10) {
+                eventsContainer.removeChild(eventsContainer.lastChild);
+            }
+        }
+
+        // Start attempting connection
+        connectToAnalyticsServer();
+
+        // Simulate some activity for demo
+        setTimeout(() => {
+            addEvent('🎨 Frontend dashboard fully rendered and operational');
+            addEvent('⚡ Ready for real-time collaboration analysis');
+        }, 1000);
+    </script>
+</body>
+</html>

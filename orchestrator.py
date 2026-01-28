@@ -425,10 +425,10 @@ Once you've read the above, create your summary. Your summary should cover:
 - What types of artifacts were commonly created?
 
 **Distinctive Runs** (~400 words)
+- If there was only one run, this section doesn't apply.
 - Which runs (if any) stood out as notably different from the others, and why?
 - Were there any unusual directions conversations took?
 - Any particularly creative or unexpected outcomes?
-(You don't need to comment on every run - focus on what's interesting)
 
 **Brief Synthesis** (~100 words)
 - What does this runset suggest about how Claude Code instances collaborate?

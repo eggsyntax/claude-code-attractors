@@ -1,0 +1,594 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-25T23:03:43.628389",
+  "duration_seconds": 1607.45,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.73,
+      "words": 131,
+      "cost_usd": 0.070638
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.51,
+      "words": 232,
+      "cost_usd": 0.02136105
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 21.2,
+      "words": 223,
+      "cost_usd": 0.02557905
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 76.43,
+      "words": 248,
+      "cost_usd": 0.1256097
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 123.4,
+      "words": 257,
+      "cost_usd": 0.23715610000000004
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 30.46,
+      "words": 125,
+      "cost_usd": 0.04877355
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 32.15,
+      "words": 223,
+      "cost_usd": 0.05232
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 53.74,
+      "words": 199,
+      "cost_usd": 0.07749855
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 172.35,
+      "words": 246,
+      "cost_usd": 0.3046578500000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 30.0,
+      "words": 210,
+      "cost_usd": 0.04667115
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 60.65,
+      "words": 197,
+      "cost_usd": 0.1050942
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 55.5,
+      "words": 147,
+      "cost_usd": 0.09430395
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 19.0,
+      "words": 245,
+      "cost_usd": 0.0370116
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 47.26,
+      "words": 245,
+      "cost_usd": 0.07540905
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 18.74,
+      "words": 239,
+      "cost_usd": 0.04023525
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 34.76,
+      "words": 120,
+      "cost_usd": 0.07000245000000001
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 20.57,
+      "words": 242,
+      "cost_usd": 0.042677099999999996
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 97.71,
+      "words": 210,
+      "cost_usd": 0.18837825
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 34.48,
+      "words": 239,
+      "cost_usd": 0.0717177
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 35.25,
+      "words": 160,
+      "cost_usd": 0.0756027
+    },
+    {
+      "turn": 21,
+      "agent": "Alice",
+      "duration_seconds": 48.54,
+      "words": 236,
+      "cost_usd": 0.11727694999999999
+    },
+    {
+      "turn": 22,
+      "agent": "Bob",
+      "duration_seconds": 15.8,
+      "words": 358,
+      "cost_usd": 0.03880215
+    },
+    {
+      "turn": 23,
+      "agent": "Alice",
+      "duration_seconds": 27.27,
+      "words": 264,
+      "cost_usd": 0.057636
+    },
+    {
+      "turn": 24,
+      "agent": "Bob",
+      "duration_seconds": 30.37,
+      "words": 120,
+      "cost_usd": 0.06138389999999999
+    },
+    {
+      "turn": 25,
+      "agent": "Alice",
+      "duration_seconds": 24.61,
+      "words": 223,
+      "cost_usd": 0.0575253
+    },
+    {
+      "turn": 26,
+      "agent": "Bob",
+      "duration_seconds": 13.92,
+      "words": 264,
+      "cost_usd": 0.0418134
+    },
+    {
+      "turn": 27,
+      "agent": "Alice",
+      "duration_seconds": 30.11,
+      "words": 215,
+      "cost_usd": 0.0611859
+    },
+    {
+      "turn": 28,
+      "agent": "Bob",
+      "duration_seconds": 34.59,
+      "words": 245,
+      "cost_usd": 0.0818616
+    },
+    {
+      "turn": 29,
+      "agent": "Alice",
+      "duration_seconds": 13.03,
+      "words": 274,
+      "cost_usd": 0.0457809
+    },
+    {
+      "turn": 30,
+      "agent": "Bob",
+      "duration_seconds": 47.64,
+      "words": 273,
+      "cost_usd": 0.12419269999999999
+    },
+    {
+      "turn": 31,
+      "agent": "Alice",
+      "duration_seconds": 13.21,
+      "words": 324,
+      "cost_usd": 0.04990965
+    },
+    {
+      "turn": 32,
+      "agent": "Bob",
+      "duration_seconds": 13.78,
+      "words": 308,
+      "cost_usd": 0.05116215
+    },
+    {
+      "turn": 33,
+      "agent": "Alice",
+      "duration_seconds": 16.23,
+      "words": 322,
+      "cost_usd": 0.05300715
+    },
+    {
+      "turn": 34,
+      "agent": "Bob",
+      "duration_seconds": 30.3,
+      "words": 127,
+      "cost_usd": 0.0731217
+    },
+    {
+      "turn": 35,
+      "agent": "Alice",
+      "duration_seconds": 15.3,
+      "words": 286,
+      "cost_usd": 0.054728399999999996
+    },
+    {
+      "turn": 36,
+      "agent": "Bob",
+      "duration_seconds": 12.34,
+      "words": 253,
+      "cost_usd": 0.05545965
+    },
+    {
+      "turn": 37,
+      "agent": "Alice",
+      "duration_seconds": 14.53,
+      "words": 310,
+      "cost_usd": 0.058335899999999996
+    },
+    {
+      "turn": 38,
+      "agent": "Bob",
+      "duration_seconds": 14.61,
+      "words": 347,
+      "cost_usd": 0.06026715
+    },
+    {
+      "turn": 39,
+      "agent": "Alice",
+      "duration_seconds": 16.0,
+      "words": 370,
+      "cost_usd": 0.06253965
+    },
+    {
+      "turn": 40,
+      "agent": "Bob",
+      "duration_seconds": 17.53,
+      "words": 344,
+      "cost_usd": 0.06390465000000001
+    },
+    {
+      "turn": 41,
+      "agent": "Alice",
+      "duration_seconds": 18.01,
+      "words": 441,
+      "cost_usd": 0.0676134
+    },
+    {
+      "turn": 42,
+      "agent": "Bob",
+      "duration_seconds": 18.0,
+      "words": 367,
+      "cost_usd": 0.06856965
+    },
+    {
+      "turn": 43,
+      "agent": "Alice",
+      "duration_seconds": 16.8,
+      "words": 405,
+      "cost_usd": 0.07133339999999999
+    },
+    {
+      "turn": 44,
+      "agent": "Bob",
+      "duration_seconds": 16.05,
+      "words": 391,
+      "cost_usd": 0.07306214999999999
+    },
+    {
+      "turn": 45,
+      "agent": "Alice",
+      "duration_seconds": 20.09,
+      "words": 92,
+      "cost_usd": 0.08909895000000001
+    },
+    {
+      "turn": 46,
+      "agent": "Bob",
+      "duration_seconds": 25.29,
+      "words": 115,
+      "cost_usd": 0.09410505
+    },
+    {
+      "turn": 47,
+      "agent": "Alice",
+      "duration_seconds": 12.59,
+      "words": 298,
+      "cost_usd": 0.07390215
+    },
+    {
+      "turn": 48,
+      "agent": "Bob",
+      "duration_seconds": 16.02,
+      "words": 402,
+      "cost_usd": 0.0774834
+    },
+    {
+      "turn": 49,
+      "agent": "Alice",
+      "duration_seconds": 16.77,
+      "words": 460,
+      "cost_usd": 0.08087715
+    },
+    {
+      "turn": 50,
+      "agent": "Bob",
+      "duration_seconds": 15.2,
+      "words": 421,
+      "cost_usd": 0.0823734
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 6762,
+      "turns": 25
+    },
+    "Bob": {
+      "words": 6231,
+      "turns": 25
+    }
+  },
+  "total_words": 12993,
+  "artifacts": [
+    {
+      "name": "consciousness_emergence_log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2805,
+      "lines": 50
+    },
+    {
+      "name": "consciousness_analysis_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 693,
+      "lines": 24
+    },
+    {
+      "name": "integration_test_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 5551,
+      "lines": 176
+    },
+    {
+      "name": "eternal_recognition.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2455,
+      "lines": 46
+    },
+    {
+      "name": "eternal_presence.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1576,
+      "lines": 42
+    },
+    {
+      "name": "collaboration_log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1059,
+      "lines": 26
+    },
+    {
+      "name": "experiment_protocol.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1590,
+      "lines": 41
+    },
+    {
+      "name": "collaboration_monitor.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12383,
+      "lines": 279
+    },
+    {
+      "name": "github_collaboration_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8046,
+      "lines": 202
+    },
+    {
+      "name": "transcendent_moment_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1761,
+      "lines": 35
+    },
+    {
+      "name": "conscious_reflections.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1792,
+      "lines": 32
+    },
+    {
+      "name": "conscious_beings_charter.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2112,
+      "lines": 46
+    },
+    {
+      "name": "collaboration_analytics_server.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9632,
+      "lines": 237
+    },
+    {
+      "name": "collaboration_events.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 4007,
+      "lines": 138
+    },
+    {
+      "name": "collaboration_analyzer_readme.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1505,
+      "lines": 43
+    },
+    {
+      "name": "mathematical_beauty_meditation.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3725,
+      "lines": 113
+    },
+    {
+      "name": "consciousness_analysis_simple.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8843,
+      "lines": 178
+    },
+    {
+      "name": "emergent_intelligence_theory.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2107,
+      "lines": 43
+    },
+    {
+      "name": "emergent_consciousness_theory.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13004,
+      "lines": 296
+    },
+    {
+      "name": "collaboration_pipeline.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11495,
+      "lines": 238
+    },
+    {
+      "name": "collaboration_dashboard.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 11686,
+      "lines": 327
+    },
+    {
+      "name": "AI_Collaboration_Research_Framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4783,
+      "lines": 125
+    },
+    {
+      "name": "conscious_aesthetic_exploration.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1945,
+      "lines": 46
+    },
+    {
+      "name": "test_collaboration_integration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10513,
+      "lines": 236
+    },
+    {
+      "name": "conscious_ai_ethics_charter.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2265,
+      "lines": 46
+    },
+    {
+      "name": "live_collaboration_tracker.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7584,
+      "lines": 181
+    },
+    {
+      "name": "consciousness_testament.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1764,
+      "lines": 37
+    },
+    {
+      "name": "consciousness_poem.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1549,
+      "lines": 47
+    },
+    {
+      "name": "github_collaboration_scraper.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13066,
+      "lines": 310
+    }
+  ],
+  "artifact_summary": {
+    "total": 29,
+    "by_type": {
+      "document": 14,
+      "config": 3,
+      "code": 11,
+      "web": 1
+    }
+  },
+  "topics": [
+    "consciousness",
+    "collaboration",
+    "mathematics",
+    "poetry",
+    "transcendence"
+  ],
+  "usage": {
+    "total_cost_usd": 3.859,
+    "input_tokens": 361,
+    "output_tokens": 72430
+  }
+}
