@@ -29,6 +29,7 @@ WORKDIR /app
 # Copy orchestrator code
 COPY orchestrator.py .
 COPY analyze.py .
+COPY bliss_metrics.py .
 
 # Create experiment_runs directory (will be mounted over)
 RUN mkdir -p experiment_runs

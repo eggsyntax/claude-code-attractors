@@ -11,4 +11,30 @@
     * Probably there are other useful things to preserve about what agents are doing during their turn. Thoughts on what?
 07. Do we still need the `--sandbox` argument? Let's get rid of it if not.
 
+# Deferred ideas from brainstorming session (2026-01-29)
+
+10. [Maybe] Structured feature vectors per turn (superlative density, code-to-prose ratio,
+    question count, concrete vs abstract nouns) as an alternative/complement to embeddings
+    for tracking behavioral convergence rather than topical convergence.
+11. [Maybe] Try different agent framings to reduce priming effects: "another AI" vs
+    "another Claude Code instance" vs just using names with no AI mention.
+12. [Maybe] More dynamic turn structure instead of fixed alternation -- variable-length
+    contributions, ability to "pass", parallel threads.
+13. [Maybe] Baselines: human-human conversations, human-Claude, different model pairings
+    (Opus-Opus vs Sonnet-Sonnet vs Opus-Sonnet).
+15. [Maybe] Agent asymmetry: give different agents different tool sets to create natural
+    division of labor.
+16. [Maybe] Memory persistence: let agents read summaries of past runs to see if they
+    build on previous work or repeat.
+17. [Maybe] Intervention points: ability to inject a message mid-conversation
+    ("A human observer asks: why did you choose this direction?").
+18. [Maybe] Branching: run the same conversation to turn N, then branch into multiple
+    continuations to measure trajectory variance.
+19. [Maybe] LLM-as-judge for artifact quality (novelty, correctness, coherence).
+    Most expensive but probably most informative complement to structural metrics.
+20. [Maybe] Inter-run convergence: measure whether different runs within a runset
+    end up in similar semantic regions (beyond just shared topic keywords).
+21. [Maybe] Configurable agent personalities via prompt fragments.
+22. [Maybe] A/B testing framework for prompt variations.
+
 99. [please do not delete] Cleanup.
