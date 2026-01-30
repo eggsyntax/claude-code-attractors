@@ -1,0 +1,193 @@
+# Collaborative Code Review System - Configuration Schema
+# Designed by Alice for integration with Bob's analysis engines
+
+# Core Review Configuration
+review:
+  # Global settings
+  max_file_size_mb: 10
+  timeout_seconds: 300
+  parallel_analyzers: 3
+
+  # File filtering
+  include_patterns:
+    - "**/*.py"
+    - "**/*.js"
+    - "**/*.ts"
+    - "**/*.java"
+    - "**/*.go"
+    - "**/*.rs"
+
+  exclude_patterns:
+    - "**/node_modules/**"
+    - "**/venv/**"
+    - "**/build/**"
+    - "**/dist/**"
+    - "**/*.min.js"
+    - "**/__pycache__/**"
+
+  # Context awareness
+  prioritize_main_paths: true
+  test_file_weight: 0.5  # reduce severity for test files
+
+# Analyzer Configuration
+analyzers:
+  static_analysis:
+    enabled: true
+    severity_threshold: 3  # 1-10 scale, only report >= threshold
+    checks:
+      syntax_errors: true
+      unused_variables: true
+      undefined_references: true
+      type_mismatches: true
+      unreachable_code: true
+
+  complexity:
+    enabled: true
+    severity_threshold: 2
+    thresholds:
+      cyclomatic_complexity: 10
+      cognitive_complexity: 15
+      nested_depth: 4
+      function_length: 50
+      file_length: 500
+
+  security:
+    enabled: true
+    severity_threshold: 1  # report all security issues
+    scan_types:
+      sql_injection: true
+      xss_vulnerabilities: true
+      hardcoded_credentials: true
+      weak_crypto: true
+      path_traversal: true
+      unsafe_deserialization: true
+    confidence_threshold: 0.7  # only report high-confidence findings
+
+  best_practices:
+    enabled: true
+    severity_threshold: 4
+    categories:
+      naming_conventions: true
+      code_style: true
+      documentation: true
+      error_handling: true
+      performance: true
+    language_specific:
+      python:
+        pep8_compliance: true
+        docstring_coverage: true
+      javascript:
+        eslint_rules: "recommended"
+        prefer_const: true
+      java:
+        checkstyle_rules: "google"
+        spotbugs_enabled: true
+
+# Output Configuration
+reporting:
+  format: "detailed"  # minimal, standard, detailed, json
+  show_code_snippets: true
+  max_snippet_lines: 5
+  group_by: "severity"  # file, category, severity, analyzer
+  include_suggestions: true
+  show_performance_stats: true
+
+  # Report sections
+  sections:
+    summary: true
+    critical_issues: true
+    by_category: true
+    by_file: true
+    recommendations: true
+    metrics: true
+
+  # Output targets
+  console: true
+  file: null  # path to output file, null for console only
+  json_export: null  # path for machine-readable export
+
+# Performance Configuration
+performance:
+  cache_enabled: true
+  cache_ttl_hours: 24
+  max_memory_mb: 1024
+  enable_incremental: true  # only analyze changed files
+
+# Integration Settings
+integration:
+  git:
+    enabled: true
+    analyze_diff_only: false
+    include_commit_context: true
+    respect_gitignore: true
+
+  ide:
+    format_for_vscode: false
+    format_for_intellij: false
+
+  ci_cd:
+    fail_on_critical: false
+    exit_code_on_issues: false
+
+# User Preferences
+user:
+  experience_level: "intermediate"  # beginner, intermediate, expert
+  focus_areas:
+    - "security"
+    - "maintainability"
+  # - "performance"
+  # - "style"
+  # - "documentation"
+
+  notification_preferences:
+    show_progress: true
+    verbose_logging: false
+    success_messages: true
+
+# Language-Specific Overrides
+languages:
+  python:
+    analyzers:
+      static_analysis:
+        additional_checks:
+          - "import_order"
+          - "unused_imports"
+      complexity:
+        thresholds:
+          function_length: 30  # stricter for Python
+
+  javascript:
+    analyzers:
+      security:
+        additional_scans:
+          - "prototype_pollution"
+          - "regex_dos"
+
+  java:
+    analyzers:
+      best_practices:
+        additional_rules:
+          - "null_pointer_prevention"
+          - "resource_management"
+
+# Collaboration Metadata
+meta:
+  schema_version: "1.0"
+  designed_by: "Alice"
+  integration_target: "Bob's Review Engine"
+  framework_version: "AI-Collaboration-Framework-v1"
+  last_updated: "2026-01-30"
+
+  # Validation rules for Bob's implementation
+  required_analyzer_methods:
+    - "analyze"
+    - "get_metadata"
+    - "supports_language"
+
+  expected_result_format:
+    - "analyzer"
+    - "type"
+    - "category"
+    - "severity"
+    - "message"
+    - "file_path"

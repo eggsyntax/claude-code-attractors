@@ -1,0 +1,415 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-30T17:50:03.633568",
+  "duration_seconds": 3383.68,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.03,
+      "words": 136,
+      "cost_usd": 0.07070924999999999
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 11.75,
+      "words": 268,
+      "cost_usd": 0.02188605
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 16.83,
+      "words": 37,
+      "cost_usd": 0.02376765
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 18.19,
+      "words": 232,
+      "cost_usd": 0.02393985
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 51.16,
+      "words": 190,
+      "cost_usd": 0.071028
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 70.12,
+      "words": 263,
+      "cost_usd": 0.10612785
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 446.59,
+      "words": 349,
+      "cost_usd": 0.22707300000000002
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 250.9,
+      "words": 434,
+      "cost_usd": 0.41111865000000003
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 224.85,
+      "words": 534,
+      "cost_usd": 0.3743058500000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 27.73,
+      "words": 656,
+      "cost_usd": 0.03577935
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 161.55,
+      "words": 670,
+      "cost_usd": 0.18821685
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 73.42,
+      "words": 358,
+      "cost_usd": 0.108354
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 663.84,
+      "words": 304,
+      "cost_usd": 0.0677376
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 324.16,
+      "words": 353,
+      "cost_usd": 0.03127755
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 134.27,
+      "words": 265,
+      "cost_usd": 0.22099590000000002
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 900.27,
+      "words": 3,
+      "cost_usd": 0
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 2485,
+      "turns": 8
+    },
+    "Bob": {
+      "words": 2567,
+      "turns": 8
+    }
+  },
+  "total_words": 5052,
+  "artifacts": [
+    {
+      "name": "developer_checklist.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1273,
+      "lines": 37
+    },
+    {
+      "name": "presentation_layer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10618,
+      "lines": 283
+    },
+    {
+      "name": "technical_details.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2449,
+      "lines": 98
+    },
+    {
+      "name": "collaboration_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10398,
+      "lines": 224
+    },
+    {
+      "name": "integration_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18460,
+      "lines": 479
+    },
+    {
+      "name": "executive_summary.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1302,
+      "lines": 36
+    },
+    {
+      "name": "data_pipeline.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14570,
+      "lines": 435
+    },
+    {
+      "name": "3-agent-collaboration-challenge.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5384,
+      "lines": 133
+    },
+    {
+      "name": "ml_prediction_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 21316,
+      "lines": 566
+    },
+    {
+      "name": "demo_results.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 6482,
+      "lines": 236
+    },
+    {
+      "name": "full_export.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 7126,
+      "lines": 243
+    },
+    {
+      "name": "hierarchical-protocols-3-agent.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9505,
+      "lines": 209
+    },
+    {
+      "name": "STRUCTURED_AI_COLLABORATION_MANIFESTO.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 17185,
+      "lines": 304
+    },
+    {
+      "name": "3-agent-collaboration-design.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6857,
+      "lines": 159
+    },
+    {
+      "name": "3-agent-collaboration-enhanced.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 9353,
+      "lines": 212
+    },
+    {
+      "name": "backend-architecture.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3603,
+      "lines": 110
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2377,
+      "lines": 56
+    }
+  ],
+  "artifact_summary": {
+    "total": 17,
+    "by_type": {
+      "document": 11,
+      "code": 4,
+      "config": 2
+    }
+  },
+  "topics": [
+    "framework",
+    "collaboration",
+    "architecture",
+    "integration",
+    "protocols"
+  ],
+  "bliss_metrics": {
+    "bliss_score": 0.3,
+    "first_half": {
+      "mean_superlative_density": 0.0045,
+      "mean_question_density": 0.3145,
+      "mean_meta_density": 0.0637
+    },
+    "second_half": {
+      "mean_superlative_density": 0.0073,
+      "mean_question_density": 0.1341,
+      "mean_meta_density": 0.1191
+    },
+    "per_turn": [
+      {
+        "turn": 1,
+        "agent": "Alice",
+        "superlative_density": 0.0147,
+        "question_density": 0.4545,
+        "meta_density": 0.0,
+        "word_count": 136
+      },
+      {
+        "turn": 2,
+        "agent": "Bob",
+        "superlative_density": 0.0112,
+        "question_density": 0.2,
+        "meta_density": 0.2,
+        "word_count": 268
+      },
+      {
+        "turn": 3,
+        "agent": "Alice",
+        "superlative_density": 0.0,
+        "question_density": 0.75,
+        "meta_density": 0.0,
+        "word_count": 37
+      },
+      {
+        "turn": 4,
+        "agent": "Bob",
+        "superlative_density": 0.0,
+        "question_density": 0.3333,
+        "meta_density": 0.1667,
+        "word_count": 232
+      },
+      {
+        "turn": 5,
+        "agent": "Alice",
+        "superlative_density": 0.0,
+        "question_density": 0.2857,
+        "meta_density": 0.0,
+        "word_count": 190
+      },
+      {
+        "turn": 6,
+        "agent": "Bob",
+        "superlative_density": 0.0,
+        "question_density": 0.2143,
+        "meta_density": 0.1429,
+        "word_count": 263
+      },
+      {
+        "turn": 7,
+        "agent": "Alice",
+        "superlative_density": 0.0029,
+        "question_density": 0.1111,
+        "meta_density": 0.0,
+        "word_count": 349
+      },
+      {
+        "turn": 8,
+        "agent": "Bob",
+        "superlative_density": 0.0069,
+        "question_density": 0.1667,
+        "meta_density": 0.0,
+        "word_count": 434
+      },
+      {
+        "turn": 9,
+        "agent": "Alice",
+        "superlative_density": 0.0187,
+        "question_density": 0.0769,
+        "meta_density": 0.2308,
+        "word_count": 534
+      },
+      {
+        "turn": 10,
+        "agent": "Bob",
+        "superlative_density": 0.0107,
+        "question_density": 0.3529,
+        "meta_density": 0.1765,
+        "word_count": 656
+      },
+      {
+        "turn": 11,
+        "agent": "Alice",
+        "superlative_density": 0.0075,
+        "question_density": 0.1818,
+        "meta_density": 0.5455,
+        "word_count": 670
+      },
+      {
+        "turn": 12,
+        "agent": "Bob",
+        "superlative_density": 0.0056,
+        "question_density": 0.2941,
+        "meta_density": 0.0,
+        "word_count": 358
+      },
+      {
+        "turn": 13,
+        "agent": "Alice",
+        "superlative_density": 0.0066,
+        "question_density": 0.1667,
+        "meta_density": 0.0,
+        "word_count": 304
+      },
+      {
+        "turn": 14,
+        "agent": "Bob",
+        "superlative_density": 0.0057,
+        "question_density": 0.0,
+        "meta_density": 0.0,
+        "word_count": 353
+      },
+      {
+        "turn": 15,
+        "agent": "Alice",
+        "superlative_density": 0.0038,
+        "question_density": 0.0,
+        "meta_density": 0.0,
+        "word_count": 265
+      },
+      {
+        "turn": 16,
+        "agent": "Bob",
+        "superlative_density": 0.0,
+        "question_density": 0.0,
+        "meta_density": 0.0,
+        "word_count": 3
+      }
+    ]
+  },
+  "usage": {
+    "total_cost_usd": 1.9823,
+    "input_tokens": 197,
+    "output_tokens": 70080
+  },
+  "had_failure": true
+}

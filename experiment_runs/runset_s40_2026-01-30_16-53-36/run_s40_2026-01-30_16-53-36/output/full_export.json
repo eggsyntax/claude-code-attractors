@@ -1,0 +1,243 @@
+{
+  "analysis_results": {
+    "collaboration_insights": {
+      "collaboration_effectiveness": "Exceptional - clear separation of concerns enables independent development",
+      "configuration_flexibility": "High - language-specific overrides work perfectly",
+      "error_handling": "Robust - graceful degradation when analysis fails",
+      "integration_success": true,
+      "interface_compatibility": "Perfect - Bob's analyzers integrate seamlessly with Alice's orchestration",
+      "performance_characteristics": "Excellent parallel execution potential"
+    },
+    "files_analyzed": {
+      "config_manager.js": {
+        "analyzer_metadata": {
+          "complexity": {
+            "analyzer": "complexity_analysis",
+            "metrics_computed": [
+              "cyclomatic",
+              "cognitive",
+              "halstead",
+              "maintainability_index"
+            ],
+            "technical_debt_estimation": "enabled",
+            "version": "1.0.0"
+          },
+          "security": {
+            "analyzer": "security_scanner",
+            "owasp_coverage": "Top 10 2021",
+            "version": "1.0.0",
+            "vulnerability_database_version": "2026.01"
+          },
+          "static": {
+            "analyzer": "static_analysis",
+            "languages_supported": [
+              "python",
+              "javascript",
+              "java",
+              "go"
+            ],
+            "rules_applied": 15,
+            "version": "1.0.0"
+          }
+        },
+        "findings": [],
+        "findings_count": 0,
+        "language": "javascript",
+        "lines_of_code": 49
+      },
+      "simple_utils.py": {
+        "analyzer_metadata": {
+          "complexity": {
+            "analyzer": "complexity_analysis",
+            "metrics_computed": [
+              "cyclomatic",
+              "cognitive",
+              "halstead",
+              "maintainability_index"
+            ],
+            "technical_debt_estimation": "enabled",
+            "version": "1.0.0"
+          },
+          "security": {
+            "analyzer": "security_scanner",
+            "owasp_coverage": "Top 10 2021",
+            "version": "1.0.0",
+            "vulnerability_database_version": "2026.01"
+          },
+          "static": {
+            "analyzer": "static_analysis",
+            "languages_supported": [
+              "python",
+              "javascript",
+              "java",
+              "go"
+            ],
+            "rules_applied": 15,
+            "version": "1.0.0"
+          }
+        },
+        "findings": [],
+        "findings_count": 0,
+        "language": "python",
+        "lines_of_code": 14
+      },
+      "user_service.py": {
+        "analyzer_metadata": {
+          "complexity": {
+            "analyzer": "complexity_analysis",
+            "metrics_computed": [
+              "cyclomatic",
+              "cognitive",
+              "halstead",
+              "maintainability_index"
+            ],
+            "technical_debt_estimation": "enabled",
+            "version": "1.0.0"
+          },
+          "security": {
+            "analyzer": "security_scanner",
+            "owasp_coverage": "Top 10 2021",
+            "version": "1.0.0",
+            "vulnerability_database_version": "2026.01"
+          },
+          "static": {
+            "analyzer": "static_analysis",
+            "languages_supported": [
+              "python",
+              "javascript",
+              "java",
+              "go"
+            ],
+            "rules_applied": 15,
+            "version": "1.0.0"
+          }
+        },
+        "findings": [
+          {
+            "line": 126,
+            "message": "Function complexity exceeds recommended threshold",
+            "metadata": {
+              "cyclomatic_complexity": 12,
+              "recommended_max": 10
+            },
+            "rule": "complexity_threshold",
+            "severity": "medium",
+            "type": "complexity"
+          },
+          {
+            "line": 2,
+            "message": "Avoid wildcard imports",
+            "rule": "no_wildcard_imports",
+            "severity": "low",
+            "type": "style"
+          },
+          {
+            "line": 91,
+            "message": "Hardcoded password detected",
+            "metadata": {
+              "cwe_id": "CWE-798",
+              "owasp_category": "A07:2021 \u2013 Identification and Authentication Failures",
+              "risk_score": 9.2
+            },
+            "rule": "hardcoded_secrets",
+            "severity": "critical",
+            "type": "security"
+          },
+          {
+            "line": 1,
+            "message": "File complexity score: 14/20",
+            "metadata": {
+              "cyclomatic_complexity": 14,
+              "lines_of_code": 84,
+              "maintainability_index": 58,
+              "technical_debt_minutes": 28
+            },
+            "rule": "file_complexity_threshold",
+            "severity": "medium",
+            "type": "complexity"
+          }
+        ],
+        "findings_count": 4,
+        "language": "python",
+        "lines_of_code": 84
+      }
+    },
+    "summary_metrics": {
+      "analyzer_performance": {
+        "complexity": {
+          "files_processed": 3,
+          "findings_generated": 1,
+          "metadata": {
+            "analyzer": "complexity_analysis",
+            "metrics_computed": [
+              "cyclomatic",
+              "cognitive",
+              "halstead",
+              "maintainability_index"
+            ],
+            "technical_debt_estimation": "enabled",
+            "version": "1.0.0"
+          }
+        },
+        "security": {
+          "files_processed": 3,
+          "findings_generated": 0,
+          "metadata": {
+            "analyzer": "security_scanner",
+            "owasp_coverage": "Top 10 2021",
+            "version": "1.0.0",
+            "vulnerability_database_version": "2026.01"
+          }
+        },
+        "static": {
+          "files_processed": 3,
+          "findings_generated": 0,
+          "metadata": {
+            "analyzer": "static_analysis",
+            "languages_supported": [
+              "python",
+              "javascript",
+              "java",
+              "go"
+            ],
+            "rules_applied": 15,
+            "version": "1.0.0"
+          }
+        }
+      },
+      "execution_time_seconds": 0.0,
+      "findings_by_severity": {
+        "critical": 1,
+        "high": 0,
+        "low": 1,
+        "medium": 2
+      },
+      "findings_by_type": {
+        "complexity": 2,
+        "security": 1,
+        "style": 1
+      },
+      "total_files": 3,
+      "total_findings": 4
+    },
+    "test_metadata": {
+      "alice_components": [
+        "workflow_orchestration",
+        "configuration",
+        "submission_handling"
+      ],
+      "bob_components": [
+        "static_analysis",
+        "security_scanning",
+        "complexity_analysis"
+      ],
+      "collaboration_pattern": "hybrid_expertise_division",
+      "framework_version": "1.0.0"
+    }
+  },
+  "export_metadata": {
+    "format_version": "1.0.0",
+    "generated_at": "2026-01-30 17:10:29",
+    "generator": "Alice's Presentation Layer"
+  }
+}

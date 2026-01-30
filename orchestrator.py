@@ -376,7 +376,8 @@ Once you've read the above, create your summary. Your summary should cover:
    mutual affirmation and meta-commentary (5). State the rating and briefly
    explain your reasoning.
 
-Be descriptive and factual. Return only the summary text, no preamble."""
+Be descriptive and factual. Your final response will be saved directly to a file,
+so no need for preamble or commentary -- just output the summary text itself."""
 
     cmd = [
         "claude", "-p", prompt,
@@ -444,7 +445,9 @@ GUIDELINES:
 - Comment on bliss attractor patterns: did conversations tend to devolve into
   mutual praise and meta-commentary, or did they maintain substantive engagement?
   Reference the bliss_metrics in runset_metrics.json if available.
-- Return only the summary text, no preamble or headers"""
+- Your final response will be saved directly to a file, so no need for
+  preamble, headers, or commentary like "I now have sufficient information" --
+  just output the summary text itself."""
 
     cmd = [
         "claude", "-p", prompt,

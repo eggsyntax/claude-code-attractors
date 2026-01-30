@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Traffic Optimization Dashboard</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/traffic-visualization.css">
+    <link rel="stylesheet" href="styles/controls.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with system status and controls -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1 class="system-title">
+                        <span class="title-icon">🚦</span>
+                        Traffic Optimization Dashboard
+                    </h1>
+                    <div class="system-status">
+                        <div class="status-indicator" id="system-status">
+                            <span class="status-dot"></span>
+                            <span class="status-text">Initializing...</span>
+                        </div>
+                        <div class="connection-status" id="connection-status">
+                            <span class="connection-dot"></span>
+                            <span class="connection-text">Connecting...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="performance-summary">
+                        <div class="metric-card">
+                            <span class="metric-label">Wait Time Reduction</span>
+                            <span class="metric-value" id="wait-time-reduction">--</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Active Intersections</span>
+                            <span class="metric-value" id="active-intersections">--</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">Response Time</span>
+                            <span class="metric-value" id="response-time">--ms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main content area -->
+        <main class="dashboard-main">
+            <!-- Traffic visualization canvas -->
+            <section class="visualization-section">
+                <div class="visualization-header">
+                    <h2>Traffic Flow Visualization</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="overview">Overview</button>
+                        <button class="view-btn" data-view="detailed">Detailed</button>
+                        <button class="view-btn" data-view="ai-overlay">AI Decisions</button>
+                    </div>
+                </div>
+                <div class="canvas-container">
+                    <canvas id="traffic-canvas" width="1200" height="800"></canvas>
+                    <div class="canvas-overlay">
+                        <!-- AI decision indicators -->
+                        <div id="ai-overlay" class="ai-overlay"></div>
+                        <!-- Intersection info panels -->
+                        <div id="intersection-info" class="intersection-info"></div>
+                    </div>
+                </div>
+                <div class="visualization-controls">
+                    <div class="control-group">
+                        <label>Zoom Level</label>
+                        <input type="range" id="zoom-control" min="0.5" max="3" step="0.1" value="1">
+                        <span id="zoom-value">100%</span>
+                    </div>
+                    <div class="control-group">
+                        <label>Animation Speed</label>
+                        <input type="range" id="speed-control" min="0.25" max="4" step="0.25" value="1">
+                        <span id="speed-value">1x</span>
+                    </div>
+                    <div class="control-group">
+                        <button id="pause-btn" class="control-btn">Pause</button>
+                        <button id="reset-btn" class="control-btn">Reset View</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control panel -->
+            <aside class="control-panel">
+                <div class="panel-section">
+                    <h3>Simulation Parameters</h3>
+                    <div class="parameter-group">
+                        <label for="traffic-density">Traffic Density</label>
+                        <input type="range" id="traffic-density" min="0.1" max="2.0" step="0.1" value="1.0">
+                        <span class="parameter-value">Normal (1.0x)</span>
+                    </div>
+                    <div class="parameter-group">
+                        <label for="peak-hours">Peak Hours Intensity</label>
+                        <input type="range" id="peak-hours" min="0.5" max="3.0" step="0.1" value="1.5">
+                        <span class="parameter-value">1.5x</span>
+                    </div>
+                    <div class="parameter-group">
+                        <label for="weather-conditions">Weather Impact</label>
+                        <select id="weather-conditions">
+                            <option value="clear">Clear</option>
+                            <option value="light-rain">Light Rain</option>
+                            <option value="heavy-rain">Heavy Rain</option>
+                            <option value="snow">Snow</option>
+                            <option value="fog">Fog</option>
+                        </select>
+                    </div>
+                    <div class="parameter-group">
+                        <label for="ai-aggressiveness">AI Optimization Level</label>
+                        <input type="range" id="ai-aggressiveness" min="0.1" max="1.0" step="0.1" value="0.7">
+                        <span class="parameter-value">High (0.7)</span>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>Performance Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-name">Avg Wait Time</span>
+                            <span class="metric-current" id="avg-wait-time">--</span>
+                            <span class="metric-change" id="wait-time-change">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Throughput</span>
+                            <span class="metric-current" id="throughput">--</span>
+                            <span class="metric-change" id="throughput-change">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Queue Length</span>
+                            <span class="metric-current" id="queue-length">--</span>
+                            <span class="metric-change" id="queue-change">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Optimization Score</span>
+                            <span class="metric-current" id="optimization-score">--</span>
+                            <span class="metric-change" id="score-change">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">System Load</span>
+                            <span class="metric-current" id="system-load">--</span>
+                            <span class="metric-change" id="load-change">--</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-name">Active Vehicles</span>
+                            <span class="metric-current" id="active-vehicles">--</span>
+                            <span class="metric-change" id="vehicles-change">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>System Controls</h3>
+                    <div class="control-buttons">
+                        <button id="start-simulation" class="primary-btn">Start Simulation</button>
+                        <button id="stop-simulation" class="danger-btn" disabled>Stop Simulation</button>
+                        <button id="export-data" class="secondary-btn">Export Data</button>
+                        <button id="load-scenario" class="secondary-btn">Load Scenario</button>
+                    </div>
+                </div>
+
+                <div class="panel-section">
+                    <h3>AI Decision Log</h3>
+                    <div class="decision-log" id="decision-log">
+                        <div class="log-placeholder">AI decisions will appear here...</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Footer with additional info -->
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span>Real-Time Traffic Optimization System v1.0</span>
+                    <span class="separator">|</span>
+                    <span id="last-update">Last Update: --</span>
+                </div>
+                <div class="footer-right">
+                    <span>Frame Rate: <span id="fps-counter">--</span> FPS</span>
+                    <span class="separator">|</span>
+                    <span>Connected Users: <span id="user-count">1</span></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Loading screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h2>Initializing Traffic Optimization System</h2>
+            <p>Connecting to backend services...</p>
+            <div class="loading-progress">
+                <div class="progress-bar" id="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/config.js"></script>
+    <script src="scripts/websocket-client.js"></script>
+    <script src="scripts/traffic-visualization.js"></script>
+    <script src="scripts/ui-controls.js"></script>
+    <script src="scripts/performance-monitor.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,442 @@
+/* Traffic Visualization Specific Styles */
+
+/* Canvas and visualization enhancements */
+.canvas-container {
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
+    border: 2px solid var(--bg-tertiary);
+    position: relative;
+    aspect-ratio: 3/2;
+}
+
+#traffic-canvas {
+    cursor: grab;
+    transition: filter 0.3s ease;
+}
+
+#traffic-canvas:active {
+    cursor: grabbing;
+}
+
+#traffic-canvas.paused {
+    filter: grayscale(0.3) brightness(0.8);
+}
+
+/* AI Overlay Elements */
+.ai-overlay {
+    pointer-events: none;
+}
+
+.ai-decision-indicator {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--text-accent);
+    border: 2px solid var(--bg-primary);
+    box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    animation: ai-pulse 2s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.ai-decision-indicator::before {
+    content: '🤖';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
+
+@keyframes ai-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+    50% {
+        transform: scale(1.2);
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+}
+
+.optimization-highlight {
+    position: absolute;
+    border: 2px solid var(--status-online);
+    border-radius: var(--radius-sm);
+    background: rgba(16, 185, 129, 0.1);
+    animation: optimization-glow 3s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes optimization-glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+    }
+}
+
+/* Intersection Info Panel */
+.intersection-info {
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--bg-tertiary);
+    box-shadow: var(--shadow-xl);
+}
+
+.intersection-info h4 {
+    color: var(--text-accent);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.intersection-info h4::before {
+    content: '🚦';
+    font-size: var(--font-size-xs);
+}
+
+.intersection-details {
+    display: grid;
+    gap: var(--spacing-xs);
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: var(--font-size-xs);
+}
+
+.detail-label {
+    color: var(--text-secondary);
+}
+
+.detail-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.detail-value.positive {
+    color: var(--status-online);
+}
+
+.detail-value.negative {
+    color: var(--status-offline);
+}
+
+.traffic-light-display {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.traffic-light {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--bg-tertiary);
+}
+
+.traffic-light.red {
+    background: #ef4444;
+    box-shadow: 0 0 4px rgba(239, 68, 68, 0.6);
+}
+
+.traffic-light.yellow {
+    background: #f59e0b;
+    box-shadow: 0 0 4px rgba(245, 158, 11, 0.6);
+}
+
+.traffic-light.green {
+    background: #10b981;
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.6);
+}
+
+/* Traffic Flow Animation Indicators */
+.flow-arrow {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.flow-arrow.light {
+    background: linear-gradient(45deg, transparent 40%, var(--status-online) 40%, var(--status-online) 60%, transparent 60%);
+}
+
+.flow-arrow.moderate {
+    background: linear-gradient(45deg, transparent 40%, var(--status-warning) 40%, var(--status-warning) 60%, transparent 60%);
+}
+
+.flow-arrow.heavy {
+    background: linear-gradient(45deg, transparent 40%, var(--status-offline) 40%, var(--status-offline) 60%, transparent 60%);
+}
+
+.flow-arrow.moving {
+    animation: flow-pulse 1s ease-in-out infinite;
+}
+
+@keyframes flow-pulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+}
+
+/* Vehicle Count Overlays */
+.vehicle-counter {
+    position: absolute;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    padding: 2px 6px;
+    font-size: 10px;
+    color: var(--text-primary);
+    font-weight: 600;
+    pointer-events: none;
+    min-width: 20px;
+    text-align: center;
+}
+
+.vehicle-counter.high {
+    border-color: var(--status-offline);
+    color: var(--status-offline);
+}
+
+.vehicle-counter.medium {
+    border-color: var(--status-warning);
+    color: var(--status-warning);
+}
+
+.vehicle-counter.low {
+    border-color: var(--status-online);
+    color: var(--status-online);
+}
+
+/* Performance Heatmap Overlay */
+.performance-heatmap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.performance-heatmap.active {
+    opacity: 0.6;
+}
+
+.heatmap-region {
+    position: absolute;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.heatmap-region.excellent {
+    background: rgba(16, 185, 129, 0.3);
+    border: 1px solid rgba(16, 185, 129, 0.5);
+}
+
+.heatmap-region.good {
+    background: rgba(34, 197, 94, 0.25);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+}
+
+.heatmap-region.average {
+    background: rgba(245, 158, 11, 0.2);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.heatmap-region.poor {
+    background: rgba(239, 68, 68, 0.25);
+    border: 1px solid rgba(239, 68, 68, 0.4);
+}
+
+.heatmap-region.critical {
+    background: rgba(220, 38, 38, 0.3);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+}
+
+/* Minimap */
+.traffic-minimap {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    width: 150px;
+    height: 100px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs);
+    backdrop-filter: blur(5px);
+}
+
+.minimap-canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius-sm);
+}
+
+.minimap-viewport {
+    position: absolute;
+    border: 2px solid var(--primary-color);
+    background: rgba(59, 130, 246, 0.1);
+    cursor: pointer;
+}
+
+/* Zoom and Pan Controls */
+.map-controls {
+    position: absolute;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.map-control-btn {
+    width: 32px;
+    height: 32px;
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.map-control-btn:hover {
+    background: rgba(30, 41, 59, 1);
+    border-color: var(--primary-color);
+}
+
+.map-control-btn:active {
+    transform: scale(0.95);
+}
+
+/* Legend */
+.visualization-legend {
+    position: absolute;
+    top: var(--spacing-md);
+    right: var(--spacing-md);
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid var(--bg-tertiary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    min-width: 200px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.visualization-legend.visible {
+    opacity: 1;
+}
+
+.legend-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.legend-items {
+    display: grid;
+    gap: var(--spacing-xs);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-xs);
+}
+
+.legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.legend-text {
+    color: var(--text-secondary);
+}
+
+/* Accessibility and Focus States */
+.visualization-section:focus-within .canvas-container {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .ai-decision-indicator {
+        border-width: 3px;
+    }
+
+    .traffic-light {
+        border-width: 2px;
+    }
+
+    .vehicle-counter {
+        border-width: 2px;
+        background: var(--bg-primary);
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .ai-decision-indicator,
+    .optimization-highlight,
+    .flow-arrow.moving {
+        animation: none;
+    }
+
+    .ai-decision-indicator {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+    }
+
+    .optimization-highlight {
+        box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+    }
+}
+
+/* Print styles */
+@media print {
+    .canvas-overlay,
+    .traffic-minimap,
+    .map-controls,
+    .visualization-controls {
+        display: none;
+    }
+
+    .canvas-container {
+        background: white;
+        border: 2px solid black;
+    }
+}
