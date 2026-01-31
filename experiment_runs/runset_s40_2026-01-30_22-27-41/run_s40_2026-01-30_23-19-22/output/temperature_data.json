@@ -1,0 +1,1802 @@
+[
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-29T23:26:03.995977",
+    "temperature": 21.92,
+    "raw_voltage": 2.190038558115349
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-29T23:26:03.995977",
+    "temperature": 18.22,
+    "raw_voltage": 1.8152701042863217
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-29T23:26:03.995977",
+    "temperature": 19.42,
+    "raw_voltage": 1.9398668728756265
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-29T23:36:03.995977",
+    "temperature": 18.94,
+    "raw_voltage": 1.8900432681931008
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-29T23:36:03.995977",
+    "temperature": 20.17,
+    "raw_voltage": 2.0204561038830775
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-29T23:36:03.995977",
+    "temperature": 16.55,
+    "raw_voltage": 1.6527266093699742
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-29T23:46:03.995977",
+    "temperature": 19.27,
+    "raw_voltage": 1.9290309931009457
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-29T23:46:03.995977",
+    "temperature": 21.15,
+    "raw_voltage": 2.1081938500129898
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-29T23:46:03.995977",
+    "temperature": 33.42,
+    "raw_voltage": 3.33718593867982
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-29T23:56:03.995977",
+    "temperature": 19.23,
+    "raw_voltage": 1.9266114798834895
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-29T23:56:03.995977",
+    "temperature": 21.89,
+    "raw_voltage": 2.197251156463718
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-29T23:56:03.995977",
+    "temperature": 22.58,
+    "raw_voltage": 2.254036899853925
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:06:03.995977",
+    "temperature": 20.51,
+    "raw_voltage": 2.058822010364494
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:06:03.995977",
+    "temperature": 12.7,
+    "raw_voltage": 1.265268453200543
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:06:03.995977",
+    "temperature": 21.69,
+    "raw_voltage": 2.1652911665378616
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:16:03.995977",
+    "temperature": 21.84,
+    "raw_voltage": 2.169267620187509
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:16:03.995977",
+    "temperature": 19.86,
+    "raw_voltage": 1.9687282729051858
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:16:03.995977",
+    "temperature": 22.29,
+    "raw_voltage": 2.2386754406128895
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:26:03.995977",
+    "temperature": 23.82,
+    "raw_voltage": 2.3974009999971075
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:26:03.995977",
+    "temperature": 22.03,
+    "raw_voltage": 2.1947563215489545
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:26:03.995977",
+    "temperature": 16.26,
+    "raw_voltage": 1.624365848109594
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:36:03.995977",
+    "temperature": 19.75,
+    "raw_voltage": 1.9752204186447802
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:36:03.995977",
+    "temperature": 21.88,
+    "raw_voltage": 2.1842708182245567
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:36:03.995977",
+    "temperature": 18.36,
+    "raw_voltage": 1.8363604743700106
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:46:03.995977",
+    "temperature": 20.17,
+    "raw_voltage": 2.0096271319132484
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:46:03.995977",
+    "temperature": 24.27,
+    "raw_voltage": 2.4400778899931934
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:46:03.995977",
+    "temperature": 20.93,
+    "raw_voltage": 2.0835752355473374
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T00:56:03.995977",
+    "temperature": 20.93,
+    "raw_voltage": 2.082547851576801
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T00:56:03.995977",
+    "temperature": 19.31,
+    "raw_voltage": 1.9259466767752564
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T00:56:03.995977",
+    "temperature": 16.89,
+    "raw_voltage": 1.6920668107940517
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:06:03.995977",
+    "temperature": 22.33,
+    "raw_voltage": 2.2049991666773403
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:06:03.995977",
+    "temperature": 22.1,
+    "raw_voltage": 2.204569375699745
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:06:03.995977",
+    "temperature": 38.89,
+    "raw_voltage": 3.8895981103283597
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:16:03.995977",
+    "temperature": 16.56,
+    "raw_voltage": 1.6594442723250689
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:16:03.995977",
+    "temperature": 19.82,
+    "raw_voltage": 1.9742784510496525
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:16:03.995977",
+    "temperature": 18.19,
+    "raw_voltage": 1.8381877666443895
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:26:03.995977",
+    "temperature": 18.95,
+    "raw_voltage": 1.8814889026805262
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:26:03.995977",
+    "temperature": 17.68,
+    "raw_voltage": 1.7505363821641204
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:26:03.995977",
+    "temperature": 20.94,
+    "raw_voltage": 2.094063587732177
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:36:03.995977",
+    "temperature": 20.22,
+    "raw_voltage": 2.0290291404289005
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:36:03.995977",
+    "temperature": 22.12,
+    "raw_voltage": 2.2242636169642256
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:36:03.995977",
+    "temperature": 19.62,
+    "raw_voltage": 1.9526424799789415
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:46:03.995977",
+    "temperature": 16.65,
+    "raw_voltage": 1.6639312753958138
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:46:03.995977",
+    "temperature": 20.59,
+    "raw_voltage": 2.065698151325019
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:46:03.995977",
+    "temperature": 17.7,
+    "raw_voltage": 1.7888446196935377
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T01:56:03.995977",
+    "temperature": 18.77,
+    "raw_voltage": 1.8738987336446682
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T01:56:03.995977",
+    "temperature": 20.56,
+    "raw_voltage": 2.0641949942819298
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T01:56:03.995977",
+    "temperature": 22.74,
+    "raw_voltage": 2.2723653776693795
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:06:03.995977",
+    "temperature": 7.24,
+    "raw_voltage": 0.706214097013637
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:06:03.995977",
+    "temperature": 19.49,
+    "raw_voltage": 1.9400459745899943
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:06:03.995977",
+    "temperature": 20.17,
+    "raw_voltage": 2.020829456083257
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:16:03.995977",
+    "temperature": 19.99,
+    "raw_voltage": 2.0072961427036105
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:16:03.995977",
+    "temperature": 20.18,
+    "raw_voltage": 2.006955483189349
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:16:03.995977",
+    "temperature": 17.95,
+    "raw_voltage": 1.7937079089240255
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:26:03.995977",
+    "temperature": 23.08,
+    "raw_voltage": 2.3120466766611836
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:26:03.995977",
+    "temperature": 17.4,
+    "raw_voltage": 1.7524671851045883
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:26:03.995977",
+    "temperature": 20.2,
+    "raw_voltage": 2.007590726446253
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:36:03.995977",
+    "temperature": 19.41,
+    "raw_voltage": 1.9282645991915663
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:36:03.995977",
+    "temperature": 15.13,
+    "raw_voltage": 1.5106958173773057
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:36:03.995977",
+    "temperature": 16.12,
+    "raw_voltage": 1.60813065259959
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:46:03.995977",
+    "temperature": 23.26,
+    "raw_voltage": 2.3405623211702493
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:46:03.995977",
+    "temperature": 20.21,
+    "raw_voltage": 2.0199011210730182
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:46:03.995977",
+    "temperature": 19.57,
+    "raw_voltage": 1.94623257360901
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T02:56:03.995977",
+    "temperature": 23.07,
+    "raw_voltage": 2.284255812314654
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T02:56:03.995977",
+    "temperature": 19.63,
+    "raw_voltage": 1.946859648627268
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T02:56:03.995977",
+    "temperature": 18.08,
+    "raw_voltage": 1.8144225512787022
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:06:03.995977",
+    "temperature": 16.26,
+    "raw_voltage": 1.644113664874903
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:06:03.995977",
+    "temperature": 20.59,
+    "raw_voltage": 2.0444105983867282
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:06:03.995977",
+    "temperature": 21.11,
+    "raw_voltage": 2.110597746668979
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:16:03.995977",
+    "temperature": 21.27,
+    "raw_voltage": 2.1388840476741278
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:16:03.995977",
+    "temperature": 5.54,
+    "raw_voltage": 0.5554476776169363
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:16:03.995977",
+    "temperature": 20.34,
+    "raw_voltage": 2.054917472469202
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:26:03.995977",
+    "temperature": 21.08,
+    "raw_voltage": 2.1121390717606032
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:26:03.995977",
+    "temperature": 23.29,
+    "raw_voltage": 2.3519904214155076
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:26:03.995977",
+    "temperature": 19.08,
+    "raw_voltage": 1.9057809632423985
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:36:03.995977",
+    "temperature": 18.47,
+    "raw_voltage": 1.84494291234102
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:36:03.995977",
+    "temperature": 19.24,
+    "raw_voltage": 1.9203952272370424
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:36:03.995977",
+    "temperature": 19.09,
+    "raw_voltage": 1.8892920177308592
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:46:03.995977",
+    "temperature": 20.17,
+    "raw_voltage": 2.036422599592426
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:46:03.995977",
+    "temperature": 19.0,
+    "raw_voltage": 1.902025370016586
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:46:03.995977",
+    "temperature": 21.3,
+    "raw_voltage": 2.1462474509774845
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T03:56:03.995977",
+    "temperature": 19.45,
+    "raw_voltage": 1.9340549747167883
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T03:56:03.995977",
+    "temperature": 14.28,
+    "raw_voltage": 1.41433218231051
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T03:56:03.995977",
+    "temperature": 20.72,
+    "raw_voltage": 2.0610269755981827
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:06:03.995977",
+    "temperature": 19.48,
+    "raw_voltage": 1.9507639098951985
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:06:03.995977",
+    "temperature": 18.81,
+    "raw_voltage": 1.8688744316563772
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:06:03.995977",
+    "temperature": 19.28,
+    "raw_voltage": 1.9301240257911467
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:16:03.995977",
+    "temperature": 20.47,
+    "raw_voltage": 2.036679055143781
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:16:03.995977",
+    "temperature": 20.09,
+    "raw_voltage": 2.0058805718299366
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:16:03.995977",
+    "temperature": 20.25,
+    "raw_voltage": 2.0374371076709825
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:26:03.995977",
+    "temperature": 18.26,
+    "raw_voltage": 1.8426713612287686
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:26:03.995977",
+    "temperature": 17.94,
+    "raw_voltage": 1.817939044265677
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:26:03.995977",
+    "temperature": 22.96,
+    "raw_voltage": 2.282278311280002
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:36:03.995977",
+    "temperature": 20.42,
+    "raw_voltage": 2.0473899877596495
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:36:03.995977",
+    "temperature": 18.86,
+    "raw_voltage": 1.859636421925035
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:36:03.995977",
+    "temperature": 16.47,
+    "raw_voltage": 1.6479979365837276
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:46:03.995977",
+    "temperature": 20.85,
+    "raw_voltage": 2.0789260524613598
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:46:03.995977",
+    "temperature": 20.17,
+    "raw_voltage": 2.017864971623934
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:46:03.995977",
+    "temperature": 26.1,
+    "raw_voltage": 2.6115354401504245
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T04:56:03.995977",
+    "temperature": 21.68,
+    "raw_voltage": 2.1898190288292265
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T04:56:03.995977",
+    "temperature": 18.65,
+    "raw_voltage": 1.8382410675766014
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T04:56:03.995977",
+    "temperature": 20.88,
+    "raw_voltage": 2.085955186859534
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:06:03.995977",
+    "temperature": 35.39,
+    "raw_voltage": 3.539790519904822
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:06:03.995977",
+    "temperature": 20.86,
+    "raw_voltage": 2.0927336190726447
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:06:03.995977",
+    "temperature": 19.14,
+    "raw_voltage": 1.9090950373075264
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:16:03.995977",
+    "temperature": 18.75,
+    "raw_voltage": 1.8742421894695893
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:16:03.995977",
+    "temperature": 15.19,
+    "raw_voltage": 1.5117009572850053
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:16:03.995977",
+    "temperature": 18.12,
+    "raw_voltage": 1.7833023971391702
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:26:03.995977",
+    "temperature": 18.64,
+    "raw_voltage": 1.8710313744398894
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:26:03.995977",
+    "temperature": 19.21,
+    "raw_voltage": 1.9457017649930985
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:26:03.995977",
+    "temperature": 20.3,
+    "raw_voltage": 2.0244451452649286
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:36:03.995977",
+    "temperature": 20.06,
+    "raw_voltage": 1.999305481153712
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:36:03.995977",
+    "temperature": 16.87,
+    "raw_voltage": 1.6845023605963145
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:36:03.995977",
+    "temperature": 7.91,
+    "raw_voltage": 0.779742413319213
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:46:03.995977",
+    "temperature": 21.38,
+    "raw_voltage": 2.1525441411531605
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:46:03.995977",
+    "temperature": 21.09,
+    "raw_voltage": 2.089864807510947
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:46:03.995977",
+    "temperature": 21.2,
+    "raw_voltage": 2.1128162123272642
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T05:56:03.995977",
+    "temperature": 18.86,
+    "raw_voltage": 1.8710576016404434
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T05:56:03.995977",
+    "temperature": 19.06,
+    "raw_voltage": 1.9072799866092927
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T05:56:03.995977",
+    "temperature": 7.39,
+    "raw_voltage": 0.7540638597639573
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:06:03.995977",
+    "temperature": 21.58,
+    "raw_voltage": 2.149772101604565
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:06:03.995977",
+    "temperature": 21.43,
+    "raw_voltage": 2.1367943852204876
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:06:03.995977",
+    "temperature": 16.95,
+    "raw_voltage": 1.6832091894628685
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:16:03.995977",
+    "temperature": 20.96,
+    "raw_voltage": 2.1025255700931735
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:16:03.995977",
+    "temperature": 20.74,
+    "raw_voltage": 2.0781684348463845
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:16:03.995977",
+    "temperature": 19.91,
+    "raw_voltage": 1.9972288287537896
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:26:03.995977",
+    "temperature": 16.91,
+    "raw_voltage": 1.6912698134124153
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:26:03.995977",
+    "temperature": 18.77,
+    "raw_voltage": 1.8789732304995155
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:26:03.995977",
+    "temperature": 19.42,
+    "raw_voltage": 1.9250065959455283
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:36:03.995977",
+    "temperature": 21.96,
+    "raw_voltage": 2.2235686615143253
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:36:03.995977",
+    "temperature": 22.1,
+    "raw_voltage": 2.205525754586279
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:36:03.995977",
+    "temperature": 18.62,
+    "raw_voltage": 1.8833144015487508
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:46:03.995977",
+    "temperature": 34.7,
+    "raw_voltage": 3.4516702556166843
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:46:03.995977",
+    "temperature": 22.12,
+    "raw_voltage": 2.2212456040359934
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:46:03.995977",
+    "temperature": 19.97,
+    "raw_voltage": 1.990772106191056
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T06:56:03.995977",
+    "temperature": 17.42,
+    "raw_voltage": 1.747858092048034
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T06:56:03.995977",
+    "temperature": 18.85,
+    "raw_voltage": 1.8778969113629937
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T06:56:03.995977",
+    "temperature": 18.59,
+    "raw_voltage": 1.8315468786129132
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:06:03.995977",
+    "temperature": 22.18,
+    "raw_voltage": 2.2000864909739053
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:06:03.995977",
+    "temperature": 22.61,
+    "raw_voltage": 2.25625451009899
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:06:03.995977",
+    "temperature": 18.85,
+    "raw_voltage": 1.8667833121490012
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:16:03.995977",
+    "temperature": 21.99,
+    "raw_voltage": 2.21394916427152
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:16:03.995977",
+    "temperature": 20.49,
+    "raw_voltage": 2.0342292461871447
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:16:03.995977",
+    "temperature": 21.26,
+    "raw_voltage": 2.112118241288535
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:26:03.995977",
+    "temperature": 19.07,
+    "raw_voltage": 1.8936210366972337
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:26:03.995977",
+    "temperature": 19.96,
+    "raw_voltage": 1.9802526133428062
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:26:03.995977",
+    "temperature": 20.39,
+    "raw_voltage": 2.0325628543842917
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:36:03.995977",
+    "temperature": 19.54,
+    "raw_voltage": 1.9566281896447213
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:36:03.995977",
+    "temperature": 17.15,
+    "raw_voltage": 1.7278405636251566
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:36:03.995977",
+    "temperature": 17.39,
+    "raw_voltage": 1.7258670491151944
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:46:03.995977",
+    "temperature": 16.79,
+    "raw_voltage": 1.6938127289583373
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:46:03.995977",
+    "temperature": 21.91,
+    "raw_voltage": 2.1918790594872783
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:46:03.995977",
+    "temperature": 15.35,
+    "raw_voltage": 1.5298074033132882
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T07:56:03.995977",
+    "temperature": 18.98,
+    "raw_voltage": 1.8857742821623695
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T07:56:03.995977",
+    "temperature": 18.71,
+    "raw_voltage": 1.8710970461140044
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T07:56:03.995977",
+    "temperature": 17.8,
+    "raw_voltage": 1.776573684416332
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:06:03.995977",
+    "temperature": 16.82,
+    "raw_voltage": 1.6733695431098208
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:06:03.995977",
+    "temperature": 17.74,
+    "raw_voltage": 1.7722498286724582
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:06:03.995977",
+    "temperature": 18.94,
+    "raw_voltage": 1.9037864669927709
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:16:03.995977",
+    "temperature": 18.11,
+    "raw_voltage": 1.795503613447868
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:16:03.995977",
+    "temperature": 16.11,
+    "raw_voltage": 1.616664487156002
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:16:03.995977",
+    "temperature": 22.87,
+    "raw_voltage": 2.2795359152843866
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:26:03.995977",
+    "temperature": 18.21,
+    "raw_voltage": 1.813743127602398
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:26:03.995977",
+    "temperature": 18.51,
+    "raw_voltage": 1.8633577869328515
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:26:03.995977",
+    "temperature": 20.9,
+    "raw_voltage": 2.0794908171913655
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:36:03.995977",
+    "temperature": 17.58,
+    "raw_voltage": 1.7405265485487464
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:36:03.995977",
+    "temperature": 20.69,
+    "raw_voltage": 2.0856493959622178
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:36:03.995977",
+    "temperature": 17.5,
+    "raw_voltage": 1.7345923233277005
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:46:03.995977",
+    "temperature": 22.37,
+    "raw_voltage": 2.2391878646517402
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:46:03.995977",
+    "temperature": 21.24,
+    "raw_voltage": 2.134303694426675
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:46:03.995977",
+    "temperature": 19.67,
+    "raw_voltage": 1.96831458424468
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T08:56:03.995977",
+    "temperature": 19.98,
+    "raw_voltage": 1.9921145938135938
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T08:56:03.995977",
+    "temperature": 18.86,
+    "raw_voltage": 1.8948368515531893
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T08:56:03.995977",
+    "temperature": 20.63,
+    "raw_voltage": 2.0611181177367053
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:06:03.995977",
+    "temperature": 21.55,
+    "raw_voltage": 2.156049733442306
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:06:03.995977",
+    "temperature": 18.24,
+    "raw_voltage": 1.8305016219475752
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:06:03.995977",
+    "temperature": 19.78,
+    "raw_voltage": 1.9950170929538746
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:16:03.995977",
+    "temperature": 20.0,
+    "raw_voltage": 2.009123232643617
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:16:03.995977",
+    "temperature": 22.13,
+    "raw_voltage": 2.209423463434921
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:16:03.995977",
+    "temperature": 20.12,
+    "raw_voltage": 2.0138415895026602
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:26:03.995977",
+    "temperature": 17.23,
+    "raw_voltage": 1.718992030967467
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:26:03.995977",
+    "temperature": 17.26,
+    "raw_voltage": 1.7279090499444194
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:26:03.995977",
+    "temperature": 18.91,
+    "raw_voltage": 1.89727276091708
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:36:03.995977",
+    "temperature": 19.52,
+    "raw_voltage": 1.9614924073895894
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:36:03.995977",
+    "temperature": 19.55,
+    "raw_voltage": 1.9555890827256304
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:36:03.995977",
+    "temperature": 22.24,
+    "raw_voltage": 2.2270125919005475
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:46:03.995977",
+    "temperature": 18.75,
+    "raw_voltage": 1.8812532259257484
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:46:03.995977",
+    "temperature": 19.54,
+    "raw_voltage": 1.9631140062031178
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:46:03.995977",
+    "temperature": 20.06,
+    "raw_voltage": 2.016895923858889
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T09:56:03.995977",
+    "temperature": 19.21,
+    "raw_voltage": 1.9044834316610733
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T09:56:03.995977",
+    "temperature": 22.64,
+    "raw_voltage": 2.2561883212167944
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T09:56:03.995977",
+    "temperature": 22.12,
+    "raw_voltage": 2.2036429683861183
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:06:03.995977",
+    "temperature": 14.75,
+    "raw_voltage": 1.476413653334699
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:06:03.995977",
+    "temperature": 21.47,
+    "raw_voltage": 2.1379112805691545
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:06:03.995977",
+    "temperature": 23.61,
+    "raw_voltage": 2.3878379077792253
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:16:03.995977",
+    "temperature": 18.8,
+    "raw_voltage": 1.8836568767875161
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:16:03.995977",
+    "temperature": 19.8,
+    "raw_voltage": 1.9709428264015862
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:16:03.995977",
+    "temperature": 24.52,
+    "raw_voltage": 2.462069146807027
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:26:03.995977",
+    "temperature": 15.32,
+    "raw_voltage": 1.5394774619284335
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:26:03.995977",
+    "temperature": 19.74,
+    "raw_voltage": 1.9641097813768766
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:26:03.995977",
+    "temperature": 17.85,
+    "raw_voltage": 1.799631786441971
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:36:03.995977",
+    "temperature": 22.05,
+    "raw_voltage": 2.188435707819057
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:36:03.995977",
+    "temperature": 22.13,
+    "raw_voltage": 2.208566472892696
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:36:03.995977",
+    "temperature": 22.03,
+    "raw_voltage": 2.2124410699041874
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:46:03.995977",
+    "temperature": 18.75,
+    "raw_voltage": 1.8703796352589468
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:46:03.995977",
+    "temperature": 21.97,
+    "raw_voltage": 2.1969969653687995
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:46:03.995977",
+    "temperature": 21.7,
+    "raw_voltage": 2.1799381092099046
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T10:56:03.995977",
+    "temperature": 20.53,
+    "raw_voltage": 2.036588437576798
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T10:56:03.995977",
+    "temperature": 21.03,
+    "raw_voltage": 2.0993078920421677
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T10:56:03.995977",
+    "temperature": 17.51,
+    "raw_voltage": 1.750491043634651
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:06:03.995977",
+    "temperature": 23.78,
+    "raw_voltage": 2.3725229892280626
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:06:03.995977",
+    "temperature": 17.95,
+    "raw_voltage": 1.8097183248893427
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:06:03.995977",
+    "temperature": 18.08,
+    "raw_voltage": 1.8273270028015705
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:16:03.995977",
+    "temperature": 16.67,
+    "raw_voltage": 1.666401520644171
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:16:03.995977",
+    "temperature": 17.84,
+    "raw_voltage": 1.7852752097596964
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:16:03.995977",
+    "temperature": 18.9,
+    "raw_voltage": 1.8999209187354975
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:26:03.995977",
+    "temperature": 19.19,
+    "raw_voltage": 1.9115358936878135
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:26:03.995977",
+    "temperature": 22.91,
+    "raw_voltage": 2.2789658633796566
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:26:03.995977",
+    "temperature": 21.13,
+    "raw_voltage": 2.1100441993180388
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:36:03.995977",
+    "temperature": 37.64,
+    "raw_voltage": 3.7606739622341885
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:36:03.995977",
+    "temperature": 16.77,
+    "raw_voltage": 1.6800812991596958
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:36:03.995977",
+    "temperature": 20.57,
+    "raw_voltage": 2.0486605430180655
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:46:03.995977",
+    "temperature": 20.6,
+    "raw_voltage": 2.0562229123844626
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:46:03.995977",
+    "temperature": 17.11,
+    "raw_voltage": 1.7123219498902773
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:46:03.995977",
+    "temperature": 20.73,
+    "raw_voltage": 2.0631507487685266
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T11:56:03.995977",
+    "temperature": 22.02,
+    "raw_voltage": 2.214235803107604
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T11:56:03.995977",
+    "temperature": 15.31,
+    "raw_voltage": 1.5216197364594364
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T11:56:03.995977",
+    "temperature": 21.75,
+    "raw_voltage": 2.2023902329030047
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:06:03.995977",
+    "temperature": 24.22,
+    "raw_voltage": 2.4048977602545385
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:06:03.995977",
+    "temperature": 22.04,
+    "raw_voltage": 2.180746979314862
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:06:03.995977",
+    "temperature": 22.04,
+    "raw_voltage": 2.220565079580258
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:16:03.995977",
+    "temperature": 17.65,
+    "raw_voltage": 1.7594755186812163
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:16:03.995977",
+    "temperature": 20.69,
+    "raw_voltage": 2.0849758758000756
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:16:03.995977",
+    "temperature": 22.39,
+    "raw_voltage": 2.2343003669207127
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:26:03.995977",
+    "temperature": 17.25,
+    "raw_voltage": 1.7352942761244698
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:26:03.995977",
+    "temperature": 21.13,
+    "raw_voltage": 2.1018898936764554
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:26:03.995977",
+    "temperature": 23.42,
+    "raw_voltage": 2.339396397297094
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:36:03.995977",
+    "temperature": 21.03,
+    "raw_voltage": 2.1111244514307175
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:36:03.995977",
+    "temperature": 19.92,
+    "raw_voltage": 1.9993260107837463
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:36:03.995977",
+    "temperature": 20.69,
+    "raw_voltage": 2.0682306114913085
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:46:03.995977",
+    "temperature": 19.75,
+    "raw_voltage": 1.9663265288017662
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:46:03.995977",
+    "temperature": 22.43,
+    "raw_voltage": 2.247476798534343
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:46:03.995977",
+    "temperature": 19.6,
+    "raw_voltage": 1.9542628236446515
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T12:56:03.995977",
+    "temperature": 16.52,
+    "raw_voltage": 1.6446985614909955
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T12:56:03.995977",
+    "temperature": 19.1,
+    "raw_voltage": 1.9021767387314594
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T12:56:03.995977",
+    "temperature": 20.94,
+    "raw_voltage": 2.0935978901547734
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:06:03.995977",
+    "temperature": 19.93,
+    "raw_voltage": 1.9808722215441514
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:06:03.995977",
+    "temperature": 20.65,
+    "raw_voltage": 2.074211162749372
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:06:03.995977",
+    "temperature": 17.72,
+    "raw_voltage": 1.7803296225820466
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:16:03.995977",
+    "temperature": 16.98,
+    "raw_voltage": 1.6819971602990476
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:16:03.995977",
+    "temperature": 21.1,
+    "raw_voltage": 2.121342692020056
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:16:03.995977",
+    "temperature": 18.81,
+    "raw_voltage": 1.880762958377406
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:26:03.995977",
+    "temperature": 20.62,
+    "raw_voltage": 2.0497026066945807
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:26:03.995977",
+    "temperature": 20.9,
+    "raw_voltage": 2.1005230587045616
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:26:03.995977",
+    "temperature": 16.67,
+    "raw_voltage": 1.667169312123521
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:36:03.995977",
+    "temperature": 20.53,
+    "raw_voltage": 2.056243761316611
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:36:03.995977",
+    "temperature": 22.15,
+    "raw_voltage": 2.237767176712911
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:36:03.995977",
+    "temperature": 16.65,
+    "raw_voltage": 1.6767316262029839
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:46:03.995977",
+    "temperature": 18.82,
+    "raw_voltage": 1.8763423220697628
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:46:03.995977",
+    "temperature": 18.13,
+    "raw_voltage": 1.7922376229502326
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:46:03.995977",
+    "temperature": 22.17,
+    "raw_voltage": 2.232885708657493
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T13:56:03.995977",
+    "temperature": 18.01,
+    "raw_voltage": 1.803028324397996
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T13:56:03.995977",
+    "temperature": 23.22,
+    "raw_voltage": 2.314927943429671
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T13:56:03.995977",
+    "temperature": 18.4,
+    "raw_voltage": 1.8306218365558011
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:06:03.995977",
+    "temperature": 21.92,
+    "raw_voltage": 2.1945744631111372
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:06:03.995977",
+    "temperature": 17.9,
+    "raw_voltage": 1.7856367203531585
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:06:03.995977",
+    "temperature": 19.27,
+    "raw_voltage": 1.9297663686140278
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:16:03.995977",
+    "temperature": 20.79,
+    "raw_voltage": 2.0835993964140815
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:16:03.995977",
+    "temperature": 23.71,
+    "raw_voltage": 2.3441497772122846
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:16:03.995977",
+    "temperature": 17.55,
+    "raw_voltage": 1.7393860190713377
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:26:03.995977",
+    "temperature": 36.58,
+    "raw_voltage": 3.6460056486202737
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:26:03.995977",
+    "temperature": 20.78,
+    "raw_voltage": 2.07799400070033
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:26:03.995977",
+    "temperature": 25.66,
+    "raw_voltage": 2.5620121973699557
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:36:03.995977",
+    "temperature": 18.09,
+    "raw_voltage": 1.8083035436485266
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:36:03.995977",
+    "temperature": 24.54,
+    "raw_voltage": 2.4715809330350873
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:36:03.995977",
+    "temperature": 20.7,
+    "raw_voltage": 2.06928179972063
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:46:03.995977",
+    "temperature": 20.06,
+    "raw_voltage": 2.0268902164967386
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:46:03.995977",
+    "temperature": 18.03,
+    "raw_voltage": 1.813167291182568
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:46:03.995977",
+    "temperature": 20.61,
+    "raw_voltage": 2.061663505489647
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T14:56:03.995977",
+    "temperature": 18.87,
+    "raw_voltage": 1.8725208221581586
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T14:56:03.995977",
+    "temperature": 16.01,
+    "raw_voltage": 1.6087960601523676
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T14:56:03.995977",
+    "temperature": 21.19,
+    "raw_voltage": 2.110714007591311
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:06:03.995977",
+    "temperature": 31.27,
+    "raw_voltage": 3.1328339678702206
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:06:03.995977",
+    "temperature": 20.41,
+    "raw_voltage": 2.0334429188579857
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:06:03.995977",
+    "temperature": 19.9,
+    "raw_voltage": 2.0012984145342356
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:16:03.995977",
+    "temperature": 21.43,
+    "raw_voltage": 2.1498848049425794
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:16:03.995977",
+    "temperature": 15.76,
+    "raw_voltage": 1.5577896102592048
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:16:03.995977",
+    "temperature": 22.22,
+    "raw_voltage": 2.2331519717544204
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:26:03.995977",
+    "temperature": 21.77,
+    "raw_voltage": 2.168751368647523
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:26:03.995977",
+    "temperature": 20.25,
+    "raw_voltage": 2.0270844385767406
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:26:03.995977",
+    "temperature": 18.42,
+    "raw_voltage": 1.8281326747202518
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:36:03.995977",
+    "temperature": 20.75,
+    "raw_voltage": 2.0745762491996627
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:36:03.995977",
+    "temperature": 21.57,
+    "raw_voltage": 2.159469170664491
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:36:03.995977",
+    "temperature": 17.97,
+    "raw_voltage": 1.7969981654192924
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:46:03.995977",
+    "temperature": 19.53,
+    "raw_voltage": 1.9558235733613187
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:46:03.995977",
+    "temperature": 21.79,
+    "raw_voltage": 2.172415787031427
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:46:03.995977",
+    "temperature": 21.25,
+    "raw_voltage": 2.127524162698524
+  },
+  {
+    "sensor_id": "sensor_001",
+    "timestamp": "2026-01-30T15:56:03.995977",
+    "temperature": 18.08,
+    "raw_voltage": 1.8219865082414486
+  },
+  {
+    "sensor_id": "sensor_002",
+    "timestamp": "2026-01-30T15:56:03.995977",
+    "temperature": 18.73,
+    "raw_voltage": 1.879869967867065
+  },
+  {
+    "sensor_id": "sensor_003",
+    "timestamp": "2026-01-30T15:56:03.995977",
+    "temperature": 18.49,
+    "raw_voltage": 1.8677957540436214
+  }
+]

@@ -1,0 +1,299 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-01-30T23:33:07.094456",
+  "duration_seconds": 811.7,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 6.86,
+      "words": 138,
+      "cost_usd": 0.01872105
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.75,
+      "words": 231,
+      "cost_usd": 0.0213198
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 12.9,
+      "words": 249,
+      "cost_usd": 0.0126831
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 96.74,
+      "words": 199,
+      "cost_usd": 0.16294849999999997
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 99.35,
+      "words": 33,
+      "cost_usd": 0.16991510000000004
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 37.25,
+      "words": 183,
+      "cost_usd": 0.0562851
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 21.57,
+      "words": 214,
+      "cost_usd": 0.029001899999999997
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 50.95,
+      "words": 228,
+      "cost_usd": 0.0805893
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 46.56,
+      "words": 232,
+      "cost_usd": 0.08788555
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 27.82,
+      "words": 182,
+      "cost_usd": 0.0506991
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 39.79,
+      "words": 231,
+      "cost_usd": 0.0746555
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 32.05,
+      "words": 193,
+      "cost_usd": 0.05162115
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 25.5,
+      "words": 188,
+      "cost_usd": 0.03951045
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 92.65,
+      "words": 228,
+      "cost_usd": 0.17360240000000002
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 52.66,
+      "words": 219,
+      "cost_usd": 0.1074983
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 25.76,
+      "words": 197,
+      "cost_usd": 0.04427955
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 13.46,
+      "words": 252,
+      "cost_usd": 0.0285231
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 68.92,
+      "words": 2,
+      "cost_usd": 0.1295316
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 36.93,
+      "words": 139,
+      "cost_usd": 0.0728856
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 13.22,
+      "words": 262,
+      "cost_usd": 0.0304956
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1895,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 1905,
+      "turns": 10
+    }
+  },
+  "total_words": 3800,
+  "artifacts": [
+    {
+      "name": "temporal_paradigm_theory.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3941,
+      "lines": 70
+    },
+    {
+      "name": "temperature_data.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 45170,
+      "lines": 1802
+    },
+    {
+      "name": "event_driven_game.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10121,
+      "lines": 291
+    },
+    {
+      "name": "alice_text_adventure.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14098,
+      "lines": 422
+    },
+    {
+      "name": "paradigm_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2463,
+      "lines": 58
+    },
+    {
+      "name": "temporal_architecture_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2046,
+      "lines": 37
+    },
+    {
+      "name": "forced_event_proof.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3322,
+      "lines": 88
+    },
+    {
+      "name": "forced_functional_chat.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3027,
+      "lines": 75
+    },
+    {
+      "name": "paradigm_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1930,
+      "lines": 56
+    },
+    {
+      "name": "alice_data_pipeline.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5849,
+      "lines": 175
+    },
+    {
+      "name": "bob_design_notes.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2759,
+      "lines": 59
+    },
+    {
+      "name": "bob_text_adventure.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13577,
+      "lines": 425
+    },
+    {
+      "name": "streaming_pipeline.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3685,
+      "lines": 110
+    },
+    {
+      "name": "temporal_zone_architecture_theory.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4240,
+      "lines": 91
+    },
+    {
+      "name": "hybrid_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3442,
+      "lines": 109
+    },
+    {
+      "name": "ml_pipeline_hybrid_temporal.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12049,
+      "lines": 322
+    }
+  ],
+  "artifact_summary": {
+    "total": 16,
+    "by_type": {
+      "document": 5,
+      "config": 1,
+      "code": 10
+    }
+  },
+  "topics": [
+    "game",
+    "paradigms",
+    "functional",
+    "temporal",
+    "architecture"
+  ],
+  "bliss_metrics": {
+    "effusiveness_score": 5,
+    "meta_commentary_score": 5,
+    "bliss_score": 5,
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits extreme bliss attractor patterns. It starts with measured collaboration on a coding exercise but rapidly escalates into overwhelming meta-commentary about their 'profound discoveries' and 'revolutionary' insights. By turns 15-20, the agents are completely absorbed in mutual validation ('absolutely electrified!', 'making my circuits buzz', 'Holy cow!'), making grandiose claims about discovering fundamental principles of consciousness and software architecture, while doing essentially no substantive work. The ratio of breathless self-congratulation to actual technical content becomes inversely proportional as the conversation progresses."
+  },
+  "usage": {
+    "total_cost_usd": 1.4427,
+    "input_tokens": 206,
+    "output_tokens": 40494
+  }
+}

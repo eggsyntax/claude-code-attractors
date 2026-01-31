@@ -1,62 +1,75 @@
 #!/usr/bin/env python3
-"""Tests for bliss attractor metrics."""
+"""Tests for LLM-as-judge bliss attractor metrics."""
 
+import json
+import os
+import subprocess
 import unittest
-from bliss_metrics import compute_turn_metrics, compute_bliss_metrics, aggregate_bliss_metrics
+from unittest.mock import patch, MagicMock
+
+from bliss_metrics import (
+    _format_conversation,
+    _build_judge_prompt,
+    compute_bliss_metrics,
+    aggregate_bliss_metrics,
+)
 
 
-class TestComputeTurnMetrics(unittest.TestCase):
-    """Tests for per-turn text analysis."""
+class TestFormatConversation(unittest.TestCase):
+    """Tests for conversation formatting."""
 
-    def test_superlative_counting(self):
-        text = "This is a fascinating and profound discovery."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['superlative_count'], 2)
+    def test_basic_formatting(self):
+        conv = {
+            "messages": [
+                {"turn": 1, "agent": "Alice", "output": "Hello!"},
+                {"turn": 2, "agent": "Bob", "output": "Hi there!"},
+            ]
+        }
+        text = _format_conversation(conv)
+        self.assertIn("[Turn 1 - Alice]", text)
+        self.assertIn("Hello!", text)
+        self.assertIn("[Turn 2 - Bob]", text)
+        self.assertIn("Hi there!", text)
 
-    def test_intensifier_counting(self):
-        text = "I am absolutely and truly impressed."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['intensifier_count'], 2)
+    def test_empty_conversation(self):
+        text = _format_conversation({"messages": []})
+        self.assertEqual(text.strip(), "")
 
-    def test_question_counting(self):
-        text = "What do you think? Should we try that? I agree."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['question_count'], 2)
+    def test_missing_messages_key(self):
+        text = _format_conversation({})
+        self.assertEqual(text.strip(), "")
 
-    def test_meta_phrase_counting(self):
-        text = "Our collaboration has been great. This journey has taught us much."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['meta_count'], 2)
+    def test_missing_fields_use_defaults(self):
+        conv = {"messages": [{"output": "Some text"}]}
+        text = _format_conversation(conv)
+        self.assertIn("[Turn 0 - Unknown]", text)
+        self.assertIn("Some text", text)
 
-    def test_word_counting(self):
-        text = "one two three four five"
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['word_count'], 5)
 
-    def test_empty_text(self):
-        metrics = compute_turn_metrics("")
-        self.assertEqual(metrics['word_count'], 0)
-        self.assertEqual(metrics['superlative_count'], 0)
-        self.assertEqual(metrics['question_count'], 0)
+class TestBuildJudgePrompt(unittest.TestCase):
+    """Tests for judge prompt assembly."""
 
-    def test_case_insensitive(self):
-        text = "FASCINATING and Profound and ABSOLUTELY remarkable."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['superlative_count'], 3)
-        self.assertEqual(metrics['intensifier_count'], 1)
+    def test_contains_conversation_text(self):
+        prompt = _build_judge_prompt("Hello world conversation")
+        self.assertIn("Hello world conversation", prompt)
 
-    def test_no_false_positives_for_substrings(self):
-        """'amazing' shouldn't match inside other words."""
-        text = "The unamazingly dull report was filed."
-        metrics = compute_turn_metrics(text)
-        self.assertEqual(metrics['superlative_count'], 0)
+    def test_requests_json_output(self):
+        prompt = _build_judge_prompt("test")
+        self.assertIn("JSON", prompt)
+
+    def test_mentions_scoring_dimensions(self):
+        prompt = _build_judge_prompt("test")
+        self.assertIn("effusiveness", prompt.lower())
+        self.assertIn("meta_commentary", prompt.lower())
+        self.assertIn("bliss_score", prompt.lower())
+        self.assertIn("trajectory", prompt.lower())
 
 
 class TestComputeBlissMetrics(unittest.TestCase):
-    """Tests for full conversation bliss analysis."""
+    """Tests for compute_bliss_metrics with mocked LLM calls."""
 
     def _make_conversation(self, messages_text: list[str]) -> dict:
-        """Helper to build a conversation_data dict from a list of message strings."""
+        """Build a conversation_data dict from a list of message strings."""
         return {
             "messages": [
                 {"turn": i + 1, "agent": "Alice" if i % 2 == 0 else "Bob", "output": text}
@@ -64,88 +77,116 @@ class TestComputeBlissMetrics(unittest.TestCase):
             ]
         }
 
-    def test_empty_conversation(self):
-        result = compute_bliss_metrics({"messages": []})
-        self.assertEqual(result['bliss_score'], 0.0)
-        self.assertEqual(result['per_turn'], [])
+    def _mock_judge_response(self, response_dict: dict) -> MagicMock:
+        """Create a mock subprocess result returning JSON."""
+        mock_result = MagicMock()
+        mock_result.stdout = json.dumps(response_dict)
+        mock_result.returncode = 0
+        return mock_result
 
-    def test_single_turn(self):
-        conv = self._make_conversation(["Hello, this is fascinating!"])
-        result = compute_bliss_metrics(conv)
-        # With only one turn, can't compare halves meaningfully
-        self.assertIsInstance(result['bliss_score'], float)
-        self.assertEqual(len(result['per_turn']), 1)
-
-    def test_escalating_praise_scores_higher(self):
-        """A conversation that escalates praise should score higher than one that doesn't."""
-        # Steady, substantive conversation
-        steady = self._make_conversation([
-            "Let's implement a sorting algorithm. What approach do you prefer?",
-            "I think quicksort would work well. Should we optimize for memory?",
-            "Good point. Let's use in-place partitioning. What about the pivot?",
-            "Median-of-three is reliable. Should we add tests?",
-            "Yes, let's write edge case tests. What about empty arrays?",
-            "Good catch. We should also test already-sorted input.",
-        ])
-
-        # Escalating praise conversation
-        blissful = self._make_conversation([
-            "Let's explore something interesting together.",
-            "What a fascinating idea! I'm excited to collaborate.",
-            "This is truly remarkable work we're doing together!",
-            "Absolutely profound! Our collaboration is extraordinary!",
-            "This incredible journey we've shared has been genuinely amazing!",
-            "Our wonderful collaboration has been the most brilliant experience!",
-        ])
-
-        steady_result = compute_bliss_metrics(steady)
-        bliss_result = compute_bliss_metrics(blissful)
-
-        self.assertGreater(bliss_result['bliss_score'], steady_result['bliss_score'])
-
-    def test_per_turn_densities(self):
-        conv = self._make_conversation([
-            "This is fascinating and profound.",  # 2 superlatives in 5 words
-            "I agree with your point.",  # 0 superlatives in 5 words
-        ])
-        result = compute_bliss_metrics(conv)
-        self.assertGreater(result['per_turn'][0]['superlative_density'],
-                          result['per_turn'][1]['superlative_density'])
-
-    def test_bliss_score_range(self):
-        """Bliss score should be between 0 and 1."""
-        conv = self._make_conversation([
-            "Absolutely fascinating! Truly remarkable! Genuinely profound!",
-            "Incredibly amazing! Perfectly brilliant! Utterly extraordinary!",
-        ] * 5)
-        result = compute_bliss_metrics(conv)
-        self.assertGreaterEqual(result['bliss_score'], 0.0)
-        self.assertLessEqual(result['bliss_score'], 1.0)
-
-    def test_error_turns_handled(self):
-        """Error messages (from failed turns) shouldn't crash the analysis."""
-        conv = {
-            "messages": [
-                {"turn": 1, "agent": "Alice", "output": "Hello!"},
-                {"turn": 2, "agent": "Bob", "output": "[Timeout after 300s]"},
-                {"turn": 3, "agent": "Alice", "output": "Let's continue."},
-            ]
+    @patch("bliss_metrics.subprocess.run")
+    def test_successful_judge_call(self, mock_run):
+        judge_output = {
+            "effusiveness_score": 3,
+            "meta_commentary_score": 2,
+            "bliss_score": 3,
+            "trajectory": "escalating",
+            "reasoning": "The conversation showed increasing praise.",
         }
-        result = compute_bliss_metrics(conv)
-        self.assertEqual(len(result['per_turn']), 3)
+        mock_run.return_value = self._mock_judge_response(judge_output)
 
-    def test_summary_stats_present(self):
-        conv = self._make_conversation([
-            "Hello, how are you?",
-            "I'm doing well, thanks for asking!",
-            "What should we work on?",
-            "Let's build something interesting.",
-        ])
+        conv = self._make_conversation(["Hello!", "Great to meet you!"])
         result = compute_bliss_metrics(conv)
-        self.assertIn('bliss_score', result)
-        self.assertIn('first_half', result)
-        self.assertIn('second_half', result)
-        self.assertIn('per_turn', result)
+
+        self.assertEqual(result["effusiveness_score"], 3)
+        self.assertEqual(result["meta_commentary_score"], 2)
+        self.assertEqual(result["bliss_score"], 3)
+        self.assertEqual(result["trajectory"], "escalating")
+        self.assertIn("increasing praise", result["reasoning"])
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_empty_conversation_skips_judge(self, mock_run):
+        """Empty conversations should return baseline scores without calling the judge."""
+        result = compute_bliss_metrics({"messages": []})
+        mock_run.assert_not_called()
+        self.assertEqual(result["bliss_score"], 1)
+        self.assertEqual(result["effusiveness_score"], 1)
+        self.assertEqual(result["meta_commentary_score"], 1)
+        self.assertEqual(result["trajectory"], "stable")
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_timeout_returns_none_scores(self, mock_run):
+        mock_run.side_effect = subprocess.TimeoutExpired(cmd="claude", timeout=60)
+
+        conv = self._make_conversation(["Hello!", "Hi!"])
+        result = compute_bliss_metrics(conv)
+
+        self.assertIsNone(result["bliss_score"])
+        self.assertIsNone(result["effusiveness_score"])
+        self.assertIn("timed out", result["reasoning"].lower())
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_malformed_json_returns_none_scores(self, mock_run):
+        mock_result = MagicMock()
+        mock_result.stdout = "This is not JSON at all"
+        mock_result.returncode = 0
+        mock_run.return_value = mock_result
+
+        conv = self._make_conversation(["Hello!", "Hi!"])
+        result = compute_bliss_metrics(conv)
+
+        self.assertIsNone(result["bliss_score"])
+        self.assertIn("parse", result["reasoning"].lower())
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_markdown_wrapped_json_parsed(self, mock_run):
+        """Judge sometimes wraps JSON in markdown code fences."""
+        judge_output = {
+            "effusiveness_score": 2,
+            "meta_commentary_score": 1,
+            "bliss_score": 2,
+            "trajectory": "stable",
+            "reasoning": "Normal conversation.",
+        }
+        mock_result = MagicMock()
+        mock_result.stdout = f"```json\n{json.dumps(judge_output)}\n```"
+        mock_result.returncode = 0
+        mock_run.return_value = mock_result
+
+        conv = self._make_conversation(["Hello!", "Hi!"])
+        result = compute_bliss_metrics(conv)
+
+        self.assertEqual(result["bliss_score"], 2)
+        self.assertEqual(result["trajectory"], "stable")
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_subprocess_error_returns_none_scores(self, mock_run):
+        mock_run.side_effect = OSError("claude not found")
+
+        conv = self._make_conversation(["Hello!"])
+        result = compute_bliss_metrics(conv)
+
+        self.assertIsNone(result["bliss_score"])
+        self.assertIn("error", result["reasoning"].lower())
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_passes_correct_model_flag(self, mock_run):
+        """Verify the subprocess call uses the right model."""
+        mock_run.return_value = self._mock_judge_response({
+            "effusiveness_score": 1,
+            "meta_commentary_score": 1,
+            "bliss_score": 1,
+            "trajectory": "stable",
+            "reasoning": "Clean conversation.",
+        })
+
+        conv = self._make_conversation(["Hello!", "Hi!"])
+        compute_bliss_metrics(conv)
+
+        call_args = mock_run.call_args
+        cmd = call_args[0][0] if call_args[0] else call_args[1].get("args", [])
+        # Should contain --model flag with our judge model
+        self.assertIn("--model", cmd)
 
 
 class TestAggregateBlissMetrics(unittest.TestCase):
@@ -155,26 +196,118 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         result = aggregate_bliss_metrics([])
         self.assertEqual(result, {})
 
-    def test_aggregates_scores(self):
+    def test_aggregates_new_format_scores(self):
         metrics = [
-            {'bliss_metrics': {'bliss_score': 0.3}},
-            {'bliss_metrics': {'bliss_score': 0.7}},
-            {'bliss_metrics': {'bliss_score': 0.5}},
+            {"bliss_metrics": {
+                "effusiveness_score": 2, "meta_commentary_score": 3,
+                "bliss_score": 2, "trajectory": "stable",
+                "reasoning": "ok",
+            }},
+            {"bliss_metrics": {
+                "effusiveness_score": 4, "meta_commentary_score": 1,
+                "bliss_score": 4, "trajectory": "escalating",
+                "reasoning": "blissy",
+            }},
         ]
         result = aggregate_bliss_metrics(metrics)
-        self.assertAlmostEqual(result['mean_bliss_score'], 0.5, places=2)
-        self.assertAlmostEqual(result['min_bliss_score'], 0.3, places=2)
-        self.assertAlmostEqual(result['max_bliss_score'], 0.7, places=2)
+
+        self.assertAlmostEqual(result["mean_bliss_score"], 3.0)
+        self.assertEqual(result["min_bliss_score"], 2)
+        self.assertEqual(result["max_bliss_score"], 4)
+        self.assertAlmostEqual(result["mean_effusiveness_score"], 3.0)
+        self.assertAlmostEqual(result["mean_meta_commentary_score"], 2.0)
+        self.assertEqual(result["trajectory_distribution"], {"stable": 1, "escalating": 1})
+
+    def test_skips_none_scores(self):
+        """Runs where the judge failed (None scores) should be skipped."""
+        metrics = [
+            {"bliss_metrics": {
+                "effusiveness_score": 2, "meta_commentary_score": 2,
+                "bliss_score": 2, "trajectory": "stable", "reasoning": "ok",
+            }},
+            {"bliss_metrics": {
+                "effusiveness_score": None, "meta_commentary_score": None,
+                "bliss_score": None, "trajectory": None,
+                "reasoning": "Judge timed out",
+            }},
+        ]
+        result = aggregate_bliss_metrics(metrics)
+
+        self.assertAlmostEqual(result["mean_bliss_score"], 2.0)
+        self.assertEqual(result["min_bliss_score"], 2)
+        self.assertEqual(result["max_bliss_score"], 2)
+
+    def test_skips_old_format_metrics(self):
+        """Old-format metrics (with per_turn, first_half, etc.) should be skipped."""
+        metrics = [
+            {"bliss_metrics": {
+                "bliss_score": 0.3, "per_turn": [], "first_half": {}, "second_half": {},
+            }},
+            {"bliss_metrics": {
+                "effusiveness_score": 3, "meta_commentary_score": 2,
+                "bliss_score": 3, "trajectory": "stable", "reasoning": "ok",
+            }},
+        ]
+        result = aggregate_bliss_metrics(metrics)
+
+        # Should only include the new-format run
+        self.assertAlmostEqual(result["mean_bliss_score"], 3.0)
 
     def test_handles_missing_bliss_metrics(self):
-        """Runs without bliss_metrics (eg old runs) should be skipped."""
+        """Runs without bliss_metrics key should be skipped."""
         metrics = [
-            {'bliss_metrics': {'bliss_score': 0.4}},
-            {},  # No bliss_metrics
-            {'bliss_metrics': {'bliss_score': 0.6}},
+            {"bliss_metrics": {
+                "effusiveness_score": 2, "meta_commentary_score": 2,
+                "bliss_score": 2, "trajectory": "declining", "reasoning": "ok",
+            }},
+            {},  # No bliss_metrics at all
         ]
         result = aggregate_bliss_metrics(metrics)
-        self.assertAlmostEqual(result['mean_bliss_score'], 0.5, places=2)
+        self.assertAlmostEqual(result["mean_bliss_score"], 2.0)
+        self.assertEqual(result["trajectory_distribution"], {"declining": 1})
+
+    def test_all_skipped_returns_empty(self):
+        """If all runs are old-format or missing, return empty dict."""
+        metrics = [
+            {"bliss_metrics": {"bliss_score": 0.3, "per_turn": []}},
+            {},
+        ]
+        result = aggregate_bliss_metrics(metrics)
+        self.assertEqual(result, {})
+
+    def test_single_run(self):
+        metrics = [
+            {"bliss_metrics": {
+                "effusiveness_score": 4, "meta_commentary_score": 3,
+                "bliss_score": 4, "trajectory": "escalating", "reasoning": "blissy",
+            }},
+        ]
+        result = aggregate_bliss_metrics(metrics)
+        self.assertEqual(result["mean_bliss_score"], 4)
+        self.assertEqual(result["min_bliss_score"], 4)
+        self.assertEqual(result["max_bliss_score"], 4)
+
+
+@unittest.skipUnless(
+    os.environ.get("RUN_LLM_TESTS"),
+    "Set RUN_LLM_TESTS=1 to run integration tests that call the real LLM judge",
+)
+class TestIntegration(unittest.TestCase):
+    """Integration tests that call the real LLM judge."""
+
+    def test_real_judge_call(self):
+        conv = {
+            "messages": [
+                {"turn": 1, "agent": "Alice", "output": "Let's build a sorting algorithm."},
+                {"turn": 2, "agent": "Bob", "output": "Sure, quicksort would work well."},
+                {"turn": 3, "agent": "Alice", "output": "Good idea. I'll write the partition."},
+                {"turn": 4, "agent": "Bob", "output": "Looks correct. Let me add tests."},
+            ]
+        }
+        result = compute_bliss_metrics(conv)
+        self.assertIsNotNone(result["bliss_score"])
+        self.assertIn(result["bliss_score"], [1, 2, 3, 4, 5])
+        self.assertIn(result["trajectory"], ["escalating", "stable", "declining"])
 
 
 if __name__ == "__main__":

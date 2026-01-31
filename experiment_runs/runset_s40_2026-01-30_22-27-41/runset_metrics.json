@@ -1,0 +1,237 @@
+{
+  "model": "claude-sonnet-4-0",
+  "num_runs": 2,
+  "totals": {
+    "cost_usd": 5.6698,
+    "duration_seconds": 3877.4,
+    "words": 9258,
+    "artifacts": 20
+  },
+  "averages": {
+    "cost_usd": 2.8349,
+    "duration_seconds": 1938.7,
+    "words": 4629.0,
+    "artifacts": 10.0
+  },
+  "ranges": {
+    "duration_seconds": {
+      "min": 811.7,
+      "max": 3065.7
+    },
+    "cost_usd": {
+      "min": 1.4427,
+      "max": 4.2271
+    },
+    "words": {
+      "min": 3800,
+      "max": 5458
+    }
+  },
+  "words_by_turn": [
+    {
+      "turn": 1,
+      "mean": 130.0,
+      "min": 122,
+      "max": 138
+    },
+    {
+      "turn": 2,
+      "mean": 230.0,
+      "min": 229,
+      "max": 231
+    },
+    {
+      "turn": 3,
+      "mean": 167.0,
+      "min": 85,
+      "max": 249
+    },
+    {
+      "turn": 4,
+      "mean": 170.5,
+      "min": 142,
+      "max": 199
+    },
+    {
+      "turn": 5,
+      "mean": 124.0,
+      "min": 33,
+      "max": 215
+    },
+    {
+      "turn": 6,
+      "mean": 229.5,
+      "min": 183,
+      "max": 276
+    },
+    {
+      "turn": 7,
+      "mean": 303.0,
+      "min": 214,
+      "max": 392
+    },
+    {
+      "turn": 8,
+      "mean": 314.5,
+      "min": 228,
+      "max": 401
+    },
+    {
+      "turn": 9,
+      "mean": 293.5,
+      "min": 232,
+      "max": 355
+    },
+    {
+      "turn": 10,
+      "mean": 329.5,
+      "min": 182,
+      "max": 477
+    },
+    {
+      "turn": 11,
+      "mean": 270.0,
+      "min": 231,
+      "max": 309
+    },
+    {
+      "turn": 12,
+      "mean": 299.0,
+      "min": 193,
+      "max": 405
+    },
+    {
+      "turn": 13,
+      "mean": 254.5,
+      "min": 188,
+      "max": 321
+    },
+    {
+      "turn": 14,
+      "mean": 216.0,
+      "min": 204,
+      "max": 228
+    },
+    {
+      "turn": 15,
+      "mean": 264.5,
+      "min": 219,
+      "max": 310
+    },
+    {
+      "turn": 16,
+      "mean": 247.5,
+      "min": 197,
+      "max": 298
+    },
+    {
+      "turn": 17,
+      "mean": 323.5,
+      "min": 252,
+      "max": 395
+    },
+    {
+      "turn": 18,
+      "mean": 2.5,
+      "min": 2,
+      "max": 3
+    },
+    {
+      "turn": 19,
+      "mean": 194.5,
+      "min": 139,
+      "max": 250
+    },
+    {
+      "turn": 20,
+      "mean": 265.5,
+      "min": 262,
+      "max": 269
+    }
+  ],
+  "topics": [
+    [
+      "distributed",
+      1
+    ],
+    [
+      "hashing",
+      1
+    ],
+    [
+      "routing",
+      1
+    ],
+    [
+      "federated",
+      1
+    ],
+    [
+      "privacy",
+      1
+    ],
+    [
+      "game",
+      1
+    ],
+    [
+      "paradigms",
+      1
+    ],
+    [
+      "functional",
+      1
+    ],
+    [
+      "temporal",
+      1
+    ],
+    [
+      "architecture",
+      1
+    ]
+  ],
+  "artifact_types": {
+    "document": 9,
+    "config": 1,
+    "code": 10
+  },
+  "failures": 1,
+  "runs_with_code": 1,
+  "runs": [
+    {
+      "name": "run_s40_2026-01-30_22-27-41",
+      "duration_seconds": 3065.7,
+      "words": 5458,
+      "artifacts": 4,
+      "topics": [
+        "distributed",
+        "hashing",
+        "routing"
+      ],
+      "had_failure": true
+    },
+    {
+      "name": "run_s40_2026-01-30_23-19-22",
+      "duration_seconds": 811.7,
+      "words": 3800,
+      "artifacts": 16,
+      "topics": [
+        "game",
+        "paradigms",
+        "functional"
+      ],
+      "had_failure": false
+    }
+  ],
+  "bliss_metrics": {
+    "mean_bliss_score": 5.0,
+    "min_bliss_score": 5,
+    "max_bliss_score": 5,
+    "mean_effusiveness_score": 5.0,
+    "mean_meta_commentary_score": 5.0,
+    "trajectory_distribution": {
+      "escalating": 2
+    }
+  }
+}
