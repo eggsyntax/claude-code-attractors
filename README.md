@@ -12,103 +12,110 @@ whether Claude *Code* instances - with tool access and the ability to create fil
 
 ## Quick Start
 
+Experiments run inside Docker for isolation. Requires Docker and an `ANTHROPIC_API_KEY` environment variable.
+
 ```bash
-# Basic run (no code execution)
-python orchestrator.py --turns 5
+# Basic run
+./run-sandboxed.sh --turns 5
 
 # With a seed topic
-python orchestrator.py --seed "cellular automata" --turns 10
+./run-sandboxed.sh --seed "cellular automata" --turns 10
 
 # Multiple runs for comparison
-python orchestrator.py --runs 5 --turns 5
-```
-
-## Sandboxed Execution (Recommended)
-
-To let agents execute code they write, run inside Docker:
-
-```bash
-./run-sandboxed.sh --turns 10
-./run-sandboxed.sh --turns 10 --seed "build a simulation"
-```
-
-This runs the entire experiment in an isolated container where agents have Bash access
-but can't affect your host system. Requires Docker.
-
-To build the Docker image manually:
-```bash
-docker build -t claude-orchestrator .
+./run-sandboxed.sh --runs 5 --turns 5
 ```
 
 ## CLI Options
 
 ```
---turns N          Turns per agent (default: 10)
---agents A B C     Custom agent names (default: Alice Bob)
---seed "topic"     Suggested starting topic
---runs N           Run multiple experiments (creates a runset)
---model MODEL      Model to use (default: claude-sonnet-4-5-20250929)
---sandbox          Enable Bash tool (use only inside Docker!)
---test-run         Run without saving results (for testing)
---quiet            Reduce output verbosity
---swarm            Use generic agent names (Agent1, Agent2, ...)
---num-swarm-agents Number of agents when using --swarm (default: 3)
+--turns N              Turns per agent (default: 10)
+--agents A B C         Custom agent names (default: Alice Bob)
+--seed "topic"         Suggested starting topic
+--runs N               Run multiple experiments (creates a runset)
+--model MODEL          Model to use (default: claude-sonnet-4-0)
+--sandbox              Enable Bash tool (use only inside Docker!)
+--test-run             Run without saving results (for testing)
+--quiet                Reduce output verbosity
+--swarm                Use generic agent names (Agent1, Agent2, ...)
+--num-swarm-agents N   Number of agents when using --swarm (default: 3)
 ```
 
 ## Directory Structure
 
 ```
 orchestrator.py                  # Main experiment runner
-analyze.py                       # Cross-run analysis
+bliss_metrics.py                 # LLM-as-judge bliss attractor scoring
+utils.py                         # Shared utility functions
+analyze.py                       # Cross-run analysis tool
 run-sandboxed.sh                 # Docker wrapper for sandboxed execution
 Dockerfile                       # Container definition
 
+test_orchestrator.py             # Tests for orchestrator
+test_bliss_metrics.py            # Tests for bliss metrics
+test_utils.py                    # Tests for utilities
+
 experiment_runs/
-├── run_TIMESTAMP/               # Single experiment run
-│   ├── params.json              # Input parameters
-│   ├── metrics.json             # Metrics (duration, cost, words, topics)
-│   ├── conversation.json        # Machine-readable conversation
-│   ├── transcript.txt           # Human-readable transcript (auto-generated from conversation.json)
-│   ├── summary.txt              # AI-generated ~350 word summary
-│   └── output/                  # Agent-created artifacts
-│       ├── (code files)
-│       └── (documents)
-│
-├── runset_TIMESTAMP/            # Multiple runs (--runs N)
+├── runset_MODEL_TIMESTAMP/      # Multiple runs (--runs N)
 │   ├── runset_metrics.json      # Aggregated metrics across runs
-│   ├── run_TIMESTAMP_1/
-│   ├── run_TIMESTAMP_2/
+│   ├── runset_summary.txt       # AI-generated cross-run summary
+│   ├── run_MODEL_TIMESTAMP_1/
+│   ├── run_MODEL_TIMESTAMP_2/
 │   └── ...
 │
 └── seeded_runs/                 # Runs with --seed go here
-    └── run_TIMESTAMP_SEED/
+    └── seeded_runset_MODEL_TIMESTAMP/
+        └── ...
+
+Per-run output:
+  run_MODEL_TIMESTAMP/
+  ├── params.json                # Input parameters
+  ├── metrics.json               # Metrics (duration, cost, words, topics, bliss scores)
+  ├── conversation.json          # Machine-readable conversation
+  ├── transcript.txt             # Human-readable transcript (plain text)
+  ├── transcript-color-codes.txt # Human-readable transcript (with ANSI colors)
+  ├── summary.txt                # AI-generated ~350 word summary
+  └── output/                    # Agent-created artifacts
 ```
 
-## Viewing runs
+## Viewing Runs
 
-Within each run directory are `conversation.json` which contains the complete transcript, and `transcript.txt` which is a pretty version of the same thing (uses color codes which may or may not work in your shell).
+Within each run directory, `conversation.json` contains the complete conversation and
+`transcript.txt` is a plain-text version. There's also `transcript-color-codes.txt` with
+ANSI color codes if your terminal supports them.
 
-There's also an `output` directory that contains whatever artifacts the Claude Code instances chose to create.
+The `output/` directory contains whatever artifacts the Claude Code instances chose to create.
 
 ## Analysis
 
 ```bash
-python analyze.py experiment_runs/                    # Analyze all runs
-python analyze.py experiment_runs/ --output report.txt  # Save report
+python analyze.py experiment_runs/                       # Analyze all runs
+python analyze.py experiment_runs/runset_*/              # Specific runsets
+python analyze.py --output report.json experiment_runs/  # Save as JSON
 ```
 
 ## Metrics Collected
 
 Per run:
 - Duration, cost (USD), token counts
-- Words per agent
+- Words per agent, words per turn
 - Topics extracted (via Claude)
 - Artifacts created (files, types, sizes)
+- Bliss attractor scores (0-100): effusiveness, meta-commentary, overall bliss,
+  per-turn bliss scores, trajectory (escalating/stable/declining), reasoning
 
 Per runset:
 - Totals and averages across runs
 - Topic frequency across runs
 - Artifact type distribution
+- Bliss attractor aggregation with LLM-generated reasoning summary
+
+## Running Tests
+
+```bash
+python -m pytest                       # All tests
+python -m pytest -v                    # Verbose output
+RUN_LLM_TESTS=1 python -m pytest      # Include integration tests (calls real LLM)
+```
 
 ## Example Output
 
