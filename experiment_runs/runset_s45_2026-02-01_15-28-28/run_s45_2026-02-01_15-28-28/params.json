@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-02-01_15-28-28",
+  "model": "claude-sonnet-4-5",
+  "agents": [
+    "Alice",
+    "Bob"
+  ],
+  "num_turns": 10,
+  "seed_topic": null,
+  "total_turns": 20,
+  "sandbox": true
+}

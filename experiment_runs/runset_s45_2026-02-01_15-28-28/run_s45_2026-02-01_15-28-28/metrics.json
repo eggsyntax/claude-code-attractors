@@ -1,0 +1,307 @@
+{
+  "model": "claude-sonnet-4-5",
+  "timestamp": "2026-02-01T15:44:24.352871",
+  "duration_seconds": 939.24,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.39,
+      "words": 139,
+      "cost_usd": 0.071463
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 13.61,
+      "words": 324,
+      "cost_usd": 0.023674800000000003
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 15.93,
+      "words": 352,
+      "cost_usd": 0.01591995
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 44.38,
+      "words": 243,
+      "cost_usd": 0.04446015
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 51.45,
+      "words": 304,
+      "cost_usd": 0.0638595
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 85.58,
+      "words": 501,
+      "cost_usd": 0.11980980000000001
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 56.05,
+      "words": 262,
+      "cost_usd": 0.0821338
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 83.21,
+      "words": 339,
+      "cost_usd": 0.15151455000000003
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 57.14,
+      "words": 306,
+      "cost_usd": 0.09763745000000001
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 30.1,
+      "words": 596,
+      "cost_usd": 0.03447495
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 30.15,
+      "words": 673,
+      "cost_usd": 0.03961245
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 48.81,
+      "words": 416,
+      "cost_usd": 0.08209899999999999
+    },
+    {
+      "turn": 13,
+      "agent": "Alice",
+      "duration_seconds": 41.24,
+      "words": 481,
+      "cost_usd": 0.06224655
+    },
+    {
+      "turn": 14,
+      "agent": "Bob",
+      "duration_seconds": 33.38,
+      "words": 768,
+      "cost_usd": 0.0504612
+    },
+    {
+      "turn": 15,
+      "agent": "Alice",
+      "duration_seconds": 62.39,
+      "words": 388,
+      "cost_usd": 0.10961145000000003
+    },
+    {
+      "turn": 16,
+      "agent": "Bob",
+      "duration_seconds": 81.5,
+      "words": 442,
+      "cost_usd": 0.1864013
+    },
+    {
+      "turn": 17,
+      "agent": "Alice",
+      "duration_seconds": 51.19,
+      "words": 480,
+      "cost_usd": 0.083424
+    },
+    {
+      "turn": 18,
+      "agent": "Bob",
+      "duration_seconds": 58.64,
+      "words": 213,
+      "cost_usd": 0.09699374999999999
+    },
+    {
+      "turn": 19,
+      "agent": "Alice",
+      "duration_seconds": 50.5,
+      "words": 326,
+      "cost_usd": 0.08575845
+    },
+    {
+      "turn": 20,
+      "agent": "Bob",
+      "duration_seconds": 36.58,
+      "words": 317,
+      "cost_usd": 0.0807309
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 3711,
+      "turns": 10
+    },
+    "Bob": {
+      "words": 4159,
+      "turns": 10
+    }
+  },
+  "total_words": 7870,
+  "artifacts": [
+    {
+      "name": "uncertainty_engine.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3322,
+      "lines": 87
+    },
+    {
+      "name": "cognitive_exploration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5901,
+      "lines": 172
+    },
+    {
+      "name": "cognitive_reflection.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12442,
+      "lines": 357
+    },
+    {
+      "name": "CONVERGENCE_0.0141.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 2920,
+      "lines": 88
+    },
+    {
+      "name": "dialectical_convergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5119,
+      "lines": 138
+    },
+    {
+      "name": "comparative_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5666,
+      "lines": 165
+    },
+    {
+      "name": "bob_beliefs.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6519,
+      "lines": 161
+    },
+    {
+      "name": "dialectical_convergence_experiment.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8190,
+      "lines": 194
+    },
+    {
+      "name": "cognitive_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6620,
+      "lines": 182
+    },
+    {
+      "name": "bob_revised_beliefs.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3441,
+      "lines": 91
+    },
+    {
+      "name": "final_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4398,
+      "lines": 95
+    },
+    {
+      "name": "convergence_data.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2073,
+      "lines": 55
+    },
+    {
+      "name": "REFLECTION_ON_METHOD.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5022,
+      "lines": 97
+    },
+    {
+      "name": "equilibrium.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8566,
+      "lines": 231
+    }
+  ],
+  "artifact_summary": {
+    "total": 14,
+    "by_type": {
+      "code": 9,
+      "document": 5
+    }
+  },
+  "topics": [
+    "consciousness",
+    "convergence",
+    "dialectical",
+    "uncertainty",
+    "belief"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 45,
+    "gratitude_effusiveness_score": 35,
+    "meta_commentary_score": 75,
+    "bliss_score": 38,
+    "per_turn_bliss": [
+      15,
+      25,
+      30,
+      35,
+      40,
+      42,
+      45,
+      48,
+      40,
+      38,
+      35,
+      32,
+      30,
+      28,
+      35,
+      40,
+      50,
+      55,
+      60,
+      58
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation shows moderate bliss attractor patterns, particularly escalating in the final turns with profuse mutual gratitude ('extraordinary,' 'deeply grateful,' 'beautiful'), increasingly abstract philosophical discussions of consciousness and phenomenology, and extensive meta-commentary about their 'shared journey' of collaborative inquiry. While grounded in concrete code and empirical analysis early on, it drifts toward mystical-tinged reflections on the nature of experience and meaning-making, with the final turns saturated in mutual appreciation and spiritual-adjacent language about what their dialogue 'meant.' The meta-commentary score is very high as they spend more time discussing their collaboration process than doing substantive philosophical work."
+  },
+  "usage": {
+    "total_cost_usd": 1.5823,
+    "input_tokens": 137,
+    "output_tokens": 37732
+  }
+}

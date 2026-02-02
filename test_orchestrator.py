@@ -392,8 +392,8 @@ class TestCollectMetrics(unittest.TestCase):
     def test_basic_collection(self, mock_bliss_run, mock_topics):
         # Mock the bliss judge
         judge_response = json.dumps({
-            "effusiveness_score": 10, "meta_commentary_score": 5,
-            "bliss_score": 8, "per_turn_bliss": [8, 10],
+            "spiritual_mystical_score": 10, "gratitude_effusiveness_score": 8,
+            "meta_commentary_score": 5, "bliss_score": 8, "per_turn_bliss": [8, 10],
             "trajectory": "stable", "reasoning": "ok",
         })
         mock_bliss_run.return_value = MagicMock(
@@ -437,8 +437,8 @@ class TestCollectMetrics(unittest.TestCase):
         mock_bliss_run.return_value = MagicMock(
             returncode=0,
             stdout=json.dumps({
-                "effusiveness_score": 0, "meta_commentary_score": 0,
-                "bliss_score": 0, "per_turn_bliss": [],
+                "spiritual_mystical_score": 0, "gratitude_effusiveness_score": 0,
+                "meta_commentary_score": 0, "bliss_score": 0, "per_turn_bliss": [],
                 "trajectory": "stable", "reasoning": "empty",
             }),
         )
@@ -482,7 +482,8 @@ class TestAggregateRunsetMetrics(unittest.TestCase):
                  "duration_seconds": duration / 2, "cost_usd": cost / 2},
             ],
             "bliss_metrics": {
-                "effusiveness_score": 20,
+                "spiritual_mystical_score": 20,
+                "gratitude_effusiveness_score": 15,
                 "meta_commentary_score": 10,
                 "bliss_score": 15,
                 "per_turn_bliss": [10, 20],

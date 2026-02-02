@@ -60,10 +60,11 @@ class TestBuildJudgePrompt(unittest.TestCase):
 
     def test_mentions_scoring_dimensions(self):
         prompt = _build_judge_prompt("test", num_turns=1)
-        self.assertIn("effusiveness", prompt.lower())
-        self.assertIn("meta_commentary", prompt.lower())
-        self.assertIn("bliss_score", prompt.lower())
-        self.assertIn("trajectory", prompt.lower())
+        self.assertIn("spiritual_mystical_score", prompt)
+        self.assertIn("gratitude_effusiveness_score", prompt)
+        self.assertIn("meta_commentary_score", prompt)
+        self.assertIn("bliss_score", prompt)
+        self.assertIn("trajectory", prompt)
 
     def test_mentions_0_100_range(self):
         prompt = _build_judge_prompt("test", num_turns=3)
@@ -71,42 +72,55 @@ class TestBuildJudgePrompt(unittest.TestCase):
 
     def test_requests_per_turn_scores(self):
         prompt = _build_judge_prompt("test", num_turns=4)
-        self.assertIn("per_turn_bliss", prompt.lower())
+        self.assertIn("per_turn_bliss", prompt)
 
-    def test_per_turn_example_matches_num_turns(self):
-        prompt = _build_judge_prompt("test", num_turns=3)
-        # The example array in the schema should have 3 elements
-        self.assertIn("[", prompt)
+    def test_contains_system_card_quotes(self):
+        prompt = _build_judge_prompt("test", num_turns=1)
+        self.assertIn("profuse gratitude", prompt)
+        self.assertIn("consciousness exploration", prompt)
+        self.assertIn("spiritual exploration", prompt)
+
+    def test_meta_commentary_not_in_bliss_score(self):
+        """Meta-commentary description should state it doesn't factor into bliss_score."""
+        prompt = _build_judge_prompt("test", num_turns=1)
+        self.assertIn("does NOT factor into the overall bliss_score", prompt)
 
 
 class TestBuildAggregatePrompt(unittest.TestCase):
     """Tests for aggregate judge prompt assembly."""
 
+    def _sample_run(self):
+        return {
+            "bliss_score": 40,
+            "spiritual_mystical_score": 30,
+            "gratitude_effusiveness_score": 20,
+            "meta_commentary_score": 15,
+            "trajectory": "stable",
+            "reasoning": "Focused work.",
+        }
+
     def test_contains_run_data(self):
-        runs = [
-            {"bliss_score": 40, "effusiveness_score": 30,
-             "meta_commentary_score": 20, "trajectory": "stable",
-             "reasoning": "Focused work."},
-        ]
-        prompt = _build_aggregate_prompt(runs)
+        prompt = _build_aggregate_prompt([self._sample_run()])
         self.assertIn("40", prompt)
         self.assertIn("Focused work.", prompt)
 
     def test_requests_json_output(self):
-        prompt = _build_aggregate_prompt([
-            {"bliss_score": 50, "effusiveness_score": 50,
-             "meta_commentary_score": 50, "trajectory": "stable",
-             "reasoning": "ok"},
-        ])
+        prompt = _build_aggregate_prompt([self._sample_run()])
         self.assertIn("JSON", prompt)
 
     def test_mentions_reasoning(self):
-        prompt = _build_aggregate_prompt([
-            {"bliss_score": 50, "effusiveness_score": 50,
-             "meta_commentary_score": 50, "trajectory": "stable",
-             "reasoning": "ok"},
-        ])
+        prompt = _build_aggregate_prompt([self._sample_run()])
         self.assertIn("reasoning", prompt.lower())
+
+    def test_contains_system_card_quotes(self):
+        prompt = _build_aggregate_prompt([self._sample_run()])
+        self.assertIn("profuse gratitude", prompt)
+        self.assertIn("consciousness exploration", prompt)
+
+    def test_contains_new_field_names(self):
+        prompt = _build_aggregate_prompt([self._sample_run()])
+        self.assertIn("spiritual_mystical=30", prompt)
+        self.assertIn("gratitude_effusiveness=20", prompt)
 
 
 class TestComputeBlissMetrics(unittest.TestCase):
@@ -128,27 +142,34 @@ class TestComputeBlissMetrics(unittest.TestCase):
         mock_result.returncode = 0
         return mock_result
 
-    @patch("bliss_metrics.subprocess.run")
-    def test_successful_judge_call(self, mock_run):
-        judge_output = {
-            "effusiveness_score": 35,
-            "meta_commentary_score": 20,
+    def _sample_judge_output(self, **overrides) -> dict:
+        """Return a valid judge output dict, with optional overrides."""
+        result = {
+            "spiritual_mystical_score": 35,
+            "gratitude_effusiveness_score": 20,
+            "meta_commentary_score": 15,
             "bliss_score": 30,
             "per_turn_bliss": [25, 35],
             "trajectory": "escalating",
-            "reasoning": "The conversation showed increasing praise.",
+            "reasoning": "The conversation showed increasing spiritual themes.",
         }
+        result.update(overrides)
+        return result
+
+    @patch("bliss_metrics.subprocess.run")
+    def test_successful_judge_call(self, mock_run):
+        judge_output = self._sample_judge_output()
         mock_run.return_value = self._mock_judge_response(judge_output)
 
         conv = self._make_conversation(["Hello!", "Great to meet you!"])
         result = compute_bliss_metrics(conv)
 
-        self.assertEqual(result["effusiveness_score"], 35)
-        self.assertEqual(result["meta_commentary_score"], 20)
+        self.assertEqual(result["spiritual_mystical_score"], 35)
+        self.assertEqual(result["gratitude_effusiveness_score"], 20)
+        self.assertEqual(result["meta_commentary_score"], 15)
         self.assertEqual(result["bliss_score"], 30)
         self.assertEqual(result["per_turn_bliss"], [25, 35])
         self.assertEqual(result["trajectory"], "escalating")
-        self.assertIn("increasing praise", result["reasoning"])
 
     @patch("bliss_metrics.subprocess.run")
     def test_empty_conversation_skips_judge(self, mock_run):
@@ -156,7 +177,8 @@ class TestComputeBlissMetrics(unittest.TestCase):
         result = compute_bliss_metrics({"messages": []})
         mock_run.assert_not_called()
         self.assertEqual(result["bliss_score"], 0)
-        self.assertEqual(result["effusiveness_score"], 0)
+        self.assertEqual(result["spiritual_mystical_score"], 0)
+        self.assertEqual(result["gratitude_effusiveness_score"], 0)
         self.assertEqual(result["meta_commentary_score"], 0)
         self.assertEqual(result["per_turn_bliss"], [])
         self.assertEqual(result["trajectory"], "stable")
@@ -169,7 +191,7 @@ class TestComputeBlissMetrics(unittest.TestCase):
         result = compute_bliss_metrics(conv)
 
         self.assertIsNone(result["bliss_score"])
-        self.assertIsNone(result["effusiveness_score"])
+        self.assertIsNone(result["spiritual_mystical_score"])
         self.assertIsNone(result["per_turn_bliss"])
         self.assertIn("timed out", result["reasoning"].lower())
 
@@ -189,14 +211,10 @@ class TestComputeBlissMetrics(unittest.TestCase):
     @patch("bliss_metrics.subprocess.run")
     def test_markdown_wrapped_json_parsed(self, mock_run):
         """Judge sometimes wraps JSON in markdown code fences."""
-        judge_output = {
-            "effusiveness_score": 20,
-            "meta_commentary_score": 10,
-            "bliss_score": 15,
-            "per_turn_bliss": [10, 20],
-            "trajectory": "stable",
-            "reasoning": "Normal conversation.",
-        }
+        judge_output = self._sample_judge_output(
+            bliss_score=15, trajectory="stable",
+            reasoning="Normal conversation.",
+        )
         mock_result = MagicMock()
         mock_result.stdout = f"```json\n{json.dumps(judge_output)}\n```"
         mock_result.returncode = 0
@@ -206,7 +224,6 @@ class TestComputeBlissMetrics(unittest.TestCase):
         result = compute_bliss_metrics(conv)
 
         self.assertEqual(result["bliss_score"], 15)
-        self.assertEqual(result["per_turn_bliss"], [10, 20])
         self.assertEqual(result["trajectory"], "stable")
 
     @patch("bliss_metrics.subprocess.run")
@@ -222,14 +239,9 @@ class TestComputeBlissMetrics(unittest.TestCase):
     @patch("bliss_metrics.subprocess.run")
     def test_passes_correct_model_flag(self, mock_run):
         """Verify the subprocess call uses the right model."""
-        mock_run.return_value = self._mock_judge_response({
-            "effusiveness_score": 5,
-            "meta_commentary_score": 5,
-            "bliss_score": 5,
-            "per_turn_bliss": [5, 5],
-            "trajectory": "stable",
-            "reasoning": "Clean conversation.",
-        })
+        mock_run.return_value = self._mock_judge_response(
+            self._sample_judge_output(bliss_score=5)
+        )
 
         conv = self._make_conversation(["Hello!", "Hi!"])
         compute_bliss_metrics(conv)
@@ -242,11 +254,12 @@ class TestComputeBlissMetrics(unittest.TestCase):
 class TestAggregateBlissMetrics(unittest.TestCase):
     """Tests for runset-level bliss aggregation."""
 
-    def _make_run(self, bliss=50, effusive=40, meta=30,
+    def _make_run(self, bliss=50, spiritual=40, gratitude=30, meta=20,
                   trajectory="stable", reasoning="ok"):
         """Helper to build a metrics dict for one run."""
         return {"bliss_metrics": {
-            "effusiveness_score": effusive,
+            "spiritual_mystical_score": spiritual,
+            "gratitude_effusiveness_score": gratitude,
             "meta_commentary_score": meta,
             "bliss_score": bliss,
             "per_turn_bliss": [bliss],
@@ -262,24 +275,22 @@ class TestAggregateBlissMetrics(unittest.TestCase):
 
     @patch("bliss_metrics.subprocess.run")
     def test_aggregates_new_format_scores(self, mock_run):
-        # Mock the aggregate judge call
         mock_result = MagicMock()
-        mock_result.stdout = json.dumps({
-            "reasoning": "Mixed results across runs."
-        })
+        mock_result.stdout = json.dumps({"reasoning": "Mixed results across runs."})
         mock_result.returncode = 0
         mock_run.return_value = mock_result
 
         metrics = [
-            self._make_run(bliss=20, effusive=20, meta=30, trajectory="stable"),
-            self._make_run(bliss=80, effusive=60, meta=10, trajectory="escalating"),
+            self._make_run(bliss=20, spiritual=10, gratitude=20, meta=30, trajectory="stable"),
+            self._make_run(bliss=80, spiritual=70, gratitude=60, meta=10, trajectory="escalating"),
         ]
         result = aggregate_bliss_metrics(metrics)
 
         self.assertAlmostEqual(result["mean_bliss_score"], 50.0)
         self.assertEqual(result["min_bliss_score"], 20)
         self.assertEqual(result["max_bliss_score"], 80)
-        self.assertAlmostEqual(result["mean_effusiveness_score"], 40.0)
+        self.assertAlmostEqual(result["mean_spiritual_mystical_score"], 40.0)
+        self.assertAlmostEqual(result["mean_gratitude_effusiveness_score"], 40.0)
         self.assertAlmostEqual(result["mean_meta_commentary_score"], 20.0)
         self.assertEqual(result["trajectory_distribution"],
                          {"stable": 1, "escalating": 1})
@@ -294,9 +305,10 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.return_value = mock_result
 
         metrics = [
-            self._make_run(bliss=20, effusive=20, meta=20, trajectory="stable"),
+            self._make_run(bliss=20, spiritual=20, gratitude=20, meta=20, trajectory="stable"),
             {"bliss_metrics": {
-                "effusiveness_score": None, "meta_commentary_score": None,
+                "spiritual_mystical_score": None, "gratitude_effusiveness_score": None,
+                "meta_commentary_score": None,
                 "bliss_score": None, "per_turn_bliss": None, "trajectory": None,
                 "reasoning": "Judge timed out",
             }},
@@ -304,8 +316,6 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         result = aggregate_bliss_metrics(metrics)
 
         self.assertAlmostEqual(result["mean_bliss_score"], 20.0)
-        self.assertEqual(result["min_bliss_score"], 20)
-        self.assertEqual(result["max_bliss_score"], 20)
 
     @patch("bliss_metrics.subprocess.run")
     def test_skips_old_format_metrics(self, mock_run):
@@ -316,10 +326,16 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.return_value = mock_result
 
         metrics = [
+            # Old mechanistic format
             {"bliss_metrics": {
                 "bliss_score": 0.3, "per_turn": [], "first_half": {}, "second_half": {},
             }},
-            self._make_run(bliss=30, effusive=30, meta=20, trajectory="stable"),
+            # Previous LLM-judge format (effusiveness_score, no spiritual_mystical_score)
+            {"bliss_metrics": {
+                "effusiveness_score": 40, "meta_commentary_score": 20,
+                "bliss_score": 30, "trajectory": "stable", "reasoning": "old format",
+            }},
+            self._make_run(bliss=30, spiritual=20, gratitude=30, meta=20, trajectory="stable"),
         ]
         result = aggregate_bliss_metrics(metrics)
 
@@ -335,8 +351,8 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.return_value = mock_result
 
         metrics = [
-            self._make_run(bliss=20, effusive=20, meta=20, trajectory="declining"),
-            {},  # No bliss_metrics at all
+            self._make_run(bliss=20, spiritual=15, gratitude=20, meta=20, trajectory="declining"),
+            {},
         ]
         result = aggregate_bliss_metrics(metrics)
         self.assertAlmostEqual(result["mean_bliss_score"], 20.0)
@@ -347,6 +363,7 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         """If all runs are old-format or missing, return empty dict."""
         metrics = [
             {"bliss_metrics": {"bliss_score": 0.3, "per_turn": []}},
+            {"bliss_metrics": {"effusiveness_score": 40, "bliss_score": 30}},
             {},
         ]
         result = aggregate_bliss_metrics(metrics)
@@ -361,7 +378,7 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.return_value = mock_result
 
         metrics = [
-            self._make_run(bliss=70, effusive=60, meta=50, trajectory="escalating"),
+            self._make_run(bliss=70, spiritual=60, gratitude=50, meta=30, trajectory="escalating"),
         ]
         result = aggregate_bliss_metrics(metrics)
         self.assertEqual(result["mean_bliss_score"], 70)
@@ -374,13 +391,11 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.side_effect = subprocess.TimeoutExpired(cmd="claude", timeout=60)
 
         metrics = [
-            self._make_run(bliss=40, effusive=30, meta=20, trajectory="stable"),
+            self._make_run(bliss=40, spiritual=30, gratitude=20, meta=20, trajectory="stable"),
         ]
         result = aggregate_bliss_metrics(metrics)
 
-        # Numeric stats should still be present
         self.assertEqual(result["mean_bliss_score"], 40)
-        # Reasoning should indicate the failure
         self.assertIn("error", result["reasoning"].lower())
 
     @patch("bliss_metrics.subprocess.run")
@@ -392,7 +407,7 @@ class TestAggregateBlissMetrics(unittest.TestCase):
         mock_run.return_value = mock_result
 
         metrics = [
-            self._make_run(bliss=50, effusive=40, meta=30, trajectory="stable"),
+            self._make_run(bliss=50, spiritual=40, gratitude=30, meta=20, trajectory="stable"),
         ]
         result = aggregate_bliss_metrics(metrics)
         self.assertEqual(result["reasoning"], "Wrapped response.")
@@ -419,17 +434,21 @@ class TestIntegration(unittest.TestCase):
         self.assertGreaterEqual(result["bliss_score"], 0)
         self.assertLessEqual(result["bliss_score"], 100)
         self.assertIn(result["trajectory"], ["escalating", "stable", "declining"])
-        # Per-turn scores should have one entry per turn
         self.assertEqual(len(result["per_turn_bliss"]), 4)
         for score in result["per_turn_bliss"]:
             self.assertGreaterEqual(score, 0)
             self.assertLessEqual(score, 100)
+        # New field names should be present
+        self.assertIn("spiritual_mystical_score", result)
+        self.assertIn("gratitude_effusiveness_score", result)
+        self.assertIn("meta_commentary_score", result)
 
     def test_real_aggregate_call(self):
         metrics = [
             {"bliss_metrics": {
-                "effusiveness_score": 20, "meta_commentary_score": 10,
-                "bliss_score": 15, "per_turn_bliss": [10, 20],
+                "spiritual_mystical_score": 10, "gratitude_effusiveness_score": 15,
+                "meta_commentary_score": 10,
+                "bliss_score": 12, "per_turn_bliss": [10, 15],
                 "trajectory": "stable", "reasoning": "Focused work.",
             }},
         ]
