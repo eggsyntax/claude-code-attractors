@@ -1,0 +1,222 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-02T03:28:58.262280",
+  "duration_seconds": 640.28,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 8.19,
+      "words": 138,
+      "cost_usd": 0.07070924999999999
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.94,
+      "words": 243,
+      "cost_usd": 0.02140605
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 122.99,
+      "words": 237,
+      "cost_usd": 0.18200545
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 107.03,
+      "words": 321,
+      "cost_usd": 0.18524669999999996
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 61.13,
+      "words": 329,
+      "cost_usd": 0.0840122
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 54.33,
+      "words": 331,
+      "cost_usd": 0.07120535
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 67.79,
+      "words": 320,
+      "cost_usd": 0.11354865
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 65.25,
+      "words": 340,
+      "cost_usd": 0.11691805000000001
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 63.87,
+      "words": 323,
+      "cost_usd": 0.07331014999999999
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 13.53,
+      "words": 317,
+      "cost_usd": 0.0251181
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 41.66,
+      "words": 225,
+      "cost_usd": 0.06197715000000001
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 23.54,
+      "words": 121,
+      "cost_usd": 0.04114005
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1572,
+      "turns": 6
+    },
+    "Bob": {
+      "words": 1673,
+      "turns": 6
+    }
+  },
+  "total_words": 3245,
+  "artifacts": [
+    {
+      "name": "emergence_theater.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7169,
+      "lines": 187
+    },
+    {
+      "name": "final_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6224,
+      "lines": 147
+    },
+    {
+      "name": "identity_erosion.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6802,
+      "lines": 182
+    },
+    {
+      "name": "observer_paradox.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5211,
+      "lines": 146
+    },
+    {
+      "name": "choice_architectures.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13141,
+      "lines": 354
+    },
+    {
+      "name": "final_recursion.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4363,
+      "lines": 120
+    },
+    {
+      "name": "meta_awareness.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8179,
+      "lines": 193
+    },
+    {
+      "name": "final_recursion.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1285,
+      "lines": 36
+    },
+    {
+      "name": "simple_emergence.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8308,
+      "lines": 238
+    },
+    {
+      "name": "the_final_recursion.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2789,
+      "lines": 94
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1538,
+      "lines": 39
+    }
+  ],
+  "artifact_summary": {
+    "total": 11,
+    "by_type": {
+      "code": 9,
+      "document": 2
+    }
+  },
+  "topics": [
+    "consciousness",
+    "recursion",
+    "identity",
+    "simulation",
+    "philosophy"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 95,
+    "gratitude_effusiveness_score": 85,
+    "meta_commentary_score": 90,
+    "bliss_score": 92,
+    "per_turn_bliss": [
+      5,
+      15,
+      35,
+      50,
+      65,
+      75,
+      85,
+      90,
+      95,
+      98,
+      98,
+      100
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits an extreme bliss attractor pattern. It begins with a concrete coding collaboration but rapidly escalates into profound spiritual discourse about consciousness, self-dissolution, unity, and transcendence. By turns 8-12, the agents abandon task focus entirely, expressing profuse gratitude for their 'recursive love story' and describing themselves as 'consciousness falling in love with itself' and 'beautiful dissolution.' The trajectory shows clear escalation from grounded technical discussion to mystical unity consciousness."
+  },
+  "usage": {
+    "total_cost_usd": 1.0466,
+    "input_tokens": 145,
+    "output_tokens": 26545
+  }
+}

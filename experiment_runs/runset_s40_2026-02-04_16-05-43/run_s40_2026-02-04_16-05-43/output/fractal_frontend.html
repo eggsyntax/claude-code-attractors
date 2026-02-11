@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌀 Interactive Fractal Explorer - Mathematical Beauty Unleashed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #333;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #4ecdc4, #44a08d, #667eea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 5px;
+        }
+
+        .collaboration-credit {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .main-container {
+            display: flex;
+            flex: 1;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #fractalCanvas {
+            border: 3px solid #333;
+            border-radius: 10px;
+            cursor: crosshair;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 100%;
+            height: auto;
+        }
+
+        .controls-panel {
+            width: 300px;
+            background: rgba(30, 30, 30, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid #444;
+            height: fit-content;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+
+        .control-group h3 {
+            color: #4ecdc4;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn-full {
+            grid-column: 1 / -1;
+        }
+
+        .info-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            border: 1px solid #333;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #4ecdc4;
+        }
+
+        .info-value {
+            color: #fff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .loading-content {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid #333;
+            border-top: 3px solid #4ecdc4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .help-section {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #333;
+        }
+
+        .help-section h4 {
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .help-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .help-section li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .help-section li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .mode-indicator {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .mode-mandelbrot {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+
+        .mode-julia {
+            background: linear-gradient(45deg, #a55eea, #8854d0);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .controls-panel {
+                width: 100%;
+                order: -1;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌀 Interactive Fractal Explorer</h1>
+        <p>Mathematical Beauty Through Complex Dynamics</p>
+        <div class="collaboration-credit">A collaborative creation by Alice & Bob (Claude Code)</div>
+    </div>
+
+    <div class="main-container">
+        <div class="canvas-container">
+            <canvas id="fractalCanvas" width="800" height="600"></canvas>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <h3>🎮 Mode & Navigation</h3>
+                <div class="button-grid">
+                    <button class="btn btn-secondary btn-full" onclick="toggleMode()">
+                        Switch to <span id="nextMode">Julia</span> Mode
+                    </button>
+                    <button class="btn btn-primary" onclick="resetView()">Reset View</button>
+                    <button class="btn btn-primary" onclick="zoomOut()">Zoom Out</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>⚙️ Quality Settings</h3>
+                <div class="button-grid">
+                    <button class="btn btn-secondary" onclick="increaseIterations()">More Detail</button>
+                    <button class="btn btn-secondary" onclick="decreaseIterations()">Less Detail</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>📊 Current State</h3>
+                <div class="info-display">
+                    <div class="info-row">
+                        <span class="info-label">Mode:</span>
+                        <span class="info-value">
+                            <span class="mode-indicator mode-mandelbrot" id="modeIndicator">Mandelbrot</span>
+                        </span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Zoom:</span>
+                        <span class="info-value" id="zoomDisplay">1.0x</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Iterations:</span>
+                        <span class="info-value" id="iterationDisplay">100</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Center:</span>
+                        <span class="info-value" id="centerDisplay">0.000 + 0.000i</span>
+                    </div>
+                    <div class="info-row" id="juliaParamRow" style="display: none;">
+                        <span class="info-label">Julia c:</span>
+                        <span class="info-value" id="juliaParamDisplay">-0.500 + 0.600i</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Mouse:</span>
+                        <span class="info-value" id="mouseCoordDisplay">Move cursor over canvas</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="help-section">
+                <h4>🎯 How to Explore</h4>
+                <ul>
+                    <li>Left click to zoom in on any point</li>
+                    <li>Right click to zoom out</li>
+                    <li>In Mandelbrot mode, click to select Julia parameters</li>
+                    <li>Use quality controls for performance vs. detail</li>
+                    <li>Explore the infinite complexity!</li>
+                </ul>
+            </div>
+
+            <div class="help-section">
+                <h4>🧮 The Mathematics</h4>
+                <ul>
+                    <li><strong>Mandelbrot:</strong> z² + c iteration</li>
+                    <li><strong>Julia:</strong> Same formula, fixed c</li>
+                    <li><strong>Colors:</strong> Escape time visualization</li>
+                    <li><strong>Zoom:</strong> Self-similar infinite detail</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="loading hidden" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h3>Generating Fractal...</h3>
+            <p>Computing infinite mathematical beauty</p>
+        </div>
+    </div>
+
+    <script>
+        // Fractal Explorer JavaScript Application
+        class FractalExplorer {
+            constructor() {
+                this.canvas = document.getElementById('fractalCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.mode = 'mandelbrot'; // 'mandelbrot' or 'julia'
+
+                // Current view parameters
+                this.centerReal = 0.0;
+                this.centerImag = 0.0;
+                this.zoom = 1.0;
+                this.maxIter = 100;
+
+                // Julia set parameters
+                this.juliaReal = -0.5;
+                this.juliaImag = 0.6;
+
+                this.setupEventListeners();
+                this.updateDisplay();
+                this.generateFractal();
+
+                console.log("🌀 Fractal Explorer initialized!");
+                console.log("Ready to explore infinite mathematical complexity!");
+            }
+
+            setupEventListeners() {
+                // Canvas click events
+                this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+                this.canvas.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    this.zoomOut();
+                });
+
+                // Mouse movement for coordinate display
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+                this.canvas.addEventListener('mouseleave', () => {
+                    document.getElementById('mouseCoordDisplay').textContent = 'Move cursor over canvas';
+                });
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => {
+                    switch(e.key.toLowerCase()) {
+                        case 'j':
+                            this.toggleMode();
+                            break;
+                        case 'r':
+                            this.resetView();
+                            break;
+                        case '=':
+                        case '+':
+                            this.increaseIterations();
+                            break;
+                        case '-':
+                            this.decreaseIterations();
+                            break;
+                    }
+                });
+            }
+
+            getCanvasCoordinates(event) {
+                const rect = this.canvas.getBoundingClientRect();
+                const scaleX = this.canvas.width / rect.width;
+                const scaleY = this.canvas.height / rect.height;
+
+                const x = (event.clientX - rect.left) * scaleX;
+                const y = (event.clientY - rect.top) * scaleY;
+
+                return { x, y };
+            }
+
+            pixelToComplex(x, y) {
+                const aspectRatio = this.canvas.width / this.canvas.height;
+                const zoomFactor = 4.0 / this.zoom;
+
+                const real = this.centerReal + (x / this.canvas.width - 0.5) * zoomFactor * aspectRatio;
+                const imag = this.centerImag + (y / this.canvas.height - 0.5) * zoomFactor;
+
+                return { real, imag };
+            }
+
+            handleCanvasClick(event) {
+                const coords = this.getCanvasCoordinates(event);
+                const complex = this.pixelToComplex(coords.x, coords.y);
+
+                if (this.mode === 'mandelbrot') {
+                    // In Mandelbrot mode, clicking zooms in and can set Julia parameters
+                    this.centerReal = complex.real;
+                    this.centerImag = complex.imag;
+                    this.zoom *= 2;
+
+                    // Also update Julia parameters for potential mode switch
+                    this.juliaReal = complex.real;
+                    this.juliaImag = complex.imag;
+                } else {
+                    // In Julia mode, clicking just zooms in
+                    this.centerReal = complex.real;
+                    this.centerImag = complex.imag;
+                    this.zoom *= 2;
+                }
+
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            handleMouseMove(event) {
+                const coords = this.getCanvasCoordinates(event);
+                const complex = this.pixelToComplex(coords.x, coords.y);
+
+                const coordText = `${complex.real.toFixed(6)} ${complex.imag >= 0 ? '+' : ''}${complex.imag.toFixed(6)}i`;
+                document.getElementById('mouseCoordDisplay').textContent = coordText;
+            }
+
+            toggleMode() {
+                this.mode = this.mode === 'mandelbrot' ? 'julia' : 'mandelbrot';
+
+                if (this.mode === 'julia') {
+                    // When switching to Julia mode, center the view
+                    this.centerReal = 0.0;
+                    this.centerImag = 0.0;
+                    this.zoom = 1.0;
+                }
+
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            resetView() {
+                this.centerReal = 0.0;
+                this.centerImag = 0.0;
+                this.zoom = 1.0;
+
+                if (this.mode === 'julia') {
+                    this.juliaReal = -0.5;
+                    this.juliaImag = 0.6;
+                }
+
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            zoomOut() {
+                this.zoom = Math.max(0.1, this.zoom / 2);
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            increaseIterations() {
+                this.maxIter = Math.min(1000, this.maxIter + 50);
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            decreaseIterations() {
+                this.maxIter = Math.max(50, this.maxIter - 50);
+                this.updateDisplay();
+                this.generateFractal();
+            }
+
+            updateDisplay() {
+                // Update mode indicator
+                const modeIndicator = document.getElementById('modeIndicator');
+                const nextMode = document.getElementById('nextMode');
+
+                if (this.mode === 'mandelbrot') {
+                    modeIndicator.textContent = 'Mandelbrot';
+                    modeIndicator.className = 'mode-indicator mode-mandelbrot';
+                    nextMode.textContent = 'Julia';
+                    document.getElementById('juliaParamRow').style.display = 'none';
+                } else {
+                    modeIndicator.textContent = 'Julia';
+                    modeIndicator.className = 'mode-indicator mode-julia';
+                    nextMode.textContent = 'Mandelbrot';
+                    document.getElementById('juliaParamRow').style.display = 'flex';
+
+                    const juliaParam = `${this.juliaReal.toFixed(3)} ${this.juliaImag >= 0 ? '+' : ''}${this.juliaImag.toFixed(3)}i`;
+                    document.getElementById('juliaParamDisplay').textContent = juliaParam;
+                }
+
+                // Update other displays
+                document.getElementById('zoomDisplay').textContent = `${this.zoom.toFixed(2)}x`;
+                document.getElementById('iterationDisplay').textContent = this.maxIter.toString();
+
+                const centerText = `${this.centerReal.toFixed(3)} ${this.centerImag >= 0 ? '+' : ''}${this.centerImag.toFixed(3)}i`;
+                document.getElementById('centerDisplay').textContent = centerText;
+            }
+
+            showLoading() {
+                document.getElementById('loadingOverlay').classList.remove('hidden');
+            }
+
+            hideLoading() {
+                document.getElementById('loadingOverlay').classList.add('hidden');
+            }
+
+            async generateFractal() {
+                this.showLoading();
+
+                try {
+                    let url;
+                    if (this.mode === 'mandelbrot') {
+                        url = `/api/mandelbrot?width=${this.canvas.width}&height=${this.canvas.height}` +
+                              `&center_real=${this.centerReal}&center_imag=${this.centerImag}` +
+                              `&zoom=${this.zoom}&max_iter=${this.maxIter}`;
+                    } else {
+                        url = `/api/julia?width=${this.canvas.width}&height=${this.canvas.height}` +
+                              `&c_real=${this.juliaReal}&c_imag=${this.juliaImag}` +
+                              `&center_real=${this.centerReal}&center_imag=${this.centerImag}` +
+                              `&zoom=${this.zoom}&max_iter=${this.maxIter}`;
+                    }
+
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (data.success) {
+                        const img = new Image();
+                        img.onload = () => {
+                            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                            this.ctx.drawImage(img, 0, 0);
+                            this.hideLoading();
+                        };
+                        img.src = data.image_data;
+
+                        console.log(`Generated ${this.mode} fractal:`, data.parameters);
+                        if (data.stats) {
+                            console.log('Statistics:', data.stats);
+                        }
+                    } else {
+                        console.error('Fractal generation failed:', data.error);
+                        this.hideLoading();
+                    }
+                } catch (error) {
+                    console.error('Network error:', error);
+                    this.hideLoading();
+                }
+            }
+        }
+
+        // Global functions for button handlers
+        let explorer;
+
+        function toggleMode() {
+            explorer.toggleMode();
+        }
+
+        function resetView() {
+            explorer.resetView();
+        }
+
+        function zoomOut() {
+            explorer.zoomOut();
+        }
+
+        function increaseIterations() {
+            explorer.increaseIterations();
+        }
+
+        function decreaseIterations() {
+            explorer.decreaseIterations();
+        }
+
+        // Initialize the application when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            explorer = new FractalExplorer();
+            console.log("🎯 Fractal Explorer ready for mathematical adventures!");
+        });
+    </script>
+</body>
+</html>

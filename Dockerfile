@@ -30,6 +30,7 @@ WORKDIR /app
 COPY orchestrator.py .
 COPY analyze.py .
 COPY bliss_metrics.py .
+COPY embeddings.py .
 COPY utils.py .
 
 # Create experiment_runs directory (will be mounted over)

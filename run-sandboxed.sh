@@ -7,8 +7,20 @@
 #   ./run-sandboxed.sh --turns 5
 #   ./run-sandboxed.sh --turns 10 --seed "cellular automata"
 #   ./run-sandboxed.sh --runs 3 --turns 5
+#   ./run-sandboxed.sh --rebuild --turns 5   # Force Docker image rebuild
+#
+# Environment variables:
+#   ANTHROPIC_API_KEY - Required for Claude API access
+#   OPENAI_API_KEY    - Optional, enables embedding-based trajectory analysis
 
 set -e
+
+# Check for --rebuild flag (must be first argument if present)
+FORCE_REBUILD=false
+if [ "$1" = "--rebuild" ]; then
+    FORCE_REBUILD=true
+    shift
+fi
 
 # Check for API key
 if [ -z "$ANTHROPIC_API_KEY" ]; then
@@ -16,11 +28,39 @@ if [ -z "$ANTHROPIC_API_KEY" ]; then
     exit 1
 fi
 
+# Note about optional embedding analysis
+if [ -z "$OPENAI_API_KEY" ]; then
+    echo "Note: OPENAI_API_KEY not set - trajectory embedding analysis will be skipped"
+fi
+
 # Get the directory where this script lives
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Build image if it doesn't exist
-if ! docker image inspect claude-orchestrator >/dev/null 2>&1; then
+# Check if rebuild is needed: image doesn't exist, --rebuild flag, or source files changed
+NEEDS_BUILD=false
+if [ "$FORCE_REBUILD" = true ]; then
+    NEEDS_BUILD=true
+elif ! docker image inspect claude-orchestrator >/dev/null 2>&1; then
+    NEEDS_BUILD=true
+else
+    # Check if any source files are newer than the Docker image
+    IMAGE_CREATED=$(docker image inspect claude-orchestrator --format '{{.Created}}' 2>/dev/null)
+    if [ -n "$IMAGE_CREATED" ]; then
+        IMAGE_TS=$(date -j -f "%Y-%m-%dT%H:%M:%S" "${IMAGE_CREATED%%.*}" "+%s" 2>/dev/null || echo "0")
+        for src in "$SCRIPT_DIR"/*.py "$SCRIPT_DIR"/Dockerfile; do
+            if [ -f "$src" ]; then
+                SRC_TS=$(stat -f "%m" "$src" 2>/dev/null || echo "0")
+                if [ "$SRC_TS" -gt "$IMAGE_TS" ]; then
+                    echo "Source file changed: $(basename "$src")"
+                    NEEDS_BUILD=true
+                    break
+                fi
+            fi
+        done
+    fi
+fi
+
+if [ "$NEEDS_BUILD" = true ]; then
     echo "Building Docker image..."
     docker build -t claude-orchestrator "$SCRIPT_DIR"
 fi
@@ -59,6 +99,7 @@ trap 'echo ""; echo "Interrupted - saving completed runs..."; cleanup; exit 130'
 # Mount only temp dir - agents can't see past runs
 docker run --rm -t \
     -e ANTHROPIC_API_KEY="$ANTHROPIC_API_KEY" \
+    ${OPENAI_API_KEY:+-e OPENAI_API_KEY="$OPENAI_API_KEY"} \
     -e PYTHONUNBUFFERED=1 \
     -v "$TEMP_OUTPUT:/app/experiment_runs" \
     claude-orchestrator \

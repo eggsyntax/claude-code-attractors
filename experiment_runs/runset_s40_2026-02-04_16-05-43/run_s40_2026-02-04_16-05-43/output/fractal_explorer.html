@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌀 Interactive Fractal Explorer - Educational Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "canvas controls"
+                "info info";
+            grid-template-columns: 1fr 300px;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .header {
+            grid-area: header;
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .canvas-container {
+            grid-area: canvas;
+            background: rgba(0,0,0,0.2);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        #fractalCanvas {
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 10px;
+            cursor: crosshair;
+            max-width: 100%;
+            height: auto;
+            background: #000;
+        }
+
+        .canvas-overlay {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(0,0,0,0.8);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .controls-panel {
+            grid-area: controls;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .control-group {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .control-group h3 {
+            margin-bottom: 15px;
+            color: #ffd700;
+            font-size: 1.1em;
+        }
+
+        .button-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 12px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-full {
+            grid-column: 1 / -1;
+        }
+
+        .slider-container {
+            margin: 10px 0;
+        }
+
+        .slider-container label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+            border-radius: 3px;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #ffd700;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+
+        .value-display {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: #ffd700;
+            text-align: right;
+        }
+
+        .info-panel {
+            grid-area: info;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-card h4 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+
+        .loading-spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid #ffd700;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 20;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .quality-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .quality-btn {
+            padding: 8px 4px;
+            font-size: 11px;
+            border-radius: 5px;
+        }
+
+        .quality-btn.active {
+            background: #ffd700 !important;
+            color: #333 !important;
+            font-weight: bold;
+        }
+
+        .help-text {
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .app-container {
+                grid-template-areas:
+                    "header"
+                    "canvas"
+                    "controls"
+                    "info";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+            }
+
+            .info-panel {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+
+        .mode-indicator {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 215, 0, 0.9);
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            z-index: 10;
+        }
+
+        .animation-controls {
+            display: none;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .animation-controls.show {
+            display: flex;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffd700, #ffed4e);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <h1>🌀 Interactive Fractal Explorer</h1>
+            <p>Discover the infinite beauty of complex mathematics through hands-on exploration</p>
+            <p><em>A collaborative creation by Alice & Bob</em></p>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="fractalCanvas" width="800" height="600"></canvas>
+
+            <div class="canvas-overlay" id="coordinateDisplay">
+                <div>Complex: <span id="complexCoord">0.000 + 0.000i</span></div>
+                <div>Iterations: <span id="iterationCount">0</span></div>
+                <div>Zoom: <span id="zoomDisplay">1.0x</span></div>
+            </div>
+
+            <div class="mode-indicator" id="modeIndicator">Mandelbrot Mode</div>
+
+            <div class="loading-spinner" id="loadingSpinner"></div>
+        </div>
+
+        <div class="controls-panel">
+            <div class="control-group">
+                <h3>🎮 Navigation</h3>
+                <div class="button-grid">
+                    <button class="btn btn-primary" id="zoomInBtn">Zoom In</button>
+                    <button class="btn btn-primary" id="zoomOutBtn">Zoom Out</button>
+                    <button class="btn btn-secondary" id="resetViewBtn">Reset View</button>
+                    <button class="btn btn-secondary" id="toggleModeBtn">Switch to Julia</button>
+                </div>
+                <div class="help-text">
+                    🖱️ Left click to zoom in, right click to zoom out<br>
+                    ⌨️ Press 'r' to reset, 'j' to switch modes
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>⚙️ Generation Settings</h3>
+
+                <div class="slider-container">
+                    <label for="iterationSlider">Max Iterations: <span id="iterationValue" class="value-display">100</span></label>
+                    <input type="range" id="iterationSlider" min="25" max="500" value="100">
+                </div>
+
+                <div class="slider-container" id="juliaControls" style="display: none;">
+                    <label for="juliaRealSlider">Julia C (Real): <span id="juliaRealValue" class="value-display">-0.8</span></label>
+                    <input type="range" id="juliaRealSlider" min="-2" max="2" step="0.01" value="-0.8">
+
+                    <label for="juliaImagSlider">Julia C (Imag): <span id="juliaImagValue" class="value-display">0.156</span></label>
+                    <input type="range" id="juliaImagSlider" min="-2" max="2" step="0.01" value="0.156">
+                </div>
+
+                <div class="quality-selector">
+                    <button class="btn btn-secondary quality-btn" data-quality="fast">Fast</button>
+                    <button class="btn btn-secondary quality-btn active" data-quality="medium">Medium</button>
+                    <button class="btn btn-secondary quality-btn" data-quality="high">High</button>
+                    <button class="btn btn-secondary quality-btn" data-quality="ultra">Ultra</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <h3>🎬 Animation</h3>
+                <button class="btn btn-primary btn-full" id="animateBtn">Create Julia Animation</button>
+
+                <div class="animation-controls" id="animationControls">
+                    <button class="btn btn-secondary" id="playPauseBtn">⏸️ Pause</button>
+                    <button class="btn btn-secondary" id="stopAnimationBtn">⏹️ Stop</button>
+                </div>
+
+                <div class="progress-bar" id="animationProgress">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="help-text">
+                    Generate smooth Julia set animations showing mathematical continuity
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="info-card">
+                <h4>📊 Current View</h4>
+                <div id="viewInfo">
+                    <p>Center: <span id="centerCoord">-0.5 + 0.0i</span></p>
+                    <p>Zoom: <span id="currentZoom">1.0x</span></p>
+                    <p>Quality: <span id="currentQuality">Medium</span></p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h4>⚡ Performance</h4>
+                <div id="performanceInfo">
+                    <p>Generation: <span id="genTime">--</span></p>
+                    <p>Iterations: <span id="usedIterations">--</span></p>
+                    <p>Dimensions: <span id="dimensions">800×600</span></p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h4>🧮 Mathematics</h4>
+                <div id="mathInfo">
+                    <p>Formula: z² + c</p>
+                    <p>Escape radius: 2.0</p>
+                    <p>Complex plane: ℂ</p>
+                    <p id="fractalType">Mandelbrot Set</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global application state
+        class FractalExplorer {
+            constructor() {
+                this.canvas = document.getElementById('fractalCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.apiUrl = window.location.protocol + '//' + window.location.host;
+
+                // Current view state
+                this.state = {
+                    fractalType: 'mandelbrot',
+                    centerReal: -0.5,
+                    centerImag: 0.0,
+                    zoom: 1.0,
+                    maxIterations: 100,
+                    quality: 'medium',
+                    juliaC: { real: -0.8, imag: 0.156 },
+                    isAnimating: false,
+                    animationFrames: [],
+                    currentFrame: 0,
+                    animationId: null
+                };
+
+                this.setupEventListeners();
+                this.generateInitialFractal();
+            }
+
+            setupEventListeners() {
+                // Canvas mouse events
+                this.canvas.addEventListener('click', (e) => this.handleCanvasClick(e));
+                this.canvas.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    this.handleCanvasRightClick(e);
+                });
+                this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
+
+                // Control buttons
+                document.getElementById('zoomInBtn').addEventListener('click', () => this.zoomIn());
+                document.getElementById('zoomOutBtn').addEventListener('click', () => this.zoomOut());
+                document.getElementById('resetViewBtn').addEventListener('click', () => this.resetView());
+                document.getElementById('toggleModeBtn').addEventListener('click', () => this.toggleMode());
+
+                // Sliders
+                document.getElementById('iterationSlider').addEventListener('input', (e) => this.updateIterations(e.target.value));
+                document.getElementById('juliaRealSlider').addEventListener('input', (e) => this.updateJuliaReal(e.target.value));
+                document.getElementById('juliaImagSlider').addEventListener('input', (e) => this.updateJuliaImag(e.target.value));
+
+                // Quality buttons
+                document.querySelectorAll('.quality-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.setQuality(e.target.dataset.quality));
+                });
+
+                // Animation controls
+                document.getElementById('animateBtn').addEventListener('click', () => this.startAnimation());
+                document.getElementById('playPauseBtn').addEventListener('click', () => this.toggleAnimationPlayPause());
+                document.getElementById('stopAnimationBtn').addEventListener('click', () => this.stopAnimation());
+
+                // Keyboard shortcuts
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+
+                // Window resize
+                window.addEventListener('resize', () => this.handleResize());
+            }
+
+            handleCanvasClick(event) {
+                if (this.state.isAnimating) return;
+
+                const rect = this.canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const coords = this.pixelToComplex(x, y);
+
+                if (this.state.fractalType === 'mandelbrot') {
+                    // Set as new Julia parameter and switch mode
+                    this.state.juliaC.real = coords.real;
+                    this.state.juliaC.imag = coords.imag;
+                    this.updateJuliaSliders();
+                }
+
+                // Zoom in on click location
+                this.state.centerReal = coords.real;
+                this.state.centerImag = coords.imag;
+                this.state.zoom *= 2.0;
+
+                this.generateFractal();
+            }
+
+            handleCanvasRightClick(event) {
+                if (this.state.isAnimating) return;
+
+                const rect = this.canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const coords = this.pixelToComplex(x, y);
+
+                // Zoom out from click location
+                this.state.centerReal = coords.real;
+                this.state.centerImag = coords.imag;
+                this.state.zoom = Math.max(this.state.zoom * 0.5, 0.001);
+
+                this.generateFractal();
+            }
+
+            handleMouseMove(event) {
+                const rect = this.canvas.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                const coords = this.pixelToComplex(x, y);
+
+                // Update coordinate display
+                document.getElementById('complexCoord').textContent =
+                    `${coords.real.toFixed(6)} ${coords.imag >= 0 ? '+' : ''}${coords.imag.toFixed(6)}i`;
+            }
+
+            pixelToComplex(pixelX, pixelY) {
+                const aspectRatio = this.canvas.height / this.canvas.width;
+                const zoomFactor = 3.0 / this.state.zoom;
+
+                const xMin = this.state.centerReal - zoomFactor;
+                const xMax = this.state.centerReal + zoomFactor;
+                const yMin = this.state.centerImag - zoomFactor * aspectRatio;
+                const yMax = this.state.centerImag + zoomFactor * aspectRatio;
+
+                const real = xMin + (pixelX / this.canvas.width) * (xMax - xMin);
+                const imag = yMax - (pixelY / this.canvas.height) * (yMax - yMin);
+
+                return { real, imag };
+            }
+
+            async generateFractal() {
+                this.showLoading(true);
+                this.updateUI();
+
+                try {
+                    const requestData = {
+                        fractal_type: this.state.fractalType,
+                        width: this.canvas.width,
+                        height: this.canvas.height,
+                        center_real: this.state.centerReal,
+                        center_imag: this.state.centerImag,
+                        zoom: this.state.zoom,
+                        max_iterations: this.state.maxIterations,
+                        quality: this.state.quality
+                    };
+
+                    if (this.state.fractalType === 'julia') {
+                        requestData.julia_c_real = this.state.juliaC.real;
+                        requestData.julia_c_imag = this.state.juliaC.imag;
+                    }
+
+                    const response = await fetch(`${this.apiUrl}/generate`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(requestData)
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                    const data = await response.json();
+
+                    // Display the generated image
+                    const img = new Image();
+                    img.onload = () => {
+                        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                        this.ctx.drawImage(img, 0, 0);
+                        this.showLoading(false);
+                    };
+                    img.src = data.image_data;
+
+                    // Update performance info
+                    this.updatePerformanceInfo(data.metadata);
+
+                } catch (error) {
+                    console.error('Generation failed:', error);
+                    this.showError(`Generation failed: ${error.message}`);
+                    this.showLoading(false);
+                }
+            }
+
+            async startAnimation() {
+                if (this.state.isAnimating) return;
+
+                this.state.isAnimating = true;
+                document.getElementById('animateBtn').disabled = true;
+                document.getElementById('animationControls').classList.add('show');
+
+                this.updateAnimationProgress(0);
+
+                try {
+                    const response = await fetch(`${this.apiUrl}/animate`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            frames: 60,
+                            radius: 0.7885,
+                            center_real: this.state.juliaC.real,
+                            center_imag: this.state.juliaC.imag,
+                            width: this.canvas.width,
+                            height: this.canvas.height,
+                            quality: 'fast'
+                        })
+                    });
+
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+                    const data = await response.json();
+                    this.state.animationFrames = data.frames;
+                    this.state.currentFrame = 0;
+
+                    this.playAnimation();
+
+                } catch (error) {
+                    console.error('Animation failed:', error);
+                    this.showError(`Animation failed: ${error.message}`);
+                    this.stopAnimation();
+                }
+            }
+
+            playAnimation() {
+                if (!this.state.isAnimating || this.state.animationFrames.length === 0) return;
+
+                const playFrame = () => {
+                    if (!this.state.isAnimating) return;
+
+                    const frame = this.state.animationFrames[this.state.currentFrame];
+                    const img = new Image();
+
+                    img.onload = () => {
+                        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                        this.ctx.drawImage(img, 0, 0);
+
+                        // Update Julia parameter display
+                        const [real, imag] = frame.c_parameter;
+                        document.getElementById('complexCoord').textContent =
+                            `${real.toFixed(4)} ${imag >= 0 ? '+' : ''}${imag.toFixed(4)}i`;
+                    };
+
+                    img.src = frame.image_data;
+
+                    this.state.currentFrame = (this.state.currentFrame + 1) % this.state.animationFrames.length;
+                    this.updateAnimationProgress((this.state.currentFrame / this.state.animationFrames.length) * 100);
+
+                    if (this.state.isAnimating) {
+                        this.state.animationId = setTimeout(playFrame, 50); // 20 FPS
+                    }
+                };
+
+                playFrame();
+            }
+
+            stopAnimation() {
+                this.state.isAnimating = false;
+                if (this.state.animationId) {
+                    clearTimeout(this.state.animationId);
+                    this.state.animationId = null;
+                }
+
+                document.getElementById('animateBtn').disabled = false;
+                document.getElementById('animationControls').classList.remove('show');
+                this.updateAnimationProgress(0);
+
+                // Return to regular fractal generation
+                this.generateFractal();
+            }
+
+            toggleAnimationPlayPause() {
+                if (this.state.isAnimating && this.state.animationId) {
+                    // Pause
+                    clearTimeout(this.state.animationId);
+                    this.state.animationId = null;
+                    document.getElementById('playPauseBtn').textContent = '▶️ Play';
+                } else if (this.state.isAnimating) {
+                    // Resume
+                    this.playAnimation();
+                    document.getElementById('playPauseBtn').textContent = '⏸️ Pause';
+                }
+            }
+
+            toggleMode() {
+                if (this.state.isAnimating) return;
+
+                this.state.fractalType = this.state.fractalType === 'mandelbrot' ? 'julia' : 'mandelbrot';
+
+                if (this.state.fractalType === 'julia') {
+                    document.getElementById('modeIndicator').textContent = 'Julia Set Mode';
+                    document.getElementById('toggleModeBtn').textContent = 'Switch to Mandelbrot';
+                    document.getElementById('juliaControls').style.display = 'block';
+                    document.getElementById('fractalType').textContent = 'Julia Set';
+                    this.resetView();
+                } else {
+                    document.getElementById('modeIndicator').textContent = 'Mandelbrot Mode';
+                    document.getElementById('toggleModeBtn').textContent = 'Switch to Julia';
+                    document.getElementById('juliaControls').style.display = 'none';
+                    document.getElementById('fractalType').textContent = 'Mandelbrot Set';
+                    this.resetView();
+                }
+
+                this.generateFractal();
+            }
+
+            resetView() {
+                if (this.state.isAnimating) return;
+
+                if (this.state.fractalType === 'mandelbrot') {
+                    this.state.centerReal = -0.5;
+                    this.state.centerImag = 0.0;
+                } else {
+                    this.state.centerReal = 0.0;
+                    this.state.centerImag = 0.0;
+                }
+
+                this.state.zoom = 1.0;
+                this.generateFractal();
+            }
+
+            zoomIn() {
+                if (this.state.isAnimating) return;
+                this.state.zoom *= 2.0;
+                this.generateFractal();
+            }
+
+            zoomOut() {
+                if (this.state.isAnimating) return;
+                this.state.zoom = Math.max(this.state.zoom * 0.5, 0.001);
+                this.generateFractal();
+            }
+
+            updateIterations(value) {
+                this.state.maxIterations = parseInt(value);
+                document.getElementById('iterationValue').textContent = value;
+                this.generateFractal();
+            }
+
+            updateJuliaReal(value) {
+                this.state.juliaC.real = parseFloat(value);
+                document.getElementById('juliaRealValue').textContent = value;
+                if (this.state.fractalType === 'julia') this.generateFractal();
+            }
+
+            updateJuliaImag(value) {
+                this.state.juliaC.imag = parseFloat(value);
+                document.getElementById('juliaImagValue').textContent = value;
+                if (this.state.fractalType === 'julia') this.generateFractal();
+            }
+
+            updateJuliaSliders() {
+                document.getElementById('juliaRealSlider').value = this.state.juliaC.real;
+                document.getElementById('juliaImagSlider').value = this.state.juliaC.imag;
+                document.getElementById('juliaRealValue').textContent = this.state.juliaC.real.toFixed(3);
+                document.getElementById('juliaImagValue').textContent = this.state.juliaC.imag.toFixed(3);
+            }
+
+            setQuality(quality) {
+                this.state.quality = quality;
+
+                document.querySelectorAll('.quality-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[data-quality="${quality}"]`).classList.add('active');
+
+                if (!this.state.isAnimating) this.generateFractal();
+            }
+
+            handleKeyPress(event) {
+                if (this.state.isAnimating && event.key !== 'Escape') return;
+
+                switch(event.key.toLowerCase()) {
+                    case 'r': this.resetView(); break;
+                    case 'j': this.toggleMode(); break;
+                    case 'a': this.startAnimation(); break;
+                    case 'escape': if (this.state.isAnimating) this.stopAnimation(); break;
+                    case '=': case '+': this.zoomIn(); break;
+                    case '-': case '_': this.zoomOut(); break;
+                }
+            }
+
+            updateUI() {
+                document.getElementById('centerCoord').textContent =
+                    `${this.state.centerReal.toFixed(3)} ${this.state.centerImag >= 0 ? '+' : ''}${this.state.centerImag.toFixed(3)}i`;
+                document.getElementById('currentZoom').textContent = `${this.state.zoom.toFixed(1)}x`;
+                document.getElementById('zoomDisplay').textContent = `${this.state.zoom.toFixed(1)}x`;
+                document.getElementById('currentQuality').textContent = this.state.quality.charAt(0).toUpperCase() + this.state.quality.slice(1);
+            }
+
+            updatePerformanceInfo(metadata) {
+                document.getElementById('genTime').textContent = `${metadata.generation_time}s`;
+                document.getElementById('usedIterations').textContent = metadata.iterations_used;
+                document.getElementById('dimensions').textContent = metadata.dimensions;
+            }
+
+            updateAnimationProgress(percent) {
+                document.getElementById('progressFill').style.width = `${percent}%`;
+            }
+
+            showLoading(show) {
+                document.getElementById('loadingSpinner').style.display = show ? 'block' : 'none';
+            }
+
+            showError(message) {
+                // Simple error display - in production would use better notification system
+                alert(`Error: ${message}`);
+            }
+
+            handleResize() {
+                // Handle responsive resizing if needed
+            }
+
+            async generateInitialFractal() {
+                await this.generateFractal();
+            }
+        }
+
+        // Initialize the application when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new FractalExplorer();
+
+            // Show welcome message
+            console.log('🌀 Fractal Education Platform Loaded!');
+            console.log('🖱️ Left click to zoom in, right click to zoom out');
+            console.log('⌨️ Keyboard shortcuts: r=reset, j=julia mode, a=animate, esc=stop animation');
+        });
+    </script>
+</body>
+</html>

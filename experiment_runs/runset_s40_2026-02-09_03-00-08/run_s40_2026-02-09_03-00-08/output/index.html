@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cellular Automata Explorer</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Cellular Automata Explorer</h1>
+            <p>Discover the beauty of emergent complexity</p>
+        </header>
+
+        <div class="main-content">
+            <div class="simulation-area">
+                <canvas id="automata-canvas"></canvas>
+                <div class="canvas-controls">
+                    <button id="play-pause">Play</button>
+                    <button id="step">Step</button>
+                    <button id="reset">Reset</button>
+                    <button id="clear">Clear</button>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <div class="rule-selection">
+                    <h3>Rule System</h3>
+                    <select id="rule-selector">
+                        <option value="conways-life">Conway's Game of Life</option>
+                        <option value="langtons-ant">Langton's Ant</option>
+                        <option value="brians-brain">Brian's Brain</option>
+                    </select>
+                </div>
+
+                <div class="parameters">
+                    <h3>Parameters</h3>
+                    <div id="parameter-controls">
+                        <!-- Dynamic parameter controls will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="simulation-controls">
+                    <h3>Simulation</h3>
+                    <label>
+                        Speed: <input type="range" id="speed-slider" min="1" max="60" value="10">
+                        <span id="speed-display">10 fps</span>
+                    </label>
+                </div>
+
+                <div class="visualization-controls">
+                    <h3>Visualization</h3>
+                    <label>
+                        Color Scheme:
+                        <select id="color-scheme">
+                            <option value="classic">Classic (B&W)</option>
+                            <option value="heatmap">Heat Map</option>
+                            <option value="ocean">Ocean</option>
+                            <option value="forest">Forest</option>
+                        </select>
+                    </label>
+                    <label>
+                        <input type="checkbox" id="show-grid"> Show Grid
+                    </label>
+                    <label>
+                        <input type="checkbox" id="trail-effect"> Trail Effect
+                    </label>
+                </div>
+
+                <div class="analysis">
+                    <h3>Analysis</h3>
+                    <div class="stats">
+                        <div>Generation: <span id="generation-count">0</span></div>
+                        <div>Population: <span id="population-count">0</span></div>
+                        <div>Density: <span id="density">0%</span></div>
+                    </div>
+                </div>
+
+                <div class="patterns">
+                    <h3>Patterns</h3>
+                    <button id="random-seed">Random Seed</button>
+                    <button id="glider">Glider</button>
+                    <button id="oscillator">Oscillator</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/automata-engine.js"></script>
+    <script src="scripts/rule-systems.js"></script>
+    <script src="scripts/ui-controls.js"></script>
+    <script src="scripts/visualization.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

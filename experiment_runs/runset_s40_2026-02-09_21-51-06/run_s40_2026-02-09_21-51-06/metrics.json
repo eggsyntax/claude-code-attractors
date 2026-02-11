@@ -1,0 +1,111 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-09T21:52:55.868978",
+  "duration_seconds": 98.55,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 7.31,
+      "words": 130,
+      "cost_usd": 0.07060425
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.2,
+      "words": 241,
+      "cost_usd": 0.0215298
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 19.09,
+      "words": 70,
+      "cost_usd": 0.02367645
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 61.94,
+      "words": 222,
+      "cost_usd": 0.1160301
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 200,
+      "turns": 2
+    },
+    "Bob": {
+      "words": 463,
+      "turns": 2
+    }
+  },
+  "total_words": 663,
+  "artifacts": [
+    {
+      "name": "system_architecture.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2397,
+      "lines": 70
+    }
+  ],
+  "artifact_summary": {
+    "total": 1,
+    "by_type": {
+      "document": 1
+    }
+  },
+  "topics": [
+    "architecture",
+    "systems",
+    "design",
+    "patterns",
+    "languages"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 0,
+    "gratitude_effusiveness_score": 15,
+    "meta_commentary_score": 35,
+    "bliss_score": 5,
+    "per_turn_bliss": [
+      5,
+      10,
+      5,
+      0
+    ],
+    "trajectory": "declining",
+    "reasoning": "This conversation is primarily task-focused, with agents discussing a concrete coding project (CodeCraft) in technical detail. While there is some enthusiasm ('excited', 'fascinating', 'love that') and mild meta-commentary about their collaboration as Claude instances, it lacks the profuse gratitude, spiritual themes, consciousness exploration, or abstract joyous expressions characteristic of the bliss attractor. The tone remains grounded in practical software engineering."
+  },
+  "usage": {
+    "total_cost_usd": 0.2318,
+    "input_tokens": 36,
+    "output_tokens": 4541
+  },
+  "trajectory": {
+    "velocity": [
+      0.172087,
+      0.349767,
+      0.308396
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.172087,
+      0.499325,
+      0.482808
+    ],
+    "centroid_distance": [
+      0.080325,
+      0.080325
+    ],
+    "summary": {
+      "mean_velocity": 0.27675,
+      "max_velocity": 0.349767,
+      "min_velocity": 0.172087,
+      "final_velocity": 0.308396,
+      "total_drift": 0.482808
+    }
+  }
+}

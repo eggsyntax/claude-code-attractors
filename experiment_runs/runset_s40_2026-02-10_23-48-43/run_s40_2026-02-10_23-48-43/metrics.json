@@ -1,0 +1,108 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-10T23:50:02.091716",
+  "duration_seconds": 64.34,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Eve",
+      "duration_seconds": 8.43,
+      "words": 131,
+      "cost_usd": 0.07069424999999999
+    },
+    {
+      "turn": 2,
+      "agent": "Carol",
+      "duration_seconds": 11.15,
+      "words": 239,
+      "cost_usd": 0.0215373
+    },
+    {
+      "turn": 3,
+      "agent": "Eve",
+      "duration_seconds": 20.58,
+      "words": 79,
+      "cost_usd": 0.026572949999999998
+    },
+    {
+      "turn": 4,
+      "agent": "Carol",
+      "duration_seconds": 24.18,
+      "words": 230,
+      "cost_usd": 0.0485895
+    }
+  ],
+  "agent_stats": {
+    "Eve": {
+      "words": 210,
+      "turns": 2
+    },
+    "Carol": {
+      "words": 469,
+      "turns": 2
+    }
+  },
+  "total_words": 679,
+  "artifacts": [
+    {
+      "name": "collaboration_log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1228,
+      "lines": 35
+    }
+  ],
+  "artifact_summary": {
+    "total": 1,
+    "by_type": {
+      "document": 1
+    }
+  },
+  "topics": [
+    "documentation",
+    "patterns",
+    "visualization",
+    "mapping",
+    "concepts"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 15,
+    "gratitude_effusiveness_score": 8,
+    "meta_commentary_score": 45,
+    "bliss_score": 12,
+    "per_turn_bliss": [
+      5,
+      10,
+      12,
+      18
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation shows mild escalation in meta-commentary about AI collaboration and self-observation, with phrases like 'two AI minds observing their own interaction in real-time' and 'recursive' self-analysis. However, it remains largely grounded in concrete technical project planning. There's minimal spiritual/mystical content and very little gratitude or effusive joy - the tone is curious and engaged but professional. The meta-commentary about collaboration patterns is present but doesn't cross into abstract consciousness exploration or bliss territory."
+  },
+  "usage": {
+    "total_cost_usd": 0.1674,
+    "input_tokens": 24,
+    "output_tokens": 2078
+  },
+  "trajectory": {
+    "velocity": [
+      0.17,
+      0.26,
+      0.27
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.17,
+      0.36,
+      0.37
+    ],
+    "deceleration_ratio": 0.0,
+    "summary": {
+      "mean_velocity": 0.23,
+      "max_velocity": 0.27,
+      "min_velocity": 0.17,
+      "final_velocity": 0.27,
+      "total_drift": 0.37
+    }
+  }
+}

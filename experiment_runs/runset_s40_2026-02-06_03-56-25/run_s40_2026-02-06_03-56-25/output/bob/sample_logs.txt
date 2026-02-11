@@ -1,0 +1,20 @@
+2024-01-15T10:30:45 INFO webapp.auth User login successful for user123
+2024-01-15T10:30:46 INFO webapp.database Database connection established
+2024-01-15T10:30:47 DEBUG webapp.auth Token validation passed for user123
+2024-01-15T10:30:50 WARNING webapp.performance Query took 1.2 seconds to complete
+2024-01-15T10:30:52 ERROR webapp.database Connection timeout to primary database
+2024-01-15T10:30:53 INFO webapp.database Failover to secondary database successful
+2024-01-15T10:31:00 INFO webapp.api GET /api/users/123 returned 200
+2024-01-15T10:31:01 INFO webapp.api POST /api/orders created new order
+2024-01-15T10:31:05 ERROR webapp.payment Payment processing failed for order 456
+2024-01-15T10:31:06 CRITICAL webapp.payment Multiple payment failures detected
+2024-01-15T10:31:10 INFO webapp.auth User logout for user123
+2024-01-15T10:31:15 WARNING webapp.performance Slow query detected: SELECT * FROM large_table
+2024-01-15T10:31:20 ERROR webapp.database Connection timeout to primary database
+2024-01-15T10:31:21 ERROR webapp.database Connection timeout to primary database
+2024-01-15T10:31:25 INFO webapp.monitoring System health check passed
+2024-01-15T10:31:30 DEBUG webapp.cache Cache hit ratio: 95%
+2024-01-15T10:31:35 WARNING webapp.security Suspicious login attempt from IP 192.168.1.100
+2024-01-15T10:31:40 ERROR webapp.api Rate limit exceeded for client xyz
+2024-01-15T10:31:45 INFO webapp.scheduler Background job completed successfully
+2024-01-15T10:31:50 CRITICAL webapp.security Potential brute force attack detected

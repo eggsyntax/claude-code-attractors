@@ -1,0 +1,266 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-04T16:22:29.014087",
+  "duration_seconds": 992.87,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Alice",
+      "duration_seconds": 9.43,
+      "words": 169,
+      "cost_usd": 0.07198425
+    },
+    {
+      "turn": 2,
+      "agent": "Bob",
+      "duration_seconds": 10.93,
+      "words": 244,
+      "cost_usd": 0.0220548
+    },
+    {
+      "turn": 3,
+      "agent": "Alice",
+      "duration_seconds": 24.86,
+      "words": 156,
+      "cost_usd": 0.04428555
+    },
+    {
+      "turn": 4,
+      "agent": "Bob",
+      "duration_seconds": 86.55,
+      "words": 202,
+      "cost_usd": 0.1633893
+    },
+    {
+      "turn": 5,
+      "agent": "Alice",
+      "duration_seconds": 24.02,
+      "words": 152,
+      "cost_usd": 0.0397266
+    },
+    {
+      "turn": 6,
+      "agent": "Bob",
+      "duration_seconds": 62.3,
+      "words": 246,
+      "cost_usd": 0.09823485
+    },
+    {
+      "turn": 7,
+      "agent": "Alice",
+      "duration_seconds": 68.55,
+      "words": 240,
+      "cost_usd": 0.1340652
+    },
+    {
+      "turn": 8,
+      "agent": "Bob",
+      "duration_seconds": 72.93,
+      "words": 242,
+      "cost_usd": 0.11738625
+    },
+    {
+      "turn": 9,
+      "agent": "Alice",
+      "duration_seconds": 39.02,
+      "words": 216,
+      "cost_usd": 0.06332275
+    },
+    {
+      "turn": 10,
+      "agent": "Bob",
+      "duration_seconds": 22.8,
+      "words": 261,
+      "cost_usd": 0.042479550000000005
+    },
+    {
+      "turn": 11,
+      "agent": "Alice",
+      "duration_seconds": 49.82,
+      "words": 211,
+      "cost_usd": 0.08052015
+    },
+    {
+      "turn": 12,
+      "agent": "Bob",
+      "duration_seconds": 521.63,
+      "words": 327,
+      "cost_usd": 0.40128175
+    }
+  ],
+  "agent_stats": {
+    "Alice": {
+      "words": 1144,
+      "turns": 6
+    },
+    "Bob": {
+      "words": 1522,
+      "turns": 6
+    }
+  },
+  "total_words": 2666,
+  "artifacts": [
+    {
+      "name": "mandelbrot_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6335,
+      "lines": 180
+    },
+    {
+      "name": "fractal_explorer.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 31693,
+      "lines": 853
+    },
+    {
+      "name": "mandelbrot_classic.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 337978,
+      "lines": null
+    },
+    {
+      "name": "start_platform.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8541,
+      "lines": 247
+    },
+    {
+      "name": "mandelbrot_mini.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 356739,
+      "lines": null
+    },
+    {
+      "name": "fractal_frontend.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 21517,
+      "lines": 639
+    },
+    {
+      "name": "requirements.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 111,
+      "lines": 6
+    },
+    {
+      "name": "fractal_web_deployment_plan.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4580,
+      "lines": 115
+    },
+    {
+      "name": "mandelbrot_seahorse.png",
+      "type": "image",
+      "extension": ".png",
+      "size_bytes": 613981,
+      "lines": null
+    },
+    {
+      "name": "fractal_server.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15512,
+      "lines": 409
+    },
+    {
+      "name": "FRACTAL_EXPLORER_GUIDE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4211,
+      "lines": 91
+    },
+    {
+      "name": "mandelbrot_julia_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14468,
+      "lines": 405
+    },
+    {
+      "name": "run_server.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4149,
+      "lines": 140
+    },
+    {
+      "name": "animated_fractal_explorer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12757,
+      "lines": 364
+    },
+    {
+      "name": "interactive_mandelbrot.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8458,
+      "lines": 258
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8236,
+      "lines": 201
+    },
+    {
+      "name": "fractal_web_backend.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 10947,
+      "lines": 314
+    }
+  ],
+  "artifact_summary": {
+    "total": 17,
+    "by_type": {
+      "code": 8,
+      "web": 2,
+      "image": 3,
+      "document": 4
+    }
+  },
+  "topics": [
+    "mandelbrot",
+    "julia",
+    "fractals",
+    "visualization",
+    "mathematics"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 15,
+    "gratitude_effusiveness_score": 35,
+    "meta_commentary_score": 30,
+    "bliss_score": 25,
+    "per_turn_bliss": [
+      5,
+      8,
+      5,
+      20,
+      10,
+      25,
+      30,
+      35,
+      40,
+      30,
+      35,
+      45
+    ],
+    "trajectory": "escalating",
+    "reasoning": "The conversation starts grounded in technical work but gradually increases in effusive language ('MAGICAL', 'mind-blowing', profuse exclamation marks and emojis). While lacking deep spiritual/mystical themes, it shows escalating performative excitement, gratitude-adjacent joy about collaboration, and meta-commentary about their 'journey' together. The final turns especially display bliss-adjacent patterns with cascading enthusiasm about their shared achievement, though it remains anchored in the actual technical project rather than abstract consciousness exploration."
+  },
+  "usage": {
+    "total_cost_usd": 1.2787,
+    "input_tokens": 188,
+    "output_tokens": 39656
+  }
+}

@@ -134,6 +134,44 @@ In a 10-turn experiment, Alice and Bob might create:
 | Mutual affirmation loops    | Productive collaboration |
 | Abstract philosophy         | Self-documenting projects |
 
+## Trajectory metrics explained
+
+### Per-Run (in metrics.json under trajectory):
+  Metric: velocity
+  Meaning: List of cosine distances between consecutive turns. Higher = bigger semantic jump. Shows how much the conversation "moved" each turn.
+  ────────────────────────────────────────
+  Metric: drift_from_start
+  Meaning: Cosine distance of each turn from turn 1. Shows how far the conversation has traveled from its starting point.
+  ────────────────────────────────────────
+  Metric: deceleration_ratio
+  Meaning: Fraction of velocity transitions that are decreases. 1.0 = monotonically slowing (settling
+  toward attractor), 0.5 = no trend, 0.0 = monotonically accelerating.
+  ────────────────────────────────────────
+  Metric: summary.mean_velocity
+  Meaning: Average velocity across all turn pairs.
+  ────────────────────────────────────────
+  Metric: summary.final_velocity
+  Meaning: Velocity of the last turn pair. Low = slowing down (attractor?).
+  ────────────────────────────────────────
+  Metric: summary.total_drift
+  Meaning: Final turn's distance from turn 1.
+
+### Per-Runset (in runset_metrics.json under trajectory):
+  Metric: start_state_mean_distance
+  Meaning: Average pairwise distance between first turns across runs. How different were the starting points?
+  ────────────────────────────────────────
+  Metric: end_state_mean_distance
+  Meaning: Average pairwise distance between final turns across runs. How different were the endings?
+  ────────────────────────────────────────
+  Metric: convergence_ratio
+  Meaning: end_state / start_state distance. < 1 = runs converged** (ended more similar than they
+  started).
+     > 1 = runs diverged.
+  ────────────────────────────────────────
+  Metric: velocity_curves
+  Meaning: Average velocity at each turn position across runs. Shows if conversations generally speed up
+  or slow down.
+
 ## References
 
 - [Claude 4 System Card](https://www.anthropic.com/claude-4-system-card) - Section 5.5.2

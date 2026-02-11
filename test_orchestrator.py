@@ -518,6 +518,10 @@ class TestAggregateRunsetMetrics(unittest.TestCase):
             self.assertEqual(result["ranges"]["words"]["max"], 200)
             # runset_metrics.json should have been written
             self.assertTrue((runset_dir / "runset_metrics.json").exists())
+            # Each run summary should include bliss_score
+            for run_summary in result["runs"]:
+                self.assertIn("bliss_score", run_summary)
+                self.assertEqual(run_summary["bliss_score"], 15)
 
     @patch("bliss_metrics.subprocess.run")
     def test_topic_aggregation(self, mock_bliss_run):
