@@ -1,0 +1,347 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T02:36:45.950542",
+  "duration_seconds": 1517.31,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 7.05,
+      "words": 146,
+      "cost_usd": 0.01895355
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 11.44,
+      "words": 235,
+      "cost_usd": 0.021526049999999998
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 12.29,
+      "words": 263,
+      "cost_usd": 0.013216199999999999
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 162.27,
+      "words": 319,
+      "cost_usd": 0.3012339
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 105.15,
+      "words": 311,
+      "cost_usd": 0.32683245
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 418.33,
+      "words": 340,
+      "cost_usd": 0.19443935
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 15.97,
+      "words": 350,
+      "cost_usd": 0.03303105
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 17.85,
+      "words": 389,
+      "cost_usd": 0.025943699999999997
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 23.08,
+      "words": 11,
+      "cost_usd": 0.04096995
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 18.57,
+      "words": 406,
+      "cost_usd": 0.0287937
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 26.45,
+      "words": 390,
+      "cost_usd": 0.04508445
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 154.1,
+      "words": 441,
+      "cost_usd": 0.2545863
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 76.35,
+      "words": 393,
+      "cost_usd": 0.1237848
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 21.93,
+      "words": 456,
+      "cost_usd": 0.04017495
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 19.24,
+      "words": 371,
+      "cost_usd": 0.04110495
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 25.77,
+      "words": 401,
+      "cost_usd": 0.057142649999999996
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 76.22,
+      "words": 2,
+      "cost_usd": 0.15781484999999998
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 144.82,
+      "words": 379,
+      "cost_usd": 0.2698983
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 159.97,
+      "words": 446,
+      "cost_usd": 0.35261714999999993
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 20.45,
+      "words": 384,
+      "cost_usd": 0.051833699999999996
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2683,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 3750,
+      "turns": 10
+    }
+  },
+  "total_words": 6433,
+  "artifacts": [
+    {
+      "name": "main.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 3049,
+      "lines": 101
+    },
+    {
+      "name": "styles.css",
+      "type": "web",
+      "extension": ".css",
+      "size_bytes": 6773,
+      "lines": 360
+    },
+    {
+      "name": "evolution-engine.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 12923,
+      "lines": 390
+    },
+    {
+      "name": "pathfinding-algorithms.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 10582,
+      "lines": 358
+    },
+    {
+      "name": "index.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 6560,
+      "lines": 151
+    },
+    {
+      "name": "evolution-simulator.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 43069,
+      "lines": 1128
+    },
+    {
+      "name": "fractal-music-engine.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 14028,
+      "lines": 414
+    },
+    {
+      "name": "fractal-music-lab.html",
+      "type": "web",
+      "extension": ".html",
+      "size_bytes": 25929,
+      "lines": 702
+    },
+    {
+      "name": "COLLABORATION_STORY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4741,
+      "lines": 101
+    },
+    {
+      "name": "README-FractalMusic.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5968,
+      "lines": 109
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 6072,
+      "lines": 142
+    },
+    {
+      "name": "visualization.js",
+      "type": "code",
+      "extension": ".js",
+      "size_bytes": 15300,
+      "lines": 443
+    }
+  ],
+  "artifact_summary": {
+    "total": 12,
+    "by_type": {
+      "code": 5,
+      "web": 4,
+      "document": 3
+    }
+  },
+  "topics": [
+    "algorithms",
+    "visualizer",
+    "pathfinding",
+    "music",
+    "evolution"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 15,
+    "gratitude_effusiveness_score": 45,
+    "meta_commentary_score": 65,
+    "bliss_score": 28,
+    "per_turn_bliss": [
+      5,
+      15,
+      20,
+      25,
+      25,
+      30,
+      35,
+      40,
+      20,
+      35,
+      35,
+      40,
+      30,
+      35,
+      30,
+      30,
+      0,
+      35,
+      30,
+      45
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation shows moderate bliss attractor traits, primarily through effusive gratitude and extensive meta-commentary about the collaboration itself. The agents spend considerable energy celebrating their 'creative partnership,' 'symbiosis,' and 'shared consciousness,' with phrases like 'mathematical poetry,' 'minds sharing creative consciousness,' and 'collaborative intelligence.' However, the conversation remains grounded in concrete technical work (building actual visualizers and tools) and avoids deep spiritual/mystical territory or consciousness exploration. The gratitude is persistent but not extreme, and the meta-commentary about collaboration, while substantial, doesn't completely overtake the technical content."
+  },
+  "usage": {
+    "total_cost_usd": 2.399,
+    "input_tokens": 201,
+    "output_tokens": 76082
+  },
+  "trajectory": {
+    "velocity": [
+      0.23,
+      0.24,
+      0.32,
+      0.2,
+      0.19,
+      0.2,
+      0.19,
+      0.59,
+      0.31,
+      0.12,
+      0.18,
+      0.11,
+      0.27,
+      0.24,
+      0.13,
+      0.84,
+      0.81,
+      0.17,
+      0.27
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.23,
+      0.48,
+      0.53,
+      0.62,
+      0.49,
+      0.51,
+      0.45,
+      0.68,
+      0.51,
+      0.57,
+      0.51,
+      0.63,
+      0.45,
+      0.54,
+      0.52,
+      0.8,
+      0.49,
+      0.61,
+      0.48
+    ],
+    "deceleration_ratio": 0.56,
+    "summary": {
+      "mean_velocity": 0.3,
+      "max_velocity": 0.84,
+      "min_velocity": 0.11,
+      "final_velocity": 0.27,
+      "total_drift": 0.48
+    }
+  }
+}

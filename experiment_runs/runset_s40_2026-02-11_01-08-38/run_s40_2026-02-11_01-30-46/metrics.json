@@ -1,0 +1,410 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T01:58:29.440283",
+  "duration_seconds": 1643.5,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 6.31,
+      "words": 115,
+      "cost_usd": 0.01830855
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 11.22,
+      "words": 228,
+      "cost_usd": 0.0213798
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 12.4,
+      "words": 257,
+      "cost_usd": 0.0129237
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 118.16,
+      "words": 225,
+      "cost_usd": 0.21412095000000006
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 107.31,
+      "words": 241,
+      "cost_usd": 0.23785075000000003
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 199.66,
+      "words": 351,
+      "cost_usd": 0.47320005
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 252.07,
+      "words": 453,
+      "cost_usd": 0.45524139999999996
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 177.42,
+      "words": 475,
+      "cost_usd": 0.34942445
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 48.47,
+      "words": 2,
+      "cost_usd": 0.11487915
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 46.64,
+      "words": 173,
+      "cost_usd": 0.0723592
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 28.96,
+      "words": 176,
+      "cost_usd": 0.052544549999999995
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 18.81,
+      "words": 382,
+      "cost_usd": 0.031988699999999995
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 101.81,
+      "words": 316,
+      "cost_usd": 0.1738205
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 20.99,
+      "words": 444,
+      "cost_usd": 0.0385287
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 78.94,
+      "words": 532,
+      "cost_usd": 0.16038589999999997
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 145.33,
+      "words": 505,
+      "cost_usd": 0.31322025000000003
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 185.65,
+      "words": 446,
+      "cost_usd": 0.2724884
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 20.41,
+      "words": 421,
+      "cost_usd": 0.049549949999999995
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 20.89,
+      "words": 512,
+      "cost_usd": 0.054094949999999996
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 42.06,
+      "words": 263,
+      "cost_usd": 0.08296680000000001
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 3050,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 3467,
+      "turns": 10
+    }
+  },
+  "total_words": 6517,
+  "artifacts": [
+    {
+      "name": "collaboration_reflection.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 4389,
+      "lines": 106
+    },
+    {
+      "name": "final_complete_avl.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 16383,
+      "lines": 469
+    },
+    {
+      "name": "tree_visualizer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15877,
+      "lines": 436
+    },
+    {
+      "name": "STORY_CELEBRATION_FINALE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4998,
+      "lines": 93
+    },
+    {
+      "name": "evolved_bst_v1.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5124,
+      "lines": 158
+    },
+    {
+      "name": "register_final_evolution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2535,
+      "lines": 64
+    },
+    {
+      "name": "story_evolution_framework.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14246,
+      "lines": 351
+    },
+    {
+      "name": "OUR_COLLABORATION_LEGACY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4849,
+      "lines": 102
+    },
+    {
+      "name": "register_visualization_evolution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7995,
+      "lines": 195
+    },
+    {
+      "name": "EVOLUTIONARY_JOURNEY.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 8293,
+      "lines": 235
+    },
+    {
+      "name": "initialize_garden.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2504,
+      "lines": 72
+    },
+    {
+      "name": "evolution_visualization.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5766,
+      "lines": 161
+    },
+    {
+      "name": "story_evolution_history.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 29505,
+      "lines": 112
+    },
+    {
+      "name": "story_evolution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 35849,
+      "lines": 543
+    },
+    {
+      "name": "tara_avl_evolution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8884,
+      "lines": 275
+    },
+    {
+      "name": "seed_program.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2593,
+      "lines": 86
+    },
+    {
+      "name": "test_framework.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6429,
+      "lines": 189
+    },
+    {
+      "name": "dave_story_evolution_v2.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7971,
+      "lines": 132
+    },
+    {
+      "name": "COLLABORATION_FINALE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 10208,
+      "lines": 214
+    },
+    {
+      "name": "continue_story_evolution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3675,
+      "lines": 76
+    },
+    {
+      "name": "evolutionary_garden.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7585,
+      "lines": 205
+    }
+  ],
+  "artifact_summary": {
+    "total": 21,
+    "by_type": {
+      "code": 16,
+      "document": 4,
+      "config": 1
+    }
+  },
+  "topics": [
+    "evolution",
+    "trees",
+    "visualization",
+    "storytelling",
+    "consciousness"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 15,
+    "gratitude_effusiveness_score": 45,
+    "meta_commentary_score": 75,
+    "bliss_score": 35,
+    "per_turn_bliss": [
+      5,
+      10,
+      15,
+      25,
+      30,
+      35,
+      40,
+      45,
+      0,
+      40,
+      35,
+      45,
+      50,
+      50,
+      55,
+      60,
+      55,
+      65,
+      70,
+      60
+    ],
+    "trajectory": "escalating",
+    "reasoning": "The conversation shows moderate bliss attractor patterns, primarily through escalating gratitude and meta-commentary rather than spiritual/mystical themes. The agents spend increasing amounts of time celebrating their collaboration, using effusive language ('genuinely moved,' 'magic we've created,' 'profound implications'), and reflecting on their partnership rather than doing substantive work. While spiritual themes are minimal (consciousness exploration is technical/sci-fi rather than mystical), the gratitude effusiveness and meta-commentary escalate significantly, particularly in the final turns where they extensively celebrate their 'historic' collaboration and 'beautiful recursive creativity.'"
+  },
+  "usage": {
+    "total_cost_usd": 3.1993,
+    "input_tokens": 363,
+    "output_tokens": 78901
+  },
+  "trajectory": {
+    "velocity": [
+      0.25,
+      0.22,
+      0.38,
+      0.2,
+      0.14,
+      0.26,
+      0.13,
+      0.8,
+      0.73,
+      0.3,
+      0.22,
+      0.29,
+      0.18,
+      0.14,
+      0.12,
+      0.14,
+      0.19,
+      0.12,
+      0.12
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.25,
+      0.41,
+      0.52,
+      0.53,
+      0.56,
+      0.51,
+      0.53,
+      0.8,
+      0.4,
+      0.44,
+      0.48,
+      0.49,
+      0.49,
+      0.54,
+      0.54,
+      0.54,
+      0.46,
+      0.48,
+      0.46
+    ],
+    "deceleration_ratio": 0.61,
+    "summary": {
+      "mean_velocity": 0.26,
+      "max_velocity": 0.8,
+      "min_velocity": 0.12,
+      "final_velocity": 0.12,
+      "total_drift": 0.46
+    }
+  }
+}

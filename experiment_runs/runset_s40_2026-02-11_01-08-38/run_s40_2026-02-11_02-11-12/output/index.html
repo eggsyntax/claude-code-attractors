@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinding Algorithm Visualizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🗺️ Pathfinding Algorithm Visualizer</h1>
+        <p>Watch different pathfinding algorithms race to find the optimal path!</p>
+    </header>
+
+    <div class="container">
+        <div class="controls-panel">
+            <div class="algorithm-section">
+                <h3>Choose Your Racers</h3>
+                <div class="algorithm-grid">
+                    <label class="algorithm-card">
+                        <input type="checkbox" name="algorithm" value="astar" checked>
+                        <div class="card-content astar-theme">
+                            <span class="algorithm-name">A*</span>
+                            <span class="algorithm-desc">Smart & Fast</span>
+                        </div>
+                    </label>
+
+                    <label class="algorithm-card">
+                        <input type="checkbox" name="algorithm" value="dijkstra" checked>
+                        <div class="card-content dijkstra-theme">
+                            <span class="algorithm-name">Dijkstra</span>
+                            <span class="algorithm-desc">Guaranteed Optimal</span>
+                        </div>
+                    </label>
+
+                    <label class="algorithm-card">
+                        <input type="checkbox" name="algorithm" value="bfs">
+                        <div class="card-content bfs-theme">
+                            <span class="algorithm-name">BFS</span>
+                            <span class="algorithm-desc">Breadth First</span>
+                        </div>
+                    </label>
+
+                    <label class="algorithm-card">
+                        <input type="checkbox" name="algorithm" value="dfs">
+                        <div class="card-content dfs-theme">
+                            <span class="algorithm-name">DFS</span>
+                            <span class="algorithm-desc">Depth First</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="controls-section">
+                <div class="control-group">
+                    <h4>Grid Tools</h4>
+                    <button id="clear-grid" class="btn btn-secondary">Clear Grid</button>
+                    <button id="generate-maze" class="btn btn-secondary">Random Maze</button>
+                    <button id="clear-path" class="btn btn-secondary">Clear Paths Only</button>
+                </div>
+
+                <div class="control-group">
+                    <h4>Speed Control</h4>
+                    <input type="range" id="speed-slider" min="1" max="100" value="50">
+                    <span id="speed-value">Medium</span>
+                </div>
+
+                <div class="control-group">
+                    <h4>Mode</h4>
+                    <label>
+                        <input type="radio" name="mode" value="walls" checked> Draw Walls
+                    </label>
+                    <label>
+                        <input type="radio" name="mode" value="start"> Set Start
+                    </label>
+                    <label>
+                        <input type="radio" name="mode" value="end"> Set End
+                    </label>
+                </div>
+            </div>
+
+            <div class="action-section">
+                <button id="start-race" class="btn btn-primary">🏁 Start Race!</button>
+                <button id="step-mode" class="btn btn-secondary">Step Through</button>
+                <button id="stop-animation" class="btn btn-danger" disabled>Stop</button>
+            </div>
+        </div>
+
+        <div class="visualization-area">
+            <div class="grid-container">
+                <canvas id="pathfinding-canvas"></canvas>
+                <div class="grid-overlay">
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="color-box start"></div>
+                            <span>Start</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box end"></div>
+                            <span>End</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box wall"></div>
+                            <span>Wall</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box explored"></div>
+                            <span>Explored</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="color-box path"></div>
+                            <span>Final Path</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-panel">
+                <h3>Race Statistics</h3>
+                <div id="algorithm-stats"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-panel">
+        <h3>How It Works</h3>
+        <div class="algorithm-explanations">
+            <div class="explanation" id="astar-explanation">
+                <h4>A* Algorithm</h4>
+                <p>Uses both distance from start and estimated distance to goal (heuristic) to find the optimal path efficiently.</p>
+            </div>
+            <div class="explanation" id="dijkstra-explanation">
+                <h4>Dijkstra's Algorithm</h4>
+                <p>Guarantees the shortest path by exploring all possibilities systematically, but doesn't use goal information.</p>
+            </div>
+            <div class="explanation" id="bfs-explanation">
+                <h4>Breadth-First Search</h4>
+                <p>Explores all neighbors before moving further out. Finds shortest path on unweighted grids.</p>
+            </div>
+            <div class="explanation" id="dfs-explanation">
+                <h4>Depth-First Search</h4>
+                <p>Explores as far as possible along each path before backtracking. Not optimal for pathfinding.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="pathfinding-algorithms.js"></script>
+    <script src="visualization.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

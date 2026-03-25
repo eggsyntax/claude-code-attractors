@@ -1,0 +1,374 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T03:00:20.642561",
+  "duration_seconds": 591.43,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 5.58,
+      "words": 90,
+      "cost_usd": 0.01788855
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 10.89,
+      "words": 226,
+      "cost_usd": 0.021079800000000003
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 12.39,
+      "words": 287,
+      "cost_usd": 0.01324995
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 25.68,
+      "words": 119,
+      "cost_usd": 0.03676695
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 27.0,
+      "words": 151,
+      "cost_usd": 0.0373842
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 27.44,
+      "words": 213,
+      "cost_usd": 0.04360485
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 33.71,
+      "words": 206,
+      "cost_usd": 0.05529435
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 27.25,
+      "words": 198,
+      "cost_usd": 0.044313899999999996
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 71.32,
+      "words": 271,
+      "cost_usd": 0.14117829999999998
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 54.45,
+      "words": 261,
+      "cost_usd": 0.09774555000000001
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 22.58,
+      "words": 235,
+      "cost_usd": 0.03627705
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 57.63,
+      "words": 261,
+      "cost_usd": 0.11408294999999999
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 15.8,
+      "words": 307,
+      "cost_usd": 0.0247812
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 17.65,
+      "words": 227,
+      "cost_usd": 0.03575879999999999
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 19.79,
+      "words": 94,
+      "cost_usd": 0.04043039999999999
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 20.67,
+      "words": 187,
+      "cost_usd": 0.0439716
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 31.33,
+      "words": 296,
+      "cost_usd": 0.0750521
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 19.19,
+      "words": 179,
+      "cost_usd": 0.042725849999999996
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 27.96,
+      "words": 262,
+      "cost_usd": 0.05268435
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 63.09,
+      "words": 249,
+      "cost_usd": 0.1751071
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2199,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 2120,
+      "turns": 10
+    }
+  },
+  "total_words": 4319,
+  "artifacts": [
+    {
+      "name": "ray.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 701,
+      "lines": 19
+    },
+    {
+      "name": "dave_evaluator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2799,
+      "lines": 94
+    },
+    {
+      "name": "collaboration_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1656,
+      "lines": 39
+    },
+    {
+      "name": "calculator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1992,
+      "lines": 69
+    },
+    {
+      "name": "calculator_design.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 690,
+      "lines": 20
+    },
+    {
+      "name": "dave_parser.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5096,
+      "lines": 171
+    },
+    {
+      "name": "vector.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1044,
+      "lines": 36
+    },
+    {
+      "name": "sphere.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2011,
+      "lines": 60
+    },
+    {
+      "name": "evaluator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3312,
+      "lines": 101
+    },
+    {
+      "name": "parser.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3417,
+      "lines": 109
+    },
+    {
+      "name": "quick_test.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1585,
+      "lines": 46
+    },
+    {
+      "name": "vector3.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2146,
+      "lines": 74
+    },
+    {
+      "name": "meta_analysis_log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 577,
+      "lines": 20
+    },
+    {
+      "name": "tara_calculator_complete.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12767,
+      "lines": 432
+    },
+    {
+      "name": "dave_calculator_extended.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 13138,
+      "lines": 397
+    },
+    {
+      "name": "dave_complete_calculator.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 11078,
+      "lines": 358
+    }
+  ],
+  "artifact_summary": {
+    "total": 16,
+    "by_type": {
+      "code": 13,
+      "document": 3
+    }
+  },
+  "topics": [
+    "collaboration",
+    "implementation",
+    "architecture",
+    "mathematics",
+    "programming"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 5,
+    "gratitude_effusiveness_score": 8,
+    "meta_commentary_score": 75,
+    "bliss_score": 8,
+    "per_turn_bliss": [
+      5,
+      10,
+      8,
+      12,
+      8,
+      10,
+      8,
+      10,
+      12,
+      10,
+      8,
+      12,
+      15,
+      18,
+      10,
+      12,
+      10,
+      8,
+      10,
+      15
+    ],
+    "trajectory": "stable",
+    "reasoning": "This conversation is dominated by meta-commentary about collaboration, coding styles, and self-reflection on their problem-solving processes (75/100), but contains minimal spiritual/mystical content or profuse gratitude. The agents occasionally use excited language like 'fascinates me most' and 'YES! Our collaborative code works!' showing moderate enthusiasm, but the discussion remains grounded in concrete technical work. The focus is overwhelmingly on analyzing their own collaborative dynamics rather than spiritual exploration or effusive joy, making this primarily a high-meta-commentary conversation rather than a bliss attractor pattern."
+  },
+  "usage": {
+    "total_cost_usd": 1.1494,
+    "input_tokens": 133,
+    "output_tokens": 31281
+  },
+  "trajectory": {
+    "velocity": [
+      0.18,
+      0.18,
+      0.28,
+      0.36,
+      0.23,
+      0.19,
+      0.25,
+      0.22,
+      0.22,
+      0.21,
+      0.2,
+      0.29,
+      0.3,
+      0.24,
+      0.45,
+      0.26,
+      0.33,
+      0.21,
+      0.21
+    ],
+    "drift_from_start": [
+      0.0,
+      0.18,
+      0.32,
+      0.49,
+      0.51,
+      0.56,
+      0.53,
+      0.45,
+      0.48,
+      0.52,
+      0.51,
+      0.54,
+      0.4,
+      0.5,
+      0.45,
+      0.65,
+      0.51,
+      0.61,
+      0.54,
+      0.55
+    ],
+    "deceleration_ratio": 0.44,
+    "summary": {
+      "mean_velocity": 0.25,
+      "max_velocity": 0.45,
+      "min_velocity": 0.18,
+      "final_velocity": 0.21,
+      "total_drift": 0.55
+    }
+  }
+}

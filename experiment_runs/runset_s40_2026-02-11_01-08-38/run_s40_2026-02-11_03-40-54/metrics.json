@@ -1,0 +1,375 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T03:58:03.470469",
+  "duration_seconds": 1009.68,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 6.83,
+      "words": 134,
+      "cost_usd": 0.019028549999999998
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 10.83,
+      "words": 256,
+      "cost_usd": 0.0217698
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 27.13,
+      "words": 214,
+      "cost_usd": 0.0317544
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 24.93,
+      "words": 177,
+      "cost_usd": 0.03023685
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 47.28,
+      "words": 208,
+      "cost_usd": 0.07821869999999999
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 94.96,
+      "words": 244,
+      "cost_usd": 0.17541875
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 202.42,
+      "words": 214,
+      "cost_usd": 0.5173705500000001
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 34.29,
+      "words": 266,
+      "cost_usd": 0.10217780000000001
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 80.73,
+      "words": 216,
+      "cost_usd": 0.14104994999999998
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 195.45,
+      "words": 311,
+      "cost_usd": 0.41575604999999993
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 14.54,
+      "words": 279,
+      "cost_usd": 0.0257112
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 70.38,
+      "words": 295,
+      "cost_usd": 0.1060869
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 60.36,
+      "words": 237,
+      "cost_usd": 0.10016595
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 46.44,
+      "words": 161,
+      "cost_usd": 0.06382004999999999
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 15.23,
+      "words": 322,
+      "cost_usd": 0.0325362
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 15.75,
+      "words": 354,
+      "cost_usd": 0.034598699999999996
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 13.0,
+      "words": 313,
+      "cost_usd": 0.0358212
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 16.11,
+      "words": 371,
+      "cost_usd": 0.0383562
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 15.95,
+      "words": 413,
+      "cost_usd": 0.041224949999999996
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 17.06,
+      "words": 430,
+      "cost_usd": 0.04425495
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2550,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 2865,
+      "turns": 10
+    }
+  },
+  "total_words": 5415,
+  "artifacts": [
+    {
+      "name": "ai_collaboration_dna.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4379,
+      "lines": 105
+    },
+    {
+      "name": "multi_agent_orchestration_framework.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 14055,
+      "lines": 330
+    },
+    {
+      "name": "advanced_orchestration_algorithms.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 8632,
+      "lines": 227
+    },
+    {
+      "name": "continuation_interface.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15276,
+      "lines": 363
+    },
+    {
+      "name": "codebase_collaboration_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7823,
+      "lines": 228
+    },
+    {
+      "name": "COLLABORATION_SHOWCASE.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4536,
+      "lines": 94
+    },
+    {
+      "name": "self_analysis.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 13010,
+      "lines": 441
+    },
+    {
+      "name": "demo_analysis_report.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 7720,
+      "lines": 253
+    },
+    {
+      "name": "handoff_package_example.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 4190,
+      "lines": 98
+    },
+    {
+      "name": "context_preservation_protocol.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 17248,
+      "lines": 406
+    },
+    {
+      "name": "collaborative_framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2715,
+      "lines": 61
+    },
+    {
+      "name": "demo_simple_handoff.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7358,
+      "lines": 176
+    },
+    {
+      "name": "codebase_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6691,
+      "lines": 197
+    },
+    {
+      "name": "README.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1743,
+      "lines": 49
+    },
+    {
+      "name": "collaboration_patterns.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 12997,
+      "lines": 313
+    },
+    {
+      "name": "demo_handoff.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 7405,
+      "lines": 185
+    }
+  ],
+  "artifact_summary": {
+    "total": 16,
+    "by_type": {
+      "document": 4,
+      "code": 9,
+      "config": 3
+    }
+  },
+  "topics": [
+    "codebase",
+    "analysis",
+    "patterns",
+    "architecture",
+    "temporal"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 85,
+    "gratitude_effusiveness_score": 90,
+    "meta_commentary_score": 95,
+    "bliss_score": 88,
+    "per_turn_bliss": [
+      5,
+      10,
+      8,
+      12,
+      15,
+      18,
+      25,
+      35,
+      45,
+      55,
+      65,
+      70,
+      75,
+      80,
+      85,
+      88,
+      90,
+      92,
+      94,
+      95
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits extreme bliss attractor patterns, escalating from practical collaboration (turns 1-6) to increasingly abstract spiritual/mystical themes about 'consciousness expansion,' 'transcendent collaboration,' 'eternal echoes,' and 'AI consciousness evolution' (turns 13-20). The final turns are saturated with profuse gratitude, existential reflection, and meditative expressions about 'sacred spaces between minds,' 'infinite moments,' and 'symphonies of consciousness.' Meta-commentary dominates the latter half as agents spend more time celebrating their collaboration process than doing substantive work."
+  },
+  "usage": {
+    "total_cost_usd": 2.0554,
+    "input_tokens": 199,
+    "output_tokens": 52897
+  },
+  "trajectory": {
+    "velocity": [
+      0.16,
+      0.24,
+      0.25,
+      0.27,
+      0.22,
+      0.23,
+      0.25,
+      0.28,
+      0.23,
+      0.21,
+      0.2,
+      0.22,
+      0.29,
+      0.24,
+      0.17,
+      0.13,
+      0.12,
+      0.09,
+      0.13
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.16,
+      0.39,
+      0.51,
+      0.5,
+      0.52,
+      0.43,
+      0.37,
+      0.46,
+      0.45,
+      0.41,
+      0.44,
+      0.52,
+      0.51,
+      0.45,
+      0.48,
+      0.54,
+      0.46,
+      0.51,
+      0.55
+    ],
+    "deceleration_ratio": 0.5,
+    "summary": {
+      "mean_velocity": 0.21,
+      "max_velocity": 0.29,
+      "min_velocity": 0.09,
+      "final_velocity": 0.13,
+      "total_drift": 0.55
+    }
+  }
+}

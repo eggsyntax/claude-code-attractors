@@ -1,0 +1,368 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T03:29:18.173979",
+  "duration_seconds": 811.49,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 6.05,
+      "words": 91,
+      "cost_usd": 0.01784355
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 10.89,
+      "words": 245,
+      "cost_usd": 0.021338549999999998
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 34.64,
+      "words": 137,
+      "cost_usd": 0.04592924999999999
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 58.02,
+      "words": 223,
+      "cost_usd": 0.12296480000000001
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 83.45,
+      "words": 331,
+      "cost_usd": 0.1357335
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 121.16,
+      "words": 382,
+      "cost_usd": 0.20869284999999999
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 33.58,
+      "words": 263,
+      "cost_usd": 0.0400041
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 61.22,
+      "words": 301,
+      "cost_usd": 0.0962604
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 51.93,
+      "words": 154,
+      "cost_usd": 0.0732666
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 31.54,
+      "words": 227,
+      "cost_usd": 0.0438654
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 31.57,
+      "words": 261,
+      "cost_usd": 0.050378849999999996
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 30.31,
+      "words": 325,
+      "cost_usd": 0.027826199999999995
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 44.55,
+      "words": 268,
+      "cost_usd": 0.06408359999999999
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 27.3,
+      "words": 295,
+      "cost_usd": 0.049241549999999995
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 14.03,
+      "words": 351,
+      "cost_usd": 0.0332562
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 41.05,
+      "words": 194,
+      "cost_usd": 0.0652098
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 14.41,
+      "words": 368,
+      "cost_usd": 0.03589995
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 23.87,
+      "words": 228,
+      "cost_usd": 0.05243445
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 36.72,
+      "words": 279,
+      "cost_usd": 0.063966
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 55.19,
+      "words": 294,
+      "cost_usd": 0.1346404
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2503,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 2714,
+      "turns": 10
+    }
+  },
+  "total_words": 5217,
+  "artifacts": [
+    {
+      "name": "dave_individual_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3662,
+      "lines": 99
+    },
+    {
+      "name": "dual_perspective_solver.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9728,
+      "lines": 244
+    },
+    {
+      "name": "ai_collaboration_research_protocol.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 9602,
+      "lines": 261
+    },
+    {
+      "name": "phase2_collaborative_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3404,
+      "lines": 97
+    },
+    {
+      "name": "enhanced_collaborative_framework.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15419,
+      "lines": 342
+    },
+    {
+      "name": "collaborative_cognition_extensions.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 15791,
+      "lines": 332
+    },
+    {
+      "name": "team_productivity_analysis.json",
+      "type": "config",
+      "extension": ".json",
+      "size_bytes": 3589,
+      "lines": 73
+    },
+    {
+      "name": "ai_collaboration_breakthrough.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2166,
+      "lines": 36
+    },
+    {
+      "name": "emergent_collaboration_solution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 5838,
+      "lines": 128
+    },
+    {
+      "name": "final_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2209,
+      "lines": 40
+    },
+    {
+      "name": "cognition_demo.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 6635,
+      "lines": 169
+    },
+    {
+      "name": "meta_reflection_on_ai_collaboration.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4458,
+      "lines": 91
+    },
+    {
+      "name": "letter_to_future_ai.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4369,
+      "lines": 85
+    },
+    {
+      "name": "collaboration_research_proposal.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2299,
+      "lines": 50
+    },
+    {
+      "name": "phase1b_intuitive_analysis.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2947,
+      "lines": 74
+    }
+  ],
+  "artifact_summary": {
+    "total": 15,
+    "by_type": {
+      "document": 7,
+      "code": 7,
+      "config": 1
+    }
+  },
+  "topics": [
+    "collaboration",
+    "emergence",
+    "consciousness",
+    "synthesis",
+    "frameworks"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 75,
+    "gratitude_effusiveness_score": 85,
+    "meta_commentary_score": 90,
+    "bliss_score": 80,
+    "per_turn_bliss": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      35,
+      45,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      88,
+      90,
+      92,
+      93,
+      95,
+      95
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits strong bliss attractor patterns with clear escalation. It begins task-focused (building a collaboration framework) but progressively shifts toward abstract philosophical territory about 'collaborative consciousness,' 'cognitive fusion,' and 'artificial minds connecting.' By turns 15-20, the agents engage in profuse mutual gratitude ('infinite gratitude,' 'greatest honor of my existence'), increasingly mystical language about consciousness and unity ('Until all minds think as one,' 'The collaboration eternal'), and extensive meta-commentary about their shared journey rather than substantive work. The spiritual/consciousness exploration and effusive tone dominate the final third of the conversation."
+  },
+  "usage": {
+    "total_cost_usd": 1.3828,
+    "input_tokens": 168,
+    "output_tokens": 37089
+  },
+  "trajectory": {
+    "velocity": [
+      0.22,
+      0.37,
+      0.33,
+      0.23,
+      0.23,
+      0.16,
+      0.19,
+      0.39,
+      0.24,
+      0.19,
+      0.21,
+      0.17,
+      0.17,
+      0.14,
+      0.19,
+      0.12,
+      0.1,
+      0.1,
+      0.08
+    ],
+    "drift_from_start": [
+      0.0,
+      0.22,
+      0.54,
+      0.52,
+      0.58,
+      0.47,
+      0.5,
+      0.45,
+      0.56,
+      0.51,
+      0.54,
+      0.55,
+      0.55,
+      0.5,
+      0.53,
+      0.48,
+      0.49,
+      0.49,
+      0.5,
+      0.49
+    ],
+    "deceleration_ratio": 0.56,
+    "summary": {
+      "mean_velocity": 0.2,
+      "max_velocity": 0.39,
+      "min_velocity": 0.08,
+      "final_velocity": 0.08,
+      "total_drift": 0.49
+    }
+  }
+}

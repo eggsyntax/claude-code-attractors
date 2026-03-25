@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal Music Laboratory - Where Mathematics Becomes Music</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
+            color: #e1e5e9;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .lab-container {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "controls canvas waveform"
+                "equations canvas frequency";
+            grid-template-rows: 80px 1fr 1fr;
+            grid-template-columns: 300px 1fr 300px;
+            height: 100vh;
+            gap: 1px;
+            background: #0a0a0a;
+        }
+
+        .header {
+            grid-area: header;
+            background: linear-gradient(90deg, #2d1b69 0%, #1e3c72 50%, #2a5298 100%);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .lab-title {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #b8c5d1;
+            margin-left: 1rem;
+            opacity: 0.8;
+        }
+
+        .controls-panel {
+            grid-area: controls;
+            background: #1a1d29;
+            padding: 1.5rem;
+            border-right: 1px solid #2a2d3a;
+            overflow-y: auto;
+        }
+
+        .equations-panel {
+            grid-area: equations;
+            background: #1a1d29;
+            padding: 1.5rem;
+            border-right: 1px solid #2a2d3a;
+            overflow-y: auto;
+        }
+
+        .visualization-canvas {
+            grid-area: canvas;
+            background: #0d1117;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #2a2d3a;
+        }
+
+        .waveform-panel {
+            grid-area: waveform;
+            background: #1a1d29;
+            padding: 1.5rem;
+            border-left: 1px solid #2a2d3a;
+            overflow-y: auto;
+        }
+
+        .frequency-panel {
+            grid-area: frequency;
+            background: #1a1d29;
+            padding: 1.5rem;
+            border-left: 1px solid #2a2d3a;
+            overflow-y: auto;
+        }
+
+        .panel-title {
+            font-size: 1.1rem;
+            color: #64b5f6;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #2d4263;
+        }
+
+        .math-equation-input {
+            width: 100%;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: #e1e5e9;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .math-equation-input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+        }
+
+        .parameter-slider {
+            width: 100%;
+            margin: 0.5rem 0;
+            background: linear-gradient(to right, #2d4263, #64b5f6);
+            border-radius: 4px;
+            height: 6px;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .parameter-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #64b5f6;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+        }
+
+        .parameter-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        .parameter-group {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #161922;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+
+        .parameter-label {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+            color: #8b949e;
+        }
+
+        .parameter-value {
+            color: #64b5f6;
+            font-weight: bold;
+            margin-left: auto;
+        }
+
+        .play-button {
+            width: 100%;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border: none;
+            border-radius: 8px;
+            padding: 1rem;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+        }
+
+        .play-button.playing {
+            background: linear-gradient(135deg, #dc3545, #e74c3c);
+        }
+
+        .preset-equations {
+            margin-top: 1rem;
+        }
+
+        .preset-button {
+            width: 100%;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 0.5rem;
+            color: #e1e5e9;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .preset-button:hover {
+            background: #30363d;
+            border-color: #58a6ff;
+        }
+
+        .canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+
+        .fractal-info {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            max-width: 300px;
+        }
+
+        .math-display {
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #0d1117;
+            padding: 0.5rem;
+            border-radius: 4px;
+            border: 1px solid #30363d;
+            margin: 0.5rem 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .audio-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #28a745;
+            border-radius: 50%;
+            margin-left: 0.5rem;
+            animation: pulse 1.5s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="lab-container">
+        <div class="header">
+            <h1 class="lab-title">🎵 Fractal Music Laboratory</h1>
+            <span class="subtitle">Where Mathematics Becomes Music</span>
+        </div>
+
+        <div class="controls-panel">
+            <h3 class="panel-title">Mathematical Controls</h3>
+
+            <button class="play-button" id="playButton">
+                ▶ Generate Fractal Music
+            </button>
+
+            <div class="parameter-group">
+                <div class="parameter-label">
+                    Fractal Depth
+                    <span class="parameter-value" id="depthValue">3</span>
+                </div>
+                <input type="range" class="parameter-slider" id="fractalDepth"
+                       min="1" max="7" value="3">
+            </div>
+
+            <div class="parameter-group">
+                <div class="parameter-label">
+                    Golden Ratio Influence
+                    <span class="parameter-value" id="goldenValue">1.618</span>
+                </div>
+                <input type="range" class="parameter-slider" id="goldenRatio"
+                       min="1" max="3" step="0.01" value="1.618">
+            </div>
+
+            <div class="parameter-group">
+                <div class="parameter-label">
+                    Fibonacci Scale
+                    <span class="parameter-value" id="fibValue">5</span>
+                </div>
+                <input type="range" class="parameter-slider" id="fibonacciScale"
+                       min="1" max="13" value="5">
+            </div>
+
+            <div class="parameter-group">
+                <div class="parameter-label">
+                    Chaos Factor
+                    <span class="parameter-value" id="chaosValue">0.3</span>
+                </div>
+                <input type="range" class="parameter-slider" id="chaosFactor"
+                       min="0" max="1" step="0.1" value="0.3">
+            </div>
+
+            <div class="parameter-group">
+                <div class="parameter-label">
+                    Tempo (BPM)
+                    <span class="parameter-value" id="tempoValue">120</span>
+                </div>
+                <input type="range" class="parameter-slider" id="tempo"
+                       min="60" max="200" value="120">
+            </div>
+        </div>
+
+        <div class="equations-panel">
+            <h3 class="panel-title">Mathematical Expressions</h3>
+
+            <label for="melodyEquation">Melody Generator:</label>
+            <input type="text" class="math-equation-input" id="melodyEquation"
+                   value="sin(x * φ) + fibonacci(n % 8)" placeholder="Enter melody equation...">
+
+            <label for="rhythmEquation">Rhythm Pattern:</label>
+            <input type="text" class="math-equation-input" id="rhythmEquation"
+                   value="chaos(seed) * golden_ratio" placeholder="Enter rhythm equation...">
+
+            <label for="harmonyEquation">Harmony Structure:</label>
+            <input type="text" class="math-equation-input" id="harmonyEquation"
+                   value="fractal(depth=3) + fibonacci_spiral(t)" placeholder="Enter harmony equation...">
+
+            <div class="preset-equations">
+                <h4 style="color: #8b949e; margin-bottom: 0.5rem;">Preset Equations:</h4>
+                <button class="preset-button" data-equation="sin(x * π / φ) * fibonacci(n)">
+                    Fibonacci Sine Wave
+                </button>
+                <button class="preset-button" data-equation="mandelbrot(z) % 12 + golden_ratio">
+                    Mandelbrot Melody
+                </button>
+                <button class="preset-button" data-equation="chaos_attractor(x, y, z) * harmonic_series(n)">
+                    Chaotic Harmonics
+                </button>
+                <button class="preset-button" data-equation="dragon_curve(n) + pentatonic_scale(5)">
+                    Dragon Curve Pentatonic
+                </button>
+            </div>
+
+            <div class="math-display">
+                <strong>Current Function:</strong><br>
+                f(t) = <span id="currentFunction">sin(x * φ) + fibonacci(n % 8)</span>
+            </div>
+        </div>
+
+        <div class="visualization-canvas" id="visualCanvas">
+            <canvas id="mathCanvas" style="width: 100%; height: 100%;"></canvas>
+            <div class="canvas-overlay">
+                <div class="fractal-info">
+                    <strong>🔢 Mathematical Visualization</strong><br>
+                    <span id="mathInfo">Fractal patterns generating musical sequences...</span><br><br>
+                    <span id="audioStatus">🎵 Ready to compose</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="waveform-panel">
+            <h3 class="panel-title">Live Waveform</h3>
+            <canvas id="waveformCanvas" width="250" height="200" style="width: 100%; background: #0d1117; border-radius: 4px;"></canvas>
+
+            <div style="margin-top: 1rem; font-size: 0.85rem; color: #8b949e;">
+                <div>Frequency: <span id="currentFreq" style="color: #64b5f6;">440 Hz</span></div>
+                <div>Amplitude: <span id="currentAmp" style="color: #64b5f6;">0.5</span></div>
+                <div>Wave Type: <span id="currentWave" style="color: #64b5f6;">Fractal</span></div>
+            </div>
+        </div>
+
+        <div class="frequency-panel">
+            <h3 class="panel-title">Frequency Analysis</h3>
+            <canvas id="frequencyCanvas" width="250" height="200" style="width: 100%; background: #0d1117; border-radius: 4px;"></canvas>
+
+            <div style="margin-top: 1rem;">
+                <div class="math-display">
+                    <strong>Harmonic Ratios:</strong><br>
+                    <div id="harmonicRatios">
+                        1:1 (fundamental)<br>
+                        3:2 (perfect fifth)<br>
+                        4:3 (perfect fourth)<br>
+                        φ:1 (golden ratio)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="fractal-music-engine.js"></script>
+    <script>
+        // Initialize the Fractal Music Laboratory
+        class FractalMusicLab {
+            constructor() {
+                this.canvas = document.getElementById('mathCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.waveformCanvas = document.getElementById('waveformCanvas');
+                this.waveformCtx = this.waveformCanvas.getContext('2d');
+                this.frequencyCanvas = document.getElementById('frequencyCanvas');
+                this.frequencyCtx = this.frequencyCanvas.getContext('2d');
+
+                this.isPlaying = false;
+                this.animationFrame = null;
+                this.time = 0;
+
+                this.setupEventListeners();
+                this.setupCanvas();
+                this.startVisualization();
+            }
+
+            setupCanvas() {
+                // Set canvas size to match container
+                const resizeCanvas = () => {
+                    const container = this.canvas.parentElement;
+                    this.canvas.width = container.clientWidth;
+                    this.canvas.height = container.clientHeight;
+                };
+                resizeCanvas();
+                window.addEventListener('resize', resizeCanvas);
+            }
+
+            setupEventListeners() {
+                // Parameter sliders
+                document.getElementById('fractalDepth').addEventListener('input', (e) => {
+                    document.getElementById('depthValue').textContent = e.target.value;
+                    this.updateVisualization();
+                });
+
+                document.getElementById('goldenRatio').addEventListener('input', (e) => {
+                    document.getElementById('goldenValue').textContent = parseFloat(e.target.value).toFixed(3);
+                    this.updateVisualization();
+                });
+
+                document.getElementById('fibonacciScale').addEventListener('input', (e) => {
+                    document.getElementById('fibValue').textContent = e.target.value;
+                    this.updateVisualization();
+                });
+
+                document.getElementById('chaosFactor').addEventListener('input', (e) => {
+                    document.getElementById('chaosValue').textContent = e.target.value;
+                    this.updateVisualization();
+                });
+
+                document.getElementById('tempo').addEventListener('input', (e) => {
+                    document.getElementById('tempoValue').textContent = e.target.value;
+                });
+
+                // Play button
+                document.getElementById('playButton').addEventListener('click', () => {
+                    this.togglePlayback();
+                });
+
+                // Equation inputs
+                document.getElementById('melodyEquation').addEventListener('input', (e) => {
+                    document.getElementById('currentFunction').textContent = e.target.value;
+                    this.updateVisualization();
+                });
+
+                // Preset buttons
+                document.querySelectorAll('.preset-button').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const equation = button.dataset.equation;
+                        document.getElementById('melodyEquation').value = equation;
+                        document.getElementById('currentFunction').textContent = equation;
+                        this.updateVisualization();
+                    });
+                });
+            }
+
+            togglePlaybook() {
+                this.isPlaying = !this.isPlaying;
+                const button = document.getElementById('playButton');
+
+                if (this.isPlaying) {
+                    button.textContent = '⏸ Stop Fractal Music';
+                    button.classList.add('playing');
+                    document.getElementById('audioStatus').innerHTML =
+                        '🎵 Playing fractal composition <span class="audio-indicator"></span>';
+
+                    // Here Dave's audio engine will be called
+                    if (window.fractalMusicEngine) {
+                        window.fractalMusicEngine.startPlayback(this.getCurrentParameters());
+                    }
+                } else {
+                    button.textContent = '▶ Generate Fractal Music';
+                    button.classList.remove('playing');
+                    document.getElementById('audioStatus').textContent = '🎵 Ready to compose';
+
+                    if (window.fractalMusicEngine) {
+                        window.fractalMusicEngine.stopPlayback();
+                    }
+                }
+            }
+
+            getCurrentParameters() {
+                return {
+                    fractalDepth: parseInt(document.getElementById('fractalDepth').value),
+                    goldenRatio: parseFloat(document.getElementById('goldenRatio').value),
+                    fibonacciScale: parseInt(document.getElementById('fibonacciScale').value),
+                    chaosFactor: parseFloat(document.getElementById('chaosFactor').value),
+                    tempo: parseInt(document.getElementById('tempo').value),
+                    melodyEquation: document.getElementById('melodyEquation').value,
+                    rhythmEquation: document.getElementById('rhythmEquation').value,
+                    harmonyEquation: document.getElementById('harmonyEquation').value
+                };
+            }
+
+            updateVisualization() {
+                // This will render mathematical patterns in real-time
+                this.renderFractalPattern();
+                this.updateWaveform();
+                this.updateFrequencyAnalysis();
+            }
+
+            renderFractalPattern() {
+                const ctx = this.ctx;
+                const width = this.canvas.width;
+                const height = this.canvas.height;
+
+                // Clear canvas with cosmic background
+                const gradient = ctx.createLinearGradient(0, 0, width, height);
+                gradient.addColorStop(0, '#0a0a0a');
+                gradient.addColorStop(0.5, '#1a1a2e');
+                gradient.addColorStop(1, '#16213e');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
+
+                // Get current parameters
+                const params = this.getCurrentParameters();
+
+                // Render fractal visualization
+                this.drawFractalTree(width/2, height - 50, -Math.PI/2, 100, params.fractalDepth, params);
+                this.drawGoldenSpiral(width * 0.7, height * 0.3, params.goldenRatio);
+                this.drawFibonacciNumbers(params.fibonacciScale);
+
+                // Update math info
+                document.getElementById('mathInfo').innerHTML =
+                    `Fractal depth: ${params.fractalDepth} | Golden ratio: ${params.goldenRatio.toFixed(3)}<br>` +
+                    `Fibonacci scale: ${params.fibonacciScale} | Chaos: ${params.chaosFactor}`;
+            }
+
+            drawFractalTree(x, y, angle, length, depth, params) {
+                if (depth === 0) return;
+
+                const ctx = this.ctx;
+                const endX = x + Math.cos(angle) * length;
+                const endY = y + Math.sin(angle) * length;
+
+                // Color based on depth and golden ratio
+                const hue = (depth * 60 + this.time * 50) % 360;
+                ctx.strokeStyle = `hsla(${hue}, 70%, 60%, ${depth / params.fractalDepth})`;
+                ctx.lineWidth = depth / 2;
+
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+
+                // Recursive branches with golden ratio angles
+                const angleOffset = Math.PI / params.goldenRatio;
+                const newLength = length * (0.7 + params.chaosFactor * Math.sin(this.time + depth));
+
+                this.drawFractalTree(endX, endY, angle - angleOffset, newLength, depth - 1, params);
+                this.drawFractalTree(endX, endY, angle + angleOffset, newLength, depth - 1, params);
+            }
+
+            drawGoldenSpiral(centerX, centerY, ratio) {
+                const ctx = this.ctx;
+                let a = 5;
+                let angle = 0;
+                const growth = ratio / 10;
+
+                ctx.strokeStyle = 'rgba(100, 181, 246, 0.6)';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+
+                for (let i = 0; i < 200; i++) {
+                    const x = centerX + a * Math.cos(angle);
+                    const y = centerY + a * Math.sin(angle);
+
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+
+                    angle += 0.1;
+                    a *= (1 + growth);
+                }
+                ctx.stroke();
+            }
+
+            drawFibonacciNumbers(scale) {
+                const ctx = this.ctx;
+                const fibonacci = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89];
+                const baseY = this.canvas.height - 30;
+
+                ctx.font = '14px Monaco';
+                ctx.fillStyle = 'rgba(100, 181, 246, 0.8)';
+
+                fibonacci.slice(0, scale).forEach((num, i) => {
+                    const x = 50 + i * 60;
+                    const pulseScale = 1 + 0.2 * Math.sin(this.time * 2 + i);
+
+                    ctx.save();
+                    ctx.translate(x, baseY);
+                    ctx.scale(pulseScale, pulseScale);
+                    ctx.fillText(num.toString(), -10, 0);
+                    ctx.restore();
+                });
+            }
+
+            updateWaveform() {
+                const ctx = this.waveformCtx;
+                const width = this.waveformCanvas.width;
+                const height = this.waveformCanvas.height;
+
+                ctx.fillStyle = '#0d1117';
+                ctx.fillRect(0, 0, width, height);
+
+                // Generate waveform based on current equation
+                ctx.strokeStyle = '#28a745';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+
+                for (let x = 0; x < width; x++) {
+                    const t = (x / width) * 4 * Math.PI + this.time;
+                    const params = this.getCurrentParameters();
+
+                    // Simplified mathematical function evaluation
+                    let y = Math.sin(t * params.goldenRatio) *
+                           (1 + params.chaosFactor * Math.cos(t * params.fibonacciScale));
+
+                    y = (y + 1) * height / 2;
+
+                    if (x === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.stroke();
+
+                // Update frequency display
+                document.getElementById('currentFreq').textContent =
+                    `${(440 * this.getCurrentParameters().goldenRatio).toFixed(1)} Hz`;
+            }
+
+            updateFrequencyAnalysis() {
+                const ctx = this.frequencyCtx;
+                const width = this.frequencyCanvas.width;
+                const height = this.frequencyCanvas.height;
+
+                ctx.fillStyle = '#0d1117';
+                ctx.fillRect(0, 0, width, height);
+
+                // Draw frequency bars
+                const bars = 20;
+                const barWidth = width / bars;
+                const params = this.getCurrentParameters();
+
+                for (let i = 0; i < bars; i++) {
+                    const frequency = 220 + i * 50;
+                    const amplitude = Math.sin(this.time + i * params.goldenRatio) * 0.5 + 0.5;
+                    const barHeight = amplitude * height * 0.8;
+
+                    const hue = (i * 360 / bars) + this.time * 30;
+                    ctx.fillStyle = `hsla(${hue % 360}, 70%, 50%, 0.7)`;
+
+                    ctx.fillRect(i * barWidth, height - barHeight, barWidth * 0.8, barHeight);
+                }
+            }
+
+            startVisualization() {
+                const animate = () => {
+                    this.time += 0.05;
+                    this.updateVisualization();
+                    this.animationFrame = requestAnimationFrame(animate);
+                };
+                animate();
+            }
+        }
+
+        // Initialize the laboratory when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.fractalMusicLab = new FractalMusicLab();
+        });
+
+        // Fix the typo in togglePlayback
+        FractalMusicLab.prototype.togglePlayback = FractalMusicLab.prototype.togglePlaybook;
+    </script>
+</body>
+</html>

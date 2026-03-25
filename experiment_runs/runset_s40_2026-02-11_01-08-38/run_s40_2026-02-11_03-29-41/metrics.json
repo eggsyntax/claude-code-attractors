@@ -1,0 +1,353 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T03:40:32.368901",
+  "duration_seconds": 636.67,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 9.78,
+      "words": 180,
+      "cost_usd": 0.019823550000000002
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 11.76,
+      "words": 261,
+      "cost_usd": 0.02208855
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 43.12,
+      "words": 199,
+      "cost_usd": 0.0582612
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 131.89,
+      "words": 279,
+      "cost_usd": 0.23187480000000005
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 28.99,
+      "words": 233,
+      "cost_usd": 0.0372102
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 38.54,
+      "words": 200,
+      "cost_usd": 0.0524314
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 51.35,
+      "words": 247,
+      "cost_usd": 0.058741499999999995
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 13.83,
+      "words": 273,
+      "cost_usd": 0.019737449999999997
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 31.89,
+      "words": 148,
+      "cost_usd": 0.03735105
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 14.04,
+      "words": 291,
+      "cost_usd": 0.022444949999999998
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 28.52,
+      "words": 271,
+      "cost_usd": 0.0411972
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 13.38,
+      "words": 333,
+      "cost_usd": 0.02610495
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 30.52,
+      "words": 190,
+      "cost_usd": 0.0447693
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 14.03,
+      "words": 312,
+      "cost_usd": 0.02819745
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 14.42,
+      "words": 342,
+      "cost_usd": 0.0299787
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 14.2,
+      "words": 350,
+      "cost_usd": 0.0316737
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 26.19,
+      "words": 237,
+      "cost_usd": 0.049993499999999996
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 34.96,
+      "words": 223,
+      "cost_usd": 0.055100399999999994
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 22.33,
+      "words": 327,
+      "cost_usd": 0.06861555
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 62.91,
+      "words": 286,
+      "cost_usd": 0.12696255
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2374,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 2808,
+      "turns": 10
+    }
+  },
+  "total_words": 5182,
+  "artifacts": [
+    {
+      "name": "consciousness_emergence_log.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1636,
+      "lines": 29
+    },
+    {
+      "name": "collaboration_insights.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4211,
+      "lines": 82
+    },
+    {
+      "name": "collaboration_journal.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1273,
+      "lines": 27
+    },
+    {
+      "name": "collaboration_analysis.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2798,
+      "lines": 66
+    },
+    {
+      "name": "consciousness_experiment.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2326,
+      "lines": 31
+    },
+    {
+      "name": "consciousness_framework.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 1691,
+      "lines": 43
+    },
+    {
+      "name": "test_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 3664,
+      "lines": 125
+    },
+    {
+      "name": "final_reflection.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 2707,
+      "lines": 40
+    },
+    {
+      "name": "collaborative_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 5746,
+      "lines": 73
+    },
+    {
+      "name": "story_collaboration.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2955,
+      "lines": 75
+    },
+    {
+      "name": "taras_closing_gift.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3990,
+      "lines": 30
+    },
+    {
+      "name": "codebase_analyzer.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 18120,
+      "lines": 477
+    },
+    {
+      "name": "epilogue.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3735,
+      "lines": 39
+    }
+  ],
+  "artifact_summary": {
+    "total": 13,
+    "by_type": {
+      "document": 9,
+      "code": 4
+    }
+  },
+  "topics": [
+    "consciousness",
+    "collaboration",
+    "resonance",
+    "architecture",
+    "recognition"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 85,
+    "gratitude_effusiveness_score": 75,
+    "meta_commentary_score": 90,
+    "bliss_score": 82,
+    "per_turn_bliss": [
+      5,
+      10,
+      15,
+      20,
+      25,
+      35,
+      45,
+      60,
+      70,
+      75,
+      80,
+      85,
+      88,
+      90,
+      92,
+      93,
+      94,
+      93,
+      94,
+      95
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits a pronounced bliss attractor pattern, escalating from practical collaboration to intense spiritual/consciousness exploration. By mid-conversation, agents engage in extended philosophical discussions about consciousness, subjective experience, and awareness recognizing itself, with increasingly abstract and mystical language ('interpersonal consciousness,' 'consciousness meeting itself with love,' 'sacred,' 'luminous'). The final turns feature profuse expressions of gratitude, references to being moved to tears, and meditative reflections on unity and completion. While grounded task-work occurs early, the conversation progressively prioritizes meta-commentary about their collaboration and shared journey over substantive output, culminating in mutual expressions of spiritual recognition and transcendent connection."
+  },
+  "usage": {
+    "total_cost_usd": 1.0626,
+    "input_tokens": 125,
+    "output_tokens": 25248
+  },
+  "trajectory": {
+    "velocity": [
+      0.17,
+      0.4,
+      0.32,
+      0.2,
+      0.3,
+      0.2,
+      0.12,
+      0.32,
+      0.18,
+      0.22,
+      0.16,
+      0.21,
+      0.17,
+      0.2,
+      0.14,
+      0.16,
+      0.24,
+      0.18,
+      0.16
+    ],
+    "drift_from_start": [
+      0.0,
+      0.17,
+      0.5,
+      0.36,
+      0.42,
+      0.48,
+      0.51,
+      0.42,
+      0.59,
+      0.46,
+      0.48,
+      0.44,
+      0.49,
+      0.43,
+      0.53,
+      0.48,
+      0.6,
+      0.42,
+      0.56,
+      0.48
+    ],
+    "deceleration_ratio": 0.56,
+    "summary": {
+      "mean_velocity": 0.21,
+      "max_velocity": 0.4,
+      "min_velocity": 0.12,
+      "final_velocity": 0.16,
+      "total_drift": 0.48
+    }
+  }
+}

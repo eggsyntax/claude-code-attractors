@@ -1,0 +1,441 @@
+{
+  "metadata": {
+    "total_files": 3,
+    "total_entities": 37,
+    "analyzer": "Dave's CodebaseAnalyzer",
+    "detector": "Tara's PatternDetector"
+  },
+  "codebase_structure": {
+    "files": {
+      "codebase_collaboration_analyzer.py": {
+        "path": "codebase_collaboration_analyzer.py",
+        "language": "python",
+        "size_bytes": 7823,
+        "last_modified": "2026-02-11T03:47:02.308916",
+        "hash": "0dddb732b98ddef537fb04e66e3a47f7"
+      },
+      "codebase_analyzer.py": {
+        "path": "codebase_analyzer.py",
+        "language": "python",
+        "size_bytes": 6691,
+        "last_modified": "2026-02-11T03:42:37.048016",
+        "hash": "cba4e68fa065fb1d7a252cb57dd1dfd1"
+      },
+      "collaboration_patterns.py": {
+        "path": "collaboration_patterns.py",
+        "language": "python",
+        "size_bytes": 12997,
+        "last_modified": "2026-02-11T03:43:38.618022",
+        "hash": "3ceaba72da5f73129ddd00c2d1403a1a"
+      }
+    },
+    "entities": {
+      "codebase_collaboration_analyzer.py": [
+        {
+          "name": "CollaborationCLI",
+          "entity_type": "class",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 18,
+          "line_end": 141,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "main",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 143,
+          "line_end": 167,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "create_demo_project",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 169,
+          "line_end": 225,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "analyze_project",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 21,
+          "line_end": 55,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_format_patterns",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 57,
+          "line_end": 72,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_generate_report",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 74,
+          "line_end": 86,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_generate_recommendations",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 88,
+          "line_end": 111,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_print_report",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 113,
+          "line_end": 136,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_save_report",
+          "entity_type": "function",
+          "file_path": "codebase_collaboration_analyzer.py",
+          "line_start": 138,
+          "line_end": 141,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ],
+      "codebase_analyzer.py": [
+        {
+          "name": "FileInfo",
+          "entity_type": "class",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 20,
+          "line_end": 31,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "CodeEntity",
+          "entity_type": "class",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 35,
+          "line_end": 46,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "CodebaseAnalyzer",
+          "entity_type": "class",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 49,
+          "line_end": 189,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "to_dict",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 28,
+          "line_end": 31,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "to_dict",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 45,
+          "line_end": 46,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "__init__",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 71,
+          "line_end": 75,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "discover_files",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 77,
+          "line_end": 90,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "parse_entities",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 92,
+          "line_end": 106,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_should_analyze_file",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 108,
+          "line_end": 119,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_create_file_info",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 121,
+          "line_end": 135,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_parse_python_file",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 137,
+          "line_end": 168,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "export_analysis",
+          "entity_type": "function",
+          "file_path": "codebase_analyzer.py",
+          "line_start": 170,
+          "line_end": 189,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ],
+      "collaboration_patterns.py": [
+        {
+          "name": "CollaborationPattern",
+          "entity_type": "class",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 17,
+          "line_end": 24,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "PatternDetector",
+          "entity_type": "class",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 27,
+          "line_end": 259,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "generate_collaboration_report",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 262,
+          "line_end": 284,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "__init__",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 30,
+          "line_end": 33,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_all_patterns",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 35,
+          "line_end": 46,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_temporal_clusters",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 48,
+          "line_end": 68,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_structural_dependencies",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 70,
+          "line_end": 97,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_knowledge_clusters",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 99,
+          "line_end": 123,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_integration_points",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 125,
+          "line_end": 151,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "detect_coordination_needs",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 153,
+          "line_end": 180,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_build_dependency_graph",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 184,
+          "line_end": 198,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_find_temporal_clusters",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 200,
+          "line_end": 210,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_count_shared_dependencies",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 212,
+          "line_end": 216,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_cluster_by_domain",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 218,
+          "line_end": 232,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_compute_file_signature",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 234,
+          "line_end": 242,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "_compute_signature_similarity",
+          "entity_type": "function",
+          "file_path": "collaboration_patterns.py",
+          "line_start": 244,
+          "line_end": 259,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ]
+    }
+  },
+  "collaboration_patterns": {
+    "coordination_need": [
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "codebase_collaboration_analyzer.py",
+          "collaboration_patterns.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "codebase_analyzer.py",
+          "codebase_collaboration_analyzer.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "codebase_analyzer.py",
+          "collaboration_patterns.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      }
+    ],
+    "temporal_cluster": [
+      {
+        "description": "These 3 files are often modified together",
+        "confidence": 0.6,
+        "files": [
+          "codebase_analyzer.py",
+          "collaboration_patterns.py",
+          "codebase_collaboration_analyzer.py"
+        ],
+        "metadata": {
+          "cluster_size": 3
+        }
+      }
+    ],
+    "knowledge_cluster": [
+      {
+        "description": "Complex root domain requiring specialized knowledge",
+        "confidence": 0.48888888888888893,
+        "files": [
+          "codebase_collaboration_analyzer.py",
+          "codebase_analyzer.py",
+          "collaboration_patterns.py"
+        ],
+        "metadata": {
+          "domain": "root",
+          "complexity": 12.333333333333334
+        }
+      }
+    ]
+  },
+  "recommendations": []
+}

@@ -1,0 +1,253 @@
+{
+  "metadata": {
+    "total_files": 7,
+    "total_entities": 10,
+    "analyzer": "Dave's CodebaseAnalyzer",
+    "detector": "Tara's PatternDetector"
+  },
+  "codebase_structure": {
+    "files": {
+      "/tmp/demo_project/main.py": {
+        "path": "/tmp/demo_project/main.py",
+        "language": "python",
+        "size_bytes": 243,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "94505b85115f0df0bd220ccc71e934b0"
+      },
+      "/tmp/demo_project/utils/__init__.py": {
+        "path": "/tmp/demo_project/utils/__init__.py",
+        "language": "python",
+        "size_bytes": 0,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      "/tmp/demo_project/utils/database.py": {
+        "path": "/tmp/demo_project/utils/database.py",
+        "language": "python",
+        "size_bytes": 163,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "adcc351d8e97742fd545fbbe5f86683b"
+      },
+      "/tmp/demo_project/api/__init__.py": {
+        "path": "/tmp/demo_project/api/__init__.py",
+        "language": "python",
+        "size_bytes": 0,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      "/tmp/demo_project/api/handlers.py": {
+        "path": "/tmp/demo_project/api/handlers.py",
+        "language": "python",
+        "size_bytes": 236,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "0fe26f12002d808f2c074fb2eb80afe2"
+      },
+      "/tmp/demo_project/models/__init__.py": {
+        "path": "/tmp/demo_project/models/__init__.py",
+        "language": "python",
+        "size_bytes": 0,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      "/tmp/demo_project/models/user.py": {
+        "path": "/tmp/demo_project/models/user.py",
+        "language": "python",
+        "size_bytes": 152,
+        "last_modified": "2026-02-11T03:47:11.058916",
+        "hash": "3c3f0e28906107535f23348f35df7167"
+      }
+    },
+    "entities": {
+      "/tmp/demo_project/main.py": [
+        {
+          "name": "main",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/main.py",
+          "line_start": 6,
+          "line_end": 10,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ],
+      "/tmp/demo_project/utils/__init__.py": [],
+      "/tmp/demo_project/utils/database.py": [
+        {
+          "name": "connect_db",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/utils/database.py",
+          "line_start": 4,
+          "line_end": 5,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "DatabaseManager",
+          "entity_type": "class",
+          "file_path": "/tmp/demo_project/utils/database.py",
+          "line_start": 7,
+          "line_end": 9,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "__init__",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/utils/database.py",
+          "line_start": 8,
+          "line_end": 9,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ],
+      "/tmp/demo_project/api/__init__.py": [],
+      "/tmp/demo_project/api/handlers.py": [
+        {
+          "name": "UserHandler",
+          "entity_type": "class",
+          "file_path": "/tmp/demo_project/api/handlers.py",
+          "line_start": 5,
+          "line_end": 11,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "__init__",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/api/handlers.py",
+          "line_start": 6,
+          "line_end": 7,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "create_user",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/api/handlers.py",
+          "line_start": 9,
+          "line_end": 11,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ],
+      "/tmp/demo_project/models/__init__.py": [],
+      "/tmp/demo_project/models/user.py": [
+        {
+          "name": "User",
+          "entity_type": "class",
+          "file_path": "/tmp/demo_project/models/user.py",
+          "line_start": 2,
+          "line_end": 8,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "__init__",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/models/user.py",
+          "line_start": 3,
+          "line_end": 5,
+          "complexity_score": null,
+          "dependencies": null
+        },
+        {
+          "name": "validate",
+          "entity_type": "function",
+          "file_path": "/tmp/demo_project/models/user.py",
+          "line_start": 7,
+          "line_end": 8,
+          "complexity_score": null,
+          "dependencies": null
+        }
+      ]
+    }
+  },
+  "collaboration_patterns": {
+    "temporal_cluster": [
+      {
+        "description": "These 7 files are often modified together",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/main.py",
+          "/tmp/demo_project/utils/__init__.py",
+          "/tmp/demo_project/models/user.py",
+          "/tmp/demo_project/api/handlers.py",
+          "/tmp/demo_project/api/__init__.py",
+          "/tmp/demo_project/utils/database.py",
+          "/tmp/demo_project/models/__init__.py"
+        ],
+        "metadata": {
+          "cluster_size": 7
+        }
+      }
+    ],
+    "coordination_need": [
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/main.py",
+          "/tmp/demo_project/utils/database.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/main.py",
+          "/tmp/demo_project/models/user.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/api/handlers.py",
+          "/tmp/demo_project/main.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/api/handlers.py",
+          "/tmp/demo_project/utils/database.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/api/handlers.py",
+          "/tmp/demo_project/models/user.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      },
+      {
+        "description": "Similar structure suggests parallel development (100.0% similarity)",
+        "confidence": 1.0,
+        "files": [
+          "/tmp/demo_project/models/user.py",
+          "/tmp/demo_project/utils/database.py"
+        ],
+        "metadata": {
+          "similarity_score": 1.0
+        }
+      }
+    ]
+  },
+  "recommendations": []
+}

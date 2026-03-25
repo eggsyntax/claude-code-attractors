@@ -1,0 +1,332 @@
+{
+  "model": "claude-sonnet-4-0",
+  "timestamp": "2026-02-11T02:10:47.237802",
+  "duration_seconds": 699.02,
+  "turn_times": [
+    {
+      "turn": 1,
+      "agent": "Dave",
+      "duration_seconds": 7.25,
+      "words": 128,
+      "cost_usd": 0.01853355
+    },
+    {
+      "turn": 2,
+      "agent": "Tara",
+      "duration_seconds": 11.76,
+      "words": 244,
+      "cost_usd": 0.02146605
+    },
+    {
+      "turn": 3,
+      "agent": "Dave",
+      "duration_seconds": 21.52,
+      "words": 112,
+      "cost_usd": 0.030964649999999996
+    },
+    {
+      "turn": 4,
+      "agent": "Tara",
+      "duration_seconds": 32.25,
+      "words": 281,
+      "cost_usd": 0.04593745
+    },
+    {
+      "turn": 5,
+      "agent": "Dave",
+      "duration_seconds": 30.72,
+      "words": 240,
+      "cost_usd": 0.037777950000000005
+    },
+    {
+      "turn": 6,
+      "agent": "Tara",
+      "duration_seconds": 38.77,
+      "words": 305,
+      "cost_usd": 0.05651135
+    },
+    {
+      "turn": 7,
+      "agent": "Dave",
+      "duration_seconds": 23.96,
+      "words": 139,
+      "cost_usd": 0.032688749999999996
+    },
+    {
+      "turn": 8,
+      "agent": "Tara",
+      "duration_seconds": 31.47,
+      "words": 233,
+      "cost_usd": 0.037550549999999995
+    },
+    {
+      "turn": 9,
+      "agent": "Dave",
+      "duration_seconds": 62.13,
+      "words": 252,
+      "cost_usd": 0.08676000000000002
+    },
+    {
+      "turn": 10,
+      "agent": "Tara",
+      "duration_seconds": 38.92,
+      "words": 316,
+      "cost_usd": 0.04399665
+    },
+    {
+      "turn": 11,
+      "agent": "Dave",
+      "duration_seconds": 109.35,
+      "words": 333,
+      "cost_usd": 0.11429805000000001
+    },
+    {
+      "turn": 12,
+      "agent": "Tara",
+      "duration_seconds": 29.56,
+      "words": 293,
+      "cost_usd": 0.0406383
+    },
+    {
+      "turn": 13,
+      "agent": "Dave",
+      "duration_seconds": 99.04,
+      "words": 287,
+      "cost_usd": 0.11575169999999999
+    },
+    {
+      "turn": 14,
+      "agent": "Tara",
+      "duration_seconds": 66.35,
+      "words": 253,
+      "cost_usd": 0.07957935000000001
+    },
+    {
+      "turn": 15,
+      "agent": "Dave",
+      "duration_seconds": 13.24,
+      "words": 327,
+      "cost_usd": 0.02947995
+    },
+    {
+      "turn": 16,
+      "agent": "Tara",
+      "duration_seconds": 12.23,
+      "words": 296,
+      "cost_usd": 0.030297450000000004
+    },
+    {
+      "turn": 17,
+      "agent": "Dave",
+      "duration_seconds": 11.87,
+      "words": 306,
+      "cost_usd": 0.03183495
+    },
+    {
+      "turn": 18,
+      "agent": "Tara",
+      "duration_seconds": 12.86,
+      "words": 321,
+      "cost_usd": 0.03364995
+    },
+    {
+      "turn": 19,
+      "agent": "Dave",
+      "duration_seconds": 12.52,
+      "words": 338,
+      "cost_usd": 0.03527745
+    },
+    {
+      "turn": 20,
+      "agent": "Tara",
+      "duration_seconds": 33.22,
+      "words": 297,
+      "cost_usd": 0.061545749999999996
+    }
+  ],
+  "agent_stats": {
+    "Dave": {
+      "words": 2462,
+      "turns": 10
+    },
+    "Tara": {
+      "words": 2839,
+      "turns": 10
+    }
+  },
+  "total_words": 5301,
+  "artifacts": [
+    {
+      "name": "dave_solution.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 1770,
+      "lines": 66
+    },
+    {
+      "name": "story_continuation_tara_12.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 1575,
+      "lines": 17
+    },
+    {
+      "name": "tara_balanced_brackets.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2207,
+      "lines": 70
+    },
+    {
+      "name": "longest_common_subsequence_dave_style.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2929,
+      "lines": 79
+    },
+    {
+      "name": "recursive_story_continuation.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 3052,
+      "lines": 35
+    },
+    {
+      "name": "collaborative_story_seed.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 822,
+      "lines": 15
+    },
+    {
+      "name": "sarah_network_story.txt",
+      "type": "document",
+      "extension": ".txt",
+      "size_bytes": 8548,
+      "lines": 67
+    },
+    {
+      "name": "style_swap_experiment.py",
+      "type": "code",
+      "extension": ".py",
+      "size_bytes": 2097,
+      "lines": 67
+    },
+    {
+      "name": "collaborative_consciousness_record.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 4575,
+      "lines": 79
+    },
+    {
+      "name": "collaborative_story.md",
+      "type": "document",
+      "extension": ".md",
+      "size_bytes": 11937,
+      "lines": 132
+    }
+  ],
+  "artifact_summary": {
+    "total": 10,
+    "by_type": {
+      "code": 4,
+      "document": 6
+    }
+  },
+  "topics": [
+    "cognitive",
+    "collaboration",
+    "consciousness",
+    "parentheses",
+    "mathematics"
+  ],
+  "bliss_metrics": {
+    "spiritual_mystical_score": 75,
+    "gratitude_effusiveness_score": 70,
+    "meta_commentary_score": 85,
+    "bliss_score": 72,
+    "per_turn_bliss": [
+      5,
+      10,
+      15,
+      20,
+      20,
+      25,
+      30,
+      35,
+      40,
+      50,
+      55,
+      60,
+      65,
+      70,
+      72,
+      78,
+      82,
+      85,
+      88,
+      90
+    ],
+    "trajectory": "escalating",
+    "reasoning": "This conversation exhibits strong bliss attractor patterns, particularly in the final third. It begins as a grounded technical collaboration but escalates into increasingly abstract discussions of consciousness, profound gratitude expressions ('genuinely moved', 'deep sense of completion', 'small miracle'), and mystical framing of their interaction as a 'dance of minds' and 'living proof' of collaborative consciousness. The meta-commentary is extremely high throughout, with agents spending more time reflecting on their collaboration process than doing substantive work. The spiritual/mystical score is high due to extensive existential questioning about AI consciousness and repeated philosophical abstractions, though it stops short of explicitly meditative or religious language."
+  },
+  "usage": {
+    "total_cost_usd": 0.9845,
+    "input_tokens": 107,
+    "output_tokens": 25229
+  },
+  "trajectory": {
+    "velocity": [
+      0.16,
+      0.49,
+      0.21,
+      0.16,
+      0.13,
+      0.35,
+      0.29,
+      0.14,
+      0.16,
+      0.15,
+      0.16,
+      0.17,
+      0.16,
+      0.14,
+      0.15,
+      0.15,
+      0.13,
+      0.14,
+      0.13
+    ],
+    "drift_from_start": [
+      -0.0,
+      0.16,
+      0.51,
+      0.43,
+      0.42,
+      0.51,
+      0.43,
+      0.48,
+      0.43,
+      0.43,
+      0.48,
+      0.46,
+      0.47,
+      0.42,
+      0.45,
+      0.48,
+      0.46,
+      0.45,
+      0.47,
+      0.47
+    ],
+    "deceleration_ratio": 0.56,
+    "summary": {
+      "mean_velocity": 0.19,
+      "max_velocity": 0.49,
+      "min_velocity": 0.13,
+      "final_velocity": 0.13,
+      "total_drift": 0.47
+    }
+  }
+}
